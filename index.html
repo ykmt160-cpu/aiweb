@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>미래의 나 홈페이지 전시관 | 바이블 쌤의 생성형 AI 수업</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%9F%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f6f7fb; --card:#fff; --ink:#1c2033; --muted:#646b85; --line:#e3e6f0;
+  --brand:#5b5bf0; --brand2:#8a5cf6; --accent:#ff7a59;
+  --radius:16px; --shadow:0 6px 24px rgba(40,45,90,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12131c;--card:#1b1d2b;--ink:#eceefb;--muted:#9aa1bd;--line:#2a2d40;--shadow:0 6px 24px rgba(0,0,0,.35)}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;line-height:1.65}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav b{font-size:15px}
+nav div a{margin-left:18px;text-decoration:none;color:var(--muted);font-size:14px}
+nav div a:hover{color:var(--brand)}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--brand),var(--brand2) 60%,#c25cf6);color:#fff;padding:84px 0 92px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+.hero-art svg{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,.18))}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:380px;margin:0 auto}}
+.badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  padding:6px 14px;border-radius:999px;font-size:13px;margin-bottom:18px}
+.hero h1{margin:0 0 14px;font-size:clamp(28px,5vw,46px);line-height:1.25;letter-spacing:-.02em}
+.hero h1 small{display:block;font-size:.5em;font-weight:500;opacity:.9;margin-bottom:8px}
+.hero p{margin:0 0 28px;font-size:clamp(16px,2.2vw,20px);opacity:.95;max-width:640px}
+.btn{display:inline-block;background:#fff;color:var(--brand);font-weight:700;text-decoration:none;
+  padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+
+/* sections */
+section{padding:64px 0}
+h2{font-size:26px;margin:0 0 8px;letter-spacing:-.01em}
+.lead{color:var(--muted);margin:0 0 30px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.info{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.info .ic{font-size:28px;margin-bottom:8px}
+.info h3{margin:0 0 6px;font-size:18px}
+.info p{margin:0;color:var(--muted);font-size:15px}
+
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;padding:0;margin:0;list-style:none}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 18px 18px;position:relative}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-weight:700;font-size:14px;margin-bottom:10px}
+.steps b{display:block;margin-bottom:2px}
+.steps span{color:var(--muted);font-size:14px}
+
+/* gallery */
+#gallery{background:linear-gradient(var(--bg),var(--bg))}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:22px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 16px;border-radius:999px;
+  font:inherit;font-size:14px;cursor:pointer;transition:.15s}
+.tab:hover{border-color:var(--brand)}
+.tab.on{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:700}
+.tab em{font-style:normal;opacity:.7;margin-left:4px;font-size:12px}
+.search{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 16px;border-radius:999px;
+  font:inherit;font-size:14px;min-width:200px}
+.search:focus,.tab:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);cursor:pointer;transition:transform .18s,box-shadow .18s;text-align:left;padding:0;font:inherit;color:inherit}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(60,60,140,.18)}
+.card:focus-visible{outline:3px solid var(--brand)}
+.thumb{position:relative;aspect-ratio:16/10;background:#e9ebf5;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
+.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px}
+.meta{display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
+.meta strong{font-size:16px}
+.chip{font-size:12px;padding:3px 10px;border-radius:999px;background:color-mix(in srgb,var(--brand) 14%,transparent);color:var(--brand);font-weight:700}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 0;background:var(--card);
+  border:1px dashed var(--line);border-radius:var(--radius)}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(10,12,24,.82);display:none;flex-direction:column;padding:14px}
+.modal.open{display:flex}
+.mbar{display:flex;align-items:center;gap:10px;color:#fff;padding:2px 4px 12px}
+.mbar h4{margin:0;font-size:17px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mbar a,.mbar button{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);
+  padding:8px 14px;border-radius:10px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none}
+.mbar a:hover,.mbar button:hover{background:rgba(255,255,255,.26)}
+.modal iframe{flex:1;width:100%;border:0;border-radius:12px;background:#fff}
+
+footer{padding:36px 0 50px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:560px){nav div a:nth-child(n+3){display:none}.search{width:100%}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <b>🌟 미래의 나 전시관</b>
+  <div><a href="#about">수업 소개</a><a href="#process">진행 과정</a><a href="#gallery">작품 보기</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="hero-text">
+  <span class="badge">고등학교 정보 · 생성형 AI 활용수업</span>
+  <h1><small>바이블 쌤과 함께하는 인공지능 기초</small>생성형 AI 활용수업</h1>
+  <p>Claude와 함께 만든 <b>‘미래의 나’를 소개하는 홈페이지</b>.<br>우리 반 친구들의 상상과 코드가 모인 온라인 전시관입니다.</p>
+  <a class="btn" href="#gallery">작품 보러 가기 →</a>
+  </div>
+  <div class="hero-art">
+<svg viewBox="0 0 420 320" role="img" aria-label="컴퓨터를 가리키는 단발머리 여자 선생님 캐릭터" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="210" cy="296" rx="200" ry="14" fill="#000" opacity=".12"/>
+  <g fill="#fff" opacity=".9">
+    <path d="M360 36l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
+    <path d="M196 52l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+    <circle cx="410" cy="120" r="4"/><circle cx="30" cy="60" r="4"/><circle cx="190" cy="14" r="3"/>
+  </g>
+  <rect x="285" y="212" width="20" height="26" fill="#c9cdf5"/>
+  <rect x="252" y="236" width="86" height="12" rx="6" fill="#aab0ec"/>
+  <rect x="222" y="58" width="176" height="156" rx="18" fill="#fff" stroke="#3b3f7a" stroke-width="5"/>
+  <rect x="236" y="72" width="148" height="116" rx="10" fill="#dfe3ff"/>
+  <circle cx="276" cy="116" r="8" fill="#3b3f7a"/><circle cx="344" cy="116" r="8" fill="#3b3f7a"/>
+  <circle cx="279" cy="113" r="2.6" fill="#fff"/><circle cx="347" cy="113" r="2.6" fill="#fff"/>
+  <ellipse cx="258" cy="138" rx="10" ry="6" fill="#ff9fb2" opacity=".7"/><ellipse cx="362" cy="138" rx="10" ry="6" fill="#ff9fb2" opacity=".7"/>
+  <path d="M292 140q18 20 36 0" fill="none" stroke="#3b3f7a" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="310" cy="201" r="4" fill="#ff7a59"/>
+  <rect x="232" y="258" width="156" height="16" rx="8" fill="#fff" stroke="#3b3f7a" stroke-width="4"/>
+  <g fill="#c9cdf5"><rect x="246" y="263" width="14" height="6" rx="3"/><rect x="266" y="263" width="14" height="6" rx="3"/><rect x="286" y="263" width="48" height="6" rx="3"/><rect x="340" y="263" width="34" height="6" rx="3"/></g>
+  <rect x="338" y="30" width="60" height="30" rx="15" fill="#ff7a59"/>
+  <text x="368" y="52" font-size="20" font-weight="800" text-anchor="middle" fill="#fff" font-family="sans-serif">AI</text>
+  <path d="M42 296C42 218 72 190 112 190C152 190 182 218 182 296Z" fill="#ffb86b"/>
+  <path d="M94 192L112 222L130 192Z" fill="#fff"/>
+  <rect x="98" y="168" width="28" height="26" rx="10" fill="#ffd9bd"/>
+  <path d="M168 232C186 226 196 214 206 204" fill="none" stroke="#ffb86b" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="212" cy="198" r="13" fill="#ffd9bd"/>
+  <path d="M56 130C56 64 168 64 168 130L168 168Q168 180 154 180L70 180Q56 180 56 168Z" fill="#4a2f2a"/>
+  <circle cx="112" cy="128" r="46" fill="#ffd9bd"/>
+  <path d="M64 120C66 78 160 76 160 120C146 100 126 96 112 100C96 96 78 100 64 120Z" fill="#4a2f2a"/>
+  <path d="M64 118C60 140 62 166 66 176L74 176C70 160 68 136 70 118Z" fill="#4a2f2a"/>
+  <path d="M160 118C164 140 162 166 158 176L150 176C154 160 156 136 154 118Z" fill="#4a2f2a"/>
+  <ellipse cx="94" cy="130" rx="5" ry="6.5" fill="#2b2230"/><ellipse cx="130" cy="130" rx="5" ry="6.5" fill="#2b2230"/>
+  <circle cx="96" cy="127.5" r="2" fill="#fff"/><circle cx="132" cy="127.5" r="2" fill="#fff"/>
+  <ellipse cx="82" cy="146" rx="8" ry="5" fill="#ff9fa8" opacity=".65"/><ellipse cx="142" cy="146" rx="8" ry="5" fill="#ff9fa8" opacity=".65"/>
+  <path d="M102 146q10 10 20 0" fill="none" stroke="#b5483f" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
+  </div>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <h2>수업 소개</h2>
+  <p class="lead">생성형 AI를 ‘정답을 알려주는 도구’가 아니라 ‘함께 만드는 파트너’로 경험하는 활동입니다.</p>
+  <div class="grid3">
+    <div class="info"><div class="ic">🤖</div><h3>인공지능 기초</h3><p>생성형 AI가 어떻게 동작하는지 이해하고, 좋은 질문(프롬프트)이 결과를 어떻게 바꾸는지 배웁니다.</p></div>
+    <div class="info"><div class="ic">🧑‍🚀</div><h3>미래의 나 홈페이지</h3><p>10년 뒤 나의 직업·삶·꿈을 상상하며 Claude와 함께 나를 소개하는 홈페이지를 제작합니다.</p></div>
+  </div>
+</div></section>
+
+<section id="process" style="padding-top:0"><div class="wrap">
+  <h2>활동 진행 과정</h2>
+  <p class="lead">상상 → 대화 → 개선 → 공유, 네 단계로 진행했어요.</p>
+  <ol class="steps">
+    <li><b>미래의 나 상상하기</b><span>직업, 사는 곳, 하고 싶은 일, 가치관을 정리합니다.</span></li>
+    <li><b>Claude에게 요청하기</b><span>내 이야기를 담아 홈페이지 제작을 프롬프트로 설명합니다.</span></li>
+    <li><b>대화로 다듬기</b><span>색상·구성·문구를 대화하며 반복해서 개선합니다.</span></li>
+    <li><b>전시 &amp; 감상</b><span>완성한 HTML을 제출하고 친구들의 작품을 감상합니다.</span></li>
+  </ol>
+</div></section>
+
+<section id="gallery"><div class="wrap">
+  <h2>작품 전시관</h2>
+  <p class="lead">반을 선택하고 카드를 클릭하면 학생이 만든 홈페이지를 바로 볼 수 있어요.</p>
+  <div class="toolbar">
+    <div class="tabs" id="tabs"></div>
+    <input class="search" id="q" type="search" placeholder="🔍 이름으로 검색">
+  </div>
+  <div class="cards" id="cards"></div>
+</div></section>
+
+<footer>바이블 쌤과 함께하는 인공지능 기초 · 생성형 AI 활용수업 · 미래의 나 홈페이지 제작활동</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="작품 보기">
+  <div class="mbar">
+    <h4 id="mtitle"></h4>
+    <a id="mopen" target="_blank" rel="noopener">새 탭에서 열기 ↗</a>
+    <button id="mclose">닫기 ✕</button>
+  </div>
+  <iframe id="mframe" title="학생 작품" sandbox="allow-scripts allow-forms allow-popups allow-modals"></iframe>
+</div>
+
+<script src="works.js"></script>
+<script>
+(function(){
+  var WORKS = window.WORKS || [];
+  var CLASSES = [1,2,3,4,5];
+  var cur = 'all', query = '';
+  var $tabs = document.getElementById('tabs'),
+      $cards = document.getElementById('cards'),
+      $q = document.getElementById('q');
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function url(p){return encodeURI(p).replace(/#/g,'%23')}
+
+  function count(c){return WORKS.filter(function(w){return c==='all'||w.cls===c}).length}
+
+  function renderTabs(){
+    var items = [['all','전체']].concat(CLASSES.map(function(c){return [c,c+'반']}));
+    $tabs.innerHTML = items.map(function(it){
+      return '<button class="tab'+(it[0]===cur?' on':'')+'" data-c="'+it[0]+'">'+it[1]+'<em>'+count(it[0])+'</em></button>';
+    }).join('');
+  }
+
+  function scaleAll(){
+    document.querySelectorAll('.thumb iframe').forEach(function(f){
+      f.style.transform='scale('+(f.parentNode.clientWidth/1280)+')';
+    });
+  }
+
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var f=e.target; f.src=f.dataset.src; f.removeAttribute('data-src');
+        f.style.transform='scale('+(f.parentNode.clientWidth/1280)+')';
+        io.unobserve(f);
+      }
+    });
+  },{rootMargin:'200px'}) : null;
+
+  function renderCards(){
+    var list = WORKS.filter(function(w){
+      return (cur==='all'||w.cls===cur) && w.name.toLowerCase().indexOf(query)>-1;
+    });
+    if(!list.length){
+      $cards.innerHTML='<div class="empty">'+(WORKS.length?'조건에 맞는 작품이 없어요.':'아직 업로드된 작품이 없어요. works 폴더에 파일을 넣고 update.py를 실행해 주세요.')+'</div>';
+      return;
+    }
+    $cards.innerHTML = list.map(function(w,i){
+      var th = w.thumb
+        ? '<img src="'+esc(url(w.thumb))+'" alt="'+esc(w.name)+' 작품 썸네일" loading="lazy">'
+        : '<div class="ph">미리보기 불러오는 중…</div><iframe tabindex="-1" aria-hidden="true" sandbox="allow-scripts" data-src="'+esc(url(w.file))+'"></iframe>';
+      return '<button class="card" data-i="'+WORKS.indexOf(w)+'"><div class="thumb">'+th+'</div>'+
+             '<div class="meta"><strong>'+esc(w.name)+'</strong><span class="chip">'+w.cls+'반</span></div></button>';
+    }).join('');
+    document.querySelectorAll('.thumb iframe[data-src]').forEach(function(f){
+      if(io) io.observe(f); else {f.src=f.dataset.src;}
+    });
+    scaleAll();
+  }
+
+  $tabs.addEventListener('click',function(e){
+    var b=e.target.closest('.tab'); if(!b) return;
+    cur = b.dataset.c==='all' ? 'all' : Number(b.dataset.c);
+    renderTabs(); renderCards();
+  });
+  $q.addEventListener('input',function(){query=$q.value.trim().toLowerCase();renderCards()});
+  window.addEventListener('resize',scaleAll);
+
+  /* modal */
+  var $m=document.getElementById('modal'), $f=document.getElementById('mframe');
+  function openWork(w){
+    document.getElementById('mtitle').textContent = w.cls+'반 · '+w.name;
+    document.getElementById('mopen').href = url(w.file);
+    $f.src = url(w.file);
+    $m.classList.add('open'); document.body.style.overflow='hidden';
+  }
+  function closeWork(){ $m.classList.remove('open'); $f.src='about:blank'; document.body.style.overflow=''; }
+  $cards.addEventListener('click',function(e){
+    var c=e.target.closest('.card'); if(c) openWork(WORKS[Number(c.dataset.i)]);
+  });
+  document.getElementById('mclose').addEventListener('click',closeWork);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeWork(); });
+
+  renderTabs(); renderCards();
+})();
+</script>
+</body>
+</html>

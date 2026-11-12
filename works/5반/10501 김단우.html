@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>축구선수의 AI 활용법</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#4cc3f0;--sky-d:#1a9fd6;--ink:#0b0d10;--paper:#fff;--soft:#eef9fe;--line:#cfeaf6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#fff;--ink:#0b0d10}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:"Noto Sans KR","Malgun Gothic",sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-weight:500}
+.wrap{max-width:1100px;margin:0 auto;padding:0 40px}
+nav{position:sticky;top:0;z-index:5;background:var(--ink);border-bottom:4px solid var(--sky)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav b{color:var(--sky);font-weight:900;letter-spacing:.02em}
+nav a{color:#fff;text-decoration:none;margin-left:26px;font-size:15px;font-weight:700}
+nav a:hover{color:var(--sky)}
+.hero{background:var(--ink);color:#fff;padding:90px 0 0;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.tag{display:inline-block;background:var(--sky);color:var(--ink);font-weight:900;padding:4px 16px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%);font-size:14px}
+h1{font-size:64px;line-height:1.15;font-weight:900;margin:22px 0}
+h1 span{color:var(--sky)}
+.hero p{font-size:19px;color:#d6e4ec;max-width:520px}
+.core{margin-top:28px;border-left:6px solid var(--sky);padding:6px 0 6px 18px;font-size:24px;font-weight:900}
+.hero svg.goal{width:100%;height:auto;display:block}
+.grass{height:26px;background:repeating-linear-gradient(90deg,var(--sky) 0 60px,var(--sky-d) 60px 120px);margin-top:50px}
+section{padding:90px 0}
+.k{color:var(--sky-d);font-weight:900;letter-spacing:.12em;font-size:14px}
+h2{font-size:40px;font-weight:900;line-height:1.3;margin:6px 0 10px;display:flex;align-items:center;gap:14px}
+h2 svg{width:44px;height:44px;flex:none}
+.lead{font-size:18px;max-width:760px;margin-bottom:36px}
+.cut{clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px))}
+.profile{display:grid;grid-template-columns:260px 1fr;gap:0;border:3px solid var(--ink)}
+.profile .side{background:var(--ink);color:#fff;padding:36px 28px;text-align:center}
+.profile .side svg{width:110px;height:110px}
+.profile .side h3{font-size:34px;font-weight:900;margin-top:12px}
+.profile .side small{color:var(--sky);font-weight:700;font-size:16px}
+dl{padding:28px 36px;display:grid;grid-template-columns:130px 1fr;row-gap:16px}
+dt{font-weight:900;color:var(--sky-d)}
+dd{font-weight:500}
+.alt{background:var(--soft)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:var(--ink);color:#fff;padding:28px 22px 30px;border-top:6px solid var(--sky)}
+.card i{font-style:normal;font-size:38px;font-weight:900;color:var(--sky);display:block}
+.card h3{font-size:20px;font-weight:900;margin-top:6px;line-height:1.4}
+.notebook{background:#fff;border:3px solid var(--ink);padding:34px 40px 34px 90px;position:relative;
+background-image:repeating-linear-gradient(transparent 0 47px,var(--line) 47px 49px);box-shadow:10px 10px 0 var(--sky)}
+.notebook:before{content:"";position:absolute;left:0;top:0;bottom:0;width:52px;background:var(--ink);
+background-image:radial-gradient(circle,var(--sky) 7px,transparent 8px);background-size:52px 70px;background-position:center 20px}
+.notebook:after{content:"";position:absolute;left:66px;top:0;bottom:0;width:3px;background:var(--sky)}
+.notebook ol{list-style:none;counter-reset:n}
+.notebook li{counter-increment:n;font-size:22px;font-weight:700;line-height:49px;display:flex;gap:16px;align-items:baseline}
+.notebook li:before{content:counter(n);flex:none;width:34px;height:34px;line-height:34px;text-align:center;background:var(--ink);color:var(--sky);font-weight:900;font-size:17px;transform:translateY(-3px)}
+.notebook li:last-child{color:var(--sky-d);font-weight:900}
+.key{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.key .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+.key h2{color:#fff}
+.key .big{font-size:46px;line-height:1.35;font-weight:900;margin:18px 0}
+.key .big em{font-style:normal;color:var(--ink);background:var(--sky);padding:0 10px}
+.key p{font-size:19px;color:#d6e4ec;max-width:560px}
+.key .ball{width:100%;max-width:300px;justify-self:center}
+.top{display:grid;gap:22px}
+.rank{display:grid;grid-template-columns:110px 1fr;border:3px solid var(--ink);background:#fff}
+.rank .n{background:var(--sky);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;padding:14px}
+.rank .n b{font-size:50px;line-height:1}
+.rank .n span{font-size:14px}
+.rank .t{padding:24px 30px}
+.rank h3{font-size:24px;font-weight:900;margin-bottom:8px}
+.rank p+p{margin-top:6px}
+footer{background:var(--ink);color:#fff;text-align:center;padding:54px 0;border-top:6px solid var(--sky)}
+footer b{font-size:26px;color:var(--sky);font-weight:900}
+footer p{color:#d6e4ec;margin-top:8px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ball" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#fff" stroke="#0b0d10" stroke-width="4"/>
+<polygon points="50,34 65,45 59,63 41,63 35,45" fill="#0b0d10"/>
+<path d="M50 34V5M65 45l28-9M59 63l17 24M41 63L24 87M35 45L7 36" stroke="#0b0d10" stroke-width="3.5" fill="none"/>
+<path d="M50 5l14 9-14 6-14-6zM93 36l-4 18-13-3 2-15zM76 87l-14 5-5-14 12-8zM24 87l14 5 5-14-12-8zM7 36l4 18 13-3-2-15z" fill="#4cc3f0" stroke="#0b0d10" stroke-width="2.5" opacity=".9"/></symbol>
+<symbol id="note" viewBox="0 0 48 48"><rect x="8" y="4" width="34" height="40" fill="#fff" stroke="#0b0d10" stroke-width="3"/><rect x="4" y="4" width="8" height="40" fill="#4cc3f0" stroke="#0b0d10" stroke-width="3"/><path d="M18 16h18M18 24h18M18 32h12" stroke="#0b0d10" stroke-width="3"/></symbol>
+<symbol id="gl" viewBox="0 0 48 48"><path d="M5 42V8h38v34" fill="none" stroke="#0b0d10" stroke-width="4"/><path d="M12 10v32M20 10v32M28 10v32M36 10v32M7 18h34M7 28h34" stroke="#4cc3f0" stroke-width="2"/></symbol>
+</defs></svg>
+
+<nav><div class="wrap"><b>⚽ AI × FOOTBALL</b><div><a href="#hello">인사</a><a href="#ai">축구와 AI</a><a href="#how">나의 활용법</a><a href="#one">가장 중요한 하나</a><a href="#top3">역량 TOP 3</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div>
+<span class="tag">똑똑하고 효율적이게</span>
+<h1>축구선수의<br><span>AI 활용법</span></h1>
+<p>AI를 활용해 경기를 분석하고 선수 개개인을 보다 간편하고 정확하게 관리할 수 있도록 하는 웹사이트입니다. 축구에 관심 있는 모든 사람을 위한 공간입니다.</p>
+<div class="core">“똑똑하고 효율적이게 성장합시다.”</div>
+</div>
+<svg class="goal" viewBox="0 0 360 260" aria-label="골대와 축구공">
+<defs><pattern id="net" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 0H18M0 0V18" stroke="#4cc3f0" stroke-width="1.4" opacity=".7"/></pattern></defs>
+<rect x="30" y="30" width="300" height="190" fill="url(#net)"/>
+<path d="M30 230V30h300v200" fill="none" stroke="#fff" stroke-width="12"/>
+<use href="#ball" x="140" y="150" width="90" height="90"/>
+</svg>
+</div><div class="grass"></div></header>
+
+<section id="hello"><div class="wrap">
+<div class="k">SECTION 01</div><h2>인사</h2>
+<p class="lead">나의 직업과 하는 일에 대해 소개합니다.</p>
+<div class="profile">
+<div class="side"><svg><use href="#ball"/></svg><h3>김단우</h3><small>27세 · 축구선수</small></div>
+<dl>
+<dt>이름</dt><dd>김단우</dd>
+<dt>나이</dt><dd>27세</dd>
+<dt>직업</dt><dd>프로축구팀 소속 축구선수</dd>
+<dt>직업을 선택한 이유</dt><dd>내가 가장 사랑하는 일이고 내가 가장 많이 해왔던 길이기 때문입니다.</dd>
+<dt>내가 맡을 일</dt><dd>경기장 안에서 팀의 승리를 위해 최선을 다해 플레이를 펼치는 것.</dd>
+</dl></div>
+</div></section>
+
+<section id="ai" class="alt"><div class="wrap">
+<div class="k">SECTION 02</div><h2>축구와 AI</h2>
+<p class="lead">축구선수가 AI를 활용해 똑똑하고 효율적으로 자신의 일정, 몸 상태, 축구 능력을 관리할 수 있는 방법을 소개합니다. AI가 도와줄 수 있는 일은 다음과 같습니다.</p>
+<div class="cards">
+<div class="card cut"><i>01</i><h3>나의 플레이 스타일 분석</h3></div>
+<div class="card cut"><i>02</i><h3>경기장 안에서의 위치와 움직임 분석</h3></div>
+<div class="card cut"><i>03</i><h3>식단 관리</h3></div>
+<div class="card cut"><i>04</i><h3>컨디션 관리</h3></div>
+</div></div></section>
+
+<section id="how"><div class="wrap">
+<div class="k">SECTION 03</div><h2><svg><use href="#note"/></svg>나의 활용법</h2>
+<p class="lead">AI를 실제 축구 생활에 활용하는 구체적인 방법을 소개합니다.</p>
+<div class="notebook"><ol>
+<li>AI에게 질문하기</li>
+<li>스케줄표 작성하기</li>
+<li>식단표 작성하기</li>
+<li>주의사항 확인하기</li>
+<li>AI에게 받은 피드백을 실제 경기와 훈련에 반영하기</li>
+</ol></div>
+</div></section>
+
+<section id="one" class="key"><div class="wrap">
+<div>
+<div class="k" style="color:var(--sky)">SECTION 04</div><h2><svg><use href="#gl"/></svg>가장 중요한 하나</h2>
+<div class="big">직접 <em>몸으로 실행</em>하고<br>나의 삶에 <em>반영</em>하는 것</div>
+<p>AI에게 질문하고 내용을 기록하고 계획을 세우는 것도 중요하지만, 그것보다 더 중요한 것은 직접 몸으로 실행하고 나의 삶에 반영하는 것입니다.</p>
+</div>
+<svg class="ball"><use href="#ball" width="300" height="300"/></svg>
+</div></section>
+
+<section id="top3"><div class="wrap">
+<div class="k">AI TIME</div><h2>AI 시대에 필요한 역량 TOP 3</h2>
+<p class="lead">나의 미래 직업인 축구선수에게 필요한 AI 시대 역량을 소개합니다.</p>
+<div class="top">
+<div class="rank"><div class="n"><span>RANK</span><b>1</b></div><div class="t"><h3>AI 활용 능력</h3>
+<p>필요한 자료와 정보를 통해 나의 컨디션이나 시간 관리 등에 대한 구체적인 내용을 얻을 수 있습니다.</p>
+<p>앞으로 AI를 활용해 코치님이나 감독님께 물어보지 못한 것들을 구체적으로 질문하고, 피드백을 통해 경기장에서의 능력을 발전시킬 것입니다.</p></div></div>
+<div class="rank"><div class="n"><span>RANK</span><b>2</b></div><div class="t"><h3>창의·융합 사고</h3>
+<p>경기장에서는 예상하지 못한 상황들이 계속 이어지기 때문에 입력된 값이 항상 똑같이 나올 수 없습니다. 창의적으로 생각하고 움직이고 판단해야 합니다.</p>
+<p>앞으로 피드백을 그대로만 받아들이지 않고 상황에 따라 다른 플레이와 다른 위치에서의 플레이도 시도하면서 보완할 것입니다.</p></div></div>
+<div class="rank"><div class="n"><span>RANK</span><b>3</b></div><div class="t"><h3>소통·협업 능력</h3>
+<p>축구는 개인 스포츠가 아닌 팀 스포츠이기 때문에 팀원, 감독, 코치와의 소통과 협업을 통해 상대의 전술에 대응해야 합니다.</p>
+<p>경기장과 훈련장에서 더 즉각적으로 소통하고 반영하면서 팀 전체가 발전할 수 있도록 노력할 것입니다.</p></div></div>
+</div></div></section>
+
+<footer><b>“똑똑하고 효율적이게 성장합시다.”</b><p>축구선수 김단우</p></footer>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>데이터와 감성을 잇는 화장품 개발자 | 서채은</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --main:#2f5d62; --main-dark:#234649; --sub:#e8f0ee; --sub-2:#f6f9f8; --point:#d98c7a;
+  --text:#22302f; --muted:#5b6b69; --surface:#ffffff; --line:#d5e2df; --bg:#fbfdfc;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --main:#7fb7ae; --main-dark:#a5d3cb; --sub:#1c2b2a; --sub-2:#16201f; --point:#e8a695;
+    --text:#e6efed; --muted:#a3b5b2; --surface:#1f2e2d; --line:#2f4442; --bg:#121a19;
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;word-break:keep-all}
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+nav .logo{font-family:'Noto Serif KR',serif;font-weight:700;color:var(--main)}
+nav ul{display:flex;gap:32px;list-style:none}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--point)}
+section{padding:110px 0}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--point);font-weight:700;text-transform:uppercase;margin-bottom:12px}
+h2{font-family:'Noto Serif KR',serif;font-size:34px;color:var(--main-dark);margin-bottom:48px;line-height:1.4}
+/* hero */
+#hero{background:linear-gradient(135deg,var(--sub) 0%,var(--sub-2) 100%);padding:90px 0 110px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.hero-grid h1{font-family:'Noto Serif KR',serif;font-size:46px;line-height:1.35;color:var(--main-dark);margin:8px 0 24px}
+.hero-grid h1 em{font-style:normal;color:var(--point)}
+.quote{border-left:3px solid var(--point);padding:4px 0 4px 18px;color:var(--text);font-size:17px;margin-bottom:28px}
+.lead{color:var(--muted);margin-bottom:32px}
+.id-card{display:flex;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.id-card div{flex:1;padding:18px 20px;border-right:1px solid var(--line)}
+.id-card div:last-child{border:none}
+.id-card small{display:block;color:var(--muted);font-size:12px}
+.id-card strong{color:var(--main-dark);font-size:16px}
+.hero-art{display:flex;justify-content:center}
+.hero-art svg{width:100%;max-width:420px;height:auto}
+/* about */
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:70px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px 28px;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(47,93,98,.12)}
+.card .ico{width:48px;height:48px;margin-bottom:18px}
+.card h3{font-size:16px;color:var(--main);margin-bottom:10px}
+.card p{font-size:15px;color:var(--muted)}
+/* project */
+#portfolio{background:var(--sub-2)}
+.project{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:48px}
+.project .art{background:var(--sub);border-radius:16px;padding:28px;display:flex;justify-content:center}
+.project .art svg{width:100%;max-width:340px}
+.tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--point);padding:3px 12px;border-radius:99px;margin-bottom:14px}
+.project h3{font-family:'Noto Serif KR',serif;font-size:24px;color:var(--main-dark);margin-bottom:16px;line-height:1.5}
+.project p{color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.chips span{background:var(--sub);color:var(--main-dark);font-size:13px;padding:5px 14px;border-radius:99px;font-weight:500}
+/* process */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:64px}
+.role{border-radius:16px;padding:32px;border:1px solid var(--line);background:var(--surface)}
+.role.ai{border-top:4px solid var(--main)}
+.role.me{border-top:4px solid var(--point)}
+.role h3{font-size:13px;letter-spacing:.1em;margin-bottom:10px}
+.role.ai h3{color:var(--main)} .role.me h3{color:var(--point)}
+.role p{font-size:15px}
+.sub-title{font-size:20px;color:var(--main-dark);font-family:'Noto Serif KR',serif;margin-bottom:28px}
+.skill{display:grid;grid-template-columns:70px 1fr;gap:24px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px;margin-bottom:20px}
+.rank{font-family:'Noto Serif KR',serif;font-size:44px;font-weight:700;color:var(--point);line-height:1}
+.skill h4{font-size:18px;color:var(--main-dark);margin-bottom:16px}
+.skill dl{display:grid;grid-template-columns:90px 1fr;gap:10px 16px;font-size:15px}
+.skill dt{font-weight:700;color:var(--main)}
+.skill dd{color:var(--muted)}
+.pain{margin-top:56px;background:var(--main);color:#fff;border-radius:16px;padding:36px 40px;display:flex;gap:24px;align-items:center}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pain{background:var(--sub);color:var(--text);border:1px solid var(--line)}}
+.pain svg{flex:none;width:64px;height:64px}
+.pain p{font-size:16px}
+/* contact */
+#contact{background:linear-gradient(135deg,var(--main-dark),var(--main));color:#fff;text-align:center}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #contact{background:linear-gradient(135deg,var(--sub),var(--sub-2));color:var(--text)}}
+#contact h2{color:inherit;margin-bottom:24px}
+#contact p{max-width:640px;margin:0 auto 40px;opacity:.92;font-size:17px}
+.btns{display:flex;gap:16px;justify-content:center}
+.btn{padding:14px 36px;border-radius:99px;font-weight:700;text-decoration:none;font-size:15px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--point);color:#fff}
+.btn.o{border:1.5px solid currentColor;color:inherit}
+footer{padding:28px 0;text-align:center;font-size:13px;color:var(--muted);background:var(--bg)}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><span class="logo">서채은</span>
+<ul><li><a href="#hero">About Me</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#process">Process &amp; Skills</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+
+<section id="hero"><div class="wrap">
+<div class="hero-grid">
+<div>
+<div class="eyebrow">Section 1 · Hero &amp; About Me</div>
+<h1>데이터와 감성을 잇는<br><em>화장품 개발자</em></h1>
+<p class="quote">"연구소의 기술과 마케팅의 감성을 하나의 언어로 풀어내는 융합형 화장품 개발자입니다."</p>
+<p class="lead">소셜·성분 데이터와 AI 툴을 활용해 시장의 숨은 니즈(Pain Point)를 발굴하고, 법적 규제와 성분 안전성을 선제적으로 검증합니다.</p>
+<div class="id-card">
+<div><small>이름</small><strong>서채은</strong></div>
+<div><small>나이</small><strong>28세</strong></div>
+<div><small>직업</small><strong>화장품 개발자</strong></div>
+<div><small>일하는 곳</small><strong>화장품 제조 전문 기업</strong></div>
+</div>
+</div>
+<div class="hero-art">
+<svg viewBox="0 0 400 400" aria-hidden="true">
+<circle cx="200" cy="200" r="170" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+<circle cx="200" cy="200" r="120" fill="var(--sub)"/>
+<!-- flask -->
+<path d="M175 110h50v60l50 90a22 22 0 0 1-19 33H144a22 22 0 0 1-19-33l50-90z" fill="var(--surface)" stroke="var(--main)" stroke-width="5" stroke-linejoin="round"/>
+<path d="M150 255h100l25 45a12 12 0 0 1-10 17H135a12 12 0 0 1-10-17z" fill="var(--main)" opacity=".85"/>
+<circle cx="190" cy="275" r="7" fill="var(--sub)"/><circle cx="215" cy="285" r="5" fill="var(--sub)"/><circle cx="205" cy="262" r="4" fill="var(--sub)"/>
+<rect x="168" y="100" width="64" height="12" rx="6" fill="var(--main-dark)"/>
+<!-- cream jar -->
+<rect x="52" y="290" width="72" height="14" rx="7" fill="var(--point)"/>
+<rect x="56" y="304" width="64" height="36" rx="8" fill="var(--surface)" stroke="var(--point)" stroke-width="4"/>
+<!-- dropper bottle -->
+<rect x="296" y="268" width="50" height="72" rx="10" fill="var(--surface)" stroke="var(--main)" stroke-width="4"/>
+<rect x="310" y="240" width="22" height="30" rx="5" fill="var(--point)"/>
+<ellipse cx="321" cy="232" rx="9" ry="12" fill="var(--main-dark)"/>
+<!-- data nodes -->
+<g stroke="var(--main)" stroke-width="2" opacity=".6"><line x1="90" y1="120" x2="140" y2="90"/><line x1="140" y1="90" x2="130" y2="150"/><line x1="300" y1="100" x2="330" y2="150"/><line x1="330" y1="150" x2="270" y2="140"/></g>
+<g fill="var(--point)"><circle cx="90" cy="120" r="7"/><circle cx="140" cy="90" r="6"/><circle cx="130" cy="150" r="5"/><circle cx="300" cy="100" r="7"/><circle cx="330" cy="150" r="6"/><circle cx="270" cy="140" r="5"/></g>
+</svg>
+</div>
+</div>
+
+<div class="about-grid">
+<div class="card">
+<svg class="ico" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="var(--sub)"/><path d="M24 12c4 6 8 9 8 14a8 8 0 0 1-16 0c0-5 4-8 8-14z" fill="var(--point)"/></svg>
+<h3>직업을 선택한 이유</h3>
+<p>단순한 실험에 그치지 않고 제형의 질, 향, 발림성, 색감 등 감각적인 요소까지 완성해 나가는 창의적인 즐거움이 있습니다.</p>
+</div>
+<div class="card">
+<svg class="ico" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="var(--sub)"/><rect x="14" y="14" width="20" height="20" rx="4" fill="none" stroke="var(--main)" stroke-width="3"/><circle cx="24" cy="24" r="4" fill="var(--main)"/><path d="M24 8v6M24 34v6M8 24h6M34 24h6" stroke="var(--main)" stroke-width="3" stroke-linecap="round"/></svg>
+<h3>AI가 도와줄 일</h3>
+<p>실험실에서 직접 세포 테스트를 하기 전, 성분의 독성, 알레르기 반응, 환경 영향을 머신러닝 모델로 사전에 스크리닝합니다.</p>
+</div>
+<div class="card">
+<svg class="ico" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="var(--sub)"/><path d="M19 12h10M21 12v10l-7 12a3 3 0 0 0 3 4h14a3 3 0 0 0 3-4l-7-12V12" fill="none" stroke="var(--main)" stroke-width="3" stroke-linejoin="round"/></svg>
+<h3>내가 직접 맡을 일</h3>
+<p>온도, 빛, 시간 변화에 따라 제형이 굳거나 변색·변질되지 않는지 확인하고, 피부 자극이나 효능(미백, 주름 개선 등)을 검증합니다.</p>
+</div>
+</div>
+</div></section>
+
+<section id="portfolio"><div class="wrap">
+<div class="eyebrow">Section 2</div>
+<h2>Portfolio &amp; Projects</h2>
+<div class="project">
+<div class="art">
+<svg viewBox="0 0 340 280" aria-hidden="true">
+<rect x="20" y="30" width="300" height="220" rx="16" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+<g fill="var(--main)"><rect x="50" y="170" width="28" height="50" rx="4" opacity=".5"/><rect x="92" y="140" width="28" height="80" rx="4" opacity=".65"/><rect x="134" y="110" width="28" height="110" rx="4" opacity=".8"/></g>
+<rect x="176" y="80" width="28" height="140" rx="4" fill="var(--point)"/>
+<path d="M50 120 Q 120 60 190 90 T 296 50" fill="none" stroke="var(--point)" stroke-width="3" stroke-dasharray="6 5"/>
+<path d="M250 140c12 18 22 28 22 40a22 22 0 0 1-44 0c0-12 10-22 22-40z" fill="var(--main)" opacity=".85"/>
+<circle cx="244" cy="182" r="5" fill="var(--surface)"/>
+</svg>
+</div>
+<div>
+<span class="tag">기획안</span>
+<h3>민감성 피부의 끈적임 불편함을 해결한<br>고보습·산뜻 제형 기획안</h3>
+<p>소셜 데이터 분석으로 도출한 민감성 피부의 끈적임 불편함을 해결한 고보습·산뜻 제형 기획안입니다.</p>
+<div class="chips"><span>소셜 데이터 분석</span><span>민감성 피부</span><span>고보습</span><span>산뜻 제형</span></div>
+</div>
+</div>
+</div></section>
+
+<section id="process"><div class="wrap">
+<div class="eyebrow">Section 3</div>
+<h2>Process &amp; Skills</h2>
+
+<div class="role-grid">
+<div class="role ai"><h3>AI가 도와줄 일</h3><p>실험실에서 직접 세포 테스트를 하기 전, 성분의 독성, 알레르기 반응, 환경 영향을 머신러닝 모델로 사전에 스크리닝합니다.</p></div>
+<div class="role me"><h3>내가 직접 맡을 일</h3><p>온도, 빛, 시간 변화에 따라 제형이 굳거나 변색·변질되지 않는지 확인하고, 피부 자극이나 효능(미백, 주름 개선 등)을 검증합니다.</p></div>
+</div>
+
+<h3 class="sub-title">내가 기를 AI 시대 역량 TOP 3</h3>
+
+<div class="skill"><div class="rank">1</div><div>
+<h4>데이터 활용 및 AI 도구 조율 능력</h4>
+<dl><dt>필요한 이유</dt><dd>수많은 시도 중 의미 있는 실험에만 집중할 수 있게 하여, 신제품 출시 기간을 며칠 혹은 몇 달 단위로 줄여줍니다.</dd>
+<dt>실천 계획</dt><dd>Google Trends, Naver DataLab, Similarweb 등을 통해 특정 성분이나 제형 키워드의 검색량 변화 및 계절별 트렌드를 파악하는 데이터 리터러시를 키웁니다.</dd></dl></div></div>
+
+<div class="skill"><div class="rank">2</div><div>
+<h4>인간 중심의 감성 평가 및 디테일 감각</h4>
+<dl><dt>필요한 이유</dt><dd>용기의 뚜껑을 열고 닫을 때의 그립감, 펌프를 누를 때의 압력, 용기 재질이 주는 고급스러움 등 제품을 손에 쥐는 모든 순간의 경험이 소비자 만족도에 직접적인 영향을 미칩니다.</dd>
+<dt>실천 계획</dt><dd>브랜드명이나 가격표를 가린 상태에서 오직 제형과 향만으로 품질을 평가해 보며, 편향 없이 제품 자체의 완성도를 판별하는 감각을 훈련합니다.</dd></dl></div></div>
+
+<div class="skill"><div class="rank">3</div><div>
+<h4>멀티 파트너십 소통 및 융합 기획력</h4>
+<dl><dt>필요한 이유</dt><dd>연구원의 기술적·화학적 언어를 마케팅 언어로 번역하고, 마케팅의 감성적 요구사항을 실현 가능한 연구 처방으로 변환해 양측이 납득할 수 있는 접점을 찾아내는 소통 능력이 필수적입니다.</dd>
+<dt>실천 계획</dt><dd>"구름처럼 가벼우면서도 밤(Balm)처럼 깊은 보습감"과 같은 모호한 마케팅 요구를 점도, 유수분 비율, 롤링감 등 연구소가 실현 가능한 스펙으로 명확히 정의해 보는 훈련을 합니다.</dd></dl></div></div>
+
+<div class="pain">
+<svg viewBox="0 0 64 64"><circle cx="28" cy="28" r="16" fill="none" stroke="var(--point)" stroke-width="5"/><line x1="40" y1="40" x2="56" y2="56" stroke="var(--point)" stroke-width="5" stroke-linecap="round"/><path d="M20 32l6-6 5 4 6-8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<p>Naver DataLab, Google Trends, 소셜 미디어 리뷰 분석을 통해 시장의 페인 포인트(Pain Point)와 성분 트렌드를 포착합니다.</p>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<div class="eyebrow" style="color:var(--point)">Section 4</div>
+<h2>Contact &amp; Action</h2>
+<p>데이터 기반의 정밀 기획, 섬세한 관능 디테일, 융합적 소통 역량을 갖춘 화장품 개발자 서채은에게 언제든 편하게 연락해 주세요.</p>
+<div class="btns"><a class="btn p" href="#contact">채용 문의</a><a class="btn o" href="#contact">이력서 보기</a></div>
+</div></section>
+
+<footer>© 서채은 · 데이터와 감성을 잇는 화장품 개발자</footer>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>피부</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#000;--paper:#fff;--mute:#5c5c5c;--line:#d9d9d9;--mute-d:#b5b5b5;--line-d:#333;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:56px;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.85 "Noto Sans KR",system-ui,sans-serif;word-break:keep-all}
+h1,h2,h3{font-family:"Noto Serif KR",serif;margin:0;line-height:1.35}
+p{margin:0 0 1em;max-width:36em}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;padding:12px 24px;font-size:14px}
+nav b{font-family:"Noto Serif KR",serif;font-size:18px}
+nav div{display:flex;gap:20px}
+nav a{color:var(--ink);text-decoration:none}
+nav a:hover,nav a:focus-visible{text-decoration:underline;outline:none}
+section{padding:96px 24px}
+.wrap{max-width:1040px;margin:0 auto}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .mute{color:var(--mute-d)}
+.mute{color:var(--mute)}
+h2{font-size:clamp(26px,4vw,40px);margin-bottom:32px}
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(44px,9vw,96px);letter-spacing:.02em;margin-bottom:24px}
+.hero .say{font-family:"Noto Serif KR",serif;font-size:clamp(20px,3vw,28px);margin-bottom:24px}
+.tag{display:inline-block;border:1px solid var(--ink);padding:4px 14px;font-size:14px;margin:0 8px 8px 0}
+.dark .tag{border-color:var(--paper)}
+figure{margin:0}
+figure svg{display:block;width:100%;height:auto;border:1px solid var(--ink)}
+.dark figure svg{border-color:var(--paper)}
+figcaption{font-size:13px;margin-top:8px}
+.skills{display:grid;gap:0;border-top:1px solid var(--paper)}
+.skill{display:grid;grid-template-columns:80px 1fr 1fr;gap:32px;padding:36px 0;border-bottom:1px solid var(--line-d)}
+.rank{font-family:"Noto Serif KR",serif;font-size:40px;line-height:1}
+.skill h3{font-size:24px;margin-bottom:8px}
+.skill h4{margin:0 0 6px;font-size:14px;font-weight:500;color:var(--mute-d)}
+.skill p{margin:0}
+.roles{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink)}
+.role{padding:40px 32px}
+.role+.role{background:var(--ink);color:var(--paper)}
+.role h3{font-size:24px;margin-bottom:20px}
+.role ul{margin:0;padding:0;list-style:none}
+.role li{padding:14px 0;border-top:1px solid var(--line)}
+.role+.role li{border-color:var(--line-d)}
+.role li:last-child{border-bottom:1px solid var(--line)}
+.role+.role li:last-child{border-color:var(--line-d)}
+.close{margin-top:56px;font-family:"Noto Serif KR",serif;font-size:clamp(20px,3vw,28px);text-align:center}
+footer{background:var(--ink);color:var(--mute-d);text-align:center;padding:32px 24px;font-size:14px;border-top:1px solid var(--line-d)}
+@media(max-width:760px){
+ section{padding:64px 20px}
+ nav{padding:10px 16px}nav div{gap:12px;font-size:13px}
+ .split,.roles{grid-template-columns:1fr}
+ .split{gap:36px}
+ .skill{grid-template-columns:1fr;gap:16px;padding:28px 0}
+ .rank{font-size:30px}
+ .role{padding:32px 22px}
+}
+</style>
+</head>
+<body>
+<nav aria-label="메뉴"><b>피부</b><div><a href="#who">나는 누구인가</a><a href="#why">선택 이유</a><a href="#skills">역량</a><a href="#ai">나와 AI</a></div></nav>
+
+<section class="hero" id="who">
+<div class="wrap split">
+<div>
+<p class="say">“저는 이런 사람입니다.”</p>
+<h1>문예지</h1>
+<p>건강한 피부를 가꾸는 일을 곁에서 돕는 피부미용사가 되고 싶은 예지입니다. 피부과에서 사람들의 피부와 고민을 함께 살피는 미래를 그리고 있습니다.</p>
+<span class="tag">희망 직업 · 피부미용사</span><span class="tag">일하는 곳 · 피부과</span>
+</div>
+<figure>
+<svg viewBox="0 0 400 480" role="img" aria-label="맑은 피부를 표현한 흑백 이미지">
+<defs><radialGradient id="a" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#e6e6e6"/><stop offset="1" stop-color="#b8b8b8"/></radialGradient></defs>
+<rect width="400" height="480" fill="url(#a)"/>
+<ellipse cx="230" cy="250" rx="120" ry="170" fill="#fff" opacity=".7"/>
+<circle cx="150" cy="170" r="46" fill="#000" opacity=".06"/>
+<circle cx="260" cy="330" r="60" fill="#000" opacity=".05"/>
+</svg>
+<figcaption class="mute">피부 사진이 들어갈 자리</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="dark" id="why">
+<div class="wrap split">
+<figure>
+<svg viewBox="0 0 400 400" role="img" aria-label="피부 결을 표현한 흑백 이미지">
+<defs><radialGradient id="b" cx="50%" cy="50%" r="70%"><stop offset="0" stop-color="#8a8a8a"/><stop offset="1" stop-color="#2a2a2a"/></radialGradient></defs>
+<rect width="400" height="400" fill="url(#b)"/>
+<g fill="none" stroke="#fff" stroke-opacity=".18"><circle cx="200" cy="200" r="60"/><circle cx="200" cy="200" r="110"/><circle cx="200" cy="200" r="160"/></g>
+</svg>
+<figcaption class="mute">피부 사진이 들어갈 자리</figcaption>
+</figure>
+<div>
+<h2>왜 굳이 피부를 택했는지</h2>
+<p>저는 피부가 좋지 않았던 시절이 있었습니다. 그때는 거울을 보는 일도, 사람들 앞에 서는 일도 편하지 않았습니다.</p>
+<p>그 시간을 지나며 피부가 단순히 겉모습이 아니라 마음의 편안함과도 이어져 있다는 것을 알게 되었습니다.</p>
+<p>그래서 다른 사람들이 건강한 피부를 관리할 수 있도록 돕는 일을 하고 싶습니다. 같은 고민을 해 본 사람이기에 더 잘 들을 수 있다고 생각합니다.</p>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<div class="wrap">
+<h2>내가 기르고 싶은 역량</h2>
+<div class="skills" style="border-color:var(--ink)">
+<article class="skill" style="border-color:var(--line)">
+<div class="rank">1</div>
+<div><h3>소통 능력</h3><h4 style="color:var(--mute)">필요한 이유</h4><p>신뢰를 쌓고, 다른 사람들의 고민을 끝까지 들어주기 위해서입니다.</p></div>
+<div><h4 style="color:var(--mute)">발전 계획</h4><p>국어 능력을 더 키웁니다.</p></div>
+</article>
+<article class="skill" style="border-color:var(--line)">
+<div class="rank">2</div>
+<div><h3>사고방식 바꾸기</h3><h4 style="color:var(--mute)">필요한 이유</h4><p>피부 지식만 전달하면 상대가 이해하기 어려울 수 있기 때문입니다.</p></div>
+<div><h4 style="color:var(--mute)">발전 계획</h4><p>대화를 잘 이어가고 상담이 원활해지도록 다른 방식을 찾아봅니다.</p></div>
+</article>
+<article class="skill" style="border-color:var(--line)">
+<div class="rank">3</div>
+<div><h3>언어 공부</h3><h4 style="color:var(--mute)">필요한 이유</h4><p>다른 나라 사람들도 찾아올 수 있기 때문입니다.</p></div>
+<div><h4 style="color:var(--mute)">발전 계획</h4><p>영어 공부를 포함해 학원에 다닙니다.</p></div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="dark" id="ai">
+<div class="wrap">
+<h2 style="color:var(--paper)">미래의 나와 AI</h2>
+<p class="mute" style="margin-bottom:40px">피부미용사라는 직업에서 AI와 제가 맡을 일을 나누어 보았습니다.</p>
+<div class="roles" style="border-color:var(--paper)">
+<div class="role" style="background:var(--paper);color:var(--ink)">
+<h3>AI가 도와줄 일</h3>
+<ul><li>자기소개서 작성</li><li>어떤 방식으로 피부 관리를 도울지 생각하기</li></ul>
+</div>
+<div class="role" style="background:var(--ink);color:var(--paper)">
+<h3>내가 직접 맡을 일</h3>
+<ul><li>데스크 업무</li></ul>
+</div>
+</div>
+<p class="close">AI와 함께, 사람의 고민을 듣는 피부미용사가 되겠습니다.</p>
+</div>
+</section>
+
+<footer>© 문예지 · 피부</footer>
+</body>
+</html>

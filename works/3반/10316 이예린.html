@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>바이블쌤의 AI 교실: 미래를 코딩하다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#effaf6; --surface:#ffffff; --mint:#6fd6bd; --mint-soft:#d3f3ea; --choco:#5b3a29; --choco-soft:#8a6450; --text:#4a2f21; --line:#bfe8dc; --cream:#fff6e8;
+  --head:'Jua','Gowun Dodum','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --body:'Gowun Dodum','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1b14;--surface:#3a271d;--mint:#7be0c6;--mint-soft:#2f4a42;--choco:#f1dccb;--choco-soft:#d2b49e;--text:#f6e8dc;--line:#5a4032;--cream:#46301f}}
+:root[data-theme="dark"]{--bg:#2a1b14;--surface:#3a271d;--mint:#7be0c6;--mint-soft:#2f4a42;--choco:#f1dccb;--choco-soft:#d2b49e;--text:#f6e8dc;--line:#5a4032;--cream:#46301f}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--line) 1.5px,transparent 1.5px);background-size:26px 26px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--mint);z-index:30}
+h1,h2,h3{font-family:var(--head);font-weight:400;color:var(--choco);margin:0;line-height:1.3}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--choco);outline-offset:3px;border-radius:8px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--mint);display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px 12px;border-bottom:4px solid var(--choco)}
+nav a{font-family:var(--head);text-decoration:none;color:#4a2f21;padding:4px 16px;border-radius:99px;font-size:18px}
+nav a:hover{background:#fff6e8}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:64px 0 24px}
+.title{display:inline-block;font-size:clamp(28px,5vw,40px);background:var(--mint);color:#4a2f21;padding:2px 22px;border-radius:99px;border:3px solid var(--choco);box-shadow:4px 4px 0 var(--choco);margin-bottom:28px}
+.title small{font-size:.5em;margin-left:8px;opacity:.8}
+
+/* hero */
+.hero{padding:44px 0 20px;text-align:center}
+.hero h1{font-size:clamp(34px,7vw,64px);color:var(--choco);letter-spacing:-.01em}
+.hero h1 span{display:block;font-size:.55em;margin-top:6px;color:var(--choco-soft)}
+.stage{display:grid;grid-template-columns:1fr minmax(0,1.5fr) 1fr;align-items:end;gap:10px;margin:30px auto 0;max-width:900px}
+.bubble{position:relative;background:var(--surface);border:3px solid var(--choco);border-radius:32px;padding:22px 24px;font-size:clamp(16px,2.2vw,20px);box-shadow:6px 6px 0 var(--mint)}
+.bubble::before,.bubble::after{content:"";position:absolute;bottom:26px;border:12px solid transparent}
+.bubble::before{left:-26px;border-right-color:var(--choco)}
+.bubble::after{left:-20px;border-right-color:var(--surface)}
+.chars svg{width:100%;aspect-ratio:1;height:auto;max-width:230px;display:block;margin:0 auto}
+.bob{animation:bob 3.2s ease-in-out infinite}
+.stage > :last-child .bob{animation-delay:-1.6s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.bob{animation:none}html{scroll-behavior:auto}}
+@media (max-width:760px){
+  .stage{grid-template-columns:1fr 1fr}
+  .bubble{grid-column:1/-1;order:-1}
+  .bubble::before,.bubble::after{display:none}
+}
+
+/* cards */
+.card{background:var(--surface);border:3px solid var(--choco);border-radius:28px;padding:26px;box-shadow:6px 6px 0 var(--mint)}
+.about{display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start}
+.badge{text-align:center;background:var(--mint-soft);border-radius:22px;padding:18px}
+.badge svg{width:140px;height:140px}
+.badge h3{font-size:28px;margin-top:6px}
+dl{margin:18px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;text-align:left}
+dt{font-family:var(--head);color:var(--choco)}
+dd{margin:0}
+.about h3{font-size:22px;margin:0 0 6px}
+.about p{margin:0 0 20px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
+.roles .card h3{font-size:24px;margin-bottom:10px}
+.roles .me{background:var(--cream);box-shadow:6px 6px 0 var(--choco-soft)}
+ul{margin:0;padding:0;list-style:none}
+li{position:relative;padding-left:28px;margin:8px 0}
+li::before{content:"";position:absolute;left:2px;top:.55em;width:14px;height:14px;border-radius:50%;background:var(--mint);border:3px solid var(--choco)}
+.me li::before{background:var(--choco);border-color:var(--mint)}
+
+.rank{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rank .card{position:relative;padding-top:48px}
+.medal{position:absolute;top:-22px;left:22px;font-family:var(--head);background:var(--choco);color:#fff6e8;border-radius:99px;padding:2px 20px;font-size:22px;border:3px solid var(--mint)}
+.rank h3{font-size:24px;margin-bottom:12px}
+.rank h4{font-family:var(--head);font-weight:400;margin:14px 0 2px;color:var(--choco-soft);font-size:17px}
+.rank p{margin:0}
+
+.subjects{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.subj{text-align:center;padding:24px 12px}
+.subj .ico{width:72px;height:72px;margin:0 auto 10px;border-radius:50%;background:var(--mint-soft);border:3px solid var(--choco);display:grid;place-items:center;font-size:34px}
+.subj h3{font-size:21px}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.contact a{display:flex;gap:14px;align-items:center;text-decoration:none;font-size:20px}
+.contact .ico{flex:none;width:56px;height:56px;border-radius:50%;background:var(--mint);border:3px solid var(--choco);display:grid;place-items:center;font-size:26px}
+.contact small{display:block;font-family:var(--head);color:var(--choco-soft);font-size:15px}
+footer{margin-top:56px;background:var(--choco);color:#fff6e8;text-align:center;padding:26px 20px calc(26px + env(safe-area-inset-bottom,0px));font-family:var(--head)}
+footer svg{width:48px;height:48px;vertical-align:middle;margin:0 6px}
+
+@media (max-width:900px){.rank{grid-template-columns:1fr;gap:34px}.subjects{grid-template-columns:1fr 1fr}}
+@media (max-width:680px){
+  .about,.roles,.contact{grid-template-columns:1fr}
+  section{padding-top:48px}
+  nav a{padding:4px 12px;font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- 캐릭터 정의 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="pc" viewBox="0 0 200 200">
+      <line x1="100" y1="20" x2="100" y2="38" stroke="#5b3a29" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="100" cy="16" r="8" fill="#ff9fa8" stroke="#5b3a29" stroke-width="4"/>
+      <rect x="22" y="38" width="156" height="110" rx="26" fill="#6fd6bd" stroke="#5b3a29" stroke-width="6"/>
+      <rect x="38" y="54" width="124" height="78" rx="16" fill="#fff6e8" stroke="#5b3a29" stroke-width="4"/>
+      <circle cx="76" cy="88" r="9" fill="#5b3a29"/><circle cx="124" cy="88" r="9" fill="#5b3a29"/>
+      <circle cx="79" cy="85" r="3" fill="#fff"/><circle cx="127" cy="85" r="3" fill="#fff"/>
+      <path d="M84 108q16 14 32 0" fill="none" stroke="#5b3a29" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="58" cy="104" rx="9" ry="6" fill="#ff9fa8" opacity=".7"/><ellipse cx="142" cy="104" rx="9" ry="6" fill="#ff9fa8" opacity=".7"/>
+      <rect x="84" y="148" width="32" height="16" fill="#8a6450" stroke="#5b3a29" stroke-width="5"/>
+      <rect x="56" y="162" width="88" height="20" rx="10" fill="#8a6450" stroke="#5b3a29" stroke-width="5"/>
+      <circle cx="30" cy="110" r="0"/>
+    </symbol>
+    <symbol id="bot" viewBox="0 0 200 200">
+      <line x1="100" y1="12" x2="100" y2="30" stroke="#5b3a29" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="100" cy="10" r="8" fill="#ffd36e" stroke="#5b3a29" stroke-width="4"/>
+      <rect x="40" y="30" width="120" height="84" rx="34" fill="#fff6e8" stroke="#5b3a29" stroke-width="6"/>
+      <rect x="56" y="48" width="88" height="48" rx="22" fill="#5b3a29"/>
+      <circle cx="82" cy="72" r="9" fill="#6fd6bd"/><circle cx="118" cy="72" r="9" fill="#6fd6bd"/>
+      <path d="M92 84q8 7 16 0" fill="none" stroke="#6fd6bd" stroke-width="4" stroke-linecap="round"/>
+      <rect x="28" y="52" width="14" height="30" rx="7" fill="#6fd6bd" stroke="#5b3a29" stroke-width="4"/>
+      <rect x="158" y="52" width="14" height="30" rx="7" fill="#6fd6bd" stroke="#5b3a29" stroke-width="4"/>
+      <rect x="62" y="118" width="76" height="62" rx="24" fill="#6fd6bd" stroke="#5b3a29" stroke-width="6"/>
+      <circle cx="100" cy="148" r="10" fill="#fff6e8" stroke="#5b3a29" stroke-width="4"/>
+      <path d="M96 148h8M100 144v8" stroke="#ff9fa8" stroke-width="3" stroke-linecap="round"/>
+      <rect x="30" y="124" width="28" height="14" rx="7" fill="#fff6e8" stroke="#5b3a29" stroke-width="4"/>
+      <rect x="142" y="124" width="28" height="14" rx="7" fill="#fff6e8" stroke="#5b3a29" stroke-width="4"/>
+      <rect x="70" y="178" width="22" height="14" rx="7" fill="#8a6450" stroke="#5b3a29" stroke-width="4"/>
+      <rect x="108" y="178" width="22" height="14" rx="7" fill="#8a6450" stroke="#5b3a29" stroke-width="4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<nav aria-label="메뉴">
+  <a href="#about">About Me</a>
+  <a href="#competencies">My Competencies</a>
+  <a href="#teach">What I Teach</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<header class="hero wrap">
+  <h1>바이블쌤의 AI 교실<span>미래를 코딩하다</span></h1>
+  <div class="stage chars">
+    <div><svg viewBox="0 0 200 200" class="bob" role="img" aria-label="컴퓨터 캐릭터"><use href="#pc"/></svg></div>
+    <p class="bubble">안녕하세요! 바이블쌤의 AI 교실에 오신 것을 환영합니다. 미래를 향한 우리의 여정, 함께 시작해 볼까요?</p>
+    <div><svg viewBox="0 0 200 200" class="bob" role="img" aria-label="휴머노이드 캐릭터"><use href="#bot"/></svg></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="about">
+  <h2 class="title">About Me<small>나를 소개합니다</small></h2>
+  <div class="card about">
+    <div class="badge">
+      <svg viewBox="0 0 200 200" role="img" aria-label="컴퓨터 캐릭터"><use href="#pc"/></svg>
+      <h3>김바이블</h3>
+      <dl>
+        <dt>나이</dt><dd>27살</dd>
+        <dt>직업</dt><dd>염메고등학교 교사</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>소개</h3>
+      <p>학생의 개성과 가능성을 발견하고 AI와 디지털 도구를 활용해 배움을 돕는 교사</p>
+      <h3>교사를 선택한 이유</h3>
+      <p>학생들이 새로운 것을 배우고 성장하는 모습을 돕고 보는 것이 보람있기 때문</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:26px;margin:40px 0 -4px">AI 시대의 교사로서의 역할</h3>
+  <div class="roles">
+    <div class="card">
+      <h3>🤖 AI가 도와주는 일</h3>
+      <ul>
+        <li>학생 수준을 분석하여 개별 학습자료 및 퀴즈 제공</li>
+        <li>학생 데이터 분석</li>
+        <li>수업 아이디어 제안</li>
+        <li>반복적인 행정업무 보조</li>
+      </ul>
+    </div>
+    <div class="card me">
+      <h3>🧑‍🏫 내가 직접 맡을 일</h3>
+      <ul>
+        <li>학생의 감정을 이해하고 공감하기</li>
+        <li>올바른 가치관과 태도 지도하기</li>
+        <li>AI 데이터 분석 결과를 바탕으로 학생별 도움 제공하기</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="competencies">
+  <h2 class="title">My Competencies<small>나의 핵심 역량</small></h2>
+  <p style="margin:-10px 0 34px">내가 중요하게 생각하는 AI 시대의 핵심 역량 TOP 3</p>
+  <div class="rank">
+    <article class="card">
+      <span class="medal">1위</span>
+      <h3>AI 활용 능력</h3>
+      <h4>필요한 이유</h4>
+      <p>수업 자료와 학습 활동을 더 효과적으로 만들고 학생별 학습을 지원하기 위해 필요하다.</p>
+      <h4>실천 계획</h4>
+      <p>다양한 생성형 AI 도구를 직접 사용하고, 목적에 맞는 결과를 얻도록 프롬프트를 연습하겠다.</p>
+    </article>
+    <article class="card">
+      <span class="medal">2위</span>
+      <h3>소통·협업 능력</h3>
+      <h4>필요한 이유</h4>
+      <p>학생·학부모·동료 교사와 신뢰를 쌓고 함께 문제를 해결해야 하기 때문이다.</p>
+      <h4>실천 계획</h4>
+      <p>상대방의 말을 끝까지 듣고, 모둠 활동과 공동 프로젝트에서 의견을 조율하겠다.</p>
+    </article>
+    <article class="card">
+      <span class="medal">3위</span>
+      <h3>비판적 사고</h3>
+      <h4>필요한 이유</h4>
+      <p>AI가 만든 정보가 항상 정확하거나 공정한 것은 아니므로 내용을 확인하고 판단해야 한다.</p>
+      <h4>실천 계획</h4>
+      <p>자료의 출처와 근거를 확인하고, 여러 관점에서 생각한 뒤 판단하는 습관을 기르겠다.</p>
+    </article>
+  </div>
+</section>
+
+<section id="teach">
+  <h2 class="title">What I Teach<small>가르치는 과목</small></h2>
+  <div class="subjects">
+    <div class="card subj"><div class="ico">🤖</div><h3>인공지능 기초</h3></div>
+    <div class="card subj"><div class="ico">📊</div><h3>데이터 분석</h3></div>
+    <div class="card subj"><div class="ico">💡</div><h3>정보</h3></div>
+    <div class="card subj"><div class="ico">💻</div><h3>프로그래밍</h3></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="title">Contact<small>연락처</small></h2>
+  <div class="contact">
+    <div class="card"><a href="mailto:abc@abc.com"><span class="ico">✉️</span><span><small>이메일</small>abc@abc.com</span></a></div>
+    <div class="card"><a href="tel:01000000000"><span class="ico">📞</span><span><small>전화번호</small>010-0000-0000</span></a></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#pc"/></svg>바이블쌤의 AI 교실: 미래를 코딩하다<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#bot"/></svg>
+</footer>
+</body>
+</html>

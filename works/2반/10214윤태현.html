@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>슛똘똘이</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --green-900:#14462b;
+  --green-700:#1f6b3f;
+  --green-500:#3a8f5a;
+  --green-100:#e8f3ea;
+  --green-50:#f3f9f4;
+  --white:#ffffff;
+  --ink:#1d2b22;
+  --ink-soft:#44564a;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;
+  background:var(--white);
+  color:var(--ink);
+  font-family:"Noto Serif KR","Nanum Myeongjo","Batang","Apple SD Gothic Neo",serif;
+  font-size:18px;
+  line-height:1.9;
+  word-break:keep-all;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 40px}
+
+/* 제목 영역 */
+header.hero{
+  background:var(--green-900);
+  color:var(--white);
+  text-align:center;
+  padding:120px 40px 110px;
+  border-bottom:10px solid var(--green-500);
+}
+header.hero h1{
+  margin:0;
+  font-size:104px;
+  font-weight:900;
+  letter-spacing:.06em;
+  line-height:1.15;
+}
+header.hero p{
+  margin:28px 0 0;
+  font-size:20px;
+  font-weight:400;
+  color:#cfe6d6;
+}
+
+/* 섹션 공통 */
+section{padding:88px 0}
+section:nth-of-type(even){background:var(--green-50)}
+section:nth-of-type(odd){background:var(--white)}
+.sec-head{
+  border-left:8px solid var(--green-700);
+  padding-left:22px;
+  margin-bottom:44px;
+}
+.sec-head h2{
+  margin:0;
+  font-size:38px;
+  font-weight:700;
+  color:var(--green-900);
+  line-height:1.35;
+}
+section + section{border-top:1px solid #d3e5d8}
+
+p{margin:0 0 18px}
+.lead{font-size:24px;font-weight:600;color:var(--green-900)}
+
+/* 정보 목록 */
+dl.facts{margin:0;display:grid;grid-template-columns:200px 1fr;border-top:2px solid var(--green-700)}
+dl.facts dt,dl.facts dd{margin:0;padding:18px 8px;border-bottom:1px solid #cfe2d5}
+dl.facts dt{font-weight:700;color:var(--green-700)}
+dl.facts dd{color:var(--ink)}
+
+/* 역량 */
+.skill{
+  background:var(--white);
+  border:1px solid #cfe2d5;
+  border-top:6px solid var(--green-700);
+  border-radius:4px;
+  padding:34px 40px 22px;
+  margin-bottom:28px;
+}
+.skill .rank{margin:0 0 4px;font-weight:700;color:var(--green-500);font-size:20px}
+.skill h3{margin:0 0 20px;font-size:28px;color:var(--green-900);line-height:1.4}
+.skill dl{margin:0;display:grid;grid-template-columns:130px 1fr}
+.skill dt,.skill dd{margin:0;padding:12px 0;border-top:1px solid #e1ede4}
+.skill dt{font-weight:700;color:var(--green-700)}
+
+/* 마지막 문장 */
+.thanks{
+  margin-top:56px;
+  background:var(--green-900);
+  color:var(--white);
+  text-align:center;
+  padding:56px 24px;
+  border-radius:4px;
+}
+.thanks p{margin:0;font-size:44px;font-weight:900;letter-spacing:.04em}
+
+footer{
+  background:var(--green-900);
+  color:#cfe6d6;
+  text-align:center;
+  padding:36px 20px;
+  font-size:16px;
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>슛똘똘이</h1>
+  <p>나를 소개합니다</p>
+</header>
+
+<section id="greeting">
+  <div class="wrap">
+    <div class="sec-head"><h2>인사말</h2></div>
+    <p class="lead">안녕하세요.</p>
+    <p>저는 슛똘똘이입니다. 저의 희망 직업은 축구선수이고, 미래에는 프로에서 뛰는 축구선수가 되고 싶습니다. 축구를 좋아해서 이 직업을 선택했습니다.</p>
+    <p>이 웹사이트를 찾아 주신 친구들과 지인 여러분께 인사드립니다.</p>
+  </div>
+</section>
+
+<section id="daily">
+  <div class="wrap">
+    <div class="sec-head"><h2>나의 일상</h2></div>
+    <dl class="facts">
+      <dt>도전과 실행</dt>
+      <dd>자주 도전하고 실행하기</dd>
+      <dt>기록과 학습</dt>
+      <dd>매일 일기 또는 일지 써보기</dd>
+      <dt>대화와 공감</dt>
+      <dd>코치님과 자주 대화하고 공감하기</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2>내가 기른 역량</h2></div>
+
+    <article class="skill">
+      <p class="rank">1위</p>
+      <h3>도전·실행력</h3>
+      <dl>
+        <dt>필요한 이유</dt><dd>도전해야 득점할 수 있어서</dd>
+        <dt>실천 방법</dt><dd>자주 도전하고 실행하기</dd>
+      </dl>
+    </article>
+
+    <article class="skill">
+      <p class="rank">2위</p>
+      <h3>자기주도학습력</h3>
+      <dl>
+        <dt>필요한 이유</dt><dd>그날의 일을 적고 학습해야 실력이 늘어서</dd>
+        <dt>실천 방법</dt><dd>매일 일기 또는 일지 써보기</dd>
+      </dl>
+    </article>
+
+    <article class="skill">
+      <p class="rank">3위</p>
+      <h3>공감능력</h3>
+      <dl>
+        <dt>필요한 이유</dt><dd>감독, 코칭스태프와 상의 후 더 좋은 전술 활용하기</dd>
+        <dt>실천 방법</dt><dd>코치님과 자주 대화하고 공감하기</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section id="role">
+  <div class="wrap">
+    <div class="sec-head"><h2>나의 역할</h2></div>
+    <p class="lead">축구선수로서 경기장에서 뛰는 역할</p>
+    <dl class="facts">
+      <dt>내가 직접 맡을 일</dt>
+      <dd>경기장에서 뛰기</dd>
+      <dt>AI가 도와줄 일</dt>
+      <dd>경합 상황에서 AI가 경고 여부 판단하기</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="resolve">
+  <div class="wrap">
+    <div class="sec-head"><h2>나의 다짐</h2></div>
+    <dl class="facts">
+      <dt>희망 직업</dt>
+      <dd>축구선수</dd>
+      <dt>미래의 모습</dt>
+      <dd>프로에서 뛰는 축구선수</dd>
+    </dl>
+    <div class="thanks"><p>감사합니다.</p></div>
+  </div>
+</section>
+
+<footer>슛똘똘이</footer>
+
+</body>
+</html>

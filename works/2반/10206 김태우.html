@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GPS 데이터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B1F3A;--card:#13294B;--line:#24406B;--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--text:#FFFFFF;--mute:#A9B8CF;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Pretendard","Noto Sans KR",system-ui,sans-serif;line-height:1.5}
+main{max-width:960px;margin:0 auto;padding:20px 16px 48px}
+header{padding:28px 0 20px}
+.hero{font-size:clamp(56px,16vw,112px);font-weight:900;line-height:1;margin:0;color:var(--green);letter-spacing:-.02em}
+.title{font-size:clamp(20px,4vw,28px);font-weight:700;margin:12px 0 4px}
+.sub{color:var(--mute);margin:0}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:16px}
+h2{font-size:18px;margin:0 0 14px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--mute)}
+input,textarea{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px;width:100%}
+input:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+textarea{min-height:90px;resize:vertical}
+.full{grid-column:1/-1}
+.btn{background:var(--green);color:#06210F;border:0;border-radius:12px;font:inherit;font-weight:700;font-size:18px;padding:16px;width:100%;cursor:pointer;margin-top:14px}
+.btn:active{transform:scale(.98)}
+.gauge{height:20px;border-radius:10px;background:var(--bg);overflow:hidden;border:1px solid var(--line)}
+.gauge>div{height:100%;width:0;background:var(--green);transition:width .4s,background .4s}
+.load{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.big{font-size:44px;font-weight:900;line-height:1}
+.badge{font-weight:700;padding:3px 12px;border-radius:99px;color:#111;background:var(--green)}
+.warn{margin:10px 0 0;font-weight:700;color:var(--red);min-height:1.5em}
+.thr{display:flex;gap:12px;margin-top:14px}
+.thr label{flex:1}
+.chart{overflow-x:auto}
+svg{width:100%;height:auto;min-width:360px;display:block}
+.empty{color:var(--mute);margin:0}
+.rec{border-top:1px solid var(--line);padding:14px 0;display:grid;gap:4px}
+.rec:first-child{border-top:0;padding-top:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.date{font-weight:700}
+.nums{color:var(--mute);font-size:15px}
+.nums b{color:var(--text)}
+.note{margin:0;color:var(--text);white-space:pre-wrap}
+.del{background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 12px;font:inherit;cursor:pointer}
+#pb{margin-bottom:10px}
+.acwr{margin-top:10px;color:var(--mute);font-size:15px}
+.acwr p{margin:6px 0 0}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn2{flex:1;min-width:200px;background:var(--bg);color:var(--text);border:1px solid var(--green);border-radius:12px;font:inherit;font-weight:700;font-size:16px;padding:14px;cursor:pointer}
+#out{margin-top:10px;min-height:140px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="hero">화이팅</p>
+  <p class="title">⚽ GPS 데이터</p>
+  <p class="sub">김태우, 25세, 스포츠클럽 소속 축구선수. 내 훈련을 더 정확하고 세밀하게 분석하는 기록장입니다.</p>
+</header>
+
+<section>
+  <h2>🏃 훈련 기록 입력</h2>
+  <div class="grid">
+    <label>날짜<input type="date" id="date"></label>
+    <label>최고 속도 (km/h)<input type="number" id="speed" min="0" step="0.1" inputmode="decimal" placeholder="예: 32.5"></label>
+    <label>총 이동거리 (km)<input type="number" id="dist" min="0" step="0.1" inputmode="decimal" placeholder="예: 9.8"></label>
+    <label>RPE (1~10)<input type="number" id="rpe" min="1" max="10" step="1" inputmode="numeric" placeholder="예: 7"></label>
+    <label>운동시간 (분)<input type="number" id="min" min="0" step="1" inputmode="numeric" placeholder="예: 90"></label>
+    <label>스프린트 횟수<input type="number" id="sprint" min="0" step="1" inputmode="numeric" placeholder="예: 18"></label>
+    <label>고강도 달리기 (m)<input type="number" id="hid" min="0" step="1" inputmode="numeric" placeholder="예: 650"></label>
+    <label>평균 심박수<input type="number" id="hr" min="0" step="1" inputmode="numeric" placeholder="예: 152"></label>
+    <label>수면 시간 (시간)<input type="number" id="sleep" min="0" max="24" step="0.5" inputmode="decimal" placeholder="예: 7.5"></label>
+    <label>피로도 (1~5)<input type="number" id="fat" min="1" max="5" step="1" inputmode="numeric" placeholder="5가 가장 피곤"></label>
+    <label>근육통 (1~5)<input type="number" id="sore" min="1" max="5" step="1" inputmode="numeric" placeholder="5가 가장 심함"></label>
+    <label class="full">느낀점<textarea id="note" placeholder="오늘 훈련에서 느낀 점을 적어 보세요."></textarea></label>
+  </div>
+  <button class="btn" id="save">⚽ 기록 저장</button>
+</section>
+
+<section>
+  <h2>부상 위험도</h2>
+  <div class="load"><span class="big" id="loadNum">0</span><span class="sub">운동 부하 (RPE × 운동시간)</span><span class="badge" id="badge">낮음</span></div>
+  <div class="gauge"><div id="bar"></div></div>
+  <p class="warn" id="warn"></p>
+  <div class="acwr" id="acwr"></div>
+  <div class="thr">
+    <label>주의 기준<input type="number" id="t1" min="1" inputmode="numeric"></label>
+    <label>위험 기준<input type="number" id="t2" min="1" inputmode="numeric"></label>
+  </div>
+</section>
+
+<section>
+  <h2>최고 속도 변화</h2>
+  <p class="sub" id="pb"></p>
+  <div class="chart" id="chart"></div>
+</section>
+
+<section>
+  <h2>날짜별 기록</h2>
+  <div id="list"></div>
+</section>
+
+<section>
+  <h2>AI 분석과 공유</h2>
+  <p class="sub" style="margin-bottom:12px">최근 기록을 복사해서 AI 대화창에 붙여 넣거나, 코치님께 보낼 수 있어요.</p>
+  <div class="btns"><button class="btn2" id="ai">🤖 AI에게 물어볼 요약 복사</button><button class="btn2" id="csv">📋 CSV 복사 (엑셀용)</button></div>
+  <p class="sub" id="cmsg" style="margin-top:10px"></p>
+  <textarea id="out" hidden readonly></textarea>
+</section>
+</main>
+
+<script>
+(function(){
+  var KEY="gps-records", TKEY="gps-thr";
+  var mem={};
+  function load(k,d){try{var v=localStorage.getItem(k);if(v)return JSON.parse(v)}catch(e){}return mem[k]!==undefined?mem[k]:d}
+  function save(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+  var recs=load(KEY,[]), thr=load(TKEY,{t1:400,t2:600});
+  var $=function(id){return document.getElementById(id)};
+  var COL={low:"#22C55E",mid:"#FACC15",high:"#EF4444"};
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function level(v){return v>=thr.t2?"high":v>=thr.t1?"mid":"low"}
+  var NAMES={low:"낮음",mid:"주의",high:"높음"};
+
+  function showLoad(v){
+    var lv=level(v), max=thr.t2*1.5;
+    $("loadNum").textContent=v;
+    $("bar").style.width=Math.min(100,v/max*100)+"%";
+    $("bar").style.background=COL[lv];
+    var b=$("badge");b.textContent=NAMES[lv];b.style.background=COL[lv];
+    $("warn").textContent=lv==="high"?"위험: 운동 부하가 기준을 넘었어요. 휴식과 회복을 먼저 챙기세요.":lv==="mid"?"주의: 부하가 높아지고 있어요. 다음 훈련 강도를 조절해 보세요.":"";
+  }
+  function preview(){
+    var v=(+$("rpe").value||0)*(+$("min").value||0);
+    if(v>0||!recs.length)showLoad(v);
+    else showLoad(recs[recs.length-1].rpe*recs[recs.length-1].min);
+  }
+
+  function chart(){
+    var el=$("chart");
+    if(!recs.length){el.innerHTML='<p class="empty">아직 기록이 없어요. 위에서 첫 훈련을 저장해 보세요.</p>';return}
+    var W=600,H=240,L=44,R=16,T=20,B=34;
+    var vs=recs.map(function(r){return r.speed});
+    var mx=Math.ceil(Math.max.apply(null,vs)+2), mn=Math.max(0,Math.floor(Math.min.apply(null,vs)-2));
+    if(mx===mn)mx=mn+1;
+    var n=recs.length;
+    function X(i){return n===1?(L+W-R)/2:L+i*(W-L-R)/(n-1)}
+    function Y(v){return T+(mx-v)*(H-T-B)/(mx-mn)}
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="최고 속도 변화 그래프">';
+    for(var g=0;g<=4;g++){
+      var gv=mn+(mx-mn)*g/4, gy=Y(gv);
+      s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+gy+'" y2="'+gy+'" stroke="#24406B"/>';
+      s+='<text x="'+(L-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="#A9B8CF" font-size="12">'+gv.toFixed(1)+'</text>';
+    }
+    var pts=recs.map(function(r,i){return X(i)+","+Y(r.speed)}).join(" ");
+    if(n>1)s+='<polyline points="'+pts+'" fill="none" stroke="#22C55E" stroke-width="3" stroke-linejoin="round"/>';
+    var best=Math.max.apply(null,vs);
+    recs.forEach(function(r,i){
+      var hit=r.speed===best;
+      s+='<circle cx="'+X(i)+'" cy="'+Y(r.speed)+'" r="'+(hit?7:5)+'" fill="'+(hit?"#FACC15":"#22C55E")+'"/>';
+      s+='<text x="'+X(i)+'" y="'+(Y(r.speed)-12)+'" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">'+r.speed+'</text>';
+      if(n<=8||i%Math.ceil(n/8)===0)s+='<text x="'+X(i)+'" y="'+(H-10)+'" text-anchor="middle" fill="#A9B8CF" font-size="12">'+esc(r.date.slice(5))+'</text>';
+    });
+    el.innerHTML=s+'</svg>';
+  }
+
+  function acwr(){
+    if(!recs.length)return null;
+    var ref=Date.parse(recs[recs.length-1].date),first=Date.parse(recs[0].date),a=0,c=0;
+    recs.forEach(function(r){var k=(ref-Date.parse(r.date))/864e5,l=r.rpe*r.min;if(k<7)a+=l;if(k<28)c+=l});
+    return {span:(ref-first)/864e5,v:c?(a/7)/(c/28):0};
+  }
+  function showAcwr(){
+    var x=acwr(),el=$("acwr");
+    if(!x){el.innerHTML="";return}
+    var h;
+    if(x.span<21)h="급성:만성 부하 비율은 기록이 3주 이상 쌓이면 계산돼요.";
+    else{
+      var v=x.v,t=v>1.5?["high","높음","최근 훈련량이 갑자기 많이 늘었어요."]:v>1.3?["mid","주의","최근 훈련량이 평소보다 많아요."]:v<0.8?["mid","낮음","최근 훈련량이 평소보다 적어요."]:["low","안정","최근 훈련량이 평소와 비슷해요."];
+      h='급성:만성 부하 비율 <b style="color:'+COL[t[0]]+'">'+v.toFixed(2)+' ('+t[1]+')</b> '+t[2]+' 참고용이에요.';
+    }
+    var l=recs[recs.length-1],m=[];
+    if(l.sleep&&l.sleep<6)m.push("수면이 6시간보다 적어요");
+    if(l.fat>=4)m.push("피로도가 높아요");
+    if(l.sore>=4)m.push("근육통이 심해요");
+    el.innerHTML='<p>'+h+'</p>'+(m.length?'<p style="color:#FACC15;font-weight:700">컨디션 주의: '+m.join(", ")+'. 다음 훈련 부하를 낮추는 걸 생각해 보세요.</p>':"");
+  }
+  function showPb(){
+    var el=$("pb");
+    if(!recs.length){el.textContent="";return}
+    var b=recs[0];recs.forEach(function(r){if(r.speed>b.speed)b=r});
+    el.textContent="개인 최고 "+b.speed+" km/h ("+b.date+"). 그래프의 노란 점이에요."+(recs.length>1&&recs[recs.length-1]===b?" 이번 기록이 개인 최고예요!":"");
+  }
+  function extras(){showAcwr();showPb()}
+  function ex(r){
+    var p=[];
+    if(r.sprint)p.push("스프린트 <b>"+r.sprint+"</b>회");
+    if(r.hid)p.push("고강도 달리기 <b>"+r.hid+"</b> m");
+    if(r.hr)p.push("평균 심박수 <b>"+r.hr+"</b>");
+    if(r.sleep)p.push("수면 <b>"+r.sleep+"</b>시간");
+    if(r.fat)p.push("피로 <b>"+r.fat+"</b>/5");
+    if(r.sore)p.push("근육통 <b>"+r.sore+"</b>/5");
+    return p.length?'<div class="nums">'+p.join(", ")+'</div>':"";
+  }
+  function list(){
+    var el=$("list");
+    if(!recs.length){el.innerHTML='<p class="empty">저장한 기록이 여기에 날짜순으로 쌓여요.</p>';return}
+    el.innerHTML=recs.slice().reverse().map(function(r){
+      var v=r.rpe*r.min, lv=level(v);
+      return '<div class="rec"><div class="row"><span class="date">'+esc(r.date)+'</span><span class="badge" style="background:'+COL[lv]+'">'+NAMES[lv]+' '+v+'</span></div>'
+        +'<div class="nums">최고 속도 <b>'+r.speed+'</b> km/h, 이동거리 <b>'+r.dist+'</b> km, RPE <b>'+r.rpe+'</b>, <b>'+r.min+'</b>분</div>'
+        +ex(r)
+        +(r.note?'<p class="note">'+esc(r.note)+'</p>':'')
+        +'<div><button class="del" data-id="'+r.id+'">기록 삭제</button></div></div>';
+    }).join("");
+  }
+
+  function render(){chart();list();preview();extras()}
+
+  $("save").onclick=function(){
+    var r={id:Date.now(),date:$("date").value,speed:+$("speed").value,dist:+$("dist").value,rpe:+$("rpe").value,min:+$("min").value,sprint:+$("sprint").value,hid:+$("hid").value,hr:+$("hr").value,sleep:+$("sleep").value,fat:+$("fat").value,sore:+$("sore").value,note:$("note").value.trim()};
+    if(!r.date||!r.speed||!r.rpe||!r.min){alert("날짜, 최고 속도, RPE, 운동시간은 꼭 입력해 주세요.");return}
+    if(r.rpe<1||r.rpe>10){alert("RPE는 1에서 10 사이로 입력해 주세요.");return}
+    recs.push(r);recs.sort(function(a,b){return a.date<b.date?-1:a.date>b.date?1:a.id-b.id});
+    save(KEY,recs);
+    ["speed","dist","rpe","min","sprint","hid","hr","sleep","fat","sore","note"].forEach(function(k){$(k).value=""});
+    showLoad(r.rpe*r.min);chart();list();extras();
+  };
+  $("list").onclick=function(e){
+    var id=e.target.getAttribute&&e.target.getAttribute("data-id");
+    if(!id)return;
+    recs=recs.filter(function(r){return String(r.id)!==id});save(KEY,recs);render();
+  };
+  ["rpe","min"].forEach(function(k){$(k).oninput=preview});
+  function setThr(){
+    var a=+$("t1").value,b=+$("t2").value;
+    if(a>0&&b>a){thr={t1:a,t2:b};save(TKEY,thr);render()}
+  }
+  $("t1").value=thr.t1;$("t2").value=thr.t2;
+  $("t1").onchange=setThr;$("t2").onchange=setThr;
+  function copyText(t,msg){
+    var o=$("out"),m=$("cmsg");
+    if(!t){m.textContent="복사할 기록이 아직 없어요.";return}
+    o.value=t;o.hidden=false;
+    function done(){m.textContent=msg}
+    function fb(){o.select();try{document.execCommand("copy");done()}catch(e){m.textContent="아래 글을 직접 선택해서 복사해 주세요."}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb)}else fb();
+  }
+  $("ai").onclick=function(){
+    var t="";
+    if(recs.length){
+      var x=acwr();
+      t="나는 축구선수야. 최근 훈련 기록이야.\n"+recs.slice(-14).map(function(r){
+        return [r.date,"최고속도 "+r.speed+"km/h","이동거리 "+r.dist+"km","RPE "+r.rpe,r.min+"분","부하 "+(r.rpe*r.min),"스프린트 "+(r.sprint||"-")+"회","고강도 "+(r.hid||"-")+"m","심박 "+(r.hr||"-"),"수면 "+(r.sleep||"-")+"시간","피로 "+(r.fat||"-"),"근육통 "+(r.sore||"-"),r.note?"메모: "+r.note:""].join(", ");
+      }).join("\n")+"\n\n부하 기준: 주의 "+thr.t1+", 위험 "+thr.t2+(x&&x.span>=21?"\n급성:만성 부하 비율: "+x.v.toFixed(2):"")+"\n\n위 데이터에서 부상 위험이 높아 보이는 패턴이 있는지, 다음 훈련 강도를 어떻게 조절하면 좋을지 알려줘.";
+    }
+    copyText(t,"요약을 복사했어요. AI 대화창에 붙여 넣으세요.");
+  };
+  $("csv").onclick=function(){
+    var t=recs.length?["날짜,최고속도,이동거리,RPE,운동시간,부하,스프린트,고강도거리,평균심박,수면,피로,근육통,느낀점"].concat(recs.map(function(r){
+      return [r.date,r.speed,r.dist,r.rpe,r.min,r.rpe*r.min,r.sprint||"",r.hid||"",r.hr||"",r.sleep||"",r.fat||"",r.sore||"",'"'+r.note.replace(/"/g,'""')+'"'].join(",");
+    })).join("\n"):"";
+    copyText(t,"CSV를 복사했어요. 엑셀이나 구글 시트에 붙여 넣으세요.");
+  };
+  var d=new Date();
+  $("date").value=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  render();
+})();
+</script>
+</body>
+</html>

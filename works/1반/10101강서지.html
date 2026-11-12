@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>헤어디자이너</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+:root{--yellow:#FFE9A0;--yellow-d:#F6C945;--sky:#CDEBFA;--sky-d:#6FBDE6;--bg:#FFFBEF;--bg2:#EEF8FD;--ink:#3A3A44;--card:#FFFFFF;--line:#F0DFA8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--yellow:#4A3F17;--yellow-d:#E8B93A;--sky:#17384A;--sky-d:#7CC6EE;--bg:#24222A;--bg2:#1C2A33;--ink:#F3EFE3;--card:#2E2C36;--line:#5A4E22}}
+:root[data-theme="dark"]{--yellow:#4A3F17;--yellow-d:#E8B93A;--sky:#17384A;--sky-d:#7CC6EE;--bg:#24222A;--bg2:#1C2A33;--ink:#F3EFE3;--card:#2E2C36;--line:#5A4E22}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:20px;line-height:1.7}
+h1,h2,h3,.nav a{font-family:"Jua","Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-weight:400}
+.nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:center;gap:12px;padding:14px 24px;padding-top:calc(14px + env(safe-area-inset-top,0px));background:var(--bg);border-bottom:3px solid var(--yellow)}
+.nav a{color:var(--ink);text-decoration:none;padding:6px 22px;border-radius:999px;background:var(--sky);font-size:20px}
+.nav a:hover,.nav a:focus-visible{background:var(--yellow-d);outline:none;color:#3A3A44}
+section{min-height:100vh;padding:130px 8vw 80px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden}
+.hero{background:linear-gradient(180deg,var(--yellow) 0%,var(--bg) 100%);text-align:center}
+.hero h1{font-size:96px;margin:0;letter-spacing:.04em}
+.hero p{font-family:"Jua",sans-serif;font-size:44px;margin:12px 0 0;color:var(--sky-d)}
+.hero .art{display:flex;gap:56px;margin-top:48px;align-items:flex-end}
+.art svg{width:130px;height:130px}
+#hello{background:var(--bg2)}
+#why{background:var(--bg)}
+#job{background:var(--bg2)}
+#skills{background:var(--bg)}
+h2{font-size:52px;margin:0 0 8px;text-align:center}
+.tag{display:inline-block;font-family:"Jua",sans-serif;font-size:24px;background:var(--yellow);padding:4px 26px;border-radius:999px;margin-bottom:32px}
+.wrap{width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center}
+.card{background:var(--card);border:3px solid var(--line);border-radius:36px;padding:36px 44px;width:100%}
+dl{margin:0;display:grid;grid-template-columns:200px 1fr;gap:14px 24px;font-size:26px}
+dt{font-family:"Jua",sans-serif;color:var(--sky-d)}
+dd{margin:0}
+.why{font-family:"Jua",sans-serif;font-size:40px;text-align:center;line-height:1.5}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px;width:100%}
+.two .card h3{font-size:30px;margin:0 0 12px;color:var(--sky-d)}
+.two .card:nth-child(2){border-color:var(--sky-d)}
+.two .card p{margin:0;font-size:26px}
+.rank{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;width:100%}
+.rank .card{padding:32px 28px;border-radius:32px}
+.rank h3{font-size:34px;margin:0 0 18px}
+.rank b{display:block;font-family:"Jua",sans-serif;font-weight:400;color:var(--sky-d);font-size:22px}
+.rank p{margin:0 0 16px;font-size:20px}
+.rank .no{display:inline-block;background:var(--yellow-d);color:#3A3A44;font-family:"Jua",sans-serif;font-size:26px;border-radius:999px;padding:0 20px;margin-bottom:12px}
+.deco{position:absolute;opacity:.9;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.hero .art svg{animation:b 3s ease-in-out infinite}.hero .art svg:nth-child(2){animation-delay:.5s}.hero .art svg:nth-child(3){animation-delay:1s}@keyframes b{50%{transform:translateY(-12px) rotate(-4deg)}}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="#top">헤어디자이너</a><a href="#hello">hello</a><a href="#why">why</a><a href="#job">job</a><a href="#skills">역량</a></nav>
+
+<section class="hero" id="top">
+<h1>헤어디자이너</h1>
+<p>환영합니다</p>
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 100 100"><circle cx="30" cy="72" r="13" fill="none" stroke="#6FBDE6" stroke-width="7"/><circle cx="70" cy="72" r="13" fill="none" stroke="#F6C945" stroke-width="7"/><path d="M40 62 L78 12 M60 62 L22 12" stroke="#6FBDE6" stroke-width="7" stroke-linecap="round"/></svg>
+<svg viewBox="0 0 100 100"><rect x="8" y="30" width="84" height="26" rx="10" fill="#F6C945"/><g stroke="#F6C945" stroke-width="6" stroke-linecap="round"><path d="M20 56v28M32 56v28M44 56v28M56 56v28M68 56v28M80 56v28"/></g></svg>
+<svg viewBox="0 0 100 100"><path d="M10 30 Q10 14 38 14 H70 V54 H38 Q10 54 10 30Z" fill="#6FBDE6"/><rect x="62" y="22" width="26" height="24" rx="6" fill="#F6C945"/><path d="M40 54 L34 90 H52 L56 54Z" fill="#F6C945"/></svg>
+</div>
+</section>
+
+<section id="hello">
+<div class="wrap">
+<h2>hello</h2><span class="tag">헤어디자이너 소개</span>
+<div class="card"><dl>
+<dt>미래의 나</dt><dd>강서지</dd>
+<dt>나이</dt><dd>23살</dd>
+<dt>일하는 곳</dt><dd>성수동</dd>
+<dt>희망 직업</dt><dd>헤어디자이너</dd>
+</dl></div>
+</div>
+<svg class="deco" style="right:6vw;bottom:60px;width:120px" viewBox="0 0 100 100" aria-hidden="true"><circle cx="30" cy="72" r="13" fill="none" stroke="#F6C945" stroke-width="7"/><circle cx="70" cy="72" r="13" fill="none" stroke="#6FBDE6" stroke-width="7"/><path d="M40 62 L78 12 M60 62 L22 12" stroke="#F6C945" stroke-width="7" stroke-linecap="round"/></svg>
+</section>
+
+<section id="why">
+<div class="wrap">
+<h2>why</h2><span class="tag">헤어디자이너를 선택한 이유</span>
+<div class="card"><p class="why" style="margin:0">미용은 AI가 대체하기 힘든 직업이어서</p></div>
+</div>
+<svg class="deco" style="left:6vw;bottom:60px;width:120px" viewBox="0 0 100 100" aria-hidden="true"><rect x="8" y="30" width="84" height="26" rx="10" fill="#6FBDE6"/><g stroke="#6FBDE6" stroke-width="6" stroke-linecap="round"><path d="M20 56v28M32 56v28M44 56v28M56 56v28M68 56v28M80 56v28"/></g></svg>
+</section>
+
+<section id="job">
+<div class="wrap">
+<h2>job</h2><span class="tag">헤어디자이너가 하는 일</span>
+<div class="two">
+<div class="card"><h3>AI가 도와줄 일</h3><p>고객에게 어울리는 머리스타일 추천</p></div>
+<div class="card"><h3>내가 직접 맡을 일</h3><p>추천을 받았다면 그 헤어스타일을 해주기</p></div>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<div class="wrap">
+<h2>역량</h2><span class="tag">헤어디자이너에게 필요한 역량 TOP 3</span>
+<div class="rank">
+<div class="card"><span class="no">1위</span><h3>공감능력</h3>
+<b>필요한 이유</b><p>일을 하다 보면 공감이 필요한 상황이 올 것이다.</p>
+<b>기르는 방법</b><p>상황을 판단하지 않고 먼저 감정을 파악한다.</p></div>
+<div class="card"><span class="no">2위</span><h3>소통</h3>
+<b>필요한 이유</b><p>고객이 원하는 스타일이 잘 나올 수 있도록 소통을 잘해야 한다.</p>
+<b>기르는 방법</b><p>말을 끝까지 듣고 경청한다.</p></div>
+<div class="card"><span class="no">3위</span><h3>AI 사용 능력</h3>
+<b>필요한 이유</b><p>인건비가 많이 들어가는 부분은 AI로 대체해야 된다.</p>
+<b>기르는 방법</b><p>AI에 너무 의존하지 않고 필요할 상황에만 사용한다.</p></div>
+</div>
+</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>바이블쌤의 AI 교실</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap">
+<style>
+/* Layout: 스티커 느낌의 둥근 카드가 민트 밴드와 초코 밴드를 번갈아 지나가는 한 장짜리 세로 스크롤 페이지 */
+:root {
+  --bg: #E9F8F1;
+  --band: #D2F0E3;
+  --surface: #FFFFFF;
+  --mint: #7FD8BE;
+  --mint-deep: #2A9C80;
+  --choco: #5A3A2E;
+  --choco-soft: #8A6556;
+  --ink: #3B2620;
+  --peach: #FFB68E;
+  --outline: #5A3A2E;
+  --shadow: #5A3A2E;
+  --footer-bg: #5A3A2E;
+  --footer-fg: #FBEFE6;
+  --face: #FFFFFF;
+  --eye: #4A2F25;
+  --screen: #EAFBF4;
+  --font-display: "Jua", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #2B1C17; --band: #35241E; --surface: #432E26; --mint: #7FD8BE; --mint-deep: #8FE3CB;
+    --choco: #F0D9CB; --choco-soft: #D3B5A4; --ink: #F6E9E1; --peach: #FFB68E;
+    --outline: #8A6556; --shadow: #1B110E; --footer-bg: #1F1410; --footer-fg: #F0D9CB;
+    --screen: #22362F; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #2B1C17; --band: #35241E; --surface: #432E26; --mint: #7FD8BE; --mint-deep: #8FE3CB;
+  --choco: #F0D9CB; --choco-soft: #D3B5A4; --ink: #F6E9E1; --peach: #FFB68E;
+  --outline: #8A6556; --shadow: #1B110E; --footer-bg: #1F1410; --footer-fg: #F0D9CB;
+  --screen: #22362F; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.75;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; color: var(--choco); text-wrap: balance; margin: 0; line-height: 1.25; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mint-deep); outline-offset: 3px; border-radius: 8px; }
+
+.wrap {
+  width: 100%; max-width: 1080px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: 72px; }
+.band.alt { background: var(--band); }
+.eyebrow {
+  font-family: var(--font-display); font-size: 15px; letter-spacing: .08em;
+  color: var(--mint-deep); margin-bottom: 6px;
+}
+.sec-title { font-size: clamp(30px, 5vw, 44px); margin-bottom: 36px; }
+.sticker {
+  background: var(--surface); border: 3px solid var(--outline); border-radius: 28px;
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+/* top bar */
+.topbar { padding-block: 16px; }
+.topbar .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
+.brand { font-family: var(--font-display); font-size: 22px; color: var(--choco); text-decoration: none; }
+.nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.nav a {
+  font-family: var(--font-display); font-size: 15px; text-decoration: none; color: var(--choco);
+  padding: 4px 14px; border-radius: 999px; border: 2px solid var(--outline); background: var(--surface);
+}
+.nav a:hover { background: var(--mint); color: #3B2620; }
+
+/* hero */
+.hero { padding-block: 24px 80px; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+.hero-copy { min-width: 0; display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+.hero h1 { font-size: clamp(36px, 6.4vw, 64px); }
+.hero h1 span { color: var(--mint-deep); display: block; }
+.bubble { padding: 20px 24px; font-size: 18px; line-height: 1.7; position: relative; }
+.bubble b { font-family: var(--font-display); font-weight: 400; color: var(--mint-deep); }
+.btn {
+  display: inline-block; font-family: var(--font-display); font-size: 18px; text-decoration: none;
+  background: var(--mint); color: #3B2620; padding: 10px 26px; border-radius: 999px;
+  border: 3px solid var(--outline); box-shadow: 4px 4px 0 var(--shadow);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--shadow); }
+.scene { position: relative; min-width: 0; display: flex; align-items: flex-end; justify-content: center; padding: 20px 0 10px; }
+.scene::before {
+  content: ""; position: absolute; inset: 4% 2% 0; background: var(--mint); border-radius: 48% 52% 44% 56% / 52% 46% 54% 48%;
+  opacity: .55;
+}
+.scene .pc { position: relative; flex: 1.35; min-width: 0; }
+.scene .bot { position: relative; flex: .75; min-width: 0; margin-left: -9%; animation: bob 3.2s ease-in-out infinite; }
+.scene svg { display: block; width: 100%; height: auto; overflow: visible; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.tag {
+  position: absolute; top: 2%; right: 4%; font-family: var(--font-display); font-size: 15px;
+  background: var(--peach); color: #3B2620; border: 3px solid var(--outline); border-radius: 18px 18px 18px 4px;
+  padding: 2px 14px; transform: rotate(4deg);
+}
+
+/* about */
+.about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: start; }
+.portrait { padding: 28px 24px 20px; text-align: center; background: var(--mint); }
+.portrait svg { width: 72%; max-width: 230px; height: auto; display: block; margin: 0 auto 8px; }
+.portrait .nm { font-family: var(--font-display); font-size: 26px; color: #3B2620; }
+.portrait .rl { font-size: 15px; color: #4A2F25; }
+.about-body { min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.facts div { padding: 14px 16px; border-radius: 20px; background: var(--surface); border: 2px solid var(--outline); }
+.facts dt { font-size: 13px; color: var(--choco-soft); letter-spacing: .06em; }
+.facts dd { margin: 0; font-family: var(--font-display); font-size: 20px; color: var(--choco); overflow-wrap: anywhere; }
+.why { padding: 22px 26px; }
+.why h3 { font-size: 20px; margin-bottom: 6px; }
+.value {
+  background: var(--choco); color: var(--footer-fg); border-radius: 24px; padding: 18px 24px; font-size: 17px;
+}
+:root[data-theme="dark"] .value { background: var(--surface); color: var(--ink); border: 2px solid var(--outline); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .value { background: var(--surface); color: var(--ink); border: 2px solid var(--outline); } }
+
+/* competencies */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.comp { padding: 28px 24px 26px; display: flex; flex-direction: column; gap: 16px; }
+.rank {
+  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--mint); color: #3B2620; font-family: var(--font-display); font-size: 24px; border: 3px solid var(--outline);
+}
+.comp h3 { font-size: 24px; }
+.comp .k { font-family: var(--font-display); font-size: 14px; color: var(--mint-deep); letter-spacing: .04em; margin-bottom: 2px; }
+.comp p { font-size: 16px; line-height: 1.7; }
+.comp hr { border: 0; border-top: 2px dashed var(--outline); opacity: .4; width: 100%; margin: 0; }
+
+/* teach */
+.teach { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.sub { padding: 24px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.sub .ic { width: 72px; height: 72px; border-radius: 24px; background: var(--mint); border: 3px solid var(--outline); display: grid; place-items: center; }
+.sub .ic svg { width: 40px; height: 40px; }
+.sub h3 { font-size: 22px; }
+.sub p { font-size: 15px; line-height: 1.6; color: var(--choco-soft); }
+
+/* contact */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+.ct { padding: 26px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ct .lb { font-family: var(--font-display); font-size: 15px; color: var(--mint-deep); letter-spacing: .06em; }
+.ct .val { font-family: var(--font-display); font-size: clamp(20px, 3.2vw, 26px); color: var(--choco); overflow-wrap: anywhere; user-select: all; }
+.copy {
+  align-self: flex-start; margin-top: 10px; font-family: var(--font-display); font-size: 15px; cursor: pointer;
+  background: var(--band); color: var(--choco); border: 2px solid var(--outline); border-radius: 999px; padding: 4px 18px;
+}
+.copy:hover { background: var(--mint); color: #3B2620; }
+.note { margin-top: 28px; font-size: 15px; color: var(--choco-soft); }
+
+footer { background: var(--footer-bg); color: var(--footer-fg); padding-block: 32px; text-align: center; font-size: 15px; }
+footer b { font-family: var(--font-display); font-weight: 400; font-size: 18px; }
+
+.hidden-svg { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+@media (max-width: 900px) {
+  .cards { grid-template-columns: 1fr; }
+  .teach { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .band { padding-block: 52px; }
+  .hero .wrap, .about-grid, .contact { grid-template-columns: 1fr; }
+  .hero .wrap { gap: 28px; }
+  .about-grid { gap: 28px; }
+  .facts { grid-template-columns: 1fr; }
+  .scene { order: -1; }
+}
+@media (max-width: 420px) {
+  .teach { grid-template-columns: 1fr; }
+  .tag { right: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scene .bot { animation: none; }
+  .btn { transition: none; }
+}
+</style>
+
+<svg class="hidden-svg" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- 휴머노이드 선생님 로봇 -->
+    <symbol id="robot" viewBox="0 0 200 260">
+      <line x1="100" y1="42" x2="100" y2="22" stroke="var(--eye)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="100" cy="16" r="9" fill="var(--peach)" stroke="var(--eye)" stroke-width="4"/>
+      <rect x="20" y="76" width="16" height="32" rx="8" fill="var(--mint-deep)" stroke="var(--eye)" stroke-width="4"/>
+      <rect x="164" y="76" width="16" height="32" rx="8" fill="var(--mint-deep)" stroke="var(--eye)" stroke-width="4"/>
+      <rect x="32" y="42" width="136" height="104" rx="44" fill="var(--mint)" stroke="var(--eye)" stroke-width="4"/>
+      <rect x="46" y="58" width="108" height="72" rx="32" fill="var(--face)"/>
+      <circle cx="78" cy="88" r="9" fill="var(--eye)"/><circle cx="122" cy="88" r="9" fill="var(--eye)"/>
+      <circle cx="81" cy="85" r="3" fill="#fff"/><circle cx="125" cy="85" r="3" fill="#fff"/>
+      <circle cx="78" cy="88" r="17" fill="none" stroke="var(--eye)" stroke-width="3.5"/>
+      <circle cx="122" cy="88" r="17" fill="none" stroke="var(--eye)" stroke-width="3.5"/>
+      <line x1="95" y1="88" x2="105" y2="88" stroke="var(--eye)" stroke-width="3.5"/>
+      <ellipse cx="62" cy="112" rx="9" ry="5" fill="var(--peach)" opacity=".8"/>
+      <ellipse cx="138" cy="112" rx="9" ry="5" fill="var(--peach)" opacity=".8"/>
+      <path d="M88 110 Q100 123 112 110" fill="none" stroke="var(--eye)" stroke-width="4" stroke-linecap="round"/>
+      <rect x="30" y="160" width="24" height="58" rx="12" fill="var(--mint-deep)" stroke="var(--eye)" stroke-width="4" transform="rotate(8 42 160)"/>
+      <rect x="146" y="160" width="24" height="58" rx="12" fill="var(--mint-deep)" stroke="var(--eye)" stroke-width="4" transform="rotate(-8 158 160)"/>
+      <rect x="62" y="150" width="76" height="76" rx="30" fill="var(--mint)" stroke="var(--eye)" stroke-width="4"/>
+      <rect x="78" y="170" width="44" height="38" rx="16" fill="var(--face)"/>
+      <path d="M100 198 C86 188 88 177 94 177 C97 177 100 180 100 180 C100 180 103 177 106 177 C112 177 114 188 100 198 Z" fill="var(--peach)"/>
+      <path d="M100 152 L82 144 L82 160 Z M100 152 L118 144 L118 160 Z" fill="var(--eye)"/>
+      <circle cx="100" cy="152" r="5" fill="var(--eye)"/>
+      <rect x="72" y="224" width="22" height="26" rx="11" fill="var(--eye)"/>
+      <rect x="106" y="224" width="22" height="26" rx="11" fill="var(--eye)"/>
+    </symbol>
+    <!-- 컴퓨터 -->
+    <symbol id="computer" viewBox="0 0 300 250">
+      <rect x="14" y="8" width="272" height="172" rx="24" fill="var(--eye)"/>
+      <rect x="30" y="24" width="240" height="140" rx="14" fill="var(--screen)"/>
+      <circle cx="46" cy="40" r="5" fill="var(--peach)"/><circle cx="62" cy="40" r="5" fill="var(--mint)"/><circle cx="78" cy="40" r="5" fill="var(--mint-deep)"/>
+      <rect x="46" y="58" width="70" height="10" rx="5" fill="var(--mint-deep)"/>
+      <rect x="124" y="58" width="48" height="10" rx="5" fill="var(--peach)"/>
+      <rect x="62" y="78" width="104" height="10" rx="5" fill="var(--choco-soft)"/>
+      <rect x="62" y="98" width="58" height="10" rx="5" fill="var(--mint-deep)"/>
+      <rect x="128" y="98" width="64" height="10" rx="5" fill="var(--choco-soft)"/>
+      <rect x="46" y="118" width="88" height="10" rx="5" fill="var(--peach)"/>
+      <rect x="46" y="138" width="40" height="10" rx="5" fill="var(--mint-deep)"/>
+      <text x="236" y="112" text-anchor="middle" font-family="Jua, sans-serif" font-size="34" fill="var(--mint-deep)">&lt;/&gt;</text>
+      <path d="M124 180 L176 180 L186 208 L114 208 Z" fill="var(--choco-soft)"/>
+      <rect x="86" y="204" width="128" height="14" rx="7" fill="var(--eye)"/>
+      <rect x="40" y="224" width="220" height="20" rx="10" fill="var(--mint-deep)" stroke="var(--eye)" stroke-width="3"/>
+      <g fill="var(--face)"><rect x="54" y="230" width="22" height="8" rx="4"/><rect x="82" y="230" width="22" height="8" rx="4"/><rect x="110" y="230" width="80" height="8" rx="4"/><rect x="196" y="230" width="22" height="8" rx="4"/><rect x="224" y="230" width="22" height="8" rx="4"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">바이블쌤의 AI 교실</a>
+    <nav class="nav" aria-label="섹션 바로가기">
+      <a href="#about">About Me</a>
+      <a href="#competencies">My Competencies</a>
+      <a href="#teach">What I Teach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>바이블쌤의 AI 교실<span>미래를 코딩하다</span></h1>
+        <div class="bubble sticker">
+          <b>안녕하세요!</b> 바이블쌤의 AI 교실에 오신 것을 환영합니다. 미래를 향한 우리의 여정, 함께 시작해 볼까요?
+        </div>
+        <a class="btn" href="#about">교실 둘러보기</a>
+      </div>
+      <div class="scene" role="img" aria-label="컴퓨터 옆에 서 있는 안경 쓴 휴머노이드 선생님 캐릭터">
+        <div class="pc"><svg viewBox="0 0 300 250"><use href="#computer"/></svg></div>
+        <div class="bot"><svg viewBox="0 0 200 260"><use href="#robot"/></svg></div>
+        <span class="tag">Hello, AI!</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="about">
+    <div class="wrap">
+      <div class="eyebrow">선생님 소개</div>
+      <h2 class="sec-title">About Me</h2>
+      <div class="about-grid">
+        <div class="portrait sticker">
+          <svg viewBox="0 0 200 260" role="img" aria-label="바이블쌤 캐릭터"><use href="#robot"/></svg>
+          <div class="nm">김바이블</div>
+          <div class="rl">염메고등학교 교사</div>
+        </div>
+        <div class="about-body">
+          <dl class="facts">
+            <div><dt>이름</dt><dd>김바이블</dd></div>
+            <div><dt>나이</dt><dd>27살</dd></div>
+            <div><dt>직업</dt><dd>염메고등학교 교사</dd></div>
+          </dl>
+          <p>학생 한 명 한 명의 개성과 가능성을 발견하고, AI와 디지털 도구를 활용해 배움을 돕는 교사입니다.</p>
+          <div class="why sticker">
+            <h3>교사를 선택한 이유</h3>
+            <p>학생들이 새로운 것을 배우고 성장하는 모습을 돕고 보는 것이 보람 있기 때문입니다.</p>
+          </div>
+          <p class="value">AI가 자료를 만들고 답을 내놓는 시대에도, 학생의 가능성을 알아보고 곁에서 응원하는 일은 교사의 몫입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="competencies">
+    <div class="wrap">
+      <div class="eyebrow">나의 핵심 역량 TOP 3</div>
+      <h2 class="sec-title">My Competencies</h2>
+      <div class="cards">
+        <article class="comp sticker">
+          <div class="rank" aria-label="1위">1</div>
+          <h3>AI 활용 능력</h3>
+          <div>
+            <div class="k">왜 필요할까요?</div>
+            <p>수업 자료와 학습 활동을 효과적으로 만들고 학생별 학습을 지원하기 위해 필요합니다.</p>
+          </div>
+          <hr>
+          <div>
+            <div class="k">이렇게 키울게요</div>
+            <p>다양한 생성형 AI 도구를 직접 사용하고, 목적에 맞는 결과를 얻도록 프롬프트를 연습하겠습니다.</p>
+          </div>
+        </article>
+        <article class="comp sticker">
+          <div class="rank" aria-label="2위">2</div>
+          <h3>소통·협업 능력</h3>
+          <div>
+            <div class="k">왜 필요할까요?</div>
+            <p>학생, 학부모, 동료 교사와 신뢰를 쌓고 함께 문제를 해결해야 하기 때문입니다.</p>
+          </div>
+          <hr>
+          <div>
+            <div class="k">이렇게 키울게요</div>
+            <p>상대방의 말을 끝까지 듣고, 모둠 활동과 공동 프로젝트에서 의견을 조율하겠습니다.</p>
+          </div>
+        </article>
+        <article class="comp sticker">
+          <div class="rank" aria-label="3위">3</div>
+          <h3>비판적 사고</h3>
+          <div>
+            <div class="k">왜 필요할까요?</div>
+            <p>AI가 만든 정보가 항상 정확하거나 공정한 것은 아니므로 내용을 확인하고 판단해야 합니다.</p>
+          </div>
+          <hr>
+          <div>
+            <div class="k">이렇게 키울게요</div>
+            <p>자료의 출처와 근거를 확인하고, 여러 관점에서 생각한 뒤 판단하는 습관을 기르겠습니다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="teach">
+    <div class="wrap">
+      <div class="eyebrow">내가 가르치는 교과</div>
+      <h2 class="sec-title">What I Teach</h2>
+      <div class="teach">
+        <article class="sub sticker">
+          <div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="var(--eye)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="22" height="22" rx="6"/><circle cx="16" cy="18" r="2" fill="var(--eye)"/><circle cx="24" cy="18" r="2" fill="var(--eye)"/><path d="M15 25q5 4 10 0M20 9V4M5 20h4M31 20h4"/></svg></div>
+          <h3>인공지능 기초</h3>
+          <p>AI가 어떻게 배우고 판단하는지 알아봐요.</p>
+        </article>
+        <article class="sub sticker">
+          <div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="var(--eye)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34h28M10 34V22M18 34V12M26 34V18M34 34V8" /></svg></div>
+          <h3>데이터 분석</h3>
+          <p>숫자 속에서 이야기를 찾아내는 힘을 길러요.</p>
+        </article>
+        <article class="sub sticker">
+          <div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="var(--eye)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="30" height="21" rx="4"/><path d="M14 34h12M20 28v6"/></svg></div>
+          <h3>정보</h3>
+          <p>디지털 세상을 똑똑하고 안전하게 살아가요.</p>
+        </article>
+        <article class="sub sticker">
+          <div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="var(--eye)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 12L5 20l9 8M26 12l9 8-9 8M22 8l-4 24"/></svg></div>
+          <h3>프로그래밍</h3>
+          <p>내 생각을 코드로 만들어 보는 즐거움을 알아가요.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="contact">
+    <div class="wrap">
+      <div class="eyebrow">언제든 편하게 연락 주세요</div>
+      <h2 class="sec-title">Contact</h2>
+      <div class="contact">
+        <div class="ct sticker">
+          <span class="lb">이메일</span>
+          <span class="val" id="email">abc@abc.com</span>
+          <button class="copy" type="button" data-target="email">이메일 복사</button>
+        </div>
+        <div class="ct sticker">
+          <span class="lb">휴대폰</span>
+          <span class="val" id="phone">010-0000-0000</span>
+          <button class="copy" type="button" data-target="phone">번호 복사</button>
+        </div>
+      </div>
+      <p class="note" id="copyNote" role="status" aria-live="polite">&nbsp;</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>바이블쌤의 AI 교실</b><br>
+    AI 시대에도 교사의 따뜻한 마음은 가장 중요한 수업 도구예요.
+  </div>
+</footer>
+
+<script>
+(function () {
+  var note = document.getElementById('copyNote');
+  function showNote(msg) { note.textContent = msg; }
+  function selectText(el) {
+    try {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    } catch (e) {}
+  }
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      var text = el.textContent.trim();
+      var done = function () { showNote(text + ' 복사했어요.'); };
+      var fail = function () { selectText(el); showNote('글자를 선택해 두었어요. 길게 눌러 복사해 주세요.'); };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fail);
+        } else { fail(); }
+      } catch (e) { fail(); }
+    });
+  });
+})();
+</script>
+
+</body></html>

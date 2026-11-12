@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>헤어디자이너</title>
+<style>
+  :root {
+    --sky: #8fcdf0;
+    --sky-soft: #eaf6fd;
+    --sky-deep: #256f9e;
+    --lime: #b5de7e;
+    --lime-soft: #f1f9e6;
+    --lime-deep: #3f7a1c;
+    --text: #22313d;
+    --muted: #51616e;
+    --line: #d9e6ee;
+    --white: #ffffff;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    color: var(--text);
+    background: #fbfdfe;
+    line-height: 1.75;
+    font-size: 17px;
+    word-break: keep-all;
+  }
+  .wrap { width: min(1040px, 100% - 32px); margin-inline: auto; }
+
+  /* 헤더 / 메뉴 */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 700; font-size: 1.15rem; color: var(--sky-deep); text-decoration: none; letter-spacing: .02em; }
+  .logo span { color: var(--lime-deep); }
+  nav ul { display: flex; gap: 4px; list-style: none; }
+  nav a {
+    display: block; padding: 8px 12px; border-radius: 999px;
+    color: var(--muted); text-decoration: none; font-size: .95rem;
+    transition: background .2s, color .2s;
+  }
+  nav a:hover { background: var(--sky-soft); color: var(--sky-deep); }
+  nav a.active { background: var(--lime-soft); color: var(--lime-deep); font-weight: 700; }
+  .menu-btn {
+    display: none; background: none; border: 1px solid var(--line);
+    border-radius: 10px; padding: 8px 12px; font: inherit; font-size: .95rem;
+    color: var(--sky-deep); cursor: pointer;
+  }
+
+  /* 첫 화면 */
+  .hero {
+    background: linear-gradient(135deg, var(--sky-soft) 0%, var(--lime-soft) 100%);
+    padding: 64px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.25; color: var(--sky-deep); }
+  .hero h1 em { font-style: normal; color: var(--lime-deep); }
+  .info-list { margin-top: 28px; display: grid; gap: 12px; }
+  .info-item {
+    background: var(--white); border: 1px solid var(--line);
+    border-left: 5px solid var(--lime); border-radius: 12px; padding: 12px 16px;
+  }
+  .info-item:nth-child(2) { border-left-color: var(--sky); }
+  .info-item b { display: block; font-size: .85rem; color: var(--lime-deep); }
+  .info-item:nth-child(2) b { color: var(--sky-deep); }
+
+  /* 사진 칸 */
+  .photo-box {
+    position: relative; width: 100%; aspect-ratio: 4 / 5;
+    background: var(--white); border: 2px dashed var(--sky);
+    border-radius: var(--radius); overflow: hidden;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .photo-box img { width: 100%; height: 100%; object-fit: cover; display: none; }
+  .photo-box.has-photo { border-style: solid; }
+  .photo-box.has-photo img { display: block; }
+  .photo-box.has-photo .photo-empty { display: none; }
+  .photo-empty { padding: 16px; color: var(--muted); }
+  .btn {
+    display: inline-block; margin-top: 10px; padding: 9px 18px;
+    border-radius: 999px; border: none; cursor: pointer;
+    background: var(--sky-deep); color: #fff; font: inherit; font-size: .95rem;
+    transition: background .2s;
+  }
+  .btn:hover { background: #1d5a82; }
+  .btn.alt { background: var(--lime-deep); }
+  .btn.alt:hover { background: #326216; }
+  .photo-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .photo-box .photo-actions { position: absolute; bottom: 10px; left: 0; right: 0; display: none; }
+  .photo-box.has-photo .photo-actions { display: flex; }
+  .photo-box.has-photo .btn { margin-top: 0; opacity: .95; }
+  .photo-input { display: none; }
+
+  /* 섹션 공통 */
+  section.block { padding: 64px 0; }
+  section.block:nth-of-type(even) { background: var(--sky-soft); }
+  section.block:nth-of-type(odd) { background: #fbfdfe; }
+  .sec-head { margin-bottom: 28px; }
+  .sec-num {
+    display: inline-block; background: var(--lime); color: #24420f;
+    font-weight: 700; font-size: .85rem; padding: 2px 12px; border-radius: 999px; margin-bottom: 8px;
+  }
+  .sec-head h2 { font-size: clamp(1.5rem, 4vw, 2rem); color: var(--sky-deep); line-height: 1.35; }
+  .sec-head h2::after {
+    content: ""; display: block; width: 56px; height: 4px; margin-top: 10px;
+    background: linear-gradient(90deg, var(--sky), var(--lime)); border-radius: 4px;
+  }
+
+  .grid { display: grid; gap: 20px; }
+  .grid.two { grid-template-columns: repeat(2, 1fr); }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 24px;
+    box-shadow: 0 2px 8px rgba(37, 111, 158, .05);
+  }
+  .card h3 { font-size: 1.1rem; color: var(--sky-deep); margin-bottom: 6px; }
+  .label { font-size: .85rem; font-weight: 700; color: var(--lime-deep); }
+  .big { font-size: 1.5rem; font-weight: 700; color: var(--text); }
+
+  /* 소개 섹션 */
+  .intro-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 28px; align-items: center; }
+  .intro-grid .photo-box { aspect-ratio: 1 / 1; }
+
+  /* 이유 */
+  .reason .num {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--sky); color: #0f3b57;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 10px;
+  }
+  .reason:nth-child(2) .num { background: var(--lime); color: #24420f; }
+
+  /* AI vs 나 */
+  .role.ai { border-top: 6px solid var(--sky); }
+  .role.me { border-top: 6px solid var(--lime); }
+  .role .big { margin-top: 4px; }
+
+  /* TOP 3 */
+  .rank {
+    display: inline-block; font-weight: 700; font-size: .9rem; color: #fff;
+    background: var(--sky-deep); padding: 2px 12px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .skill:nth-child(2) .rank { background: var(--lime-deep); }
+  .skill:nth-child(3) .rank { background: #4a8fb8; }
+  .skill h3 { font-size: 1.3rem; margin-bottom: 12px; }
+  .skill p { margin-bottom: 12px; }
+  .toggle {
+    width: 100%; text-align: left; background: var(--lime-soft); border: 1px solid var(--lime);
+    color: var(--lime-deep); font: inherit; font-weight: 700; font-size: .95rem;
+    padding: 10px 14px; border-radius: 10px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .toggle::after { content: "+"; font-size: 1.2rem; }
+  .toggle[aria-expanded="true"]::after { content: "−"; }
+  .panel { display: none; margin-top: 10px; padding: 12px 14px; background: var(--sky-soft); border-radius: 10px; }
+  .panel.open { display: block; }
+  .expand-all { margin-bottom: 18px; }
+
+  /* 디자인 계획 */
+  .plan-item .label { display: block; }
+  .swatches { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+  .swatch { display: flex; align-items: center; gap: 8px; }
+  .swatch i { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); display: inline-block; }
+  .resolve { margin-top: 28px; }
+  .resolve h3 { font-size: 1.25rem; color: var(--sky-deep); margin-bottom: 14px; }
+  .resolve ul { list-style: none; display: grid; gap: 12px; }
+  .resolve li { background: var(--white); border: 1px solid var(--line); border-left: 5px solid var(--lime); border-radius: 12px; padding: 14px 18px; }
+  .resolve li b { color: var(--lime-deep); margin-right: 6px; }
+
+  footer { background: var(--sky-deep); color: #fff; text-align: center; padding: 28px 16px; }
+  footer button {
+    margin-top: 10px; background: transparent; color: #fff; border: 1px solid #fff;
+    border-radius: 999px; padding: 6px 16px; font: inherit; cursor: pointer;
+  }
+  footer button:hover { background: rgba(255,255,255,.15); }
+
+  :focus-visible { outline: 3px solid var(--lime-deep); outline-offset: 2px; }
+
+  /* 휴대폰 */
+  @media (max-width: 820px) {
+    body { font-size: 16px; }
+    .hero { padding: 40px 0 36px; }
+    .hero-grid, .intro-grid { grid-template-columns: 1fr; }
+    .hero .photo-box { aspect-ratio: 4 / 3; }
+    .grid.two, .grid.three { grid-template-columns: 1fr; }
+    section.block { padding: 44px 0; }
+    .menu-btn { display: block; }
+    nav { position: absolute; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--line); display: none; }
+    nav.open { display: block; }
+    nav ul { flex-direction: column; padding: 10px 16px 16px; }
+    nav a { padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">헤어<span>디자이너</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">메뉴</button>
+    <nav id="mainNav" aria-label="주 메뉴">
+      <ul>
+        <li><a href="#intro">미래의 나 소개</a></li>
+        <li><a href="#reason">선택한 이유</a></li>
+        <li><a href="#roles">AI와 나의 일</a></li>
+        <li><a href="#skills">AI 시대 역량</a></li>
+        <li><a href="#plan">디자인 계획과 다짐</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>헤어<em>디자이너</em></h1>
+        <div class="info-list">
+          <div class="info-item"><b>만드는 목적</b>헤어디자이너가 어떤 일을 하는지 알려주기 위해서</div>
+          <div class="info-item"><b>대상</b>여러 사람들</div>
+        </div>
+      </div>
+      <div>
+        <div class="photo-box" data-photo>
+          <img alt="헤어디자이너 사진">
+          <div class="photo-empty">
+            <p>사진을 넣을 수 있는 공간</p>
+            <button class="btn" type="button" data-pick>사진 넣기</button>
+          </div>
+          <div class="photo-actions">
+            <button class="btn" type="button" data-pick>사진 바꾸기</button>
+            <button class="btn alt" type="button" data-clear>사진 지우기</button>
+          </div>
+          <input class="photo-input" type="file" accept="image/*">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="intro">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2>미래의 나 소개</h2></div>
+      <div class="intro-grid">
+        <div class="photo-box" data-photo>
+          <img alt="미래의 나 사진">
+          <div class="photo-empty">
+            <p>사진을 넣을 수 있는 공간</p>
+            <button class="btn" type="button" data-pick>사진 넣기</button>
+          </div>
+          <div class="photo-actions">
+            <button class="btn" type="button" data-pick>사진 바꾸기</button>
+            <button class="btn alt" type="button" data-clear>사진 지우기</button>
+          </div>
+          <input class="photo-input" type="file" accept="image/*">
+        </div>
+        <div class="card">
+          <span class="label">희망 직업</span>
+          <p class="big">헤어디자이너</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reason">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>헤어디자이너를 선택한 이유</h2></div>
+      <div class="grid two">
+        <div class="card reason">
+          <div class="num">1</div>
+          <p class="big">재밌어서</p>
+        </div>
+        <div class="card reason">
+          <div class="num">2</div>
+          <p class="big">헤어디자인을 하고 싶어서</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="roles">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><h2>AI가 도와주는 일과 내가 직접 하는 일</h2></div>
+      <div class="grid two">
+        <div class="card role ai">
+          <span class="label">AI가 도와줄 일</span>
+          <p class="big">고객 얼굴형 분석</p>
+        </div>
+        <div class="card role me">
+          <span class="label">내가 직접 맡을 일</span>
+          <p class="big">헤어디자인</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">04</span><h2>내가 기를 AI 시대 역량 TOP 3</h2></div>
+      <button class="btn expand-all" type="button" id="expandAll">기르는 방법 모두 보기</button>
+      <div class="grid three">
+        <article class="card skill">
+          <span class="rank">1위</span>
+          <h3>소통 능력</h3>
+          <span class="label">필요한 이유</span>
+          <p>고객과 소통을 하여 고객이 원하는 스타일을 더 정확하고 예쁘게 만들기 위해서 필요하다.</p>
+          <button class="toggle" type="button" aria-expanded="false">기르는 방법</button>
+          <div class="panel">직접 헤어스타일을 하지 않더라도 친구들과 많이 소통하여 소통 능력을 기르겠다.</div>
+        </article>
+        <article class="card skill">
+          <span class="rank">2위</span>
+          <h3>비판적 사고</h3>
+          <span class="label">필요한 이유</span>
+          <p>고객이 원하는 머리스타일이 고객의 얼굴형과 어울리지 않으면 같은 헤어스타일을 다른 느낌으로 만들 수 있어야 한다.</p>
+          <button class="toggle" type="button" aria-expanded="false">기르는 방법</button>
+          <div class="panel">스타일링하기 어려운 고객이라도 포기하지 않도록 다양한 지식과 기술을 습득하려고 노력할 것이다.</div>
+        </article>
+        <article class="card skill">
+          <span class="rank">3위</span>
+          <h3>창의성</h3>
+          <span class="label">필요한 이유</span>
+          <p>고객이 원하는 디자인이 없으면 고객의 얼굴형과 분위기에 맞는 스타일을 골라 할 수 있어야 한다.</p>
+          <button class="toggle" type="button" aria-expanded="false">기르는 방법</button>
+          <div class="panel">여러 스타일을 배우려고 노력할 것이다.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="plan">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">05</span><h2>나의 디자인 계획과 다짐</h2></div>
+      <div class="grid three">
+        <div class="card plan-item">
+          <span class="label">대표 색깔</span>
+          <div class="swatches">
+            <span class="swatch"><i style="background:#8fcdf0"></i>하늘색</span>
+            <span class="swatch"><i style="background:#b5de7e"></i>연두색</span>
+          </div>
+        </div>
+        <div class="card plan-item"><span class="label">전체 분위기</span><p class="big">깔끔한</p></div>
+        <div class="card plan-item"><span class="label">글자 느낌</span><p class="big">단정한</p></div>
+        <div class="card plan-item"><span class="label">꼭 넣고 싶은 요소</span><p class="big">사진</p></div>
+        <div class="card plan-item"><span class="label">사용 기기</span><p class="big">컴퓨터와 휴대폰</p></div>
+      </div>
+
+      <div class="resolve">
+        <h3>다짐</h3>
+        <ul>
+          <li><b>소통 능력</b>직접 헤어스타일을 하지 않더라도 친구들과 많이 소통하여 소통 능력을 기르겠다.</li>
+          <li><b>비판적 사고</b>스타일링하기 어려운 고객이라도 포기하지 않도록 다양한 지식과 기술을 습득하려고 노력할 것이다.</li>
+          <li><b>창의성</b>여러 스타일을 배우려고 노력할 것이다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>헤어디자이너</p>
+  <button type="button" id="toTop">맨 위로</button>
+</footer>
+
+<script>
+  // 모바일 메뉴 열기/닫기
+  const menuBtn = document.getElementById('menuBtn');
+  const mainNav = document.getElementById('mainNav');
+  menuBtn.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // 현재 구역 메뉴 표시
+  const links = [...mainNav.querySelectorAll('a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => s && io.observe(s));
+
+  // 사진 넣기 / 바꾸기 / 지우기
+  document.querySelectorAll('[data-photo]').forEach(box => {
+    const input = box.querySelector('.photo-input');
+    const img = box.querySelector('img');
+    box.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => input.click()));
+    box.querySelectorAll('[data-clear]').forEach(b => b.addEventListener('click', () => {
+      img.removeAttribute('src');
+      input.value = '';
+      box.classList.remove('has-photo');
+    }));
+    input.addEventListener('change', () => {
+      const file = input.files && input.files[0];
+      if (!file || !file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = e => { img.src = e.target.result; box.classList.add('has-photo'); };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // 기르는 방법 펼치기 / 접기
+  const toggles = [...document.querySelectorAll('.toggle')];
+  const expandAll = document.getElementById('expandAll');
+  function setOpen(btn, open) {
+    btn.setAttribute('aria-expanded', open);
+    btn.nextElementSibling.classList.toggle('open', open);
+  }
+  function syncAllBtn() {
+    const allOpen = toggles.every(t => t.getAttribute('aria-expanded') === 'true');
+    expandAll.textContent = allOpen ? '기르는 방법 모두 접기' : '기르는 방법 모두 보기';
+  }
+  toggles.forEach(t => t.addEventListener('click', () => {
+    setOpen(t, t.getAttribute('aria-expanded') !== 'true');
+    syncAllBtn();
+  }));
+  expandAll.addEventListener('click', () => {
+    const allOpen = toggles.every(t => t.getAttribute('aria-expanded') === 'true');
+    toggles.forEach(t => setOpen(t, !allOpen));
+    syncAllBtn();
+  });
+
+  // 맨 위로
+  document.getElementById('toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>

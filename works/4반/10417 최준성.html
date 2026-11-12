@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>화학자가 되기 위해서</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{--bg:#eef9fc;--bg2:#e0f6ef;--card:#fff;--ink:#17414d;--muted:#4d7380;--blue:#bfe3f7;--blue-d:#3e9ad0;--mint:#b6efdb;--mint-d:#1f9c7c;--line:#cde8ee;--sh:0 6px 18px rgba(60,140,170,.16);--hd:rgba(255,255,255,.9);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d2530;--bg2:#0f322f;--card:#173a47;--ink:#e6f7fb;--muted:#9cc3cf;--blue:#245b78;--blue-d:#7cc8f2;--mint:#1f6b5a;--mint-d:#58d8b4;--line:#2a5667;--sh:0 6px 18px rgba(0,0,0,.35);--hd:rgba(13,37,48,.92);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d2530;--bg2:#0f322f;--card:#173a47;--ink:#e6f7fb;--muted:#9cc3cf;--blue:#245b78;--blue-d:#7cc8f2;--mint:#1f6b5a;--mint-d:#58d8b4;--line:#2a5667;--sh:0 6px 18px rgba(0,0,0,.35);--hd:rgba(13,37,48,.92);color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif;color:var(--ink);line-height:1.65;background-color:var(--bg);background-image:linear-gradient(rgba(120,190,210,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(120,190,210,.16) 1px,transparent 1px),linear-gradient(180deg,var(--bg),var(--bg2));background-size:36px 36px,36px 36px,auto;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:30}
+#bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#bg i{position:absolute;bottom:-50px;width:var(--s);height:var(--s);border-radius:50%;border:2px solid var(--blue-d);opacity:.28;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh)}}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:31;background:var(--hd);border-bottom:2px solid var(--line)}
+.nav{max-width:1100px;margin:auto;display:flex;align-items:center;gap:8px;padding:10px 20px;flex-wrap:wrap}
+.brand{font-weight:900;font-size:1.05rem;margin-right:auto}
+main{position:relative;z-index:1;max-width:1100px;margin:auto;padding:0 20px 70px}
+section{margin-top:72px}
+h1{font-size:3.1rem;line-height:1.2;margin:8px 0 12px;font-weight:900;letter-spacing:-.02em;background:linear-gradient(90deg,var(--blue-d),var(--mint-d));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:2rem;margin:4px 0 6px;font-weight:900}
+.eb{display:inline-block;background:var(--mint);font-weight:700;font-size:.9rem;border-radius:999px;padding:.1em .9em}
+.sub{color:var(--muted);margin:0 0 22px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;box-shadow:var(--sh);padding:22px}
+.btn{font:inherit;font-weight:700;color:var(--ink);border:2px solid transparent;border-radius:999px;padding:.55em 1.2em;background:linear-gradient(135deg,var(--blue),var(--mint));box-shadow:0 3px 0 var(--line),var(--sh);cursor:pointer;text-decoration:none;display:inline-block;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(1px)}
+.btn.sm{padding:.3em .9em;font-size:.9rem}
+.btn[aria-pressed=true]{border-color:var(--mint-d);box-shadow:0 0 0 3px var(--mint-d)}
+:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
+/* hello */
+.hello{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center;padding-top:44px}
+.prof{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:0;border-left:8px solid var(--mint-d)}
+.prof dt{font-weight:700;color:var(--muted)}.prof dd{margin:0;font-weight:700;font-size:1.1rem}
+.stage{display:flex;flex-direction:column;align-items:center;gap:14px}
+.say{position:relative;background:var(--card);border:2px solid var(--mint-d);border-radius:18px;padding:12px 18px;min-height:3.4em;width:100%;text-align:center;font-weight:500}
+.say::after{content:"";position:absolute;left:50%;bottom:-11px;width:18px;height:18px;background:var(--card);border-right:2px solid var(--mint-d);border-bottom:2px solid var(--mint-d);transform:translateX(-50%) rotate(45deg)}
+.chara{width:170px;aspect-ratio:120/150;animation:fl 3.2s ease-in-out infinite}
+.chara.s{width:92px;flex:none}
+@keyframes fl{50%{transform:translateY(-10px) rotate(2deg)}}
+/* fields */
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.fcard{font:inherit;font-weight:700;font-size:1.1rem;color:var(--ink);cursor:pointer;background:var(--card);border:2px solid var(--line);border-top:9px solid var(--c);border-radius:20px;padding:20px 6px 16px;box-shadow:var(--sh);text-align:center;transition:transform .2s}
+.fcard span{display:block;font-size:2.4rem;line-height:1.3}
+.fcard:hover{transform:translateY(-4px) rotate(-1.5deg)}
+.fcard[aria-pressed=true]{background:var(--mint);border-color:var(--mint-d);border-top-color:var(--c)}
+.fcard[aria-pressed=true]::after{content:"★ 관심";display:block;font-size:.8rem;color:var(--mint-d)}
+.bar{display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+#fsel{font-weight:700}
+/* skills */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+.sk:nth-child(1){margin-top:0}.sk:nth-child(2){margin-top:22px}.sk:nth-child(3){margin-top:44px}
+.rank{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:1.25rem;background:linear-gradient(135deg,var(--blue),var(--mint));border:3px solid var(--mint-d)}
+.sk h3{margin:10px 0 14px;font-size:1.35rem}
+.tag{display:inline-block;font-size:.85rem;font-weight:700;background:var(--blue);border-radius:8px;padding:0 .7em}
+.sk p{margin:4px 0 14px}
+/* work */
+.duo{display:grid;grid-template-columns:1fr 64px 1fr;gap:12px;align-items:center;margin-top:20px}
+.duo .card{transition:opacity .3s,transform .3s}
+.ai{border-top:9px solid var(--blue-d)}.me{border-top:9px solid var(--mint-d)}
+.duo h3{margin:0 0 8px}.duo ul{margin:0;padding-left:1.2em}
+.mid{font-size:2.2rem;text-align:center}
+#duo[data-v=ai] .me,#duo[data-v=me] .ai{opacity:.35;transform:scale(.96)}
+/* resolve */
+.goal{font-size:1.4rem;font-weight:700;margin:0 0 6px}
+.pl{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 16px;margin-top:10px;transition:background .25s}
+.pl.on{background:var(--mint);border-color:var(--mint-d)}
+.final{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:28px;margin-top:28px;padding:30px;border-radius:28px;background:linear-gradient(135deg,var(--blue),var(--mint));border:3px solid var(--mint-d)}
+.final h3{font-size:2.3rem;margin:0 0 12px;font-weight:900}
+.bs{position:absolute;bottom:10px;font-size:1.6rem;pointer-events:none}
+/* game */
+.game{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+.pal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.el{font:inherit;color:#17414d;cursor:pointer;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:16px;padding:12px 4px;box-shadow:0 4px 0 rgba(0,0,0,.12);transition:transform .12s}
+.el b{display:block;font-size:1.7rem}.el span{font-size:.85rem}
+.el:hover{transform:translateY(-3px)}.el:active{transform:translateY(3px);box-shadow:none}
+.top{display:flex;align-items:center;gap:14px}
+.top .say{text-align:left}.top .say::after{left:-9px;bottom:auto;top:50%;transform:translateY(-50%) rotate(135deg)}
+#msg.ok{border-color:var(--mint-d);background:var(--mint)}#msg.no{border-color:#e07a8a}
+#flask{background:var(--bg);border:3px dashed var(--blue-d);border-radius:18px;min-height:112px;padding:12px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;margin:14px 0 8px}
+#flask b{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#17414d;box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);animation:pop .25s}
+#flask em{color:var(--muted)}
+#flask.ok{animation:glow .8s}#flask.no{animation:shake .4s}
+@keyframes pop{from{transform:scale(0)}}
+@keyframes glow{50%{box-shadow:0 0 0 10px var(--mint)}}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+#fml{font-size:2.3rem;font-weight:900;text-align:center;min-height:1.4em}
+.acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.col{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:12px}
+.slot{background:var(--bg);border:2px dashed var(--line);border-radius:14px;padding:10px 4px;text-align:center;color:var(--muted)}
+.slot b{display:block;font-size:1.4rem;font-weight:900}.slot small{font-size:.82rem}
+.slot.on{background:var(--mint);border:2px solid var(--mint-d);color:var(--ink);animation:pop .3s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:820px){.hello,.game,.g3,.duo{grid-template-columns:1fr}.g5,.col{grid-template-columns:repeat(2,1fr)}.sk{margin-top:0!important}.final{flex-direction:column}h1{font-size:2.3rem}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<path id="fp" d="M48 10h24v34l32 70q6 14-10 14H26q-16 0-10-14l32-70z"/>
+<clipPath id="fc"><use href="#fp"/></clipPath>
+<symbol id="chara" viewBox="0 0 120 150">
+<path d="M98 98q12-2 14-16M22 98q-12-2-14-16" fill="none" stroke="#3e9ad0" stroke-width="4" stroke-linecap="round"/>
+<circle cx="112" cy="82" r="5" fill="#bfe3f7" stroke="#3e9ad0" stroke-width="2.5"/><circle cx="8" cy="82" r="5" fill="#bfe3f7" stroke="#3e9ad0" stroke-width="2.5"/>
+<use href="#fp" fill="#eaf8ff"/>
+<g clip-path="url(#fc)"><rect y="76" width="120" height="70" fill="#8fe6c8"/><circle cx="36" cy="116" r="5" fill="#fff" opacity=".7"/><circle cx="88" cy="106" r="4" fill="#fff" opacity=".7"/><circle cx="80" cy="122" r="3" fill="#fff" opacity=".7"/></g>
+<use href="#fp" fill="none" stroke="#3e9ad0" stroke-width="4" stroke-linejoin="round"/>
+<rect x="42" y="4" width="36" height="9" rx="4.5" fill="#bfe3f7" stroke="#3e9ad0" stroke-width="3"/>
+<circle cx="50" cy="92" r="5" fill="#17414d"/><circle cx="70" cy="92" r="5" fill="#17414d"/><circle cx="51.8" cy="90.2" r="1.6" fill="#fff"/><circle cx="71.8" cy="90.2" r="1.6" fill="#fff"/>
+<path d="M52 103q8 8 16 0" fill="none" stroke="#17414d" stroke-width="3" stroke-linecap="round"/>
+<circle cx="43" cy="102" r="4" fill="#ffb3c1" opacity=".75"/><circle cx="77" cy="102" r="4" fill="#ffb3c1" opacity=".75"/>
+</symbol></defs></svg>
+<div id="bg"></div>
+<header><div class="nav">
+<span class="brand">🧪 화학자가 되기 위해서</span>
+<a class="btn sm" href="#hello">인사말</a><a class="btn sm" href="#fields">다양한 분야</a><a class="btn sm" href="#skills">필요한 역량</a><a class="btn sm" href="#work">하는 일</a><a class="btn sm" href="#resolve">나의 다짐</a><a class="btn sm" href="#game">미니게임</a>
+</div></header>
+<main>
+
+<section id="hello" class="hello">
+<div>
+<span class="eb">① 인사말</span>
+<h1>화학자가 되기 위해서</h1>
+<p style="font-size:1.25rem;font-weight:700;margin:0 0 16px">안녕하세요, 저는 최준성이에요! 미래의 나를 소개할게요.</p>
+<dl class="card prof"><dt>이름</dt><dd>최준성</dd><dt>나이</dt><dd>30세</dd><dt>직업</dt><dd>화학자</dd><dt>일하는 곳</dt><dd>연구소</dd></dl>
+<p>화학에 관심이 있어 화학자를 희망 직업으로 선택했어요.</p>
+<a class="btn" href="#fields">관심 분야 보러 가기</a>
+</div>
+<div class="stage">
+<div class="say" id="say" aria-live="polite">안녕하세요! 만나서 반갑습니다 👋</div>
+<svg class="chara" aria-label="플라스크 캐릭터"><use href="#chara"/></svg>
+<button class="btn" id="hiBtn">인사하기 👋</button>
+</div>
+</section>
+
+<section id="fields">
+<span class="eb">② 다양한 분야</span>
+<h2>다양한 분야</h2>
+<p class="sub">화학자와 관련하여 관심 있는 분야들이에요.</p>
+<div class="g5">
+<button class="fcard" data-n="생명공학" aria-pressed="false" style="--c:#8fd3f4"><span>🧬</span>생명공학</button>
+<button class="fcard" data-n="생명과학" aria-pressed="false" style="--c:#8fe6c8"><span>🌿</span>생명과학</button>
+<button class="fcard" data-n="화학" aria-pressed="false" style="--c:#c3b8f5"><span>⚗️</span>화학</button>
+<button class="fcard" data-n="뇌과학" aria-pressed="false" style="--c:#ffc9d4"><span>🧠</span>뇌과학</button>
+<button class="fcard" data-n="바이오" aria-pressed="false" style="--c:#ffe29a"><span>🔬</span>바이오</button>
+</div>
+<div class="bar"><span id="fsel">관심 있는 분야를 눌러 골라 보세요!</span><button class="btn sm" id="fall">모두 선택 / 해제</button></div>
+</section>
+
+<section id="skills">
+<span class="eb">③ 필요한 역량</span>
+<h2>필요한 역량 TOP 3</h2>
+<p class="sub">AI 시대에 화학자가 되기 위해 기르고 싶은 역량이에요.</p>
+<div class="g3">
+<article class="card sk"><div class="rank">1위</div><h3>💡 창의·융합 사고</h3>
+<span class="tag">필요한 이유</span><p>어떤 조합으로 해야 할지 생각하고 그 생각을 실현해야 하기 때문</p>
+<span class="tag">기르는 방법</span><p>새로운 것을 상상하고, 항상 같은 것만 하지 않고 새로운 도전을 많이 해보기</p></article>
+<article class="card sk"><div class="rank">2위</div><h3>🛡️ 윤리·책임 의식</h3>
+<span class="tag">필요한 이유</span><p>이상한 약물이나 약품을 개발하지 않고 최대한 안전한 것을 만들어야 하기 때문</p>
+<span class="tag">기르는 방법</span><p>나를 여기듯 남을 여기기</p></article>
+<article class="card sk"><div class="rank">3위</div><h3>📈 데이터 해석력</h3>
+<span class="tag">필요한 이유</span><p>AI가 정리한 데이터나 자료를 보고 해석할 수 있어야 하기 때문</p>
+<span class="tag">기르는 방법</span><p>수학을 열심히 하고 자료 해석을 잘하기</p></article>
+</div>
+</section>
+
+<section id="work">
+<span class="eb">④ 무슨 일을 하고 어떻게 될 수 있는지</span>
+<h2>무슨 일을 하고, 어떻게 될 수 있을까요?</h2>
+<p class="sub">AI 시대에 화학자가 맡는 역할이에요.</p>
+<div class="bar" style="margin:0">
+<button class="btn sm" data-v="all" aria-pressed="true">함께 보기</button>
+<button class="btn sm" data-v="ai" aria-pressed="false">🤖 AI가 도와줄 일</button>
+<button class="btn sm" data-v="me" aria-pressed="false">🧑‍🔬 내가 직접 맡을 일</button>
+</div>
+<div class="duo" id="duo" data-v="all">
+<div class="card ai"><h3>🤖 AI가 도와줄 일</h3><ul><li>화학 반응이 어떻게 될지 예측하기</li></ul></div>
+<div class="mid">🤝</div>
+<div class="card me"><h3>🧑‍🔬 내가 직접 맡을 일</h3><ul><li>실제 약물을 통해 실험하기</li><li>실험을 통해 입증하기</li></ul></div>
+</div>
+</section>
+
+<section id="resolve">
+<span class="eb">⑤ 나의 다짐</span>
+<h2>나의 다짐</h2>
+<p class="goal">🎯 화학자가 되는 것이 나의 목표예요.</p>
+<p class="sub">다짐마다 버튼을 눌러 약속해 보세요.</p>
+<div class="pl"><span>창의적으로 생각하고 새로운 도전을 많이 하기</span><button class="btn sm">다짐하기</button></div>
+<div class="pl"><span>윤리와 책임을 생각하며 안전한 약물과 약품을 개발하기</span><button class="btn sm">다짐하기</button></div>
+<div class="pl"><span>수학과 자료 해석 능력을 기르기</span><button class="btn sm">다짐하기</button></div>
+<div class="final" id="final">
+<svg class="chara" style="width:120px" aria-hidden="true"><use href="#chara"/></svg>
+<div><h3>“야, 너도 할 수 있어”</h3><button class="btn" id="cheer">응원 받기 🎉</button></div>
+</div>
+</section>
+
+<section id="game">
+<span class="eb">⑥ 미니게임</span>
+<h2>원소로 화학식 만들기</h2>
+<p class="sub">원소를 골라 조합하고, 합성하기로 새로운 물질을 만들어 보세요.</p>
+<div class="game">
+<div class="card"><b>원소 고르기</b><div class="pal" id="pal"></div></div>
+<div class="card">
+<div class="top"><svg class="chara s" aria-hidden="true"><use href="#chara"/></svg><div class="say" id="msg" aria-live="polite">원소를 골라 화학식을 만들고 합성해 보세요!</div></div>
+<div id="flask"></div>
+<div id="fml"></div>
+<div class="acts"><button class="btn" id="mix">🧪 합성하기</button><button class="btn" id="undo">↩ 하나 빼기</button><button class="btn" id="clr">🗑 비우기</button></div>
+</div>
+</div>
+<div class="card" style="margin-top:20px"><b>만든 물질 <span id="cnt"></span></b><div class="col" id="col"></div></div>
+</section>
+
+</main>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const bg=$('#bg');
+for(let i=0;i<14;i++){const b=document.createElement('i');b.style.cssText=`left:${Math.random()*100}%;--s:${8+Math.random()*26}px;animation-duration:${10+Math.random()*14}s;animation-delay:${-Math.random()*20}s`;bg.append(b)}
+/* hello */
+const hi=["안녕하세요! 만나서 반갑습니다 👋","저는 최준성이에요. 연구소에서 일하는 화학자예요.","화학에 관심이 있어 화학자를 희망 직업으로 선택했어요."];let hn=0;
+$('#hiBtn').onclick=()=>{$('#say').textContent=hi[hn=(hn+1)%hi.length]};
+/* fields */
+const fb=$$('.fcard'),isOn=b=>b.getAttribute('aria-pressed')==='true';
+const upd=()=>{const s=fb.filter(isOn).map(b=>b.dataset.n);$('#fsel').textContent=s.length?'내가 고른 분야: '+s.join(', '):'관심 있는 분야를 눌러 골라 보세요!'};
+fb.forEach(b=>b.onclick=()=>{b.setAttribute('aria-pressed',!isOn(b));upd()});
+$('#fall').onclick=()=>{const all=fb.some(b=>!isOn(b));fb.forEach(b=>b.setAttribute('aria-pressed',all));upd()};
+/* work */
+$$('[data-v]').forEach(b=>b.onclick=()=>{$('#duo').dataset.v=b.dataset.v;$$('[data-v]').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+/* resolve */
+$$('.pl button').forEach(b=>b.onclick=()=>{const on=b.closest('.pl').classList.toggle('on');b.textContent=on?'다짐 완료 ✔':'다짐하기'});
+$('#cheer').onclick=()=>{const f=$('#final'),E=['🎉','✨','🧪','💧','⭐','🫧'];
+for(let i=0;i<18;i++){const s=document.createElement('span');s.className='bs';s.textContent=E[i%E.length];s.style.left=Math.random()*95+'%';f.append(s);
+s.animate([{transform:'translateY(0) scale(.6)',opacity:1},{transform:`translateY(${-130-Math.random()*80}px) scale(1.3)`,opacity:0}],{duration:1200+Math.random()*600,delay:Math.random()*300,fill:'both'}).onfinish=()=>s.remove()}};
+/* game */
+const EL={H:['수소','#bfe3f7'],C:['탄소','#d9dcec'],N:['질소','#cdd8ff'],O:['산소','#ffd6d6'],Na:['나트륨','#fff0b8'],Cl:['염소','#c9f2c0']};
+const RX=[['H2O','물',{H:2,O:1}],['CO2','이산화 탄소',{C:1,O:2}],['NaCl','염화 나트륨',{Na:1,Cl:1}],['NH3','암모니아',{N:1,H:3}],['CH4','메테인',{C:1,H:4}],['HCl','염화 수소',{H:1,Cl:1}],['O2','산소',{O:2}],['H2','수소',{H:2}],['CO','일산화 탄소',{C:1,O:1}]];
+const key=o=>Object.keys(o).sort().map(k=>k+o[k]).join(''),MAP=Object.fromEntries(RX.map(r=>[key(r[2]),r]));
+const u=s=>s.replace(/\d/g,d=>'₀₁₂₃₄₅₆₇₈₉'[d]),sub=s=>s.replace(/\d+/g,'<sub>$&</sub>');
+let pick=[];const found=new Set(),flask=$('#flask');
+const cnt=()=>pick.reduce((o,s)=>(o[s]=(o[s]||0)+1,o),{});
+const fm=()=>{const o=cnt();return Object.keys(o).map(k=>k+(o[k]>1?o[k]:'')).join('')};
+function msg(t,c=''){const m=$('#msg');m.textContent=t;m.className='say '+c}
+function fx(c){flask.classList.remove('ok','no');void flask.offsetWidth;flask.classList.add(c)}
+function render(){
+flask.innerHTML=pick.map(s=>`<b style="background:${EL[s][1]}">${s}</b>`).join('')||'<em>원소를 눌러 플라스크에 넣어 보세요</em>';
+$('#fml').innerHTML=pick.length?sub(fm()):'';
+$('#cnt').textContent=`(${found.size}/${RX.length})`;
+$('#col').innerHTML=RX.map(r=>found.has(r[0])?`<div class="slot on"><b>${sub(r[0])}</b><small>${r[1]}</small></div>`:`<div class="slot"><b>?</b><small>${r[1]}</small></div>`).join('')}
+$('#pal').innerHTML=Object.entries(EL).map(([s,[n,c]])=>`<button class="el" data-s="${s}" style="--c:${c}"><b>${s}</b><span>${n}</span></button>`).join('');
+$('#pal').onclick=e=>{const b=e.target.closest('.el');if(!b)return;
+if(pick.length>=8)return msg('플라스크가 가득 찼어요. 합성하거나 비워 주세요.','no');
+pick.push(b.dataset.s);render();msg('원소를 더 넣거나 합성하기를 눌러 보세요.')};
+$('#undo').onclick=()=>{pick.pop();render()};
+$('#clr').onclick=()=>{pick=[];render();msg('플라스크를 비웠어요. 새로운 조합을 만들어 보세요!')};
+$('#mix').onclick=()=>{
+if(!pick.length)return msg('먼저 원소를 골라 주세요!','no');
+const r=MAP[key(cnt())];
+if(!r){fx('no');return msg('아직 만들어지지 않는 조합이에요. 원소를 바꿔 다시 해 보세요!','no')}
+const nw=!found.has(r[0]);found.add(r[0]);pick=[];fx('ok');render();
+const name=`${u(r[0])} (${r[1]})`;
+msg(found.size===RX.length?'🏆 모든 물질을 만들었어요! 정말 대단해요!':nw?`🎉 ${name} 생성! 새로운 물질을 만들었어요!`:`${name}은(는) 이미 만든 물질이에요. 다른 조합도 도전해 보세요!`,'ok')};
+render();
+</script>
+</body>
+</html>

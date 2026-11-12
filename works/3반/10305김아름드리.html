@@ -1,0 +1,483 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>미래 응급구조사</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: navy hero with ECG line, then four light/tinted bands and a navy closing band, each with one illustration. */
+:root {
+  --bg: #ffffff;
+  --surface: #eef2f9;
+  --card: #ffffff;
+  --fg: #14264b;
+  --muted: #475676;
+  --line: #d3dcec;
+  --red: #c81e2f;
+  --red-solid: #d62839;
+  --band: #14264b;
+  --on-band: #ffffff;
+  --on-band-muted: #c4d0e8;
+  --red-on-band: #ff6f7d;
+  --stage: #eaf0fa;
+  --ill-navy: #14264b;
+  --ill-navy-2: #1f3a73;
+  --ill-red: #d62839;
+  --ill-white: #ffffff;
+  --ill-glass: #bcd2f3;
+  --ill-skin: #f1c7a3;
+  --font-display: "Black Han Sans", "Noto Sans KR", system-ui, sans-serif;
+  --font-body: "Noto Sans KR", system-ui, -apple-system, "Malgun Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1630;
+    --surface: #101f42;
+    --card: #162a56;
+    --fg: #eef2fa;
+    --muted: #b6c3de;
+    --line: #2a406f;
+    --red: #ff6f7d;
+    --band: #081025;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1630;
+  --surface: #101f42;
+  --card: #162a56;
+  --fg: #eef2fa;
+  --muted: #b6c3de;
+  --line: #2a406f;
+  --red: #ff6f7d;
+  --band: #081025;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+h1, h2, h3, p, dl, dd, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: clamp(48px, 8vw, 88px); }
+.band--surface { background: var(--surface); }
+.band--navy { background: var(--band); color: var(--on-band); }
+section[id] { scroll-margin-top: 8px; }
+
+/* Hero */
+.hero { background: var(--band); color: var(--on-band); padding-top: clamp(28px, 5vw, 56px); }
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(24px, 5vw, 56px);
+  align-items: center;
+}
+.hero__tag {
+  display: inline-block;
+  background: var(--red-solid);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 9vw, 5.2rem);
+  line-height: 1.1;
+  margin-top: 16px;
+  text-wrap: balance;
+}
+.hero h1 em { font-style: normal; color: var(--red-on-band); }
+.hero__sub { margin-top: 16px; font-size: clamp(1.1rem, 2.6vw, 1.35rem); color: var(--on-band-muted); }
+.hero__sub strong { color: var(--on-band); font-weight: 700; }
+.nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.nav a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+.nav a:hover { background: #fff; color: #14264b; border-color: #fff; }
+.ecg { display: block; width: 100%; height: 72px; margin-top: clamp(28px, 5vw, 48px); }
+.ecg path { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.ecg .base { stroke: rgba(255, 255, 255, 0.28); stroke-width: 3; }
+.ecg .pulse { stroke: #ff6f7d; stroke-width: 4; stroke-dasharray: 90 910; animation: sweep 3.2s linear infinite; }
+@keyframes sweep { from { stroke-dashoffset: 1000; } to { stroke-dashoffset: 0; } }
+
+/* Illustration stages */
+.stage {
+  background: var(--stage);
+  border-radius: 24px;
+  padding: clamp(12px, 3vw, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stage svg { width: 100%; height: auto; max-height: 340px; display: block; }
+.ill-navy { fill: var(--ill-navy); }
+.ill-navy2 { fill: var(--ill-navy-2); }
+.ill-red { fill: var(--ill-red); }
+.ill-white { fill: var(--ill-white); }
+.ill-glass { fill: var(--ill-glass); }
+.ill-skin { fill: var(--ill-skin); }
+.ill-line { fill: none; stroke: var(--ill-navy); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Section headings */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--red);
+}
+.eyebrow svg { width: 20px; height: 20px; flex: none; }
+.band--navy .eyebrow { color: var(--red-on-band); }
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 5.5vw, 3rem);
+  line-height: 1.25;
+  margin-top: 8px;
+  text-wrap: balance;
+}
+h3 { font-size: 1.25rem; font-weight: 700; line-height: 1.4; }
+.lead { margin-top: 12px; color: var(--muted); font-size: 1.1rem; max-width: 40em; }
+.band--navy .lead { color: var(--on-band-muted); }
+
+/* 1. 나의 소개 */
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: clamp(24px, 5vw, 56px); align-items: center; margin-top: 32px; }
+.profile { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+.profile__row { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 12px; padding: 16px 22px; align-items: baseline; }
+.profile__row + .profile__row { border-top: 1px solid var(--line); }
+.profile dt { font-weight: 700; color: var(--red); font-size: 0.95rem; }
+.profile dd { font-size: 1.15rem; font-weight: 500; }
+.profile__row--big dd { font-size: 1.5rem; font-weight: 700; }
+.about { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.about__item { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px 22px; }
+.about__item h3 { color: var(--red); font-size: 1rem; letter-spacing: 0.04em; margin-bottom: 6px; }
+.about__item p { font-size: 1.05rem; }
+
+/* 2. 나의 꿈 */
+.dream { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); align-items: center; margin-top: 32px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px 26px; }
+.panel + .panel { margin-top: 16px; }
+.panel h3 { color: var(--red); }
+.panel p { margin-top: 8px; font-size: 1.1rem; }
+.reasons { display: grid; gap: 10px; margin-top: 12px; }
+.reasons li { display: flex; gap: 12px; align-items: flex-start; font-size: 1.1rem; }
+.reasons svg { width: 24px; height: 24px; flex: none; margin-top: 4px; }
+
+/* 3. 내가 기르는 역량 */
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 32px; }
+.skill { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px 24px; display: flex; flex-direction: column; gap: 18px; }
+.skill__rank { display: flex; align-items: baseline; gap: 12px; }
+.skill__rank b { font-family: var(--font-display); font-weight: 400; font-size: 3rem; line-height: 1; color: var(--red); }
+.skill__rank span { font-weight: 700; font-size: 0.95rem; color: var(--muted); }
+.skill h3 { font-size: 1.4rem; margin-top: -6px; }
+.skill dl { display: grid; gap: 16px; }
+.skill dt { display: inline-block; font-weight: 700; font-size: 0.9rem; background: var(--surface); color: var(--fg); padding: 2px 12px; border-radius: 999px; margin-bottom: 6px; }
+.skill dd { font-size: 1.02rem; }
+
+/* 4. 미래의 나 */
+.future { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: clamp(24px, 5vw, 56px); align-items: center; margin-top: 32px; }
+.roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 32px; }
+.role { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px 26px; }
+.role h3 { display: flex; align-items: center; gap: 10px; }
+.role__dot { width: 14px; height: 14px; border-radius: 50%; background: var(--red-solid); flex: none; }
+.role--me .role__dot { background: var(--ill-navy-2); }
+.role ul { display: grid; gap: 12px; margin-top: 14px; }
+.role li { font-size: 1.05rem; padding-left: 18px; position: relative; }
+.role li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+/* 5. 나의 다짐 */
+.pledge { text-align: center; max-width: 760px; margin: 0 auto; }
+.pledge .eyebrow { justify-content: center; }
+.pledge__text { font-family: var(--font-display); font-size: clamp(1.7rem, 5vw, 2.6rem); line-height: 1.45; margin-top: 16px; text-wrap: balance; }
+.pledge__text em { font-style: normal; color: var(--red-on-band); }
+.pledge .ecg { margin-top: 32px; }
+.sign { margin-top: 12px; color: var(--on-band-muted); font-size: 1.05rem; }
+.sign strong { color: #fff; }
+
+footer { background: var(--band); color: var(--on-band-muted); text-align: center; padding-block: 20px 28px; font-size: 14px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+
+@media (max-width: 860px) {
+  .hero__grid, .intro, .dream, .future { grid-template-columns: minmax(0, 1fr); }
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .stage svg { max-height: 280px; }
+  .dream .stage, .intro .stage { order: -1; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .about, .roles { grid-template-columns: minmax(0, 1fr); }
+  .profile__row { grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 14px 20px; }
+  .panel, .role, .skill { padding: 22px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ecg .pulse { animation: none; stroke-dasharray: none; stroke-dashoffset: 0; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="plus" viewBox="0 0 20 20"><path d="M7 1h6v6h6v6h-6v6H7v-6H1V7h6z" fill="currentColor"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#d62839"/><path d="M6.5 12.5l3.8 3.8 7.2-8" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <span class="hero__tag">김아름드리의 자기소개</span>
+        <h1>미래 <em>응급</em>구조사</h1>
+        <p class="hero__sub"><strong>27살</strong>, 병원 응급실에서 일하는 나의 모습</p>
+        <nav class="nav" aria-label="섹션 바로가기">
+          <a href="#intro">나의 소개</a>
+          <a href="#dream">나의 꿈</a>
+          <a href="#skills">내가 기르는 역량</a>
+          <a href="#future">미래의 나</a>
+          <a href="#pledge">나의 다짐</a>
+        </nav>
+      </div>
+      <div class="stage" role="img" aria-label="구급차 그림">
+        <svg viewBox="0 0 400 270" aria-hidden="true">
+          <rect x="20" y="236" width="360" height="6" rx="3" fill="#c9d6ee"/>
+          <rect x="40" y="96" width="222" height="116" rx="12" class="ill-white" stroke="#14264b" stroke-width="5"/>
+          <path d="M262 126h58l36 42v44h-94z" class="ill-white" stroke="#14264b" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M274 138h38l26 30h-64z" class="ill-glass"/>
+          <rect x="40" y="170" width="316" height="16" class="ill-red"/>
+          <rect x="120" y="126" width="60" height="18" class="ill-red"/>
+          <rect x="141" y="105" width="18" height="60" class="ill-red"/>
+          <rect x="128" y="76" width="52" height="14" rx="5" class="ill-red"/>
+          <rect x="136" y="82" width="36" height="5" rx="2" fill="#fff"/>
+          <rect x="344" y="190" width="14" height="14" rx="3" fill="#ffc94d"/>
+          <circle cx="112" cy="214" r="26" class="ill-navy"/><circle cx="112" cy="214" r="11" class="ill-white"/>
+          <circle cx="300" cy="214" r="26" class="ill-navy"/><circle cx="300" cy="214" r="11" class="ill-white"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <svg class="ecg" viewBox="0 0 1000 72" preserveAspectRatio="none" aria-hidden="true">
+    <path class="base" pathLength="1000" d="M0 36H300l18-3 14-12 14 12h46l10 8 16-36 22 58 12-26h70l20-2 14-12 14 12H1000"/>
+    <path class="pulse" pathLength="1000" d="M0 36H300l18-3 14-12 14 12h46l10 8 16-36 22 58 12-26h70l20-2 14-12 14 12H1000"/>
+  </svg>
+</header>
+
+<main>
+  <!-- 1. 나의 소개 -->
+  <section id="intro" class="band" aria-labelledby="t-intro">
+    <div class="wrap">
+      <span class="eyebrow"><svg><use href="#plus"/></svg>나의 소개</span>
+      <h2 id="t-intro">안녕하세요, 김아름드리입니다</h2>
+      <div class="intro">
+        <div>
+          <dl class="profile">
+            <div class="profile__row profile__row--big"><dt>이름</dt><dd>김아름드리</dd></div>
+            <div class="profile__row"><dt>미래의 나이</dt><dd>27살</dd></div>
+            <div class="profile__row"><dt>희망 직업</dt><dd>응급구조사</dd></div>
+            <div class="profile__row"><dt>일하는 곳</dt><dd>병원 응급실</dd></div>
+          </dl>
+          <div class="about">
+            <div class="about__item">
+              <h3>나의 성격</h3>
+              <p>몸을 움직이는 활동적인 일을 좋아한다.</p>
+            </div>
+            <div class="about__item">
+              <h3>나의 꿈</h3>
+              <p>위급한 환자의 상태를 빠르게 판단하고 병원으로 이송시키는 응급구조사</p>
+            </div>
+          </div>
+        </div>
+        <div class="stage" role="img" aria-label="응급구조사 그림">
+          <svg viewBox="0 0 300 380" aria-hidden="true">
+            <ellipse cx="150" cy="364" rx="110" ry="9" fill="#c9d6ee"/>
+            <rect x="100" y="256" width="46" height="94" rx="8" class="ill-navy2"/>
+            <rect x="154" y="256" width="46" height="94" rx="8" class="ill-navy2"/>
+            <rect x="92" y="338" width="58" height="22" rx="8" fill="#0b1630"/>
+            <rect x="150" y="338" width="58" height="22" rx="8" fill="#0b1630"/>
+            <path d="M96 146Q150 122 204 146L218 268H82Z" class="ill-navy"/>
+            <rect x="86" y="206" width="128" height="10" fill="#e8eef9"/>
+            <path d="M98 150L58 236q-6 16 8 20 14 3 19-11L124 172z" class="ill-navy"/>
+            <circle cx="68" cy="252" r="11" class="ill-skin"/>
+            <path d="M202 150l40 86q6 16-8 20-14 3-19-11L176 172z" class="ill-navy"/>
+            <circle cx="232" cy="252" r="11" class="ill-skin"/>
+            <rect x="214" y="262" width="52" height="38" rx="7" class="ill-red"/>
+            <rect x="226" y="276" width="28" height="9" fill="#fff"/>
+            <rect x="235.5" y="268" width="9" height="25" fill="#fff"/>
+            <path d="M222 262v-8a8 8 0 0 1 8-8h20a8 8 0 0 1 8 8v8" fill="none" stroke="#14264b" stroke-width="5"/>
+            <circle cx="126" cy="168" r="17" class="ill-white"/>
+            <rect x="116" y="164" width="20" height="8" class="ill-red"/>
+            <rect x="122" y="158" width="8" height="20" class="ill-red"/>
+            <rect x="140" y="112" width="20" height="18" class="ill-skin"/>
+            <circle cx="150" cy="84" r="34" class="ill-skin"/>
+            <path d="M112 78a38 38 0 0 1 76 0z" class="ill-navy"/>
+            <rect x="106" y="76" width="88" height="9" rx="4.5" class="ill-navy"/>
+            <rect x="141" y="58" width="18" height="6" class="ill-red"/>
+            <rect x="147" y="52" width="6" height="18" class="ill-red"/>
+            <circle cx="138" cy="92" r="3.5" class="ill-navy"/>
+            <circle cx="162" cy="92" r="3.5" class="ill-navy"/>
+            <path d="M139 104q11 9 22 0" class="ill-line" stroke-width="3.5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 나의 꿈 -->
+  <section id="dream" class="band band--surface" aria-labelledby="t-dream">
+    <div class="wrap">
+      <span class="eyebrow"><svg><use href="#plus"/></svg>나의 꿈</span>
+      <h2 id="t-dream">나는 응급구조사가 되고 싶다</h2>
+      <div class="dream">
+        <div class="stage" role="img" aria-label="구급상자 그림">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <rect x="60" y="252" width="280" height="6" rx="3" fill="#c9d6ee"/>
+            <path d="M150 98V74a14 14 0 0 1 14-14h72a14 14 0 0 1 14 14v24" fill="none" stroke="#14264b" stroke-width="16" stroke-linecap="round"/>
+            <rect x="60" y="96" width="280" height="156" rx="20" class="ill-red"/>
+            <rect x="60" y="96" width="280" height="30" rx="20" fill="#b51c2c"/>
+            <rect x="60" y="112" width="280" height="14" fill="#b51c2c"/>
+            <rect x="52" y="160" width="14" height="36" rx="5" class="ill-navy"/>
+            <rect x="334" y="160" width="14" height="36" rx="5" class="ill-navy"/>
+            <rect x="160" y="146" width="80" height="36" class="ill-white"/>
+            <rect x="182" y="126" width="36" height="76" class="ill-white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="panel">
+            <h3>응급구조사가 하는 일</h3>
+            <p>위급한 환자의 상태를 빠르게 판단하고 병원으로 이송시킨다.</p>
+          </div>
+          <div class="panel">
+            <h3>응급구조사를 선택한 이유</h3>
+            <ul class="reasons">
+              <li><svg aria-hidden="true"><use href="#check"/></svg><span>몸을 움직이는 활동적인 일을 좋아해서</span></li>
+              <li><svg aria-hidden="true"><use href="#check"/></svg><span>응급구조사들의 사명감과 용기가 멋있어 보여서</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 내가 기르는 역량 -->
+  <section id="skills" class="band" aria-labelledby="t-skills">
+    <div class="wrap">
+      <span class="eyebrow"><svg><use href="#plus"/></svg>내가 기르는 역량</span>
+      <h2 id="t-skills">내가 기를 AI 시대 역량 TOP 3</h2>
+      <div class="skills">
+        <article class="skill">
+          <div class="skill__rank"><b>1위</b><span>TOP 3</span></div>
+          <h3>AI 활용 능력</h3>
+          <dl>
+            <div><dt>필요한 이유</dt><dd>AI를 이용해 환자의 상태를 빠르게 분석하고 응급처치에 필요한 정보를 얻어야 하기 때문이다.</dd></div>
+            <div><dt>발전 계획</dt><dd>AI 관련 프로그램을 직접 사용해 보고 환자 상태 분석이나 응급처치 정보 검색 등에 활용하는 연습을 하겠다.</dd></div>
+          </dl>
+        </article>
+        <article class="skill">
+          <div class="skill__rank"><b>2위</b><span>TOP 3</span></div>
+          <h3>질문·문제 정의력</h3>
+          <dl>
+            <div><dt>필요한 이유</dt><dd>환자의 증상과 상황을 정확하게 파악하고 AI에게 필요한 정보를 구체적으로 질문해야 하기 때문이다.</dd></div>
+            <div><dt>발전 계획</dt><dd>다양한 응급 상황을 공부하고 상황에 맞는 질문을 구체적으로 만드는 연습을 하겠다.</dd></div>
+          </dl>
+        </article>
+        <article class="skill">
+          <div class="skill__rank"><b>3위</b><span>TOP 3</span></div>
+          <h3>비판적 사고</h3>
+          <dl>
+            <div><dt>필요한 이유</dt><dd>AI가 잘못된 정보를 제공할 수도 있으므로 결과가 정확한지 판단하고 환자에게 맞는 응급처치를 선택해야 하기 때문이다.</dd></div>
+            <div><dt>발전 계획</dt><dd>AI가 제공한 정보를 무조건 믿지 않고 전문적인 자료와 비교하며 정확성을 판단하는 습관을 기르겠다.</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 미래의 나 -->
+  <section id="future" class="band band--surface" aria-labelledby="t-future">
+    <div class="wrap">
+      <span class="eyebrow"><svg><use href="#plus"/></svg>미래의 나</span>
+      <h2 id="t-future">27살, 병원 응급실의 응급구조사</h2>
+      <div class="future">
+        <div>
+          <div class="panel">
+            <h3>27살 응급구조사가 된 나의 모습</h3>
+            <p>27살의 김아름드리는 병원 응급실에서 일하는 응급구조사다. 위급한 환자의 상태를 빠르게 판단하고 병원으로 이송시킨다.</p>
+          </div>
+          <div class="panel">
+            <h3>병원 응급실에서 일하는 모습과 목표</h3>
+            <p>위급한 상황에서 신속하고 정확하게 판단하고 환자의 생명을 보호하는 것이 나의 목표다.</p>
+          </div>
+        </div>
+        <div class="stage" role="img" aria-label="심장박동 그림">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <path d="M200 262C70 180 88 70 160 70c26 0 40 14 40 14s14-14 40-14c72 0 90 110-40 192z" class="ill-red"/>
+            <path d="M44 156H146l16-6 14-30 20 80 20-62 16 34 14-16H356" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="roles">
+        <div class="role role--ai">
+          <h3><span class="role__dot"></span>AI가 도와줄 일</h3>
+          <ul>
+            <li>환자의 심박수, 혈압, 산소포화도 등 생체 신호를 실시간으로 분석하여 응급 상황을 빠르게 파악한다.</li>
+            <li>교통 상황과 병원별 응급실 수용 가능 여부를 분석하여 가장 빠른 이송 경로를 알려준다.</li>
+          </ul>
+        </div>
+        <div class="role role--me">
+          <h3><span class="role__dot"></span>내가 직접 맡을 일</h3>
+          <ul>
+            <li>위급한 상황에서 신속하고 정확하게 판단하고 환자의 생명을 보호한다.</li>
+            <li>AI의 분석 결과가 항상 정확한 것은 아니므로 최종적으로 환자 상태를 판단하고 책임지는 역할을 한다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 나의 다짐 -->
+  <section id="pledge" class="band band--navy" aria-labelledby="t-pledge">
+    <div class="wrap">
+      <div class="pledge">
+        <span class="eyebrow"><svg><use href="#plus"/></svg>나의 다짐</span>
+        <h2 id="t-pledge" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">나의 다짐</h2>
+        <p class="pledge__text">사람들의 <em>생명</em>을 지키고<br>책임감 있는 응급구조사가 되겠다.</p>
+        <svg class="ecg" viewBox="0 0 1000 72" preserveAspectRatio="none" aria-hidden="true">
+          <path class="base" pathLength="1000" d="M0 36H300l18-3 14-12 14 12h46l10 8 16-36 22 58 12-26h70l20-2 14-12 14 12H1000"/>
+          <path class="pulse" pathLength="1000" d="M0 36H300l18-3 14-12 14 12h46l10 8 16-36 22 58 12-26h70l20-2 14-12 14 12H1000"/>
+        </svg>
+        <p class="sign">응급구조사 <strong>김아름드리</strong></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>미래 응급구조사 · 김아름드리</footer>
+
+</body></html>

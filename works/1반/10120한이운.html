@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>대화</title>
+<style>
+:root{
+  --bg:#ffffff; --surface:#f5f5f5; --text:#1f1f1f; --muted:#555555; --line:#dddddd; --strong:#111111;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#161616; --surface:#222222; --text:#eeeeee; --muted:#b5b5b5; --line:#3a3a3a; --strong:#ffffff;}
+}
+:root[data-theme="dark"]{--bg:#161616; --surface:#222222; --text:#eeeeee; --muted:#b5b5b5; --line:#3a3a3a; --strong:#ffffff;}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.7;font-size:17px}
+header.site{background:var(--surface);border-bottom:1px solid var(--line);text-align:center;padding:48px 20px 36px}
+header.site h1{margin:0;font-size:clamp(2.2rem,6vw,3.2rem);color:var(--strong)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+nav ul{list-style:none;margin:0 auto;padding:0;max-width:900px;display:flex;flex-wrap:wrap;justify-content:center}
+nav a{display:block;padding:14px 16px;color:var(--text);text-decoration:none;font-weight:600;font-size:.95rem}
+nav a:hover,nav a:focus-visible{background:var(--surface);outline:2px solid var(--strong);outline-offset:-2px}
+main{max-width:820px;margin:0 auto;padding:0 20px 40px}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:0}
+h2{margin:0 0 20px;font-size:1.7rem;color:var(--strong);padding-left:12px;border-left:5px solid var(--strong)}
+h3{margin:0 0 6px;font-size:1.15rem;color:var(--strong)}
+dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:10px 20px}
+dt{font-weight:700;color:var(--strong)}
+dd{margin:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin-bottom:14px}
+.card p{margin:4px 0}
+.label{font-weight:700;color:var(--strong)}
+.rank{font-size:1.15rem;font-weight:700;color:var(--strong)}
+.pledge{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700;color:var(--strong);text-align:center;margin:10px 0 0}
+footer{text-align:center;padding:24px 20px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (max-width:560px){
+  body{font-size:16px}
+  dl{grid-template-columns:1fr;gap:2px}
+  dd{margin-bottom:12px}
+  nav a{padding:12px 11px;font-size:.88rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>대화</h1>
+</header>
+
+<nav aria-label="메뉴">
+  <ul>
+    <li><a href="#intro">미래의 나 소개</a></li>
+    <li><a href="#job">나의 희망 직업</a></li>
+    <li><a href="#skills">AI 시대 역량 TOP 3</a></li>
+    <li><a href="#purpose">웹사이트 제작 목적</a></li>
+    <li><a href="#pledge">나의 다짐</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="intro">
+    <h2>미래의 나 소개</h2>
+    <dl>
+      <dt>이름</dt><dd>한이운</dd>
+      <dt>나이</dt><dd>20세</dd>
+      <dt>희망 직업</dt><dd>미용사</dd>
+      <dt>일하는 곳</dt><dd>준오헤어</dd>
+    </dl>
+  </section>
+
+  <section id="job">
+    <h2>나의 희망 직업</h2>
+    <div class="card">
+      <h3>직업</h3>
+      <p>미용사</p>
+    </div>
+    <div class="card">
+      <h3>직업을 선택한 이유</h3>
+      <p>관심이 있어서</p>
+    </div>
+    <div class="card">
+      <h3>AI가 도와줄 일</h3>
+      <p>어떻게 연습을 할지</p>
+    </div>
+    <div class="card">
+      <h3>내가 직접 맡을 일</h3>
+      <p>고객님들의 헤어 스타일링</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>AI 시대 역량 TOP 3</h2>
+    <div class="card">
+      <p class="rank">1위. 소통</p>
+      <p><span class="label">필요한 이유:</span> 고객들과 대화</p>
+      <p><span class="label">기르는 방법:</span> 친구들과 같이 대화 연습</p>
+    </div>
+    <div class="card">
+      <p class="rank">2위. 창의</p>
+    </div>
+    <div class="card">
+      <p class="rank">3위. 책임의식</p>
+    </div>
+  </section>
+
+  <section id="purpose">
+    <h2>나의 웹사이트 제작 목적</h2>
+    <dl>
+      <dt>웹사이트 제목</dt><dd>대화</dd>
+      <dt>만드는 목적</dt><dd>직업</dd>
+      <dt>주요 방문자</dt><dd>미용사에 관심 있는 사람들</dd>
+    </dl>
+  </section>
+
+  <section id="pledge">
+    <h2>나의 다짐</h2>
+    <p class="pledge">노력하세요</p>
+  </section>
+</main>
+
+<footer>대화</footer>
+</body>
+</html>

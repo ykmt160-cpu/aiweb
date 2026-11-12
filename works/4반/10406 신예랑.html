@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>내 미래는 억만장자</title>
+<style>
+:root{
+  --yellow:#ffef8a; --pink:#ffb8d2; --blue:#a9d4ff; --ink:#1f1a2b; --cream:#fffbe8; --page:#fffbe8;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --page:#241d30; } }
+:root[data-theme="dark"]{ --page:#241d30; }
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0}
+body{background:var(--page);color:var(--ink);font-family:"Gungsuh","궁서","GungsuhChe","궁서체","Batang","Nanum Myeongjo",serif;font-size:20px;line-height:1.75;word-break:keep-all}
+.in{max-width:1180px;margin:0 auto;padding:0 48px}
+a:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;justify-content:center;gap:46px;background:var(--ink);padding:12px 20px}
+.bar a{color:var(--cream);text-decoration:none;font-size:18px;font-weight:700}
+.bar a:hover{color:var(--yellow)}
+
+/* hero */
+.hero{min-height:calc(100vh - 52px);position:relative;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(115deg,var(--yellow) 0 38%,var(--pink) 38% 70%,var(--blue) 70% 100%)}
+.hero .big{position:absolute;font-size:260px;line-height:1;filter:drop-shadow(10px 10px 0 var(--ink))}
+.hero .f{left:3%;bottom:4%;transform:rotate(-12deg)} .hero .t{right:3%;top:6%;transform:rotate(10deg)}
+.mid{position:relative;text-align:center;padding:40px 20px}
+.mid .sub{display:inline-block;background:var(--ink);color:var(--yellow);padding:4px 22px;font-size:20px}
+.mid h1{font-size:150px;line-height:1.02;font-weight:900;letter-spacing:-4px;margin:20px 0;
+  -webkit-text-stroke:3px var(--ink);color:var(--cream);text-shadow:9px 9px 0 var(--ink)}
+.mid .quote{display:inline-block;background:var(--cream);border:5px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:10px 40px;font-size:44px;font-weight:900;transform:rotate(-2deg)}
+.mid p{margin-top:30px;font-size:22px;font-weight:700}
+
+/* sections */
+section{padding:96px 0}
+h2{font-size:56px;line-height:1.15;font-weight:900;margin-bottom:34px}
+h2::after{content:"";display:block;height:14px;width:150px;background:var(--ink);margin-top:10px}
+#hello{background:var(--blue)}
+#goal{background:var(--cream)}
+#vow{background:var(--yellow);border-top:8px solid var(--ink)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.sheet{background:var(--cream);border:5px solid var(--ink);padding:34px 40px;box-shadow:10px 10px 0 var(--pink)}
+.sheet h3{font-size:28px;margin-bottom:12px}
+.row{display:grid;grid-template-columns:7.5em 1fr;gap:12px;padding:10px 0;border-bottom:3px dotted var(--ink)}
+.row b{font-weight:900} .row:last-child{border:0}
+.big-text{font-size:26px;font-weight:700;margin-bottom:26px}
+.shout{display:inline-block;background:var(--pink);border:5px solid var(--ink);padding:6px 26px;font-size:36px;font-weight:900;transform:rotate(-1.5deg)}
+
+.roles{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
+.roles h3{font-size:30px;margin-bottom:12px;padding-bottom:6px;border-bottom:6px solid var(--ink)}
+.roles ul{padding-left:1.3em;font-size:22px} .roles li{margin:6px 0}
+.roles .ai h3{border-color:var(--pink)}
+
+.podium-h{font-size:38px;font-weight:900;margin:90px 0 30px}
+.podium{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:0;align-items:end}
+.pod{border:5px solid var(--ink);padding:30px 28px 34px;margin-left:-5px}
+.pod:first-child{margin-left:0}
+.pod .n{display:inline-block;background:var(--ink);color:var(--yellow);font-size:34px;font-weight:900;padding:0 20px;margin-bottom:12px}
+.pod h3{font-size:30px;margin-bottom:10px}
+.pod h4{font-size:17px;margin-top:14px;text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:5px}
+.pod p{font-size:18px;line-height:1.7}
+.p2{background:var(--blue);min-height:560px} .p1{background:var(--pink);min-height:640px} .p3{background:var(--yellow);min-height:500px}
+
+/* vow */
+.vow{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center}
+.vow .ic{font-size:150px;line-height:1;filter:drop-shadow(8px 8px 0 var(--ink))}
+.vow .ic:first-child{transform:rotate(-10deg)} .vow .ic:last-child{transform:rotate(10deg)}
+.vow p{font-size:44px;line-height:1.45;font-weight:900;text-align:center}
+.vow mark{background:var(--cream);color:var(--ink);padding:0 10px;box-shadow:6px 6px 0 var(--ink)}
+footer{background:var(--ink);color:var(--yellow);text-align:center;padding:34px;font-size:26px;font-weight:900}
+
+@media (max-width:980px){
+  .two,.roles,.podium,.vow{grid-template-columns:1fr} .mid h1{font-size:68px} .hero .big{font-size:120px}
+  .in{padding:0 22px} .bar{gap:16px} .bar a{font-size:14px} .pod{min-height:0 !important;margin:0 0 -5px 0}
+  .mid .quote{font-size:28px} .vow p{font-size:30px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .mid h1{animation:drop .9s cubic-bezier(.2,1.4,.4,1) 1}
+}
+@keyframes drop{from{transform:translateY(-60px) scale(.9);opacity:0}to{transform:none;opacity:1}}
+</style>
+</head>
+<body>
+<div class="bar"><a href="#top">처음</a><a href="#hello">인사말</a><a href="#goal">내가 이루기 위해 할 것</a><a href="#vow">나의 미래 다짐</a></div>
+
+<div class="hero" id="top">
+  <span class="big f" aria-hidden="true">✊</span>
+  <span class="big t" aria-hidden="true">👍</span>
+  <div class="mid">
+    <span class="sub">소아전문 간호사 신예랑</span>
+    <h1>내 미래는<br>억만장자</h1>
+    <div class="quote">“미래엔 내가 성공할 거야”</div>
+    <p>나의 장래희망을 친구들에게 소개해요</p>
+  </div>
+</div>
+
+<section id="hello"><div class="in">
+  <h2>인사말</h2>
+  <div class="two">
+    <div>
+      <p class="big-text">이 웹사이트는 나의 장래희망을 소개하기 위해 만들었어. 친구들아, 내 미래를 들어줘!</p>
+      <span class="shout">👍 미래엔 내가 성공할 거야</span>
+      <p style="margin-top:30px"><b>직업을 선택한 이유</b><br>남을 도와주고 고치고, 치료해 주는 일이 좋기 때문</p>
+    </div>
+    <div class="sheet">
+      <h3>미래의 나</h3>
+      <div class="row"><b>이름</b><span>신예랑</span></div>
+      <div class="row"><b>나이</b><span>27살</span></div>
+      <div class="row"><b>희망 직업</b><span>소아전문 간호사 (간호계열)</span></div>
+      <div class="row"><b>미래의 모습</b><span>환자들에게 인기 많고 간호사들 중 탑을 찍어 월 1000만 원을 버는 간호사</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="goal"><div class="in">
+  <h2>내가 이루기 위해 할 것</h2>
+  <div class="roles">
+    <div>
+      <h3>✊ 내가 직접 맡을 일</h3>
+      <ul><li>아이들이 무섭지 않게 잘 대해주기</li><li>의사를 도와 진찰 이끌어 나가기</li><li>의학 지식 많이 알기</li></ul>
+    </div>
+    <div class="ai">
+      <h3>AI가 도와줄 일</h3>
+      <ul><li>나의 정신 상태를 지지해 주기</li><li>기본 의료 지식 알려주기</li></ul>
+    </div>
+  </div>
+
+  <div class="podium-h">내가 기를 AI 시대 역량 TOP 3</div>
+  <div class="podium">
+    <div class="pod p2">
+      <span class="n">2위</span><h3>공감 능력</h3>
+      <h4>필요한 이유</h4>
+      <p>심리 전문이 아니더라도 기본적으로 간호사에게는 공감 능력이 필요하다고 생각했기 때문.</p>
+      <h4>앞으로의 실천 계획</h4>
+      <p>사람들과 소통하며 많은 의견과 심리에 귀 기울이고, 이럴 땐 이렇게, 저럴 땐 저렇게라는 생각을 가질 것이다.</p>
+    </div>
+    <div class="pod p1">
+      <span class="n">1위</span><h3>도전·실행력</h3>
+      <h4>필요한 이유</h4>
+      <p>틀릴 수도 있고 잘못할 수 있지만 다시 노력하고 똑같은 실수를 반복하지 않도록 도전하고, 성공을 반복해야 한다고 생각했기 때문.</p>
+      <h4>앞으로의 실천 계획</h4>
+      <p>틀려도 바로 고쳐 잡는 자세를 가지고, 다르고 잘못돼도 포기하지 않고 도전하는 정신으로 나아가는 자세를 가질 것이다.</p>
+    </div>
+    <div class="pod p3">
+      <span class="n">3위</span><h3>윤리·책임 의식</h3>
+      <h4>필요한 이유</h4>
+      <p>윤리적이고 책임 의식을 가져야 옳고 그름을 따지고 양심적으로 치료하며, 다른 목적이 아닌 의료 목적으로 임할 수 있기 때문.</p>
+      <h4>앞으로의 실천 계획</h4>
+      <p>생각머리를 고치고 부정이 아닌 긍정, 악이 아닌 선으로 나아가는 방향으로 생각하며 긍정적 사고를 가질 것이다.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="vow"><div class="in">
+  <h2>나의 미래 다짐</h2>
+  <div class="vow">
+    <span class="ic" aria-hidden="true">✊</span>
+    <p>나는 미래에 환자들에게 인기 많고 <mark>간호사들 중 탑을 찍어 월 1000만 원을 버는 간호사</mark>가 되겠다.</p>
+    <span class="ic" aria-hidden="true">👍</span>
+  </div>
+</div></section>
+
+<footer>“미래엔 내가 성공할 거야” — 신예랑</footer>
+</body>
+</html>

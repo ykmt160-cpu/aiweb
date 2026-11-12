@@ -1,0 +1,364 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>우진의 커리어</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Barlow+Condensed:wght@600;700;800&display=swap">
+<style>
+/* Layout: 전광판처럼 큰 헤드라인 + 잔디 라인 패턴 위에 흰 카드 섹션을 쌓는 단일 컬럼 구성 */
+:root {
+  --bg: #f4f7fc;
+  --surface: #ffffff;
+  --ink: #0b1220;
+  --ink-soft: #46506a;
+  --line: #d9e1f0;
+  --blue: #1a4fd8;
+  --blue-deep: #0f2f8f;
+  --blue-tint: #e6edfd;
+  --black: #0b1220;
+  --on-blue: #ffffff;
+  --hero-bg: #0b1220;
+  --hero-ink: #ffffff;
+  --hero-soft: #a9b6d6;
+  --hero-line: rgba(255,255,255,.14);
+  --ball-body: #ffffff;
+  --ball-ink: #0b1220;
+  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-num: "Barlow Condensed", "Noto Sans KR", "Arial Narrow", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #070b14; --surface: #0e1524; --ink: #eef2fb; --ink-soft: #a3aec9; --line: #202a42;
+    --blue: #5b8bff; --blue-deep: #8fb0ff; --blue-tint: #15244a; --black: #eef2fb; --on-blue: #06102b;
+    --hero-bg: #04070e; --hero-line: rgba(255,255,255,.12);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #070b14; --surface: #0e1524; --ink: #eef2fb; --ink-soft: #a3aec9; --line: #202a42;
+  --blue: #5b8bff; --blue-deep: #8fb0ff; --blue-tint: #15244a; --black: #eef2fb; --on-blue: #06102b;
+  --hero-bg: #04070e; --hero-line: rgba(255,255,255,.12);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  word-break: keep-all; overflow-wrap: break-word;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--hero-bg); z-index: 20; }
+.b-body { fill: var(--ball-body); }
+.b-seam { stroke: var(--ball-ink); stroke-width: 2.2; fill: none; stroke-linecap: round; }
+.b-patch { fill: var(--ball-ink); }
+.b-rim { fill: none; stroke: var(--ball-ink); stroke-width: 3; }
+.ball { display: block; width: 100%; height: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+/* Full-bleed bands: bands span the width, inner wrappers carry the gutter */
+.band { margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1040px; margin: 0 auto; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 15; background: var(--hero-bg); border-bottom: 1px solid var(--hero-line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; color: var(--hero-ink); text-decoration: none; font-size: 17px; white-space: nowrap; }
+.brand .mini { width: 28px; height: 28px; flex: none; }
+.nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav li a { display: block; padding: 6px 12px; color: var(--hero-soft); text-decoration: none; font-size: 14px; font-weight: 500; border-radius: 999px; white-space: nowrap; }
+.nav li a:hover { color: var(--hero-ink); background: rgba(255,255,255,.08); }
+@media (max-width: 720px) { .nav .wrap { flex-direction: column; align-items: stretch; gap: 6px; } .nav ul { justify-content: flex-start; } }
+
+/* Hero */
+.hero { background: var(--hero-bg); color: var(--hero-ink); position: relative; overflow: hidden; }
+.pitch { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .9; pointer-events: none; }
+.pitch * { fill: none; stroke: var(--hero-line); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; gap: 32px; padding-block: 72px 80px; }
+.kicker { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-num); font-weight: 700; font-size: 15px; letter-spacing: .16em; text-transform: uppercase; color: #8fb0ff; }
+.kicker::before { content: ""; width: 28px; height: 3px; background: #5b8bff; }
+.hero h1 { margin: 14px 0 12px; font-size: clamp(44px, 9vw, 84px); line-height: 1.08; font-weight: 900; letter-spacing: -.02em; text-wrap: balance; }
+.hero h1 em { font-style: normal; color: #6f9bff; }
+.hero p.lead { margin: 0 0 28px; color: var(--hero-soft); font-size: clamp(16px, 2.4vw, 19px); max-width: 34em; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.chips li { display: flex; align-items: baseline; gap: 8px; padding: 8px 16px; border: 1px solid var(--hero-line); border-radius: 999px; background: rgba(255,255,255,.05); font-size: 15px; }
+.chips b { font-family: var(--font-num); font-size: 22px; font-weight: 700; color: #fff; line-height: 1; }
+.chips span { color: var(--hero-soft); }
+.hero-ball { position: relative; justify-self: center; width: min(100%, 340px); aspect-ratio: 1; }
+.hero-ball .ball { filter: drop-shadow(0 24px 40px rgba(26,79,216,.45)); animation: roll 24s linear infinite; }
+.hero-ball::after { content: ""; position: absolute; left: 12%; right: 12%; bottom: -26px; height: 18px; border-radius: 50%; background: radial-gradient(closest-side, rgba(95,140,255,.45), transparent); }
+@keyframes roll { to { transform: rotate(360deg); } }
+@media (max-width: 760px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 44px 64px; } .hero-ball { width: min(62%, 240px); order: -1; justify-self: start; } }
+
+/* Sections */
+main { max-width: 1040px; margin: 0 auto; padding-block: 56px 24px; display: grid; gap: 56px; }
+section { scroll-margin-top: 110px; }
+.sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.sec-head .tag { flex: none; font-family: var(--font-num); font-weight: 700; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--on-blue); background: var(--blue); padding: 4px 12px; border-radius: 4px; }
+.sec-head h2 { margin: 0; font-size: clamp(26px, 4.4vw, 36px); line-height: 1.25; font-weight: 900; letter-spacing: -.01em; text-wrap: balance; }
+.sec-head::after { content: ""; flex: 1; height: 2px; background: var(--line); min-width: 24px; }
+@media (max-width: 520px) { .sec-head { flex-wrap: wrap; gap: 8px; } .sec-head::after { display: none; } }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: clamp(20px, 4vw, 34px); }
+.panel p { margin: 0; }
+.panel p + p { margin-top: 14px; }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+@media (max-width: 760px) { .about { grid-template-columns: minmax(0, 1fr); } }
+.profile { background: var(--hero-bg); color: #ffffff; border-radius: 10px; padding: clamp(20px, 4vw, 30px); position: relative; overflow: hidden; }
+.profile h3 { margin: 0 0 4px; font-size: 13px; letter-spacing: .14em; font-family: var(--font-num); text-transform: uppercase; color: #8fb0ff; font-weight: 700; }
+.profile .name { font-size: 34px; font-weight: 900; line-height: 1.2; margin: 0 0 18px; }
+.profile dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 18px; font-size: 15px; }
+.profile dt { color: #93a0bf; }
+.profile dd { margin: 0; font-weight: 500; }
+.profile .jersey { position: absolute; right: -6px; top: -26px; font-family: var(--font-num); font-weight: 800; font-size: 150px; line-height: 1; color: rgba(95,140,255,.16); pointer-events: none; }
+.big { font-size: clamp(18px, 2.6vw, 21px); line-height: 1.7; font-weight: 500; }
+.big strong { color: var(--blue); font-weight: 900; }
+.quote-strip { margin-top: 22px; display: flex; gap: 14px; align-items: center; padding: 14px 18px; background: var(--blue-tint); border-radius: 8px; color: var(--blue-deep); font-weight: 700; font-size: 15px; }
+.quote-strip .mini-ball { width: 34px; height: 34px; flex: none; }
+
+/* Reason */
+.reason { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 20px; align-items: stretch; }
+@media (max-width: 760px) { .reason { grid-template-columns: minmax(0, 1fr); } }
+.strengths { display: grid; gap: 14px; align-content: start; }
+.strength { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.strength .ico { width: 56px; height: 56px; border-radius: 50%; background: var(--blue); display: grid; place-items: center; }
+.strength .ico svg { width: 30px; height: 30px; stroke: var(--on-blue); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.strength b { display: block; font-size: 19px; line-height: 1.35; }
+.strength span { color: var(--ink-soft); font-size: 14px; }
+
+/* AI roles */
+.roles { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+@media (max-width: 760px) { .roles { grid-template-columns: minmax(0, 1fr); } }
+.role { border-radius: 10px; padding: clamp(20px, 4vw, 30px); border: 1px solid var(--line); background: var(--surface); }
+.role.ai { background: var(--blue); color: var(--on-blue); border-color: var(--blue); }
+.role h3 { margin: 0 0 6px; font-size: 22px; font-weight: 900; }
+.role .who { font-family: var(--font-num); letter-spacing: .14em; text-transform: uppercase; font-weight: 700; font-size: 13px; opacity: .8; }
+.role ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.role li { padding-left: 22px; position: relative; }
+.role li::before { content: ""; position: absolute; left: 0; top: .7em; width: 10px; height: 10px; border-radius: 50%; border: 2.5px solid currentColor; }
+.flow { margin-top: 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+@media (max-width: 760px) { .flow { grid-template-columns: minmax(0, 1fr); } }
+.flow li { list-style: none; position: relative; padding: 18px 18px 18px 18px; background: var(--surface); border: 1px solid var(--line); margin-left: -1px; font-size: 15px; line-height: 1.5; }
+.flow li:first-child { border-radius: 10px 0 0 10px; margin-left: 0; }
+.flow li:last-child { border-radius: 0 10px 10px 0; }
+@media (max-width: 760px) { .flow li { margin-left: 0; margin-top: -1px; } .flow li:first-child { border-radius: 10px 10px 0 0; margin-top: 0; } .flow li:last-child { border-radius: 0 0 10px 10px; } }
+.flow b { display: block; font-size: 17px; margin-bottom: 4px; }
+.flow .step { font-family: var(--font-num); font-weight: 700; font-size: 13px; letter-spacing: .14em; color: var(--blue); text-transform: uppercase; }
+.flow-title { margin: 28px 0 0; font-size: 14px; letter-spacing: .14em; font-weight: 700; color: var(--ink-soft); font-family: var(--font-num); text-transform: uppercase; }
+.flow { margin: 10px 0 0; padding: 0; }
+
+/* TOP 3 */
+.top3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .top3 { grid-template-columns: minmax(0, 1fr); } }
+.skill { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.skill header { background: var(--hero-bg); color: #ffffff; padding: 20px 22px 18px; display: flex; align-items: baseline; gap: 14px; }
+.skill header .rank { font-family: var(--font-num); font-weight: 800; font-size: 52px; line-height: .9; color: #6f9bff; }
+.skill header h3 { margin: 0; font-size: 21px; font-weight: 900; line-height: 1.3; }
+.skill .body { padding: 20px 22px 24px; display: grid; gap: 16px; }
+.skill h4 { margin: 0 0 4px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); font-family: var(--font-num); font-weight: 700; }
+.skill p { margin: 0; font-size: 15px; line-height: 1.7; }
+
+/* Pledge */
+.pledge { background: var(--hero-bg); color: var(--hero-ink); border-radius: 12px; padding: clamp(26px, 5vw, 52px); position: relative; overflow: hidden; }
+.pledge .pitch { opacity: .7; }
+.pledge-inner { position: relative; display: grid; gap: 28px; }
+.pledge ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: p; }
+.pledge ol li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: start; font-size: clamp(16px, 2.4vw, 18px); }
+.pledge ol li::before { counter-increment: p; content: counter(p); width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: #1a4fd8; color: #fff; font-family: var(--font-num); font-weight: 800; font-size: 22px; }
+.pledge ol li span { padding-top: 7px; }
+.final { border-top: 1px solid var(--hero-line); padding-top: 26px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.final .mini-ball { width: 64px; height: 64px; flex: none; }
+.final .small { color: var(--hero-soft); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; font-family: var(--font-num); font-weight: 700; }
+.final .motto { font-family: var(--font-num); font-weight: 800; font-size: clamp(38px, 8vw, 68px); line-height: 1; text-transform: uppercase; letter-spacing: .01em; overflow-wrap: anywhere; }
+.final .motto span { color: #6f9bff; }
+
+footer { max-width: 1040px; margin: 0 auto; padding-block: 28px 44px; color: var(--ink-soft); font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+@media (prefers-reduced-motion: reduce) { .hero-ball .ball { animation: none; } html { scroll-behavior: auto; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs><symbol id="ball" viewBox="-100 -100 200 200"><clipPath id="ballclip"><circle r="96"/></clipPath><circle r="96" class="b-body"/><g clip-path="url(#ballclip)"><path d="M0.0,-27.0 L0.0,-51.0 M-14.7,-96.2 L-16.0,-104.8 M14.7,-96.2 L16.0,-104.8 M23.8,-68.3 L57.6,-43.7 M25.7,-8.3 L48.5,-15.8 M87.0,-43.7 L94.7,-47.6 M96.1,-15.8 L104.6,-17.2 M72.3,1.5 L59.4,41.3 M15.9,21.8 L30.0,41.3 M68.4,69.2 L74.5,75.4 M44.7,86.5 L48.6,94.2 M20.9,69.2 L-20.9,69.2 M-15.9,21.8 L-30.0,41.3 M-44.7,86.5 L-48.6,94.2 M-68.4,69.2 L-74.5,75.4 M-59.4,41.3 L-72.3,1.5 M-25.7,-8.3 L-48.5,-15.8 M-96.1,-15.8 L-104.6,-17.2 M-87.0,-43.7 L-94.7,-47.6 M-57.6,-43.7 L-23.8,-68.3" class="b-seam"/><path d="M0.0,-27.0 L25.7,-8.3 L15.9,21.8 L-15.9,21.8 L-25.7,-8.3Z M0.0,-51.0 L-23.8,-68.3 L-14.7,-96.2 L14.7,-96.2 L23.8,-68.3Z M48.5,-15.8 L57.6,-43.7 L87.0,-43.7 L96.1,-15.8 L72.3,1.5Z M30.0,41.3 L59.4,41.3 L68.4,69.2 L44.7,86.5 L20.9,69.2Z M-30.0,41.3 L-20.9,69.2 L-44.7,86.5 L-68.4,69.2 L-59.4,41.3Z M-48.5,-15.8 L-72.3,1.5 L-96.1,-15.8 L-87.0,-43.7 L-57.6,-43.7Z" class="b-patch"/></g><circle r="96" class="b-rim"/></symbol></defs>
+</svg>
+
+<div class="nav band">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="mini" aria-hidden="true"><use href="#ball"/></svg>우진의 커리어</a>
+    <nav aria-label="섹션 이동">
+      <ul>
+        <li><a href="#about">나의 소개</a></li>
+        <li><a href="#why">선택한 이유</a></li>
+        <li><a href="#ai">AI의 역할</a></li>
+        <li><a href="#skills">역량 TOP 3</a></li>
+        <li><a href="#pledge">다짐</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<header class="hero band" id="top">
+  <svg class="pitch" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect x="40" y="30" width="920" height="440" rx="2"/>
+    <line x1="500" y1="30" x2="500" y2="470"/>
+    <circle cx="500" cy="250" r="78"/>
+    <rect x="40" y="130" width="130" height="240"/>
+    <rect x="830" y="130" width="130" height="240"/>
+    <rect x="40" y="195" width="52" height="110"/>
+    <rect x="908" y="195" width="52" height="110"/>
+    <path d="M170 215 A60 60 0 0 1 170 285"/>
+    <path d="M830 215 A60 60 0 0 0 830 285"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <div class="kicker">Football Player · Career Profile</div>
+      <h1>우진의 <em>커리어</em></h1>
+      <p class="lead">경기와 훈련에 최선을 다하고, 크로스와 킥력을 끝까지 키워 가는 27세 축구선수 김우진입니다.</p>
+      <ul class="chips">
+        <li><span>이름</span><b>김우진</b></li>
+        <li><span>나이</span><b>27</b></li>
+        <li><span>직업</span><b>축구선수</b></li>
+      </ul>
+    </div>
+    <div class="hero-ball"><svg class="ball" role="img" aria-label="축구공"><use href="#ball"/></svg></div>
+  </div>
+</header>
+
+<main>
+  <section id="about">
+    <div class="sec-head"><span class="tag">About</span><h2>나의 소개</h2></div>
+    <div class="about">
+      <div class="profile">
+        <div class="jersey" aria-hidden="true">27</div>
+        <h3>Player Card</h3>
+        <p class="name">김우진</p>
+        <dl>
+          <dt>미래의 나</dt><dd>김우진, 27세</dd>
+          <dt>희망 직업</dt><dd>축구선수</dd>
+          <dt>나의 장점</dt><dd>크로스, 킥력</dd>
+          <dt>제작 목적</dt><dd>나를 더 알리기 위해</dd>
+          <dt>주요 방문자</dt><dd>축구선수를 꿈꾸는 사람</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <p class="big">저는 축구선수 <strong>김우진</strong>입니다. 축구선수로서 경기와 훈련에 최선을 다하고, 저의 장점인 <strong>크로스와 킥력</strong>을 극대화하고 싶습니다.</p>
+        <p>이 웹사이트는 저를 더 알리기 위해 만들었습니다. 저처럼 축구선수를 꿈꾸는 분들이 이 글을 읽고 용기를 얻었으면 좋겠습니다.</p>
+        <div class="quote-strip"><svg class="mini-ball" aria-hidden="true"><use href="#ball"/></svg><span>방문자에게 전하는 한마디: “Impossible is nothing”</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="sec-head"><span class="tag">Why</span><h2>축구선수를 선택한 이유</h2></div>
+    <div class="reason">
+      <div class="panel">
+        <p class="big">저는 축구를 <strong>가장 좋아하고</strong>, 또 <strong>가장 잘할 수 있는 일</strong>이라고 생각해서 축구선수를 선택했습니다.</p>
+        <p>좋아하는 일이 곧 가장 자신 있는 일일 때, 훈련이 힘들어도 계속 도전할 수 있다고 믿습니다. 그래서 매 경기와 훈련을 끝까지 해내는 선수가 되고 싶습니다.</p>
+      </div>
+      <div class="strengths">
+        <div class="strength">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18c4-1 7-5 8-12"/><path d="M12 6l4 3M12 6l-1 5"/><path d="M4 18h16"/></svg></div>
+          <div><b>크로스</b><span>멀리 있는 동료에게 정확하게 연결하는 패스</span></div>
+        </div>
+        <div class="strength">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></div>
+          <div><b>킥력</b><span>골문을 향해 힘 있게 때려 넣는 슈팅</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai">
+    <div class="sec-head"><span class="tag">AI &amp; Me</span><h2>AI가 도와주는 역할</h2></div>
+    <div class="roles">
+      <div class="role ai">
+        <div class="who">AI의 역할</div>
+        <h3>데이터로 분석하고 계획합니다</h3>
+        <ul>
+          <li>경기나 훈련 후 GPS 기기로 체력과 근육 상태를 정밀하게 측정합니다.</li>
+          <li>측정된 데이터를 분석합니다.</li>
+          <li>앞으로 필요한 훈련 프로그램을 설정해 줍니다.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="who" style="color: var(--blue)">나의 역할</div>
+        <h3>직접 뛰고 해냅니다</h3>
+        <ul>
+          <li>직접 몸을 움직여 경기에 참여합니다.</li>
+          <li>직접 훈련하며 실력을 쌓습니다.</li>
+          <li>축구선수로서의 역할을 끝까지 수행합니다.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="flow-title">훈련 데이터가 돌아오는 순서</p>
+    <ol class="flow">
+      <li><span class="step">Step 1 · 나</span><b>경기와 훈련</b>GPS 기기를 착용하고 직접 뜁니다.</li>
+      <li><span class="step">Step 2 · AI</span><b>상태 측정</b>체력과 근육 상태를 정밀하게 측정합니다.</li>
+      <li><span class="step">Step 3 · AI</span><b>데이터 분석</b>측정된 데이터를 분석합니다.</li>
+      <li><span class="step">Step 4 · 나</span><b>맞춤 훈련</b>설정된 프로그램대로 다시 훈련합니다.</li>
+    </ol>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="tag">Skills</span><h2>내가 기를 AI 시대 역량 TOP 3</h2></div>
+    <div class="top3">
+      <article class="skill">
+        <header><span class="rank">1</span><h3>도전 실행력</h3></header>
+        <div class="body">
+          <div><h4>필요한 이유</h4><p>경기장에서 자신감을 가지고 플레이를 실행해야 하기 때문입니다.</p></div>
+          <div><h4>기르는 방법</h4><p>나의 장점인 크로스와 킥력을 극대화합니다.</p></div>
+        </div>
+      </article>
+      <article class="skill">
+        <header><span class="rank">2</span><h3>AI 활용 능력</h3></header>
+        <div class="body">
+          <div><h4>필요한 이유</h4><p>나의 피지컬과 근육을 정밀하게 분석하여 운동 프로그램을 계획하기 위해서입니다.</p></div>
+          <div><h4>기르는 방법</h4><p>훈련 후 GPS 데이터를 확인하고 ChatGPT를 활용합니다.</p></div>
+        </div>
+      </article>
+      <article class="skill">
+        <header><span class="rank">3</span><h3>윤리·책임 의식</h3></header>
+        <div class="body">
+          <div><h4>필요한 이유</h4><p>팀 동료와 상대 팀, 심판 등을 존중하고 페어플레이 정신과 동업자 정신을 지키는 것이 중요하기 때문입니다.</p></div>
+          <div><h4>기르는 방법</h4><p>경기나 훈련 전에 페어플레이를 실천하겠다는 마음가짐으로 경기장에 들어갑니다.</p></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="pledge">
+    <div class="sec-head"><span class="tag">Pledge</span><h2>나의 축구선수로서의 다짐</h2></div>
+    <div class="pledge">
+      <svg class="pitch" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <circle cx="500" cy="250" r="90"/><line x1="500" y1="0" x2="500" y2="500"/><rect x="-10" y="150" width="140" height="200"/>
+      </svg>
+      <div class="pledge-inner">
+        <ol>
+          <li><span>경기와 훈련에 언제나 최선을 다하겠습니다.</span></li>
+          <li><span>나의 장점인 크로스와 킥력을 극대화하겠습니다.</span></li>
+          <li><span>GPS 데이터와 AI를 활용해 나에게 맞는 훈련을 이어 가겠습니다.</span></li>
+          <li><span>동료와 상대 팀, 심판을 존중하는 페어플레이를 지키겠습니다.</span></li>
+        </ol>
+        <div class="final">
+          <svg class="mini-ball" aria-hidden="true"><use href="#ball"/></svg>
+          <div>
+            <div class="small">축구선수를 꿈꾸는 당신에게</div>
+            <div class="motto">Impossible is <span>nothing</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>우진의 커리어 · 10423 김우진</span>
+  <span>미래의 축구선수 김우진, 27세</span>
+</footer>
+
+</body></html>

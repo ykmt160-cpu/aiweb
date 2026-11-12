@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>메이크업아티스트 하예린</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff8f6;--bg2:#fdeeea;--card:#ffffff;--ink:#3a2a2e;--muted:#7d6a6e;
+  --rose:#c2566b;--rose2:#e8a0ae;--gold:#b8895a;--line:#f1d9d9;--shadow:0 10px 30px rgba(194,86,107,.12);
+  --navbg:rgba(255,248,246,.88);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#1f1618;--bg2:#2a1e21;--card:#2f2225;--ink:#f6e9e9;--muted:#c4aeb2;--rose:#ee8fa3;--rose2:#8c4455;--gold:#d9ab7c;--line:#4a3639;--shadow:0 10px 30px rgba(0,0,0,.35);--navbg:rgba(31,22,24,.88)}
+}
+:root[data-theme="dark"]{--bg:#1f1618;--bg2:#2a1e21;--card:#2f2225;--ink:#f6e9e9;--muted:#c4aeb2;--rose:#ee8fa3;--rose2:#8c4455;--gold:#d9ab7c;--line:#4a3639;--shadow:0 10px 30px rgba(0,0,0,.35);--navbg:rgba(31,22,24,.88)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.8;word-break:keep-all}
+h1,h2,h3{font-family:'Noto Serif KR','Batang',serif;line-height:1.35}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navbg);z-index:60}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navbg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1100px;margin:auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Noto Serif KR',serif;font-weight:700;color:var(--rose);text-decoration:none;font-size:1.05rem}
+.menu{display:flex;gap:6px;list-style:none;padding:0}
+.menu a{display:block;padding:8px 14px;border-radius:99px;color:var(--ink);text-decoration:none;font-size:.92rem;transition:.25s}
+.menu a:hover,.menu a.on{background:var(--rose);color:#fff}
+.tools{display:flex;gap:8px}
+.ibtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font-size:1.05rem}
+#burger{display:none}
+section{padding:96px 20px}
+.wrap{max-width:1100px;margin:auto}
+.alt{background:var(--bg2)}
+.eyebrow{color:var(--gold);letter-spacing:.2em;font-size:.78rem;font-weight:500;text-transform:uppercase;text-align:center}
+.title{font-size:clamp(1.6rem,4vw,2.3rem);text-align:center;margin:8px 0 14px}
+.title::after{content:"";display:block;width:48px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--rose),var(--rose2));margin:16px auto 0}
+.lead{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 48px}
+/* hero */
+.hero{min-height:calc(100vh - 64px);display:flex;align-items:center;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 80% 20%,var(--rose2) 0,transparent 40%),radial-gradient(circle at 10% 90%,var(--bg2) 0,transparent 50%),var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.tag{display:inline-block;border:1px solid var(--rose);color:var(--rose);border-radius:99px;padding:4px 16px;font-size:.85rem;margin-bottom:18px}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem)}
+.hero h1 span{background:linear-gradient(120deg,var(--rose),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin:18px 0 30px;font-size:1.05rem}
+.btn{display:inline-block;background:linear-gradient(120deg,var(--rose),#d77a8d);color:#fff;border:0;padding:14px 30px;border-radius:99px;text-decoration:none;font-weight:500;cursor:pointer;box-shadow:var(--shadow);transition:.25s;font-family:inherit;font-size:1rem}
+.btn:hover{transform:translateY(-3px)}
+.art{display:flex;justify-content:center}
+.art svg{width:100%;max-width:380px;filter:drop-shadow(0 20px 30px rgba(194,86,107,.25));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+/* cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:var(--shadow)}
+.profile{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.fact{background:var(--bg2);border-radius:16px;padding:16px 18px}
+.fact small{display:block;color:var(--gold);font-size:.78rem;letter-spacing:.08em}
+.fact b{font-size:1.1rem;font-family:'Noto Serif KR',serif}
+.q{border-left:3px solid var(--rose);padding-left:16px;margin-top:14px}
+.card h3{color:var(--rose);margin-bottom:10px;font-size:1.15rem}
+/* AI */
+.duo{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center}
+.duo .arrow{font-size:2rem;color:var(--rose)}
+.duo .card{text-align:center;height:100%}
+.ico{font-size:2.4rem;margin-bottom:8px}
+.lab{display:inline-block;background:var(--bg2);color:var(--rose);font-size:.8rem;padding:3px 14px;border-radius:99px;margin-bottom:10px;font-weight:500}
+/* rank */
+.ranks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:end}
+.rk{position:relative;padding-top:56px;transition:.3s;cursor:pointer}
+.rk:hover,.rk.open{transform:translateY(-8px)}
+.badge{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:82px;height:82px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:'Noto Serif KR',serif;font-weight:700;font-size:2rem;box-shadow:var(--shadow);border:4px solid var(--card)}
+.rk:nth-child(1) .badge{background:linear-gradient(135deg,#e0b070,#b8895a)}
+.rk:nth-child(2) .badge{background:linear-gradient(135deg,#d6c2c4,#9d8a8e)}
+.rk:nth-child(3) .badge{background:linear-gradient(135deg,#e3a98d,#b8704f)}
+.rk:nth-child(1){border-color:var(--gold);padding-bottom:40px}
+.rk h3{text-align:center;margin-bottom:16px}
+.rk .blk{margin-top:14px}
+.rk .blk small{display:block;color:var(--gold);font-weight:700;font-size:.8rem;letter-spacing:.06em}
+.hint{text-align:center;color:var(--muted);font-size:.85rem;margin-top:22px}
+/* role */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.role{text-align:center}
+.role .n{width:52px;height:52px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;background:var(--bg2);color:var(--rose);font-family:'Noto Serif KR',serif;font-weight:700;font-size:1.3rem}
+/* pledge */
+.pledge{list-style:none;padding:0;max-width:760px;margin:auto;display:grid;gap:16px}
+.pledge li{display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 24px;box-shadow:var(--shadow);cursor:pointer;transition:.25s}
+.pledge .ck{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid var(--rose);display:grid;place-items:center;color:transparent;transition:.25s}
+.pledge li.done{background:var(--bg2)}
+.pledge li.done .ck{background:var(--rose);color:#fff}
+footer{text-align:center;padding:40px 20px calc(40px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+footer b{font-family:'Noto Serif KR',serif;color:var(--rose)}
+.rv{opacity:0;transform:translateY(24px);transition:.8s}
+.rv.in{opacity:1;transform:none}
+@media (max-width:860px){
+  #burger{display:inline-block}
+  .menu{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 20px 16px;display:none}
+  .menu.open{display:flex}
+  .hero .wrap,.profile,.ranks,.roles{grid-template-columns:1fr}
+  .art{order:-1}.art svg{max-width:240px}
+  .duo{grid-template-columns:1fr}.duo .arrow{transform:rotate(90deg);text-align:center}
+  .ranks{gap:34px}
+  section{padding:72px 18px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="logo" href="#top">메이크업아티스트 하예린</a>
+    <ul class="menu" id="menu">
+      <li><a href="#about">나 소개</a></li>
+      <li><a href="#ai">AI와 함께</a></li>
+      <li><a href="#top3">역량 TOP 3</a></li>
+      <li><a href="#role">나의 역할</a></li>
+      <li><a href="#pledge">나의 다짐</a></li>
+    </ul>
+    <div class="tools">
+      <button class="ibtn" id="theme" aria-label="화면 모드 전환">☾</button>
+      <button class="ibtn" id="burger" aria-label="메뉴 열기">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">미래의 나를 소개합니다</span>
+      <h1>메이크업아티스트<br><span>하예린</span></h1>
+      <p>타인의 장점은 부각시키고 단점은 보완하여 메이크업을 해주는 사람</p>
+      <a class="btn" href="#about">소개 보기</a>
+    </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#e8a0ae"/><stop offset="1" stop-color="#c2566b"/></linearGradient>
+          <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#e0b070"/><stop offset="1" stop-color="#b8895a"/></linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="170" fill="#fdeeea" opacity=".7"/>
+        <!-- compact -->
+        <circle cx="150" cy="250" r="82" fill="url(#g2)"/>
+        <circle cx="150" cy="250" r="64" fill="#fff4f1"/>
+        <circle cx="150" cy="250" r="46" fill="#f3c3cb"/>
+        <path d="M120 230q30-22 60 0" stroke="#fff" stroke-width="5" fill="none" opacity=".7" stroke-linecap="round"/>
+        <!-- lipstick -->
+        <rect x="258" y="210" width="56" height="110" rx="8" fill="url(#g2)"/>
+        <rect x="266" y="170" width="40" height="46" fill="#4a3639"/>
+        <path d="M268 172l0-34q18-26 36 0v34z" fill="url(#g1)"/>
+        <!-- brush -->
+        <g transform="rotate(28 250 120)"><rect x="244" y="40" width="12" height="130" rx="6" fill="url(#g2)"/><path d="M236 40q14-48 28 0z" fill="#e8a0ae"/></g>
+        <!-- sparkles -->
+        <g fill="#c2566b"><path d="M90 110l5 14 14 5-14 5-5 14-5-14-14-5 14-5z"/><path d="M330 280l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#b8895a"/><path d="M320 80l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow rv">About Me</p>
+    <h2 class="title rv">미래의 나 소개</h2>
+    <div class="profile">
+      <div class="card rv">
+        <div class="facts">
+          <div class="fact"><small>이름</small><b>하예린</b></div>
+          <div class="fact"><small>나이</small><b>25세</b></div>
+          <div class="fact"><small>희망 직업</small><b>메이크업아티스트</b></div>
+          <div class="fact"><small>일하는 곳</small><b>메이크업샵</b></div>
+        </div>
+      </div>
+      <div class="card rv">
+        <h3>💄 미래의 나의 모습</h3>
+        <p>타인의 장점은 부각시키고 단점은 보완하여 메이크업을 해주는 사람</p>
+        <div class="q" style="margin-top:22px">
+          <h3 style="font-size:1rem">🌹 직업을 선택한 이유</h3>
+          <p>메이크업하는 것을 좋아하고 내가 잘하는 것을 타인에게도 해주고 싶기 때문</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ai" class="alt">
+  <div class="wrap">
+    <p class="eyebrow rv">AI &amp; Make-up Artist</p>
+    <h2 class="title rv">AI와 메이크업아티스트</h2>
+    <div class="duo">
+      <div class="card rv"><div class="ico">🤖</div><span class="lab">AI가 도와줄 일</span><h3>타인에게 어울리는 메이크업 찾아주기</h3></div>
+      <div class="arrow rv">→</div>
+      <div class="card rv"><div class="ico">🖌️</div><span class="lab">내가 직접 맡을 일</span><h3>AI가 찾아준 메이크업을 사람에게 해드리기</h3></div>
+    </div>
+  </div>
+</section>
+
+<section id="top3">
+  <div class="wrap">
+    <p class="eyebrow rv">Top 3 Skills</p>
+    <h2 class="title rv">내가 기를 AI 시대 역량 TOP 3</h2>
+    <div class="ranks">
+      <article class="card rk rv" tabindex="0">
+        <div class="badge">1</div>
+        <h3>AI 활용 능력</h3>
+        <div class="blk"><small>필요한 이유</small>AI로 사람에게 어울리는 메이크업을 찾으면 시간이 단축되기 때문</div>
+        <div class="blk"><small>앞으로의 실천 계획</small>챗GPT와 소통을 자주 하기</div>
+      </article>
+      <article class="card rk rv" tabindex="0">
+        <div class="badge">2</div>
+        <h3>소통·협업 능력</h3>
+        <div class="blk"><small>필요한 이유</small>고객과 소통을 원활하게 해야 하고 코스메틱 회사와 협업하여 사업을 할 수 있기 때문</div>
+        <div class="blk"><small>앞으로의 실천 계획</small>사람과 대화를 많이 하기</div>
+      </article>
+      <article class="card rk rv" tabindex="0">
+        <div class="badge">3</div>
+        <h3>윤리·책임 의식</h3>
+        <div class="blk"><small>필요한 이유</small>만약 고객에게 실수를 저질렀을 때 책임지고 그 일을 처리해야 할 능력이 필요하기 때문</div>
+        <div class="blk"><small>앞으로의 실천 계획</small>내가 잘못한 일에 책임을 다해서 해결하기</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="role" class="alt">
+  <div class="wrap">
+    <p class="eyebrow rv">My Role</p>
+    <h2 class="title rv">미래의 나의 역할</h2>
+    <div class="roles">
+      <div class="card role rv"><div class="n">1</div><p>AI를 활용하여 고객에게 어울리는 메이크업을 찾는다.</p></div>
+      <div class="card role rv"><div class="n">2</div><p>AI가 찾아준 메이크업을 직접 고객에게 해준다.</p></div>
+      <div class="card role rv"><div class="n">3</div><p>고객의 장점은 부각시키고 단점은 보완하는 메이크업을 한다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pledge">
+  <div class="wrap">
+    <p class="eyebrow rv">My Promise</p>
+    <h2 class="title rv">미래의 나의 다짐</h2>
+    <p class="lead rv">다짐을 눌러 체크해 보세요.</p>
+    <ul class="pledge">
+      <li class="rv"><span class="ck">✓</span>AI 활용 능력을 기르기 위해 챗GPT와 자주 소통하기</li>
+      <li class="rv"><span class="ck">✓</span>소통·협업 능력을 기르기 위해 사람들과 대화 많이 하기</li>
+      <li class="rv"><span class="ck">✓</span>윤리·책임 의식을 기르기 위해 자신의 잘못에 책임을 다하고 해결하기</li>
+    </ul>
+    <p class="lead rv" id="pmsg" style="margin:28px auto 0"></p>
+  </div>
+</section>
+</main>
+
+<footer><b>메이크업아티스트 하예린</b></footer>
+
+<script>
+(function(){
+  var menu=document.getElementById('menu'),burger=document.getElementById('burger');
+  burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.textContent=o?'✕':'☰'});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A'){menu.classList.remove('open');burger.textContent='☰'}});
+  // theme
+  var root=document.documentElement,tb=document.getElementById('theme');
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+  function sync(){tb.textContent=isDark()?'☀':'☾'}
+  tb.addEventListener('click',function(){root.setAttribute('data-theme',isDark()?'light':'dark');sync()});sync();
+  // reveal
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+  // active nav
+  var links=[].slice.call(menu.querySelectorAll('a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function spy(){var y=window.scrollY+120,cur=-1;secs.forEach(function(s,i){if(s.offsetTop<=y)cur=i});links.forEach(function(a,i){a.classList.toggle('on',i===cur)})}
+  window.addEventListener('scroll',spy,{passive:true});spy();
+  // rank cards
+  document.querySelectorAll('.rk').forEach(function(c){
+    c.addEventListener('click',function(){c.classList.toggle('open')});
+    c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();c.classList.toggle('open')}});
+  });
+  // pledge
+  var items=document.querySelectorAll('.pledge li'),msg=document.getElementById('pmsg');
+  items.forEach(function(li){li.addEventListener('click',function(){
+    li.classList.toggle('done');
+    var n=document.querySelectorAll('.pledge li.done').length;
+    msg.textContent=n===items.length?'모든 다짐을 마음에 새겼어요 ♡':'';
+  })});
+})();
+</script>
+</body>
+</html>

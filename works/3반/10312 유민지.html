@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>따뜻한 간호사 나</title>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6ECDD; --bg2:#FBF5EA; --blue:#CFE6F5; --blue-d:#5E9CC4; --ink:#2F4256; --card:#FFFFFF; --line:#E4D5BE; --heart:#E88C8C;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#2A2F36; --bg2:#242930; --blue:#2F4658; --blue-d:#9CCBEA; --ink:#F1EADF; --card:#343B44; --line:#4A525C; --heart:#F0A0A0;}
+}
+:root[data-theme="dark"]{--bg:#2A2F36; --bg2:#242930; --blue:#2F4658; --blue-d:#9CCBEA; --ink:#F1EADF; --card:#343B44; --line:#4A525C; --heart:#F0A0A0;}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif; font-size:19px; line-height:1.85}
+h1,h2,h3{font-family:"Jua","Gowun Dodum","Apple SD Gothic Neo",sans-serif; font-weight:400; line-height:1.4; margin:0}
+svg{display:block}
+.ic{fill:none; stroke:currentColor; stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
+
+/* nav */
+nav{position:sticky; top:0; z-index:20; background:var(--bg2); border-bottom:2px solid var(--line); padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 10px}
+nav ul{display:flex; gap:8px; margin:0 auto; padding:0; list-style:none; max-width:980px; overflow-x:auto; justify-content:center}
+nav a{display:block; white-space:nowrap; text-decoration:none; color:var(--ink); background:var(--blue); padding:8px 18px; border-radius:999px; font-family:"Jua",sans-serif; font-size:17px; transition:transform .2s, background .2s}
+nav a:hover{transform:translateY(-3px); background:var(--blue-d); color:#fff}
+nav a:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-d); outline-offset:3px}
+@media (max-width:640px){nav ul{justify-content:flex-start}}
+
+section{max-width:980px; margin:0 auto; padding:72px 22px; position:relative}
+h2{font-size:clamp(30px,5vw,40px); display:flex; align-items:center; gap:12px; margin-bottom:28px}
+h2 .ic{width:38px; height:38px; color:var(--blue-d); flex:none}
+
+/* hero */
+#greeting{padding-top:56px; text-align:center; overflow:hidden}
+.blob{position:absolute; border-radius:50%; background:var(--blue); z-index:0}
+.b1{width:240px; height:240px; top:10px; left:-90px; opacity:.7}
+.b2{width:160px; height:160px; top:240px; right:-50px; opacity:.5}
+#greeting>*:not(.blob){position:relative; z-index:1}
+.badge{width:96px; height:96px; margin:0 auto 18px; border-radius:50%; background:var(--card); border:4px solid var(--blue-d); display:grid; place-items:center; color:var(--blue-d)}
+.badge svg{width:52px; height:52px}
+h1{font-size:clamp(40px,9vw,72px); color:var(--ink)}
+.who{margin:6px 0 0; font-size:20px}
+.ecg{width:min(520px,90%); height:60px; margin:20px auto; color:var(--heart)}
+.ecg polyline{stroke-dasharray:700; stroke-dashoffset:700; animation:draw 2.4s ease-out .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hello{font-size:clamp(21px,3.6vw,26px); max-width:30ch; margin:0 auto 34px; line-height:1.9}
+.profile{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; text-align:left; margin-bottom:34px}
+.profile div{background:var(--card); border-radius:24px; padding:18px 22px; border:2px solid var(--line)}
+.profile b{display:block; font-family:"Jua",sans-serif; font-weight:400; color:var(--blue-d); font-size:18px}
+.message{background:var(--blue); border-radius:36px; padding:34px 26px; position:relative}
+.message .ic{width:44px; height:44px; color:var(--heart); margin:0 auto 10px}
+.message p{margin:0; font-family:"Jua",sans-serif; font-size:clamp(24px,4.6vw,34px); line-height:1.65; word-break:keep-all}
+
+/* timeline */
+.tl{list-style:none; margin:0; padding:0 0 0 34px; position:relative}
+.tl::before{content:""; position:absolute; left:11px; top:8px; bottom:8px; width:6px; border-radius:6px; background:var(--blue)}
+.tl li{position:relative; background:var(--card); border:2px solid var(--line); border-radius:26px; padding:20px 24px; margin-bottom:18px; transition:transform .2s}
+.tl li:hover{transform:translateY(-4px)}
+.tl li::before{content:""; position:absolute; left:-33px; top:26px; width:20px; height:20px; border-radius:50%; background:var(--bg); border:5px solid var(--blue-d)}
+.tl h3{font-size:24px; color:var(--blue-d)}
+
+/* worry */
+.worry{display:grid; gap:18px}
+.q{background:var(--card); border:2px solid var(--line); border-radius:30px; padding:26px 28px; font-size:22px; position:relative}
+.q:nth-child(2){margin-left:clamp(0px,6vw,60px); background:var(--blue); border-color:transparent}
+.q .ic{width:34px; height:34px; color:var(--blue-d); margin-bottom:6px}
+
+/* skills */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:20px}
+.card{background:var(--card); border:2px solid var(--line); border-radius:32px; padding:28px 24px; transition:transform .2s, border-color .2s}
+.card:hover{transform:translateY(-6px); border-color:var(--blue-d)}
+.card .top{width:64px; height:64px; border-radius:50%; background:var(--blue); display:grid; place-items:center; color:var(--blue-d); margin-bottom:14px}
+.card .top svg{width:36px; height:36px}
+.card h3{font-size:26px; margin-bottom:14px}
+.card h4{margin:14px 0 2px; font-family:"Jua",sans-serif; font-weight:400; font-size:18px; color:var(--blue-d)}
+.card p{margin:0; font-size:18px; line-height:1.75}
+
+/* pledge */
+#pledge{text-align:center}
+.pledge{background:var(--blue); border-radius:40px; padding:44px 26px}
+.pledge .ic{width:56px; height:56px; color:var(--heart); margin:0 auto 14px}
+.pledge p{margin:0 auto 26px; max-width:26ch; font-family:"Jua",sans-serif; font-size:clamp(23px,4.2vw,32px); line-height:1.7; word-break:keep-all}
+.btn{display:inline-block; text-decoration:none; background:var(--card); color:var(--ink); font-family:"Jua",sans-serif; font-size:19px; padding:12px 28px; border-radius:999px; border:2px solid var(--blue-d); transition:transform .2s, background .2s}
+.btn:hover{transform:translateY(-4px); background:var(--blue-d); color:#fff}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .ecg polyline{animation:none; stroke-dashoffset:0}
+  nav a,.card,.tl li,.btn{transition:none}
+}
+</style>
+</head>
+<body>
+<nav aria-label="메뉴">
+  <ul>
+    <li><a href="#greeting">인사말</a></li>
+    <li><a href="#day">나의 하루</a></li>
+    <li><a href="#worry">진로 고민</a></li>
+    <li><a href="#skills">내가 기른 역량</a></li>
+    <li><a href="#pledge">나의 다짐</a></li>
+  </ul>
+</nav>
+
+<section id="greeting">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="badge"><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M26 10h12v16h16v12H38v16H26V38H10V26h16z"/></svg></div>
+  <h1>따뜻한 간호사 나</h1>
+  <p class="who">유민지 · 27세 · 대학병원 간호사</p>
+  <svg class="ecg ic" viewBox="0 0 520 60" aria-hidden="true"><polyline points="0,32 150,32 180,32 200,8 225,54 245,20 262,32 330,32 360,32 385,32 400,12 415,32 520,32"/></svg>
+  <p class="hello">저는 대학병원에서 일하는 따뜻한 간호사 유민지입니다. 저는 진로 고민이 많았지만 저의 행동으로 간호사가 됐습니다.</p>
+  <div class="profile">
+    <div><b>어떤 사람</b>환자의 마음을 공감하고 이해하는 따뜻한 사람이에요.</div>
+    <div><b>직업을 선택한 이유</b>안정적인 직업이라서 간호사를 선택했어요.</div>
+    <div><b>AI가 도와줄 일</b>공부할 때 AI의 도움을 받아요.</div>
+    <div><b>내가 직접 맡을 일</b>혈당 측정, 환자의 입원·퇴원 돕기, 식이 돕기 같은 일을 직접 맡아요.</div>
+  </div>
+  <div class="message">
+    <svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M32 54C10 38 6 26 6 20a13 13 0 0 1 26-3 13 13 0 0 1 26 3c0 6-4 18-26 34z"/></svg>
+    <p>간호사가 꿈이라면 확신을 갖고 공부하고, 꿈이 없다면 자신의 방향성을 생각하며 여러 진로 프로그램에 참여하자.</p>
+  </div>
+</section>
+
+<section id="day">
+  <h2><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M16 8v16a14 14 0 0 0 28 0V8M30 38v6a10 10 0 0 0 20 0v-6"/><circle cx="50" cy="32" r="6"/></svg>나의 하루</h2>
+  <ol class="tl">
+    <li><h3>혈당 측정</h3></li>
+    <li><h3>입원 돕기</h3></li>
+    <li><h3>식이 돕기</h3></li>
+    <li><h3>침상 정리</h3></li>
+  </ol>
+</section>
+
+<section id="worry">
+  <h2><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M24 25a8 8 0 1 1 11 7c-3 2-3 4-3 7M32 47v1"/></svg>학생 시절 한 진로 고민</h2>
+  <div class="worry">
+    <div class="q">간호사가 과연 나에게 맞는 일일까?</div>
+    <div class="q">내가 진짜 원하는 직업일까?</div>
+    <div class="q"><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M32 54C10 38 6 26 6 20a13 13 0 0 1 26-3 13 13 0 0 1 26 3c0 6-4 18-26 34z"/></svg>이런 고민을 많이 했어요.</div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M26 10h12v16h16v12H38v16H26V38H10V26h16z"/></svg>내가 기른 역량</h2>
+  <div class="cards">
+    <article class="card">
+      <div class="top"><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M8 14h34a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H26l-10 9v-9h-8a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4zM50 26h6a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-4v8l-8-8"/></svg></div>
+      <h3>소통·협업 능력</h3>
+      <h4>이 직업에 필요한 이유</h4>
+      <p>간호사에게 가장 필요한 것은 환자와 소통해 마음을 안정시키는 것이고, 간호사들과 협업해서 불상사가 일어나지 않게 하는 것이 최우선이기 때문이에요.</p>
+      <h4>기른 방법</h4>
+      <p>사람들과 함께하는 프로그램에 참여해 협력성을 기르고, 많은 사람과 대화하며 소통 능력을 길렀어요.</p>
+    </article>
+    <article class="card">
+      <div class="top"><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M32 6l20 8v16c0 14-9 24-20 28C21 54 12 44 12 30V14zM23 31l7 7 12-14"/></svg></div>
+      <h3>윤리·책임 의식</h3>
+      <h4>이 직업에 필요한 이유</h4>
+      <p>환자 한 사람 한 사람의 생명을 지킨다는 마음으로 자신의 책임을 다해야 하기 때문이에요.</p>
+      <h4>기른 방법</h4>
+      <p>간호사의 책임과 하는 일을 찾아보며 간호사가 얼마나 대단한 일인지 알고, 공부할 때도 책임감을 가지고 해요.</p>
+    </article>
+    <article class="card">
+      <div class="top"><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M32 54C10 38 6 26 6 20a13 13 0 0 1 26-3 13 13 0 0 1 26 3c0 6-4 18-26 34z"/></svg></div>
+      <h3>공감 능력</h3>
+      <h4>이 직업에 필요한 이유</h4>
+      <p>환자의 마음에 공감해서 환자가 안심과 따뜻함을 느끼게 해 줘야 하기 때문이에요.</p>
+      <h4>기른 방법</h4>
+      <p>주변 사람들을 상담해 주고, 책을 읽으며 사람의 감정을 알아보고, 누군가를 대할 때 마음을 담아 말하고 행동해요.</p>
+    </article>
+  </div>
+</section>
+
+<section id="pledge">
+  <h2 style="justify-content:center"><svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M32 54C10 38 6 26 6 20a13 13 0 0 1 26-3 13 13 0 0 1 26 3c0 6-4 18-26 34z"/></svg>나의 다짐</h2>
+  <div class="pledge">
+    <svg viewBox="0 0 64 64" class="ic" aria-hidden="true"><path d="M26 10h12v16h16v12H38v16H26V38H10V26h16z"/></svg>
+    <p>앞으로도 더 많은 환자와 소통하고 간호사 일을 계속함으로써 간호사라는 직업의 의미를 계속 알아갈 것이다.</p>
+    <a class="btn" href="#greeting">맨 위로</a>
+  </div>
+</section>
+</body>
+</html>

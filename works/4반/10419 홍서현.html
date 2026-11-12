@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>물리치료사</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffe4ec; --bg2:#ffd3e1; --card:#ffffff; --soft:#fff3f7;
+  --text:#4a3a40; --muted:#8a6f78; --pink:#ff8fb1; --deep:#e0577f; --line:#ffc9d9;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#2b1b22; --bg2:#35222b; --card:#3b2830; --soft:#46313a;
+    --text:#fbe9ef; --muted:#d4b2be; --pink:#ff9ab9; --deep:#ffb3cb; --line:#5c3d49; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#2b1b22; --bg2:#35222b; --card:#3b2830; --soft:#46313a;
+  --text:#fbe9ef; --muted:#d4b2be; --pink:#ff9ab9; --deep:#ffb3cb; --line:#5c3d49; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"Jua","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  font-size:18px;line-height:1.75;
+}
+h1,h2,h3{margin:0;font-weight:400;line-height:1.35}
+p{margin:0 0 .8em}
+.wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:6px 0 22px}
+nav a{
+  text-decoration:none;color:var(--deep);background:var(--card);
+  border:2px solid var(--line);border-radius:999px;padding:6px 14px;font-size:15px;
+}
+nav a:hover,nav a:focus-visible{background:var(--pink);color:#fff;outline:none}
+section{
+  background:var(--card);border-radius:28px;padding:30px 24px;margin-bottom:22px;
+  border:3px solid var(--line);
+}
+.hero{text-align:center;padding:40px 22px}
+.hero .big{font-size:52px}
+.hero h1{font-size:clamp(30px,7vw,44px);color:var(--deep);margin:6px 0 14px}
+.quote{
+  display:inline-block;background:var(--soft);border:2px dashed var(--pink);
+  border-radius:22px;padding:14px 20px;color:var(--deep);font-size:20px;margin-top:8px;
+}
+h2{font-size:26px;color:var(--deep);margin-bottom:14px}
+.tag{display:inline-block;background:var(--pink);color:#fff;border-radius:999px;padding:2px 14px;font-size:15px;margin-bottom:10px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:14px}
+.box{background:var(--soft);border-radius:22px;padding:18px;border:2px solid var(--line)}
+.box h3{font-size:20px;color:var(--deep);margin-bottom:6px}
+.box p{margin:0;color:var(--text);font-size:16.5px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.facts span{background:var(--soft);border:2px solid var(--line);border-radius:999px;padding:4px 16px;color:var(--deep);font-size:16px}
+.diary textarea{
+  width:100%;min-height:110px;border-radius:20px;border:2px solid var(--line);
+  background:var(--soft);color:var(--text);font:inherit;font-size:17px;padding:14px;resize:vertical;
+}
+.diary textarea:focus{outline:3px solid var(--pink);border-color:var(--pink)}
+button{
+  font:inherit;font-size:17px;border:0;border-radius:999px;cursor:pointer;
+  background:var(--pink);color:#fff;padding:8px 22px;margin-top:10px;
+}
+button:hover,button:focus-visible{background:var(--deep);outline:none}
+button.small{font-size:14px;padding:2px 12px;margin:0;background:var(--line);color:var(--deep)}
+#entries{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+#entries li{background:var(--soft);border-radius:18px;padding:12px 16px;border:2px solid var(--line)}
+#entries .d{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px;margin-bottom:4px}
+#entries .t{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font-size:16.5px}
+.empty{color:var(--muted);font-size:15px;text-align:center}
+.duo{display:grid;gap:14px;grid-template-columns:1fr auto 1fr;align-items:stretch;margin-top:14px}
+.duo .plus{align-self:center;font-size:34px;color:var(--pink)}
+.ending{text-align:center;background:var(--soft)}
+.ending .vow{font-size:24px;color:var(--deep);margin:10px 0}
+footer{text-align:center;color:var(--muted);font-size:15px}
+@media (max-width:640px){
+  body{font-size:17px}
+  section{padding:24px 18px;border-radius:24px}
+  .duo{grid-template-columns:1fr}
+  .duo .plus{justify-self:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav aria-label="바로가기">
+  <a href="#hello">👋 안녕</a>
+  <a href="#today">🌷 나의 하루</a>
+  <a href="#future">🌈 먼 미래의 나</a>
+  <a href="#skills">⭐ 내 역량</a>
+  <a href="#ai">🤖 AI와 함께</a>
+  <a href="#heart">💗 이런 마음</a>
+</nav>
+
+<section class="hero" id="hello">
+  <div class="big">🌸🩺🌸</div>
+  <h1>안녕! 나는 물리치료사를 꿈꾸고 있어요</h1>
+  <p>이곳은 물리치료사를 꿈꾸는 친구들에게 나의 꿈과 생각을 나누는 공간이에요. 와 줘서 정말 반가워요! 😊</p>
+  <div class="quote">💌 “우리같이 힘들어도 꿈을 향해 노력하며 살아가요.”</div>
+</section>
+
+<section id="today" class="diary">
+  <span class="tag">🌷 나의 하루는?</span>
+  <h2>꿈을 위해 지금 하고 있는 것들</h2>
+  <p>물리치료사가 되기 위해 나는 오늘도 이런 것들을 기르고 있어요.</p>
+  <div class="grid">
+    <div class="box"><h3>👂 귀 기울이기</h3><p>친구들의 말을 주의 깊게 듣고 공감하며 소통 능력을 길러요.</p></div>
+    <div class="box"><h3>🤝 함께 이끌기</h3><p>모둠 활동에서 리더를 맡고 친구들의 의견을 조율하며 책임감을 길러요.</p></div>
+    <div class="box"><h3>🔍 따져 보기</h3><p>주위의 말을 쉽게 믿지 않고 옳고 그름을 따져 보며 비판적 사고를 길러요.</p></div>
+  </div>
+
+  <h2 style="margin-top:28px">📔 나의 하루 적기</h2>
+  <p style="color:var(--muted);font-size:16px">오늘 나는 꿈을 위해 무엇을 했나요? 여기에 적어 보세요.</p>
+  <textarea id="txt" aria-label="오늘의 하루 쓰기" placeholder="오늘 하루를 적어 보세요 ✏️" maxlength="1000"></textarea>
+  <button id="save" type="button">💾 하루 저장하기</button>
+  <ul id="entries"></ul>
+</section>
+
+<section id="future">
+  <span class="tag">🌈 먼 미래의 나</span>
+  <h2>25살의 나는 이런 모습이에요</h2>
+  <div class="facts">
+    <span>🎂 25살</span>
+    <span>🩺 직업: 물리치료사</span>
+  </div>
+  <p>고령화 사회에서 몸이 아픈 사람들을 도와주고 싶어서 나는 이 직업을 선택했어요. 👵👴</p>
+  <p>사람들의 곁에서 정성껏 간호하며, 유명하거나 돈이 많지는 않아도 행복하게 살아가고 있어요. 🌷</p>
+  <div class="box" style="margin-top:14px;text-align:center">
+    <p>🏡 많이 가지지 않아도, 누군가의 곁에서 따뜻하게 도우며 웃는 하루 ☺️</p>
+  </div>
+</section>
+
+<section id="skills">
+  <span class="tag">⭐ 지금 내 역량은?</span>
+  <h2>내가 중요하게 생각하는 AI 시대 역량 TOP 3</h2>
+  <div class="grid">
+    <div class="box">
+      <h3>🥇 소통·협업 능력</h3>
+      <p>환자의 속마음까지 세심하게 관찰하고 문제를 해결하는 능력이에요.</p>
+      <p style="margin-top:8px;color:var(--muted)">💬 친구들의 말을 주의 깊게 듣고 공감하며 소통 능력을 기르고 싶어요.</p>
+    </div>
+    <div class="box">
+      <h3>🥈 책임 의식</h3>
+      <p>어떤 일이 있어도 환자를 포기하지 않고 책임감을 가지는 것이 중요해요.</p>
+      <p style="margin-top:8px;color:var(--muted)">🙋 모둠 활동에서 리더를 맡고 친구들의 의견을 조율하며 책임감을 기르고 싶어요.</p>
+    </div>
+    <div class="box">
+      <h3>🥉 비판적 사고</h3>
+      <p>환자의 겉모습만 보고 판단하지 않고 마음속 이야기까지 들어주는 것이 중요해요.</p>
+      <p style="margin-top:8px;color:var(--muted)">🧐 주위의 말을 쉽게 믿지 않고 옳고 그름을 따져 보며 기르고 싶어요.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <span class="tag">🤖 AI와 물리치료사</span>
+  <h2>AI와 사람이 함께하는 물리치료</h2>
+  <div class="duo">
+    <div class="box">
+      <h3>🤖 AI의 역할</h3>
+      <p>환자의 아픈 곳을 관찰하고, 알맞고 도움이 되는 치료법을 알려줘요.</p>
+    </div>
+    <div class="plus">💞</div>
+    <div class="box">
+      <h3>🧑‍⚕️ 나의 역할</h3>
+      <p>AI가 알려준 부분을 집중적으로 치료해요.</p>
+    </div>
+  </div>
+</section>
+
+<section id="heart" class="ending">
+  <span class="tag">💗 이런 마음</span>
+  <h2>나의 다짐</h2>
+  <p class="vow">🌟 어떤 일이 있어도 포기하지 않고 살아갈 거예요 🌟</p>
+  <p>꿈을 향해 노력하는 이 마음을 끝까지 지켜 갈게요. 힘들어도 괜찮아요. 우리 같이 해요! 💪</p>
+  <div class="quote">🌸 “우리같이 힘들어도 꿈을 향해 노력하며 살아가요.”</div>
+</section>
+
+<footer>🩷 와 줘서 고마워요 🩷</footer>
+</div>
+
+<script>
+(function(){
+  var KEY="pt-dream-diary", list=document.getElementById("entries"),
+      txt=document.getElementById("txt"), data=[];
+  try{ data=JSON.parse(localStorage.getItem(KEY)||"[]"); if(!Array.isArray(data)) data=[]; }catch(e){ data=[]; }
+  function persist(){ try{ localStorage.setItem(KEY,JSON.stringify(data)); }catch(e){} }
+  function render(){
+    list.textContent="";
+    if(!data.length){
+      var e=document.createElement("li"); e.className="empty";
+      e.textContent="아직 적은 하루가 없어요. 첫 하루를 적어 볼까요? 🌱";
+      list.appendChild(e); return;
+    }
+    data.forEach(function(it,i){
+      var li=document.createElement("li"),
+          d=document.createElement("div"), s=document.createElement("span"),
+          b=document.createElement("button"), p=document.createElement("p");
+      d.className="d"; s.textContent="🗓️ "+it.date;
+      b.className="small"; b.type="button"; b.textContent="지우기";
+      b.addEventListener("click",function(){ data.splice(i,1); persist(); render(); });
+      p.className="t"; p.textContent=it.text;
+      d.appendChild(s); d.appendChild(b); li.appendChild(d); li.appendChild(p); list.appendChild(li);
+    });
+  }
+  document.getElementById("save").addEventListener("click",function(){
+    var v=txt.value.trim(); if(!v){ txt.focus(); return; }
+    var n=new Date(), date=n.getFullYear()+"년 "+(n.getMonth()+1)+"월 "+n.getDate()+"일";
+    data.unshift({date:date,text:v}); persist(); txt.value=""; render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

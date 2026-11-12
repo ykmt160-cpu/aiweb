@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>물리치료사와 AI역량 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b2545;--navy2:#13315c;--mint:#3ddbb0;--mint2:#c9f5e8;--warm:#ffb88a;--bg:#f5faf9;--card:#fff;--text:#0b2545;--sub:#4a5d78;--line:#d6e6e2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#081a30;--card:#0f2a4a;--text:#eaf6f3;--sub:#a9c0d6;--line:#1d3d63;--mint2:#12425a}}
+:root[data-theme="dark"]{--bg:#081a30;--card:#0f2a4a;--text:#eaf6f3;--sub:#a9c0d6;--line:#1d3d63;--mint2:#12425a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--navy);display:flex;gap:4px;align-items:center;padding:10px 16px;overflow-x:auto}
+nav b{color:var(--mint);margin-right:auto;white-space:nowrap;font-size:15px}
+nav a{color:#dff;text-decoration:none;font-size:14px;padding:6px 12px;border-radius:99px;white-space:nowrap}
+nav a:hover{background:var(--navy2);color:var(--mint)}
+section{padding:72px 20px}
+.wrap{max-width:1040px;margin:0 auto}
+h2{font-size:clamp(24px,4vw,34px);margin:0 0 8px;font-weight:900}
+h2::after{content:"";display:block;width:56px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--mint),var(--warm));margin-top:12px}
+.sec-tag{color:#16a98a;font-weight:700;font-size:14px;letter-spacing:.08em}
+.grid{display:grid;gap:18px;margin-top:32px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 6px 20px rgba(11,37,69,.06)}
+#hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 70%,#0e5a62 100%);color:#fff;padding:90px 20px 70px;text-align:center;position:relative;overflow:hidden}
+#hero .grid-bg{position:absolute;inset:0;opacity:.12;background-image:linear-gradient(var(--mint) 1px,transparent 1px),linear-gradient(90deg,var(--mint) 1px,transparent 1px);background-size:44px 44px}
+#hero .wrap{position:relative}
+.site-title{display:inline-block;border:1px solid var(--mint);color:var(--mint);border-radius:99px;padding:6px 18px;font-weight:700;font-size:15px}
+.quote{font-size:clamp(28px,5.6vw,54px);font-weight:900;line-height:1.35;margin:28px auto;max-width:860px}
+.quote em{font-style:normal;color:var(--mint)}
+.quote span{color:var(--warm)}
+.hero-art{max-width:640px;margin:20px auto 0;width:100%}
+.me-line{margin-top:18px;color:var(--mint2);font-size:16px}
+.icon{width:56px;height:56px;border-radius:16px;background:var(--mint2);display:grid;place-items:center;margin-bottom:14px}
+.icon svg{width:32px;height:32px}
+.card h3{margin:0 0 4px;font-size:19px}
+.num{font-weight:900;color:#16a98a;font-size:13px}
+.split{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:32px}
+.chips{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:14px}
+.chip{background:var(--mint2);border-radius:12px;padding:14px;font-weight:700;display:flex;gap:8px;align-items:center}
+.chip i{width:10px;height:10px;border-radius:50%;background:var(--warm);flex:none}
+.rank{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:14px;margin-bottom:12px;background:var(--card);border:1px solid var(--line)}
+.rank .no{font-size:28px;font-weight:900;color:#fff;background:var(--navy);min-width:64px;text-align:center;border-radius:12px;padding:6px 8px}
+.r1 .no{background:linear-gradient(135deg,var(--mint),#16a98a);color:var(--navy)}
+.r1{border-color:var(--mint);border-width:2px}
+.rank b{display:block;font-size:18px}
+.rank small{color:var(--sub);font-size:14px}
+.bar{height:8px;border-radius:4px;background:var(--mint);margin-top:8px}
+.me{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border:0}
+.me dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:14px 0 0}
+.me dt{color:var(--mint);font-weight:700}
+.me dd{margin:0}
+.growth{display:grid;grid-template-columns:1fr 48px 1fr;align-items:stretch;gap:0;margin-top:18px}
+.growth .a,.growth .b{padding:20px;border-radius:16px}
+.growth .a{background:var(--navy);color:#fff}
+.growth .b{background:var(--mint2)}
+.growth .ar{display:grid;place-items:center;color:#16a98a;font-size:26px;font-weight:900}
+.growth small{display:block;font-size:12px;opacity:.8;font-weight:700;letter-spacing:.04em}
+.growth strong{font-size:18px}
+.alt{background:linear-gradient(180deg,var(--bg),var(--mint2))}
+.purpose{margin-top:28px;background:var(--navy);color:#fff;border-radius:18px;padding:26px}
+.purpose b{color:var(--mint)}
+footer{background:var(--navy);color:var(--mint2);text-align:center;padding:26px 16px;font-size:14px}
+@media(max-width:640px){section{padding:54px 16px}.growth{grid-template-columns:1fr}.growth .ar{transform:rotate(90deg);padding:6px 0}.chips{grid-template-columns:1fr}nav b{display:none}}
+</style>
+</head>
+<body>
+<nav><b>물리치료사와 AI역량 정리</b><a href="#main">메인</a><a href="#trend">AI 트렌드</a><a href="#role">인간의 역할</a><a href="#growth">성장 가이드</a><a href="#guide">타겟 안내</a></nav>
+
+<section id="main"><div id="hero" style="margin:-72px -20px;"><div class="grid-bg"></div><div class="wrap">
+<span class="site-title">물리치료사와 AI역량 정리</span>
+<h1 class="quote">“AI는 도울 뿐, 진짜 회복은 <em>당신의 손끝</em>과 <span>온기</span>에서 시작됩니다.”</h1>
+<svg class="hero-art" viewBox="0 0 640 200" role="img" aria-label="AI 데이터 그래프와 따뜻한 손길">
+<defs><radialGradient id="w" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffb88a" stop-opacity=".95"/><stop offset="1" stop-color="#ffb88a" stop-opacity="0"/></radialGradient></defs>
+<g stroke="#3ddbb0" stroke-opacity=".25"><path d="M20 40H620M20 90H620M20 140H620"/></g>
+<g fill="#3ddbb0" fill-opacity=".55"><rect x="30" y="120" width="26" height="50" rx="4"/><rect x="70" y="100" width="26" height="70" rx="4"/><rect x="110" y="110" width="26" height="60" rx="4"/><rect x="150" y="70" width="26" height="100" rx="4"/><rect x="190" y="84" width="26" height="86" rx="4"/></g>
+<polyline points="43,110 83,88 123,98 163,56 203,70 260,92 320,100" fill="none" stroke="#3ddbb0" stroke-width="3"/>
+<circle cx="320" cy="100" r="70" fill="url(#w)"/>
+<g fill="none" stroke="#ffb88a" stroke-width="5" stroke-linecap="round"><path d="M270 150c20-10 40-30 50-50"/><path d="M370 150c-20-10-40-30-50-50"/></g>
+<circle cx="320" cy="100" r="11" fill="#fff"/>
+<g fill="#3ddbb0" fill-opacity=".55"><rect x="420" y="90" width="26" height="80" rx="4"/><rect x="460" y="60" width="26" height="110" rx="4"/><rect x="500" y="74" width="26" height="96" rx="4"/><rect x="540" y="40" width="26" height="130" rx="4"/><rect x="580" y="52" width="26" height="118" rx="4"/></g>
+<polyline points="320,100 433,80 473,50 513,64 553,30 593,42" fill="none" stroke="#ffb88a" stroke-width="3"/>
+</svg>
+<p class="me-line">미래의 나 · 우성현 | 희망 직업 물리치료사</p>
+</div></div></section>
+
+<section id="trend" class="alt"><div class="wrap">
+<div class="sec-tag">SECTION 2</div><h2>물리치료 속 AI 활용 영역</h2>
+<div class="grid g4">
+<div class="card"><div class="icon"><svg viewBox="0 0 32 32" fill="none" stroke="#0b2545" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="6" r="3"/><path d="M16 10v9M16 13l-6 4M16 13l6 4M16 19l-5 8M16 19l5 8"/></svg></div><span class="num">01</span><h3>비전자세 보행분석</h3></div>
+<div class="card"><div class="icon"><svg viewBox="0 0 32 32" fill="none" stroke="#0b2545" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15 16 5l12 10"/><path d="M7 13v14h18V13"/><path d="M12 20h3l2-3 2 3h2"/></svg></div><span class="num">02</span><h3>홈 재활 플랫폼</h3></div>
+<div class="card"><div class="icon"><svg viewBox="0 0 32 32" fill="none" stroke="#0b2545" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="22" height="24" rx="3"/><path d="M10 12l3 3 5-6M10 22h12"/></svg></div><span class="num">03</span><h3>임상 의사결정 보조</h3></div>
+<div class="card"><div class="icon"><svg viewBox="0 0 32 32" fill="none" stroke="#0b2545" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28h12M12 28V18l8-8"/><circle cx="12" cy="18" r="2.5"/><circle cx="22" cy="8" r="3"/><path d="M24 11l3 3"/></svg></div><span class="num">04</span><h3>스마트 로보틱스</h3></div>
+</div></div></section>
+
+<section id="role"><div class="wrap">
+<div class="sec-tag">SECTION 3</div><h2>AI 시대에도 물리치료사가 직접 맡아야 할 역할</h2>
+<div class="split">
+<div class="card"><h3>물리치료사가 직접 맡을 일</h3>
+<div class="chips"><div class="chip"><i></i>대면치료</div><div class="chip"><i></i>평가 및 진단</div><div class="chip"><i></i>맞춤 재활 처방</div><div class="chip"><i></i>환자 교육 및 소통</div></div></div>
+<div class="card me"><h3 style="color:var(--mint)">미래의 나</h3>
+<dl><dt>미래의 나</dt><dd>우성현</dd><dt>미래 나이</dt><dd>27세</dd><dt>희망 직업</dt><dd>물리치료사</dd><dt>일하는 곳</dt><dd>병원</dd><dt>직업을 선택한 이유</dt><dd>아픈 환자들한테 도움이 되는 물리치료사가 되고 싶었기 때문입니다.</dd></dl></div>
+</div>
+<h3 style="margin:40px 0 14px;font-size:22px">물리치료사에게 필요한 핵심 역량 TOP 3</h3>
+<div class="rank r1"><div class="no">1위</div><div style="flex:1"><b>공감과 동기부여</b><small>필요한 이유: 환자 공감 및 동기부여</small><div class="bar" style="width:100%"></div></div></div>
+<div class="rank"><div class="no">2위</div><div style="flex:1"><b>임상 전문성 판단</b><small>필요한 이유: 임상적 판단력</small><div class="bar" style="width:72%"></div></div></div>
+<div class="rank"><div class="no">3위</div><div style="flex:1"><b>손끝 감각 도수치료</b><small>필요한 이유: 손끝 도수치료 감각</small><div class="bar" style="width:48%"></div></div></div>
+</div></section>
+
+<section id="growth" class="alt"><div class="wrap">
+<div class="sec-tag">SECTION 4</div><h2>내가 기를 AI 시대 역량 TOP 3</h2>
+<div class="growth"><div class="a"><small>1위 · 역량</small><strong>공감과 동기부여</strong></div><div class="ar">→</div><div class="b"><small>앞으로의 성장 방향</small><strong>AI 데이터 활용법 습득</strong></div></div>
+<div class="growth"><div class="a"><small>2위 · 역량</small><strong>임상 전문성 판단</strong></div><div class="ar">→</div><div class="b"><small>앞으로의 성장 방향</small><strong>소통 및 코칭 능력 강화</strong></div></div>
+<div class="growth"><div class="a"><small>3위 · 역량</small><strong>손끝 감각 도수치료</strong></div><div class="ar">→</div><div class="b"><small>앞으로의 성장 방향</small><strong>고난도 수기(도수) 전문성 심화</strong></div></div>
+</div></section>
+
+<section id="guide"><div class="wrap">
+<div class="sec-tag">SECTION 5</div><h2>이 홈페이지를 위한 안내</h2>
+<div class="grid g3">
+<div class="card"><div class="icon"><svg viewBox="0 0 32 32" fill="none" stroke="#0b2545" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="10" r="5"/><path d="M6 27c1-6 5-9 10-9s9 3 10 9"/></svg></div><h3>물리치료사</h3></div>
+<div class="card"><div class="icon"><svg viewBox="0 0 32 32" fill="none" stroke="#0b2545" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 16 6l14 6-14 6z"/><path d="M8 15v7c4 3 12 3 16 0v-7"/></svg></div><h3>물리치료학과 학생</h3></div>
+<div class="card"><div class="icon"><svg viewBox="0 0 32 32" fill="none" stroke="#0b2545" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="22" height="21" rx="2"/><path d="M16 11v10M11 16h10"/></svg></div><h3>재활병원 및 센터 원장</h3></div>
+</div>
+<div class="purpose">홈페이지의 목적은 <b>물리치료사와 AI의 협업 가이드라인 제공</b>, 그리고 <b>AI 시대에 대체 불가능한 핵심 역량 파악</b>입니다.</div>
+</div></section>
+
+<footer>물리치료사와 AI역량 정리</footer>
+</body>
+</html>

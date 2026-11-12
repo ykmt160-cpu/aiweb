@@ -1,0 +1,661 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>새로운 일상으로 가는 한걸음</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@500;700;800&display=swap">
+<style>
+/* Layout: sticky header, lavender/white bands alternating, hero with therapist-and-child illustration, five sections as cards */
+:root {
+  --bg: #FBF9FF;
+  --bg-alt: #F3EEFF;
+  --surface: #FFFFFF;
+  --ink: #2B2342;
+  --ink-soft: #5C5476;
+  --line: #E3DBF5;
+  --violet: #6A4FBF;
+  --violet-hover: #563FA3;
+  --on-violet: #FFFFFF;
+  --lav: #E9E2FA;
+  --lav-strong: #CDBFF2;
+  --yellow: #FFE58A;
+  --yellow-strong: #FFD54F;
+  --on-yellow: #3A2E00;
+  --mark: #FFE58A;
+  --shadow: 0 12px 32px rgba(106, 79, 191, .13);
+  --font-body: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-head: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --radius: 22px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15112A; --bg-alt: #1C1736; --surface: #231D3F; --ink: #F2EEFF; --ink-soft: #BDB4DA;
+    --line: #3A3262; --violet: #B6A2FF; --violet-hover: #CBBCFF; --on-violet: #1A1433;
+    --lav: #2E2655; --lav-strong: #4B3F85; --mark: rgba(255, 213, 79, .38);
+    --shadow: 0 12px 32px rgba(0, 0, 0, .38);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15112A; --bg-alt: #1C1736; --surface: #231D3F; --ink: #F2EEFF; --ink-soft: #BDB4DA;
+  --line: #3A3262; --violet: #B6A2FF; --violet-hover: #CBBCFF; --on-violet: #1A1433;
+  --lav: #2E2655; --lav-strong: #4B3F85; --mark: rgba(255, 213, 79, .38);
+  --shadow: 0 12px 32px rgba(0, 0, 0, .38);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  padding-block: 0;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 40; background: var(--surface);
+}
+h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.3; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+mark { background: linear-gradient(transparent 58%, var(--mark) 58%); color: inherit; padding: 0 .1em; }
+svg { max-width: 100%; }
+.ic { width: 1.5em; height: 1.5em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+.wrap {
+  width: 100%; max-width: 1180px; margin-inline: auto;
+  padding-left: max(clamp(16px, 4vw, 32px), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(16px, 4vw, 32px), env(safe-area-inset-right, 0px));
+}
+
+/* ---------- header ---------- */
+.site {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; position: relative; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); min-width: 0; }
+.brand-mark { width: 38px; height: 38px; border-radius: 12px; background: var(--violet); color: var(--on-violet); display: grid; place-items: center; flex: none; }
+.brand-mark .ic { width: 22px; height: 22px; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.brand-text strong { font-family: var(--font-head); font-size: 15px; font-weight: 800; }
+.brand-text span { font-size: 12.5px; color: var(--ink-soft); }
+.nav { display: none; gap: 4px; }
+.nav a {
+  font-family: var(--font-head); font-weight: 500; font-size: 15px; color: var(--ink-soft);
+  text-decoration: none; padding: 8px 14px; border-radius: 999px;
+  transition: background-color .2s, color .2s;
+}
+.nav a:hover { background: var(--yellow); color: var(--on-yellow); }
+.nav a[aria-current="true"] { background: var(--lav); color: var(--violet); }
+.nav a[aria-current="true"]:hover { background: var(--yellow); color: var(--on-yellow); }
+.menu-btn {
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); width: 44px; height: 44px;
+  border-radius: 14px; display: grid; place-items: center; cursor: pointer; transition: background-color .2s;
+}
+.menu-btn:hover { background: var(--yellow); color: var(--on-yellow); }
+.nav.open {
+  display: flex; flex-direction: column; position: absolute; top: calc(100% + 1px); left: 0; right: 0;
+  background: var(--surface); border-bottom: 1px solid var(--line); padding: 10px 16px 16px; box-shadow: var(--shadow);
+}
+.nav.open a { padding: 12px 14px; font-size: 16px; }
+@media (min-width: 1000px) {
+  .nav { display: flex; }
+  .menu-btn { display: none; }
+}
+@media (max-width: 520px) { .brand-text span { display: none; } }
+
+/* ---------- shared ---------- */
+section[id] { scroll-margin-top: 80px; }
+.band { padding-block: clamp(56px, 9vw, 104px); }
+.band.alt { background: var(--bg-alt); }
+.eyebrow {
+  display: inline-block; font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: .08em;
+  color: var(--violet); background: var(--lav); padding: 5px 14px; border-radius: 999px; margin-bottom: 16px;
+}
+h2 { font-size: clamp(26px, 4.2vw, 40px); font-weight: 800; letter-spacing: -.01em; }
+.lead { color: var(--ink-soft); font-size: clamp(16px, 2vw, 18.5px); max-width: 62ch; margin-top: 14px; }
+.head { margin-bottom: clamp(28px, 5vw, 48px); }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(22px, 3vw, 30px);
+  min-width: 0; transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--lav-strong); }
+.card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+.card p { color: var(--ink-soft); font-size: 16px; line-height: 1.75; }
+.icon-chip {
+  width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 16px;
+  background: var(--lav); color: var(--violet);
+}
+.icon-chip.y { background: var(--yellow); color: var(--on-yellow); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-head);
+  font-weight: 700; font-size: 16px; text-decoration: none; cursor: pointer; padding: 14px 26px; border-radius: 999px;
+  border: 2px solid var(--violet); background: var(--violet); color: var(--on-violet);
+  transition: background-color .2s, color .2s, border-color .2s, transform .2s;
+}
+.btn:hover { background: var(--yellow-strong); border-color: var(--yellow-strong); color: var(--on-yellow); transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--violet); }
+.btn.ghost:hover { background: var(--lav); border-color: var(--violet); color: var(--violet); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--yellow-strong); outline-offset: 3px; }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(40px, 7vw, 88px); }
+.hero .wrap { display: grid; gap: clamp(28px, 5vw, 56px); align-items: center; grid-template-columns: 1fr; }
+.hero-copy { min-width: 0; }
+.hero h1 { font-weight: 800; font-size: clamp(34px, 6.4vw, 62px); letter-spacing: -.02em; }
+.h1-sub { display: block; margin-top: 10px; font-size: clamp(20px, 3.4vw, 32px); font-weight: 700; color: var(--violet); }
+.hero .lead { margin-top: 22px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero-art { width: 100%; height: auto; display: block; }
+.hero-art text { font-family: var(--font-head); }
+@media (min-width: 900px) { .hero .wrap { grid-template-columns: 1.05fr .95fr; } }
+
+/* ---------- section 1 ---------- */
+.dream-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+.profile { text-align: center; }
+.avatar { width: 128px; height: 128px; margin: 0 auto 16px; display: block; }
+.profile h3 { font-size: 26px; }
+.profile .role { color: var(--violet); font-weight: 700; font-family: var(--font-head); font-size: 15px; margin-top: 4px; }
+.facts { margin: 20px 0 0; padding: 0; display: grid; gap: 10px; text-align: left; }
+.facts div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--bg-alt); border-radius: 14px; font-size: 15px; }
+.facts dt { color: var(--ink-soft); }
+.facts dd { margin: 0; font-weight: 700; font-family: var(--font-head); text-align: right; }
+.statement { display: flex; flex-direction: column; justify-content: center; gap: 18px; background: var(--violet); color: var(--on-violet); border-color: var(--violet); }
+.statement:hover { border-color: var(--violet); }
+.statement h3 { font-size: clamp(24px, 3.6vw, 34px); font-weight: 800; line-height: 1.4; margin: 0; }
+.statement h3 mark { background: linear-gradient(transparent 58%, var(--yellow-strong) 58%); color: inherit; }
+:root[data-theme="dark"] .statement h3 mark { background: linear-gradient(transparent 58%, rgba(255,213,79,.55) 58%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .statement h3 mark { background: linear-gradient(transparent 58%, rgba(255,213,79,.55) 58%); } }
+.statement p { color: inherit; opacity: .92; font-size: 17px; }
+.trio { display: grid; gap: 20px; grid-template-columns: 1fr; margin-top: 20px; }
+@media (min-width: 700px) { .trio { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .dream-grid { grid-template-columns: 360px 1fr; } }
+
+/* ---------- section 2 ---------- */
+.define { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center; }
+.define-main { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 4vw, 40px); }
+.define-main .big { font-family: var(--font-head); font-weight: 800; font-size: clamp(22px, 3.4vw, 30px); line-height: 1.45; }
+.define-main p { color: var(--ink-soft); margin-top: 14px; }
+.daily { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.daily span { font-family: var(--font-head); font-weight: 500; font-size: 15px; padding: 7px 16px; border-radius: 999px; background: var(--lav); color: var(--violet); }
+.goal {
+  background: var(--yellow); color: var(--on-yellow); border-radius: var(--radius); padding: clamp(24px, 4vw, 36px);
+  display: flex; flex-direction: column; gap: 10px; min-width: 0;
+}
+.goal small { font-family: var(--font-head); font-weight: 700; letter-spacing: .06em; font-size: 13px; }
+.goal strong { font-family: var(--font-head); font-weight: 800; font-size: clamp(24px, 3.6vw, 32px); line-height: 1.35; }
+.goal span { font-size: 16px; }
+.sub-title { font-size: 22px; font-weight: 800; margin: clamp(40px, 6vw, 64px) 0 20px; display: flex; align-items: center; gap: 10px; }
+.grid3 { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .grid3 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .grid3 { grid-template-columns: repeat(3, 1fr); } .define { grid-template-columns: 1.4fr 1fr; } }
+.qual { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .qual { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .qual { grid-template-columns: repeat(3, 1fr); } }
+.qual li { list-style: none; display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; transition: background-color .2s, border-color .2s; min-width: 0; }
+.qual li:hover { background: var(--lav); border-color: var(--lav-strong); }
+.qual .ic { color: var(--violet); margin-top: 3px; }
+.qual b { font-family: var(--font-head); font-weight: 700; display: block; font-size: 16.5px; }
+.qual span { color: var(--ink-soft); font-size: 15px; line-height: 1.6; display: block; }
+ul.qual { margin: 0; padding: 0; }
+
+/* ---------- section 3 ---------- */
+.flow { display: grid; gap: 14px; grid-template-columns: 1fr; counter-reset: step; margin: 0; padding: 0; list-style: none; }
+.flow li { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 22px; min-width: 0; }
+.flow .n { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--yellow); color: var(--on-yellow); font-family: var(--font-head); font-weight: 800; font-size: 14px; margin-bottom: 12px; }
+.flow h3 { font-size: 18px; margin-bottom: 6px; }
+.flow p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.65; }
+.flow li.human { background: var(--violet); border-color: var(--violet); color: var(--on-violet); }
+.flow li.human p { color: inherit; opacity: .92; }
+@media (min-width: 640px) { .flow { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .flow { grid-template-columns: repeat(4, 1fr); } }
+
+.ai-panels { display: grid; gap: 20px; grid-template-columns: 1fr; margin-top: 28px; }
+@media (min-width: 900px) { .ai-panels { grid-template-columns: 1.1fr .9fr; } }
+.tabs { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 30px); min-width: 0; }
+.tablist { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.tab {
+  font-family: var(--font-head); font-weight: 700; font-size: 15px; cursor: pointer; padding: 10px 20px; border-radius: 999px;
+  border: 2px solid var(--line); background: transparent; color: var(--ink-soft); transition: background-color .2s, color .2s, border-color .2s;
+}
+.tab:hover { background: var(--yellow); border-color: var(--yellow); color: var(--on-yellow); }
+.tab[aria-selected="true"] { background: var(--violet); border-color: var(--violet); color: var(--on-violet); }
+.tab[aria-selected="true"]:hover { background: var(--yellow-strong); border-color: var(--yellow-strong); color: var(--on-yellow); }
+.tabpanel ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.tabpanel li { display: flex; gap: 12px; align-items: flex-start; font-size: 16.5px; line-height: 1.65; }
+.tabpanel li .ic { color: var(--violet); margin-top: 3px; width: 1.25em; height: 1.25em; }
+.tabpanel .note { margin-top: 18px; padding: 14px 18px; background: var(--bg-alt); border-radius: 14px; font-size: 15px; color: var(--ink-soft); }
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 28px); min-width: 0; }
+.chart-card h3 { font-size: 18px; }
+.chart-card .cap { font-size: 14px; color: var(--ink-soft); margin: 6px 0 14px; line-height: 1.6; }
+.chart { width: 100%; height: auto; display: block; }
+.chart text { font-family: var(--font-body); font-size: 12px; fill: var(--ink-soft); }
+.chart .lbl { font-family: var(--font-head); font-weight: 700; font-size: 12.5px; }
+.assist {
+  margin-top: 28px; display: flex; gap: 18px; align-items: center; background: var(--yellow); color: var(--on-yellow);
+  border-radius: var(--radius); padding: clamp(20px, 3vw, 30px);
+}
+.assist .ic { width: 40px; height: 40px; }
+.assist p { font-family: var(--font-head); font-weight: 700; font-size: clamp(17px, 2.4vw, 22px); line-height: 1.55; }
+
+/* ---------- section 4 ---------- */
+.cap-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .cap-grid { grid-template-columns: repeat(3, 1fr); } }
+.cap { display: flex; flex-direction: column; gap: 14px; }
+.cap-top { display: flex; align-items: center; justify-content: space-between; }
+.rank { width: 46px; height: 46px; border-radius: 50%; background: var(--yellow); color: var(--on-yellow); display: grid; place-items: center; font-family: var(--font-head); font-weight: 800; font-size: 20px; }
+.cap h3 { font-size: 23px; font-weight: 800; margin: 0; }
+.cap .means { color: var(--ink); font-size: 16.5px; }
+.cap .plan { background: var(--bg-alt); border-radius: 16px; padding: 16px 18px; }
+.cap .plan b { display: block; font-family: var(--font-head); font-size: 13px; letter-spacing: .06em; color: var(--violet); margin-bottom: 4px; }
+.cap .plan p { color: var(--ink-soft); font-size: 15.5px; }
+
+/* ---------- section 5 ---------- */
+.pledges { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 800px) { .pledges { grid-template-columns: repeat(3, 1fr); } }
+.pledges .card p { font-family: var(--font-head); font-weight: 500; color: var(--ink); font-size: 17px; line-height: 1.7; }
+.thanks { margin-top: 40px; max-width: 60ch; color: var(--ink-soft); font-size: 18px; }
+.finale {
+  margin-top: 32px; background: var(--yellow); color: var(--on-yellow); border-radius: 32px;
+  padding: clamp(32px, 6vw, 64px); display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
+}
+.finale .ic { width: 38px; height: 38px; }
+.finale blockquote { margin: 0; font-family: var(--font-head); font-weight: 800; font-size: clamp(22px, 3.8vw, 36px); line-height: 1.55; text-wrap: balance; }
+.top-btn { margin-top: 28px; }
+.bottom-space { height: 24px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  }
+}
+@keyframes rise { from { opacity: .35; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card, .btn { transition: none; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-clip" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 17v4M17 19h4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7M12 19V5"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  </defs>
+</svg>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="맨 위로 이동">
+      <span class="brand-mark"><svg class="ic"><use href="#i-hand"/></svg></span>
+      <span class="brand-text"><strong>새로운 일상으로 가는 한걸음</strong><span>AI도 치료사가 되는 치료기술</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav"><svg class="ic"><use href="#i-menu"/></svg></button>
+    <nav class="nav" id="nav" aria-label="섹션 메뉴">
+      <a href="#dream">나의 꿈</a>
+      <a href="#ot">작업치료사란?</a>
+      <a href="#ai">AI와 재활</a>
+      <a href="#skills">핵심 역량</a>
+      <a href="#future">더 나은 미래</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">미래의 작업치료사와 AI 기술의 만남</span>
+        <h1>새로운 일상으로 가는 한걸음<span class="h1-sub"><mark>AI도 치료사가 되는 치료기술</mark></span></h1>
+        <p class="lead">장애 아동 전문 작업치료사를 꿈꾸는 이유빈의 진로 이야기예요. 작업치료사가 어떤 일을 하는지, AI가 재활 치료를 어떻게 돕는지 함께 살펴봐요.</p>
+        <div class="cta-row">
+          <a class="btn" href="#dream">나의 꿈 보러 가기</a>
+          <a class="btn ghost" href="#ai">AI와 재활 치료 보기</a>
+        </div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 520 420" role="img" aria-label="작업치료사와 아이가 함께 블록 놀이를 하고, 위쪽에서 AI가 치료 기록과 회복 그래프를 보여 주는 일러스트">
+        <rect x="20" y="30" width="480" height="370" rx="48" fill="var(--lav)"/>
+        <circle cx="440" cy="340" r="62" fill="var(--yellow)" opacity=".6"/>
+        <circle cx="70" cy="350" r="26" fill="var(--yellow)" opacity=".7"/>
+        <!-- table -->
+        <rect x="70" y="300" width="380" height="16" rx="8" fill="var(--violet)"/>
+        <rect x="104" y="316" width="12" height="70" rx="5" fill="var(--violet)"/>
+        <rect x="404" y="316" width="12" height="70" rx="5" fill="var(--violet)"/>
+        <!-- blocks -->
+        <rect x="248" y="276" width="28" height="24" rx="4" fill="var(--yellow-strong)"/>
+        <rect x="278" y="276" width="28" height="24" rx="4" fill="var(--lav-strong)"/>
+        <rect x="263" y="252" width="28" height="24" rx="4" fill="var(--surface)" stroke="var(--violet)" stroke-width="2"/>
+        <!-- therapist -->
+        <path d="M98 312V252a50 50 0 0 1 50-50h8a50 50 0 0 1 50 50v60z" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+        <path d="M140 202h24l-12 36z" fill="var(--violet)"/>
+        <circle cx="152" cy="124" r="13" fill="#3B2A4F"/>
+        <circle cx="152" cy="164" r="32" fill="#F3CBAE"/>
+        <path d="M120 162a32 32 0 0 1 64 0c-10-10-22-14-32-14s-22 4-32 14z" fill="#3B2A4F"/>
+        <circle cx="142" cy="166" r="2.6" fill="#3B2A4F"/><circle cx="162" cy="166" r="2.6" fill="#3B2A4F"/>
+        <path d="M143 177q9 8 18 0" fill="none" stroke="#8A4B3C" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M194 236l22 12" fill="none" stroke="var(--surface)" stroke-width="24" stroke-linecap="round"/>
+        <path d="M216 248l38 38" fill="none" stroke="#F3CBAE" stroke-width="16" stroke-linecap="round"/>
+        <!-- child -->
+        <path d="M336 312v-44a38 38 0 0 1 38-38h4a38 38 0 0 1 38 38v44z" fill="var(--yellow-strong)"/>
+        <circle cx="376" cy="204" r="27" fill="#EBBE9C"/>
+        <path d="M349 202a27 27 0 0 1 54 0c-8-8-17-10-27-10s-19 2-27 10z" fill="#4A3329"/>
+        <circle cx="368" cy="208" r="2.3" fill="#4A3329"/><circle cx="384" cy="208" r="2.3" fill="#4A3329"/>
+        <path d="M370 217q6 6 12 0" fill="none" stroke="#8A4B3C" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M342 262l-10 6" fill="none" stroke="var(--yellow-strong)" stroke-width="20" stroke-linecap="round"/>
+        <path d="M334 266l-34 22" fill="none" stroke="#EBBE9C" stroke-width="14" stroke-linecap="round"/>
+        <!-- AI cards -->
+        <path d="M380 128C380 190 300 190 277 248" fill="none" stroke="var(--violet)" stroke-width="2.5" stroke-dasharray="4 7" stroke-linecap="round"/>
+        <rect x="44" y="50" width="152" height="66" rx="18" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+        <circle cx="74" cy="83" r="15" fill="var(--yellow)"/>
+        <rect x="67" y="76" width="14" height="14" rx="3" fill="none" stroke="var(--on-yellow)" stroke-width="2"/>
+        <rect x="71" y="80" width="6" height="6" fill="var(--on-yellow)"/>
+        <text x="98" y="80" font-size="14" font-weight="700" fill="var(--ink)">AI 분석</text>
+        <text x="98" y="99" font-size="11.5" fill="var(--ink-soft)">치료 기록 정리</text>
+        <rect x="322" y="44" width="152" height="84" rx="18" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+        <text x="338" y="68" font-size="12.5" font-weight="700" fill="var(--ink)">회복 그래프</text>
+        <rect x="340" y="104" width="16" height="12" rx="3" fill="var(--violet)"/>
+        <rect x="364" y="94" width="16" height="22" rx="3" fill="var(--violet)"/>
+        <rect x="388" y="86" width="16" height="30" rx="3" fill="var(--violet)"/>
+        <rect x="412" y="76" width="16" height="40" rx="3" fill="var(--yellow-strong)"/>
+        <path d="M452 62l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="var(--yellow-strong)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 1 -->
+  <section class="band alt" id="dream" aria-labelledby="h-dream">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">미래의 나</span>
+        <h2 id="h-dream">나의 미래와 꿈</h2>
+        <p class="lead">아이들이 자기만의 속도로 걸어갈 수 있도록 곁에서 돕는 사람이 되고 싶어요.</p>
+      </div>
+      <div class="dream-grid">
+        <article class="card profile reveal">
+          <svg class="avatar" viewBox="0 0 128 128" role="img" aria-label="작업치료사 이유빈의 프로필 일러스트">
+            <circle cx="64" cy="64" r="64" fill="var(--lav)"/>
+            <path d="M22 118c0-24 18-38 42-38s42 14 42 38z" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+            <path d="M54 82h20l-10 24z" fill="var(--violet)"/>
+            <circle cx="64" cy="36" r="11" fill="#3B2A4F"/>
+            <circle cx="64" cy="58" r="25" fill="#F3CBAE"/>
+            <path d="M39 56a25 25 0 0 1 50 0c-8-8-17-11-25-11s-17 3-25 11z" fill="#3B2A4F"/>
+            <circle cx="56" cy="61" r="2.2" fill="#3B2A4F"/><circle cx="72" cy="61" r="2.2" fill="#3B2A4F"/>
+            <path d="M57 69q7 6 14 0" fill="none" stroke="#8A4B3C" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <h3>이유빈</h3>
+          <p class="role">장애 아동 전문 작업치료사</p>
+          <dl class="facts">
+            <div><dt>나이</dt><dd>37세</dd></div>
+            <div><dt>일하는 곳</dt><dd>대학병원</dd></div>
+            <div><dt>전문 분야</dt><dd>장애 아동 작업치료</dd></div>
+          </dl>
+        </article>
+        <article class="card statement reveal">
+          <h3>장애를 가진 아이들이 <mark>뒤처지거나 힘들어하지 않고</mark>, 자기만의 속도로 새로운 일상을 살아가는 것.</h3>
+          <p>그것이 제가 작업치료사로서 이루고 싶은 꿈이에요.</p>
+        </article>
+      </div>
+      <div class="trio">
+        <article class="card reveal">
+          <div class="icon-chip"><svg class="ic"><use href="#i-heart"/></svg></div>
+          <h3>꿈꾸게 된 이유</h3>
+          <p>아이들은 저마다 자라는 속도가 달라요. 느리다는 이유로 자신감을 잃는 아이가 없었으면 좋겠다고 생각하면서 작업치료사라는 직업에 마음이 갔어요.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon-chip y"><svg class="ic"><use href="#i-user"/></svg></div>
+          <h3>미래의 나의 모습</h3>
+          <p>37세의 저는 대학병원에서 아이들을 만나요. 아이의 하루를 관찰하고, 가족과 이야기하고, AI가 정리해 준 자료를 보며 치료 계획을 세워요.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon-chip"><svg class="ic"><use href="#i-target"/></svg></div>
+          <h3>내가 바라는 변화</h3>
+          <p>스스로 밥을 먹고, 옷을 입고, 친구와 노는 작은 일상이 아이에게는 큰 자신감이 돼요. 그 순간을 함께 만들고 싶어요.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="band" id="ot" aria-labelledby="h-ot">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">직업 이야기</span>
+        <h2 id="h-ot">작업치료사란?</h2>
+      </div>
+      <div class="define">
+        <div class="define-main reveal">
+          <p class="big">작업치료사는 <mark>일상생활의 ‘작업’</mark>을 다시 할 수 있도록 돕는 재활 전문가예요.</p>
+          <p>여기서 ‘작업’은 일이 아니라 우리가 매일 하는 활동을 말해요. 몸이 불편하거나 발달이 느려서 이런 활동이 어려운 사람이 스스로 해낼 수 있도록 방법을 찾고 연습을 도와요.</p>
+          <div class="daily" aria-label="일상 활동 예시">
+            <span>밥 먹기</span><span>옷 입기</span><span>글씨 쓰기</span><span>친구와 놀기</span><span>학교생활</span>
+          </div>
+        </div>
+        <div class="goal reveal">
+          <small>가장 중요한 목표</small>
+          <strong>혼자서도 해낼 수 있는 일상</strong>
+          <span>누군가에게 의지하지 않고 독립적으로 생활하도록 돕는 직업이에요.</span>
+        </div>
+      </div>
+
+      <h3 class="sub-title reveal">작업치료사의 주요 업무</h3>
+      <div class="grid3">
+        <article class="card reveal"><div class="icon-chip"><svg class="ic"><use href="#i-clip"/></svg></div><h3>평가</h3><p>아이가 어떤 활동을 어렵게 느끼는지 관찰하고 검사해서 현재 상태를 파악해요.</p></article>
+        <article class="card reveal"><div class="icon-chip y"><svg class="ic"><use href="#i-target"/></svg></div><h3>치료 계획 세우기</h3><p>평가 결과를 바탕으로 목표를 정하고, 아이에게 맞는 치료 방법을 계획해요.</p></article>
+        <article class="card reveal"><div class="icon-chip"><svg class="ic"><use href="#i-hand"/></svg></div><h3>활동 훈련</h3><p>놀이와 생활 동작을 활용해 손 사용, 균형, 집중력 같은 기능을 연습해요.</p></article>
+        <article class="card reveal"><div class="icon-chip y"><svg class="ic"><use href="#i-home"/></svg></div><h3>보조기구·환경 조정</h3><p>자조 도구를 추천하고, 집과 학교를 아이에게 편하게 바꾸는 방법을 알려 줘요.</p></article>
+        <article class="card reveal"><div class="icon-chip"><svg class="ic"><use href="#i-users"/></svg></div><h3>가족 교육</h3><p>집에서 함께할 수 있는 활동과 도와주는 방법을 가족에게 설명해요.</p></article>
+        <article class="card reveal"><div class="icon-chip y"><svg class="ic"><use href="#i-chart"/></svg></div><h3>경과 점검</h3><p>치료 효과를 꾸준히 확인하고 필요하면 계획을 고쳐요.</p></article>
+      </div>
+
+      <h3 class="sub-title reveal">작업치료사에게 필요한 능력과 자질</h3>
+      <ul class="qual">
+        <li class="reveal"><svg class="ic"><use href="#i-heart"/></svg><div><b>공감 능력</b><span>아이와 가족의 마음을 먼저 이해해요.</span></div></li>
+        <li class="reveal"><svg class="ic"><use href="#i-eye"/></svg><div><b>관찰력</b><span>작은 움직임과 표정에서 어려움을 찾아내요.</span></div></li>
+        <li class="reveal"><svg class="ic"><use href="#i-clock"/></svg><div><b>인내심</b><span>변화가 느려도 기다리고 응원해 줘요.</span></div></li>
+        <li class="reveal"><svg class="ic"><use href="#i-bulb"/></svg><div><b>창의력</b><span>아이가 좋아하는 놀이로 치료를 만들어요.</span></div></li>
+        <li class="reveal"><svg class="ic"><use href="#i-chat"/></svg><div><b>소통·협업 능력</b><span>의사, 간호사, 교사, 가족과 함께 일해요.</span></div></li>
+        <li class="reveal"><svg class="ic"><use href="#i-book"/></svg><div><b>배우는 자세</b><span>새로운 치료법과 기술을 계속 공부해요.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="band alt" id="ai" aria-labelledby="h-ai">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">기술 이야기</span>
+        <h2 id="h-ai">AI와 재활 치료</h2>
+        <p class="lead">AI는 치료 기록과 결과를 빠르게 분석해서, 더 좋은 치료 방법을 찾는 데 도움을 줘요.</p>
+      </div>
+
+      <ol class="flow">
+        <li class="reveal"><span class="n">1</span><h3>데이터 모으기</h3><p>치료 기록, 움직임 측정값, 활동 결과를 모아요.</p></li>
+        <li class="reveal"><span class="n">2</span><h3>AI가 분석하기</h3><p>여러 치료 방법과 결과를 비교해서 변화의 흐름을 찾아요.</p></li>
+        <li class="reveal"><span class="n">3</span><h3>방법 제안하기</h3><p>효과가 좋았던 방법과 치료 계획의 후보를 보여 줘요.</p></li>
+        <li class="human reveal"><span class="n">4</span><h3>치료사가 결정하기</h3><p>아이의 상태와 마음을 살피고 최종 계획을 직접 정해요.</p></li>
+      </ol>
+
+      <div class="ai-panels">
+        <div class="tabs reveal">
+          <div class="tablist" role="tablist" aria-label="AI와 치료사의 역할 비교">
+            <button class="tab" role="tab" id="tab-ai" aria-selected="true" aria-controls="panel-ai" type="button">AI가 하는 일</button>
+            <button class="tab" role="tab" id="tab-ot" aria-selected="false" aria-controls="panel-ot" type="button" tabindex="-1">치료사가 하는 일</button>
+          </div>
+          <div class="tabpanel" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai">
+            <ul>
+              <li><svg class="ic"><use href="#i-db"/></svg>치료 기록과 움직임 데이터를 빠르게 정리해요.</li>
+              <li><svg class="ic"><use href="#i-chart"/></svg>여러 치료 방법의 결과를 비교하고 그래프로 보여 줘요.</li>
+              <li><svg class="ic"><use href="#i-spark"/></svg>비슷한 사례에서 효과가 좋았던 방법을 제안해요.</li>
+              <li><svg class="ic"><use href="#i-clip"/></svg>치료 계획을 세울 때 참고할 자료를 만들어 줘요.</li>
+            </ul>
+            <p class="note">AI의 결과는 어디까지나 ‘참고 자료’예요.</p>
+          </div>
+          <div class="tabpanel" role="tabpanel" id="panel-ot" aria-labelledby="tab-ot" hidden>
+            <ul>
+              <li><svg class="ic"><use href="#i-eye"/></svg>아이의 표정, 컨디션, 기분을 직접 살펴요.</li>
+              <li><svg class="ic"><use href="#i-shield"/></svg>AI의 제안이 안전하고 아이에게 맞는지 판단해요.</li>
+              <li><svg class="ic"><use href="#i-heart"/></svg>아이와 가족의 이야기를 듣고 공감해요.</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>최종 치료 계획을 결정하고 책임져요.</li>
+            </ul>
+            <p class="note">전문적인 판단과 따뜻한 마음은 사람의 몫이에요.</p>
+          </div>
+        </div>
+
+        <div class="chart-card reveal">
+          <h3>AI가 치료 결과를 비교하는 모습</h3>
+          <p class="cap">예시 데이터예요. 실제 환자 기록이 아니에요.</p>
+          <svg class="chart" viewBox="0 0 520 250" role="img" aria-label="8주 동안 활동 성공률을 비교한 예시 그래프. 방법 A는 30퍼센트에서 50퍼센트로, 방법 B는 28퍼센트에서 72퍼센트로 올라요.">
+            <g stroke="var(--line)" stroke-width="1">
+              <line x1="48" y1="210" x2="456" y2="210"/><line x1="48" y1="162.5" x2="456" y2="162.5"/>
+              <line x1="48" y1="115" x2="456" y2="115"/><line x1="48" y1="67.5" x2="456" y2="67.5"/><line x1="48" y1="20" x2="456" y2="20"/>
+            </g>
+            <text x="4" y="10">활동 성공률(%)</text>
+            <g text-anchor="end"><text x="40" y="214">0</text><text x="40" y="166.5">25</text><text x="40" y="119">50</text><text x="40" y="71.5">75</text><text x="40" y="24">100</text></g>
+            <g text-anchor="middle">
+              <text x="48" y="232">1주</text><text x="106.3" y="232">2주</text><text x="164.6" y="232">3주</text><text x="222.9" y="232">4주</text>
+              <text x="281.1" y="232">5주</text><text x="339.4" y="232">6주</text><text x="397.7" y="232">7주</text><text x="456" y="232">8주</text>
+            </g>
+            <polyline points="48,153 106.3,145.4 164.6,137.8 222.9,132.1 281.1,128.3 339.4,122.6 397.7,118.8 456,115" fill="none" stroke="var(--ink-soft)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <polyline points="48,156.8 106.3,143.5 164.6,128.3 222.9,111.2 281.1,99.8 339.4,90.3 397.7,80.8 456,73.2" fill="none" stroke="var(--violet)" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="456" cy="115" r="5" fill="var(--ink-soft)"/>
+            <circle cx="456" cy="73.2" r="7" fill="var(--yellow-strong)" stroke="var(--violet)" stroke-width="3"/>
+            <text class="lbl" x="466" y="119" style="fill:var(--ink-soft)">방법 A</text>
+            <text class="lbl" x="466" y="77" style="fill:var(--violet)">방법 B</text>
+          </svg>
+          <p class="cap" style="margin:12px 0 0">AI가 두 방법의 변화를 한눈에 보여 주면, 치료사가 아이의 상태를 보고 어떤 방법을 쓸지 정해요.</p>
+        </div>
+      </div>
+
+      <div class="assist reveal">
+        <svg class="ic"><use href="#i-cpu"/></svg>
+        <p>AI는 치료사를 대신하는 기술이 아니라, 치료사의 전문적인 판단을 돕는 기술이에요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="band" id="skills" aria-labelledby="h-skills">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">나의 강점</span>
+        <h2 id="h-skills">나의 핵심 역량 TOP 3</h2>
+        <p class="lead">미래의 작업치료사로서 가장 중요하게 생각하는 세 가지 역량이에요.</p>
+      </div>
+      <div class="cap-grid">
+        <article class="card cap reveal">
+          <div class="cap-top"><span class="rank">1</span><div class="icon-chip" style="margin:0"><svg class="ic"><use href="#i-chat"/></svg></div></div>
+          <h3>소통·협업 능력</h3>
+          <p class="means">사람들과 <mark>유대감을 형성</mark>하고, 공감하며 소통하는 능력이에요.</p>
+          <div class="plan"><b>나의 계획</b><p>직접 경험해 보고 다양한 사람들과 대화하면서 더 좋은 소통 방법을 배워 나갈 거예요.</p></div>
+        </article>
+        <article class="card cap reveal">
+          <div class="cap-top"><span class="rank">2</span><div class="icon-chip y" style="margin:0"><svg class="ic"><use href="#i-shield"/></svg></div></div>
+          <h3>윤리·책임 의식</h3>
+          <p class="means">치료 전에 환자에게 <mark>피해가 가지 않도록</mark> 신중하게 판단하는 태도예요.</p>
+          <div class="plan"><b>나의 계획</b><p>AI가 분석한 결과를 쓰기 전에 윤리적인 문제나 잘못된 정보가 없는지 확인하는 습관을 기를 거예요.</p></div>
+        </article>
+        <article class="card cap reveal">
+          <div class="cap-top"><span class="rank">3</span><div class="icon-chip" style="margin:0"><svg class="ic"><use href="#i-bulb"/></svg></div></div>
+          <h3>창의·융합 사고</h3>
+          <p class="means">여러 치료 방법을 <mark>창의적으로 융합</mark>해서 새로운 치료 방법을 만드는 능력이에요.</p>
+          <div class="plan"><b>나의 계획</b><p>다양한 치료 방법을 시도하고 결과를 정리해서, AI와 함께 더 나은 방법을 찾아갈 거예요.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="band alt" id="future" aria-labelledby="h-future">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">다짐</span>
+        <h2 id="h-future">더 나은 미래를 위해</h2>
+        <p class="lead">AI 기술을 배우고 활용하면서도, 환자 한 명 한 명의 마음을 이해하는 작업치료사가 되고 싶어요.</p>
+      </div>
+      <div class="pledges">
+        <article class="card reveal"><div class="icon-chip y"><svg class="ic"><use href="#i-heart"/></svg></div><p>장애를 가진 사람들이 더 나은 일상을 살아갈 수 있도록 돕겠습니다.</p></article>
+        <article class="card reveal"><div class="icon-chip"><svg class="ic"><use href="#i-cpu"/></svg></div><p>AI 기술을 꾸준히 배우고, 결과는 항상 직접 확인하며 쓰겠습니다.</p></article>
+        <article class="card reveal"><div class="icon-chip y"><svg class="ic"><use href="#i-users"/></svg></div><p>환자 한 명 한 명의 마음을 먼저 이해하는 치료사가 되겠습니다.</p></article>
+      </div>
+      <p class="thanks reveal">끝까지 읽어 주셔서 고맙습니다. 여러분도 누군가의 새로운 일상을 응원하는 한 사람이 되어 주세요.</p>
+      <a class="btn ghost top-btn" href="#top"><svg class="ic" style="width:1.2em;height:1.2em"><use href="#i-up"/></svg>맨 위로 돌아가기</a>
+      <div class="finale reveal">
+        <svg class="ic"><use href="#i-heart"/></svg>
+        <blockquote>“AI가 치료를 도와주는 시대에도 사람의 마음을 이해하고 공감하는 건 결국 우리가 해야 할 일이에요.”</blockquote>
+      </div>
+      <div class="bottom-space"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  }
+  btn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  links.forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // highlight the menu item for the section in view
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function markActive() {
+    var y = window.scrollY + 120, current = -1;
+    targets.forEach(function (t, i) { if (t && t.offsetTop <= y) current = i; });
+    links.forEach(function (a, i) {
+      if (i === current) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', markActive, { passive: true });
+  window.addEventListener('resize', markActive);
+  markActive();
+
+  // tabs
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectTab(t); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        var next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        selectTab(next); next.focus();
+      }
+    });
+  });
+})();
+</script>
+
+</body></html>

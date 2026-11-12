@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>바이블쌤의 AI 교실: 미래를 코딩하다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#d8f5ec; --bg2:#eefcf7; --card:#ffffff; --mint:#5fd3b3; --mint-d:#2fae8c;
+  --choco:#5a3a2a; --choco-l:#8a6350; --accent:#ffe9a8; --line:#bfeadc; --shadow:rgba(90,58,42,.15);
+  --head:#d8f5ec;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1f2e29; --bg2:#26382f; --card:#2f433a; --mint:#5fd3b3; --mint-d:#7fe3c6;
+    --choco:#f3e3d6; --choco-l:#d4b9a6; --accent:#5a4a2a; --line:#3f5a4e; --shadow:rgba(0,0,0,.35); --head:#1f2e29;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1f2e29; --bg2:#26382f; --card:#2f433a; --mint:#5fd3b3; --mint-d:#7fe3c6;
+  --choco:#f3e3d6; --choco-l:#d4b9a6; --accent:#5a4a2a; --line:#3f5a4e; --shadow:rgba(0,0,0,.35); --head:#1f2e29;
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--choco);font-family:'Gaegu','Jua','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:21px;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--head);z-index:10}
+h1,h2,h3,.jua{font-family:'Jua','Gaegu','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:400}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--head);border-bottom:3px dashed var(--mint)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 20px;max-width:1040px;margin:0 auto;flex-wrap:wrap}
+.logo{font-family:'Jua',sans-serif;font-size:1.15rem;text-decoration:none;white-space:nowrap}
+.menu{display:flex;gap:8px;flex-wrap:wrap}
+.menu a{font-family:'Jua',sans-serif;text-decoration:none;padding:6px 16px;border-radius:999px;background:var(--card);border:2px solid var(--mint);font-size:1rem;transition:.25s}
+.menu a:hover,.menu a.on{background:var(--choco);color:var(--bg2);border-color:var(--choco);transform:translateY(-2px)}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--bg2),var(--bg));padding:48px 0 56px;text-align:center;overflow:hidden}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);margin:10px 0 18px;line-height:1.25}
+.hero h1 span{color:var(--mint-d)}
+.chars{display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,4vw,40px);margin-bottom:6px}
+.chars svg{width:clamp(120px,28vw,220px);height:auto;animation:bob 3s ease-in-out infinite}
+.chars svg+svg{animation-delay:-1.5s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.welcome{max-width:760px;margin:0 auto 26px;background:var(--card);border:3px solid var(--choco);border-radius:28px;padding:22px 26px;font-size:clamp(1.35rem,3.6vw,1.85rem);box-shadow:6px 6px 0 var(--mint)}
+.btn{display:inline-block;font-family:'Jua',sans-serif;font-size:1.15rem;text-decoration:none;background:var(--choco);color:var(--bg2);padding:12px 28px;border-radius:999px;border:3px solid var(--choco);box-shadow:0 5px 0 var(--mint-d);transition:.25s}
+.btn:hover{transform:translateY(-4px);box-shadow:0 9px 0 var(--mint-d);background:var(--mint-d);border-color:var(--mint-d)}
+
+/* sections */
+section{padding:60px 0}
+section:nth-of-type(even){background:var(--bg2)}
+.tag{display:inline-block;font-family:'Jua',sans-serif;background:var(--mint);color:#3d2618;padding:2px 16px;border-radius:999px;font-size:1rem;margin-bottom:6px}
+h2{font-size:clamp(1.8rem,5vw,2.5rem);margin:0 0 26px}
+.card{background:var(--card);border:3px solid var(--line);border-radius:26px;padding:22px 24px;box-shadow:0 6px 0 var(--shadow);transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:var(--mint)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+
+/* about */
+.profile dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px}
+.profile dt{font-family:'Jua',sans-serif;color:var(--mint-d)}
+.profile dd{margin:0}
+.profile{margin-bottom:34px}
+h3{font-size:1.5rem;margin:0 0 10px}
+.roles h3.sub{text-align:center;font-size:1.7rem;margin:6px 0 18px}
+.role{position:relative}
+.role.ai{border-color:var(--mint)}
+.role.me{border-color:var(--choco-l)}
+.role h4{font-family:'Jua',sans-serif;font-weight:400;font-size:1.5rem;margin:0 0 10px}
+.role ul{list-style:none;margin:0;padding:0}
+.role li{padding:8px 12px 8px 40px;margin-bottom:8px;border-radius:16px;position:relative}
+.role.ai li{background:var(--bg)}
+.role.me li{background:var(--accent)}
+.role li::before{content:"";position:absolute;left:12px;top:15px;width:16px;height:16px;border-radius:50%}
+.role.ai li::before{background:var(--mint)}
+.role.me li::before{background:var(--choco)}
+
+/* competencies */
+.rank{width:56px;height:56px;border-radius:50%;background:var(--choco);color:var(--bg2);display:grid;place-items:center;font-family:'Jua',sans-serif;font-size:1.3rem;margin-bottom:10px;border:4px solid var(--mint)}
+.icon{font-size:2.6rem;line-height:1}
+.q{font-family:'Jua',sans-serif;color:var(--mint-d);display:block;margin-top:10px}
+.card p{margin:2px 0 0}
+
+/* subjects */
+.subj{text-align:center;padding:30px 16px}
+.subj .bub{width:92px;height:92px;margin:0 auto 12px;border-radius:50%;background:var(--bg);border:4px solid var(--mint);display:grid;place-items:center;font-size:2.8rem}
+.subj h3{margin:0;font-size:1.6rem}
+
+/* contact */
+.contact{max-width:640px}
+.clink{display:flex;align-items:center;gap:16px;text-decoration:none;margin-bottom:16px;font-size:1.5rem;font-family:'Jua',sans-serif}
+.clink:last-child{margin-bottom:0}
+.clink .bub{flex:none;width:60px;height:60px;border-radius:50%;background:var(--mint);display:grid;place-items:center;font-size:1.7rem;transition:.25s}
+.clink:hover .bub{transform:rotate(-12deg) scale(1.1);background:var(--choco)}
+.clink small{display:block;font-family:'Gaegu',sans-serif;font-size:1.05rem;color:var(--choco-l)}
+.clink span.v{word-break:break-all}
+
+footer{background:var(--choco);color:var(--bg2);text-align:center;padding:22px 20px;font-family:'Jua',sans-serif}
+
+@media (max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+@media (max-width:640px){
+  body{font-size:20px}
+  .g2,.g4{grid-template-columns:1fr 1fr}
+  .g2.roles-g{grid-template-columns:1fr}
+  .nav{justify-content:center}
+  section{padding:44px 0}
+  .welcome{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav" aria-label="메뉴">
+    <a class="logo" href="#top">🍫 바이블쌤의 AI 교실</a>
+    <div class="menu">
+      <a href="#about">About Me</a>
+      <a href="#competencies">My Competencies</a>
+      <a href="#teach">What I Teach</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="chars" aria-hidden="true">
+      <!-- humanoid -->
+      <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+        <line x1="100" y1="14" x2="100" y2="36" stroke="#5a3a2a" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="100" cy="12" r="9" fill="#5fd3b3" stroke="#5a3a2a" stroke-width="4"/>
+        <rect x="40" y="34" width="120" height="96" rx="42" fill="#ffffff" stroke="#5a3a2a" stroke-width="5"/>
+        <rect x="55" y="54" width="90" height="56" rx="28" fill="#5fd3b3"/>
+        <circle cx="80" cy="80" r="9" fill="#5a3a2a"/><circle cx="120" cy="80" r="9" fill="#5a3a2a"/>
+        <circle cx="83" cy="77" r="3" fill="#fff"/><circle cx="123" cy="77" r="3" fill="#fff"/>
+        <path d="M88 95 Q100 106 112 95" stroke="#5a3a2a" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="62" cy="96" rx="8" ry="5" fill="#ffb5a7" opacity=".8"/><ellipse cx="138" cy="96" rx="8" ry="5" fill="#ffb5a7" opacity=".8"/>
+        <rect x="62" y="134" width="76" height="72" rx="28" fill="#5a3a2a"/>
+        <circle cx="100" cy="166" r="12" fill="#5fd3b3" stroke="#fff" stroke-width="3"/>
+        <path d="M62 150 Q36 160 34 186" stroke="#5a3a2a" stroke-width="14" fill="none" stroke-linecap="round"/>
+        <path d="M138 150 Q164 140 172 118" stroke="#5a3a2a" stroke-width="14" fill="none" stroke-linecap="round"/>
+        <rect x="74" y="204" width="20" height="26" rx="10" fill="#5fd3b3" stroke="#5a3a2a" stroke-width="4"/>
+        <rect x="106" y="204" width="20" height="26" rx="10" fill="#5fd3b3" stroke="#5a3a2a" stroke-width="4"/>
+      </svg>
+      <!-- computer -->
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="24" width="180" height="128" rx="30" fill="#ffffff" stroke="#5a3a2a" stroke-width="5"/>
+        <rect x="36" y="40" width="148" height="96" rx="20" fill="#5fd3b3"/>
+        <circle cx="86" cy="80" r="10" fill="#5a3a2a"/><circle cx="134" cy="80" r="10" fill="#5a3a2a"/>
+        <circle cx="89" cy="77" r="3.5" fill="#fff"/><circle cx="137" cy="77" r="3.5" fill="#fff"/>
+        <path d="M95 100 Q110 114 125 100" stroke="#5a3a2a" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="66" cy="102" rx="9" ry="6" fill="#ffb5a7" opacity=".8"/><ellipse cx="154" cy="102" rx="9" ry="6" fill="#ffb5a7" opacity=".8"/>
+        <rect x="94" y="152" width="32" height="20" fill="#5a3a2a"/>
+        <rect x="60" y="170" width="100" height="22" rx="11" fill="#5a3a2a"/>
+        <rect x="76" y="177" width="68" height="8" rx="4" fill="#5fd3b3"/>
+      </svg>
+    </div>
+    <h1>바이블쌤의 AI 교실<br><span>: 미래를 코딩하다</span></h1>
+    <p class="welcome">“안녕하세요! 바이블쌤의 AI 교실에 오신 것을 환영합니다. 미래를 향한 우리의 여정, 함께 시작해 볼까요?”</p>
+    <a class="btn" href="#about">여정 시작하기 ✨</a>
+  </div>
+</div>
+
+<main>
+<!-- SECTION 1 -->
+<section id="about">
+  <div class="wrap">
+    <span class="tag">SECTION 1</span>
+    <h2>About Me</h2>
+    <div class="card profile">
+      <dl>
+        <dt>이름</dt><dd>김바이블</dd>
+        <dt>나이</dt><dd>27살</dd>
+        <dt>직업</dt><dd>염메고등학교 교사</dd>
+        <dt>직업을 선택한 이유</dt><dd>학생들이 새로운 것을 배우고 성장하는 모습을 돕고 보는 게 보람 있기 때문이다.</dd>
+        <dt>나의 교육 철학</dt><dd>학생의 개성과 가능성을 발견하고 AI와 디지털 도구를 활용해 배움을 돕는 교사.</dd>
+      </dl>
+    </div>
+
+    <div class="roles">
+      <h3 class="sub">🤝 AI와 교사, 각자의 역할</h3>
+      <div class="grid g2 roles-g">
+        <div class="card role ai">
+          <h4>🤖 AI가 도와줄 일</h4>
+          <ul>
+            <li>학생 수준을 분석해서 개별 학습자료 및 퀴즈 제공</li>
+            <li>학생 데이터 분석</li>
+            <li>수업 아이디어 제안</li>
+            <li>반복적인 행정 업무 보조</li>
+          </ul>
+        </div>
+        <div class="card role me">
+          <h4>🧑‍🏫 내가 직접 맡을 일</h4>
+          <ul>
+            <li>학생의 감정을 이해하고 공감해 주기</li>
+            <li>올바른 가치관과 태도 지도하기</li>
+            <li>AI 데이터 분석을 보고 학생별로 도움 주기</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="competencies">
+  <div class="wrap">
+    <span class="tag">SECTION 2</span>
+    <h2>My Competencies</h2>
+    <p style="margin-top:-12px">AI 시대에 교사에게 필요한 나의 핵심 역량 TOP 3</p>
+    <div class="grid g3">
+      <div class="card">
+        <div class="rank">1위</div>
+        <div class="icon">🤖</div>
+        <h3>AI 활용 능력</h3>
+        <span class="q">💡 필요한 이유</span>
+        <p>수업 자료와 학습 활동을 더 효과적으로 만들고 학생별 학습을 지원하기 위해 필요하다.</p>
+        <span class="q">🌱 앞으로의 계획</span>
+        <p>다양한 생성형 AI 도구를 직접 사용하고, 목적에 맞는 결과를 얻도록 프롬프트를 연습하겠다.</p>
+      </div>
+      <div class="card">
+        <div class="rank">2위</div>
+        <div class="icon">💬</div>
+        <h3>소통·협업 능력</h3>
+        <span class="q">💡 필요한 이유</span>
+        <p>학생·학부모·동료 교사와 신뢰를 쌓고 함께 문제를 해결해야 하기 때문이다.</p>
+        <span class="q">🌱 앞으로의 계획</span>
+        <p>상대방의 말을 끝까지 듣고, 모둠 활동과 공동 프로젝트에서 의견을 조율하겠다.</p>
+      </div>
+      <div class="card">
+        <div class="rank">3위</div>
+        <div class="icon">🔍</div>
+        <h3>비판적 사고</h3>
+        <span class="q">💡 필요한 이유</span>
+        <p>AI가 만든 정보가 항상 정확하거나 공정한 것은 아니므로 내용을 확인하고 판단해야 한다.</p>
+        <span class="q">🌱 앞으로의 계획</span>
+        <p>자료의 출처와 근거를 확인하고, 여러 관점에서 생각한 뒤 판단하는 습관을 기르겠다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section id="teach">
+  <div class="wrap">
+    <span class="tag">SECTION 3</span>
+    <h2>What I Teach</h2>
+    <div class="grid g4">
+      <div class="card subj"><div class="bub">🤖</div><h3>인공지능 기초</h3></div>
+      <div class="card subj"><div class="bub">📊</div><h3>데이터 분석</h3></div>
+      <div class="card subj"><div class="bub">🖥️</div><h3>정보</h3></div>
+      <div class="card subj"><div class="bub">⌨️</div><h3>프로그래밍</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 -->
+<section id="contact">
+  <div class="wrap">
+    <span class="tag">SECTION 4</span>
+    <h2>Contact</h2>
+    <div class="card contact">
+      <a class="clink" href="mailto:abc@abc.com">
+        <span class="bub">✉️</span>
+        <span><small>이메일</small><span class="v">abc@abc.com</span></span>
+      </a>
+      <a class="clink" href="tel:010-0000-0000">
+        <span class="bub">📞</span>
+        <span><small>전화번호</small><span class="v">010-0000-0000</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>🍫 바이블쌤의 AI 교실: 미래를 코딩하다</footer>
+
+<script>
+(function(){
+  var links=document.querySelectorAll('.menu a');
+  var secs=['about','competencies','teach','contact'].map(function(id){return document.getElementById(id)});
+  function update(){
+    var y=window.scrollY+140,cur=-1;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+</script>
+</body>
+</html>

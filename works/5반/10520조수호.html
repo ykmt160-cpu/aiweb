@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>축구왕</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --black:#0a0a0a; --white:#ffffff; --gray:#f3f3f3; --line:#d9d9d9; --muted:#6b6b6b;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ color-scheme: light; }
+}
+:root[data-theme="dark"]{ color-scheme: light; }
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--black);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--black);z-index:30}
+svg{display:block}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--black);color:var(--white);border-bottom:1px solid #222}
+.bar{max-width:1080px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.2rem;color:var(--white);text-decoration:none;letter-spacing:.02em}
+.brand svg{width:26px;height:26px}
+nav{display:flex;gap:4px}
+nav a{color:#cfcfcf;text-decoration:none;font-size:.92rem;padding:8px 12px;border-radius:8px;transition:.2s}
+nav a:hover{background:#1e1e1e;color:var(--white)}
+section{padding:96px 20px}
+.wrap{max-width:1080px;margin:0 auto}
+.dark{background:var(--black);color:var(--white)}
+.light{background:var(--white)}
+.gray{background:var(--gray)}
+.icon{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:var(--black);color:var(--white);margin-bottom:24px}
+.dark .icon{background:var(--white);color:var(--black)}
+.icon svg{width:28px;height:28px}
+h1,h2,h3,p{margin:0}
+h2{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;line-height:1.3;letter-spacing:-.01em}
+.rule{width:48px;height:4px;background:currentColor;margin:20px 0 28px}
+.lead{font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:500;max-width:680px}
+/* hero */
+.hero{min-height:calc(100vh - 60px);display:flex;align-items:center;position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1}
+.hero .ball{position:absolute;right:-90px;top:50%;transform:translateY(-50%);width:420px;height:420px;opacity:.08;color:var(--white)}
+.hero .icon{width:72px;height:72px;border-radius:18px}
+.hero .icon svg{width:38px;height:38px}
+.hero h1{font-size:clamp(3.2rem,12vw,7rem);font-weight:900;line-height:1.1;letter-spacing:.02em}
+.hero .sub{margin-top:18px;font-size:clamp(1.1rem,3vw,1.6rem);font-weight:500;color:#e6e6e6}
+.hero .msg{margin-top:36px;padding-top:24px;border-top:1px solid #333;max-width:640px;color:#bdbdbd;font-size:1rem}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:32px 28px;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.12);border-color:var(--black)}
+.card .num{font-size:.85rem;font-weight:700;color:var(--muted);letter-spacing:.1em;margin-bottom:14px}
+.card .icon{width:52px;height:52px;margin-bottom:20px}
+.card h3{font-size:1.25rem;font-weight:700}
+.big{display:flex;align-items:center;gap:20px;margin-top:8px}
+.panel{border:1px solid #333;border-radius:20px;padding:40px 32px;max-width:760px;background:#141414}
+.panel p{font-size:clamp(1.15rem,2.8vw,1.6rem);font-weight:500}
+footer{background:var(--black);color:#cfcfcf;text-align:center;padding:48px 20px calc(48px + env(safe-area-inset-bottom,0px));border-top:1px solid #222}
+footer .brand{justify-content:center;margin-bottom:14px}
+footer p{max-width:560px;margin:0 auto;font-size:.98rem}
+@media (max-width:760px){
+  nav{display:none}
+  section{padding:72px 20px}
+  .cards{grid-template-columns:1fr}
+  .hero .ball{width:280px;height:280px;right:-80px}
+  .panel{padding:28px 22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#hello" aria-label="축구왕">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12,7.5 16,10.4 14.5,15 9.5,15 8,10.4" fill="currentColor"/><path d="M12 7.5V2.2M16 10.4l5-1.6M14.5 15l3 4.2M9.5 15l-3 4.2M8 10.4l-5-1.6"/></svg>
+      축구왕
+    </a>
+    <nav>
+      <a href="#hello">안녕하세요</a>
+      <a href="#ai">AI와 축구</a>
+      <a href="#skills">나의 역량 TOP 3</a>
+      <a href="#future">축구의 미래</a>
+      <a href="#resolve">나의 다짐</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. 안녕하세요 -->
+<section id="hello" class="dark hero">
+  <svg class="ball" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="12,7.5 16,10.4 14.5,15 9.5,15 8,10.4"/><path d="M12 7.5V2.2M16 10.4l5-1.6M14.5 15l3 4.2M9.5 15l-3 4.2M8 10.4l-5-1.6"/></svg>
+  <div class="wrap">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v4"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-5.9-2.4L3.4 16a2 2 0 0 1 3.2-2.4L8 15"/></svg></div>
+    <h1>축구왕</h1>
+    <p class="sub">안녕하세요</p>
+    <p class="lead" style="margin-top:28px;color:var(--white)">나의 꿈은 축구 선수입니다.</p>
+    <p class="msg">AI를 활용해 많은 것을 알게 되고 편리하다는 것을 느꼈으면 좋겠습니다.</p>
+  </div>
+</section>
+
+<!-- 2. AI와 축구 -->
+<section id="ai" class="light">
+  <div class="wrap">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
+    <h2>AI와 축구</h2>
+    <div class="rule"></div>
+    <p class="lead">AI를 왜 활용해야 할까?</p>
+  </div>
+</section>
+
+<!-- 3. 나의 역량 TOP 3 -->
+<section id="skills" class="gray">
+  <div class="wrap">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.7V17c0 .6-.5 1-1.1 1.2C7.9 18.7 7 20.2 7 22"/><path d="M14 14.7V17c0 .6.5 1 1.1 1.2 1 .5 1.9 2 1.9 3.8"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+    <h2>나의 역량 TOP 3</h2>
+    <div class="rule"></div>
+    <div class="cards">
+      <div class="card">
+        <div class="num">01</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>소통·협업 능력</h3>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
+        <h3>AI 활용 능력</h3>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V17h6v-.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2Z"/></svg></div>
+        <h3>비판적 사고</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 축구의 미래 -->
+<section id="future" class="dark">
+  <div class="wrap">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></div>
+    <h2>축구의 미래</h2>
+    <div class="rule"></div>
+    <div class="panel"><p>AI가 축구에 가져올 변화</p></div>
+  </div>
+</section>
+
+<!-- 5. 나의 다짐 -->
+<section id="resolve" class="light">
+  <div class="wrap">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg></div>
+    <h2>나의 다짐</h2>
+    <div class="rule"></div>
+    <p class="lead">훌륭한 축구 선수가 되기 위한 노력</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <a class="brand" href="#hello">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12,7.5 16,10.4 14.5,15 9.5,15 8,10.4" fill="currentColor"/><path d="M12 7.5V2.2M16 10.4l5-1.6M14.5 15l3 4.2M9.5 15l-3 4.2M8 10.4l-5-1.6"/></svg>
+    축구왕
+  </a>
+  <p>AI를 활용해 많은 것을 알게 되고 편리하다는 것을 느꼈으면 좋겠습니다.</p>
+</footer>
+
+</body>
+</html>

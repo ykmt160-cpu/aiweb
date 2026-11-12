@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>안종원</title>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--bg2:#f6f3ee;--fg:#111;--mute:#555;--line:#e4ded4;--btn:#111;--btnfg:#fff;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111;--bg2:#1b1a18;--fg:#fff;--mute:#c9c3b8;--line:#33302b;--btn:#fff;--btnfg:#111;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111;--bg2:#1b1a18;--fg:#fff;--mute:#c9c3b8;--line:#33302b;--btn:#fff;--btnfg:#111;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.8;font-size:17px}
+nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:8px;padding:10px 16px;overflow-x:auto}
+nav a{white-space:nowrap;text-decoration:none;color:var(--fg);padding:6px 14px;border-radius:99px;font-size:15px}
+nav a:hover{background:var(--bg2)}
+section{padding:72px 20px}
+section:nth-of-type(even){background:var(--bg2)}
+.wrap{max-width:900px;margin:0 auto}
+.tag{font-size:14px;color:var(--mute);letter-spacing:.08em}
+h1{font-size:clamp(40px,9vw,72px);margin:8px 0;line-height:1.2}
+h2{font-size:clamp(26px,5vw,34px);margin:0 0 28px}
+.btn{display:inline-block;background:var(--btn);color:var(--btnfg);border:2px solid var(--btn);padding:12px 26px;border-radius:99px;font:inherit;text-decoration:none;cursor:pointer;margin:6px 8px 0 0;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:22px}
+section:nth-of-type(even) .card{background:var(--bg)}
+.card .k{font-size:14px;color:var(--mute)}
+.card .v{font-size:20px;margin-top:2px}
+.rank{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--btn);color:var(--btnfg);margin-bottom:10px}
+.card h3{margin:0 0 10px;font-size:21px}
+.card p{margin:0 0 8px}
+.big{font-size:clamp(22px,4vw,28px);margin:0 0 10px}
+.split{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media(max-width:640px){.split{grid-template-columns:1fr}section{padding:56px 18px}}
+footer{text-align:center;padding:36px 20px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<nav>
+<a href="#intro">미래의 나</a><a href="#job">희망 직업</a><a href="#ai">AI와 나</a><a href="#top3">TOP 3</a><a href="#practice">실천 방법</a>
+</nav>
+
+<section id="intro"><div class="wrap">
+<div class="tag">1 · 미래의 나 소개</div>
+<h1>안종원</h1>
+<div class="grid" style="margin-top:28px">
+<div class="card"><div class="k">희망 직업</div><div class="v">축구선수</div></div>
+<div class="card"><div class="k">나이</div><div class="v">25세</div></div>
+<div class="card"><div class="k">일하는 곳</div><div class="v">도르트문트</div></div>
+</div>
+<p style="margin-top:28px"><a class="btn" href="#job">희망 직업 보러 가기</a></p>
+</div></section>
+
+<section id="job"><div class="wrap">
+<div class="tag">2 · 나의 희망 직업과 선택한 이유</div>
+<h2>나의 희망 직업과 선택한 이유</h2>
+<div class="split">
+<div class="card"><div class="k">희망 직업</div><div class="big">축구선수</div></div>
+<div class="card"><div class="k">직업을 선택한 이유</div><div class="big">재미있어서</div></div>
+</div>
+<p style="margin-top:24px"><a class="btn" href="#ai">다음 보기</a><a class="btn ghost" href="#intro">처음으로</a></p>
+</div></section>
+
+<section id="ai"><div class="wrap">
+<div class="tag">3 · AI가 도와줄 일과 내가 직접 맡을 일</div>
+<h2>AI가 도와줄 일과 내가 직접 맡을 일</h2>
+<div class="split">
+<div class="card"><div class="k">AI가 도와줄 일</div><div class="big">축구 분석</div></div>
+<div class="card"><div class="k">내가 직접 맡을 일</div><div class="big">축구</div></div>
+</div>
+<p style="margin-top:24px"><a class="btn" href="#top3">다음 보기</a><a class="btn ghost" href="#intro">처음으로</a></p>
+</div></section>
+
+<section id="top3"><div class="wrap">
+<div class="tag">4 · 내가 기를 AI 시대 역량 TOP 3</div>
+<h2>내가 기를 AI 시대 역량 TOP 3</h2>
+<div class="grid">
+<div class="card"><div class="rank">1</div><h3>소통·협업 능력</h3><div class="k">필요한 이유</div><p>소통이 있어야 플레이를 더 잘할 수 있다.</p></div>
+<div class="card"><div class="rank">2</div><h3>도전 실행력</h3><div class="k">필요한 이유</div><p>도전을 해야 골을 넣을 수 있다.</p></div>
+<div class="card"><div class="rank">3</div><h3>자기주도 학습력</h3><div class="k">필요한 이유</div><p>자기 스스로가 더 배우고 집중해야 잘할 수 있어서</p></div>
+</div>
+<p style="margin-top:24px"><a class="btn" href="#practice">나의 실천 방법 보기</a></p>
+</div></section>
+
+<section id="practice"><div class="wrap">
+<div class="tag">5 · 나의 실천 방법</div>
+<h2>나의 실천 방법</h2>
+<div class="grid">
+<div class="card"><div class="k">1위 · 소통·협업 능력</div><div class="big">소통 많이 하기</div></div>
+<div class="card"><div class="k">2위 · 도전 실행력</div><div class="big">용기 있게 도전하기</div></div>
+<div class="card"><div class="k">3위 · 자기주도 학습력</div><div class="big">자기 자신에 대해 연구하기</div></div>
+</div>
+<p style="margin-top:28px"><a class="btn" href="#intro">맨 위로 돌아가기</a></p>
+</div></section>
+
+<footer>안종원</footer>
+</body>
+</html>

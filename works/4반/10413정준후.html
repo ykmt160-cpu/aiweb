@@ -1,0 +1,672 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>바이블쌤의 AI 교실</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap">
+<style>
+/* Layout: 민트 배경 위에 초코색 글씨, 둥근 카드와 두 캐릭터(컴퓨터·휴머노이드)가 중심.
+   스티키 메뉴 → 메인 → About Me → My Competencies → What I Teach → Contact */
+:root {
+  --bg: #effaf6;
+  --surface: #ffffff;
+  --mint: #8fdcc4;
+  --mint-soft: #d6f2e8;
+  --mint-ink: #1d7560;
+  --fg: #4a2f27;
+  --fg-soft: #77544a;
+  --line: #bfe6d8;
+  --header-bg: #effaf6;
+  --hero-bg: #cdeee1;
+  --choco-card: #5a382d;
+  --choco-card-fg: #fff3ea;
+
+  --ill-outline: #4a2f27;
+  --ill-mint: #8fdcc4;
+  --ill-mint-deep: #5fc2a4;
+  --ill-cream: #fff6ec;
+  --ill-choco: #6b4538;
+  --ill-blush: #f6b9a6;
+
+  --font-display: "Jua", "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #231712;
+    --surface: #32211a;
+    --mint: #7fd6bc;
+    --mint-soft: #2c4a40;
+    --mint-ink: #8fe6cd;
+    --fg: #f7ece4;
+    --fg-soft: #d4bdb0;
+    --line: #4d362c;
+    --header-bg: #231712;
+    --hero-bg: #2b3a33;
+    --choco-card: #44281f;
+    --choco-card-fg: #fff3ea;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #231712;
+  --surface: #32211a;
+  --mint: #7fd6bc;
+  --mint-soft: #2c4a40;
+  --mint-ink: #8fe6cd;
+  --fg: #f7ece4;
+  --fg-soft: #d4bdb0;
+  --line: #4d362c;
+  --header-bg: #231712;
+  --hero-bg: #2b3a33;
+  --choco-card: #44281f;
+  --choco-card-fg: #fff3ea;
+  color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--header-bg);
+  z-index: 10;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; line-height: 1.3; }
+p, ul, dl, dd { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mint-ink); outline-offset: 3px; border-radius: 8px; }
+
+.wrap {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- 메뉴 ---------- */
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--header-bg);
+  border-bottom: 2px dashed var(--line);
+}
+.header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 20px;
+  padding-block: 10px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fg);
+}
+.brand-dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--mint);
+  border: 3px solid var(--ill-outline);
+  box-sizing: border-box;
+  flex: none;
+}
+.nav {
+  display: flex;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-block: 2px;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 999px;
+  color: var(--fg);
+  background: transparent;
+  transition: background .2s;
+}
+.nav a:hover { background: var(--mint-soft); }
+
+/* ---------- 메인 ---------- */
+.hero {
+  background: var(--hero-bg);
+  border-radius: 0 0 48px 48px;
+  padding-block: 40px 56px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr) minmax(0, 190px);
+  align-items: center;
+  gap: 24px;
+}
+.hero-text { text-align: center; display: grid; gap: 22px; justify-items: center; }
+.hero h1 {
+  font-size: clamp(2rem, 5.2vw, 3.6rem);
+  line-height: 1.25;
+}
+.hero h1 .sub {
+  display: block;
+  color: var(--mint-ink);
+  font-size: 0.72em;
+  margin-top: 4px;
+}
+.bubble {
+  position: relative;
+  background: var(--surface);
+  border: 4px solid var(--ill-outline);
+  border-radius: 28px;
+  padding: 18px 24px;
+  font-size: clamp(1.02rem, 2.2vw, 1.2rem);
+  max-width: 560px;
+  box-shadow: 6px 6px 0 var(--ill-outline);
+}
+.char { width: 100%; height: auto; display: block; overflow: visible; }
+.float { animation: float 3.6s ease-in-out infinite; }
+.float.late { animation-delay: -1.8s; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+.wave { transform-origin: 148px 128px; animation: wave 1.8s ease-in-out infinite; }
+@keyframes wave { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-16deg); } }
+.blink { transform-box: fill-box; transform-origin: center; animation: blink 4.5s infinite; }
+@keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
+
+/* ---------- 섹션 공통 ---------- */
+section { scroll-margin-top: calc(76px + env(safe-area-inset-top, 0px)); }
+.block { padding-block: 72px 8px; }
+.section-head { display: grid; gap: 4px; margin-bottom: 28px; }
+.eyebrow {
+  font-family: var(--font-display);
+  color: var(--mint-ink);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+}
+.section-head h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+
+.card {
+  background: var(--surface);
+  border: 3px solid var(--ill-outline);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 5px 5px 0 var(--ill-outline);
+  min-width: 0;
+}
+.label {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  background: var(--mint);
+  color: #4a2f27;
+  border-radius: 999px;
+  padding: 1px 14px;
+  margin-bottom: 8px;
+}
+
+/* ---------- About Me ---------- */
+.about-top {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: 24px;
+}
+.profile { display: grid; gap: 18px; }
+.profile-art { width: min(150px, 60%); margin-inline: auto; }
+.facts { display: grid; gap: 10px; }
+.facts div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 2px dotted var(--line);
+  padding-bottom: 8px;
+}
+.facts dt { font-family: var(--font-display); color: var(--mint-ink); flex: none; }
+.facts dd { text-align: right; min-width: 0; }
+.about-text { display: grid; gap: 24px; align-content: start; }
+.quote {
+  font-size: 1.12rem;
+  line-height: 1.8;
+}
+.about-text .card { display: block; }
+
+.roles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+.roles h3 { font-size: 1.4rem; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.roles .icon { width: 40px; height: 40px; flex: none; }
+.roles.ai-card { background: var(--mint-soft); }
+.list { list-style: none; padding: 0; display: grid; gap: 10px; }
+.list li { position: relative; padding-left: 30px; }
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.5em;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--mint);
+  border: 3px solid var(--ill-outline);
+  box-sizing: border-box;
+}
+.card.mine { background: var(--choco-card); color: var(--choco-card-fg); border-color: var(--ill-outline); }
+.card.mine .list li::before { background: var(--mint); border-color: var(--choco-card-fg); }
+.card.ai-card { background: var(--mint-soft); }
+
+/* ---------- My Competencies ---------- */
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.comp { display: grid; gap: 16px; align-content: start; }
+.comp-top { display: flex; align-items: center; gap: 14px; }
+.rank {
+  flex: none;
+  width: 62px; height: 62px;
+  border-radius: 50%;
+  background: var(--mint);
+  color: #4a2f27;
+  border: 3px solid var(--ill-outline);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  box-sizing: border-box;
+}
+.comp h3 { font-size: 1.4rem; }
+.comp .part { display: grid; gap: 2px; }
+.comp .part + .part { border-top: 2px dotted var(--line); padding-top: 14px; }
+
+/* ---------- What I Teach ---------- */
+.teach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 24px;
+}
+.subject {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+  padding: 28px 16px;
+}
+.subject .icon {
+  width: 84px; height: 84px;
+}
+.subject h3 { font-size: 1.5rem; }
+
+/* ---------- Contact ---------- */
+.contact-card {
+  display: grid;
+  grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  max-width: 760px;
+}
+.contact-list { display: grid; gap: 18px; }
+.contact-list dt { font-family: var(--font-display); color: var(--mint-ink); font-size: 1.05rem; }
+.contact-list dd { font-size: 1.25rem; overflow-wrap: anywhere; }
+.contact-list a { text-decoration-thickness: 3px; text-underline-offset: 5px; text-decoration-color: var(--mint); font-weight: 700; }
+.contact-list a:hover { text-decoration-color: var(--mint-ink); }
+.page-end { height: 72px; }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .hero-text { grid-column: 1 / -1; grid-row: 1; }
+  .hero-grid .art-left { grid-row: 2; width: min(170px, 100%); justify-self: center; }
+  .hero-grid .art-right { grid-row: 2; width: min(150px, 100%); justify-self: center; }
+  .about-top { grid-template-columns: minmax(0, 1fr); }
+  .comp-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .block { padding-block: 56px 4px; }
+  .roles { grid-template-columns: minmax(0, 1fr); }
+  .hero { border-radius: 0 0 32px 32px; padding-block: 28px 40px; }
+  .card { padding: 20px; border-radius: 24px; }
+  .contact-card { grid-template-columns: minmax(0, 1fr); text-align: center; }
+  .contact-art { width: min(130px, 50%); margin-inline: auto; }
+  .contact-list { text-align: left; }
+  .header-row { justify-content: center; }
+  .brand { font-size: 1.15rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .float, .wave, .blink { animation: none; }
+}
+</style>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top"><span class="brand-dot" aria-hidden="true"></span>바이블쌤의 AI 교실</a>
+    <nav class="nav" aria-label="메뉴">
+      <a href="#about">About Me</a>
+      <a href="#competencies">My Competencies</a>
+      <a href="#teach">What I Teach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 메인 화면 -->
+  <section class="hero" aria-labelledby="site-title">
+    <div class="wrap hero-grid">
+      <div class="art-left float">
+        <svg class="char" viewBox="0 0 220 210" role="img" aria-label="귀여운 컴퓨터 캐릭터">
+          <ellipse cx="110" cy="200" rx="70" ry="7" fill="var(--ill-outline)" opacity=".15"/>
+          <!-- 다리 -->
+          <rect x="80" y="170" width="18" height="26" rx="9" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <rect x="122" y="170" width="18" height="26" rx="9" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <!-- 팔 -->
+          <circle cx="24" cy="110" r="13" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <circle cx="196" cy="110" r="13" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <!-- 모니터 -->
+          <rect x="100" y="150" width="20" height="26" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <rect x="30" y="14" width="160" height="140" rx="30" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="6"/>
+          <rect x="46" y="30" width="128" height="104" rx="20" fill="var(--ill-cream)" stroke="var(--ill-outline)" stroke-width="4"/>
+          <!-- 얼굴 -->
+          <g class="blink"><circle cx="88" cy="76" r="9" fill="var(--ill-outline)"/></g>
+          <g class="blink"><circle cx="132" cy="76" r="9" fill="var(--ill-outline)"/></g>
+          <circle cx="91" cy="73" r="3" fill="#fff"/>
+          <circle cx="135" cy="73" r="3" fill="#fff"/>
+          <ellipse cx="72" cy="96" rx="11" ry="7" fill="var(--ill-blush)"/>
+          <ellipse cx="148" cy="96" rx="11" ry="7" fill="var(--ill-blush)"/>
+          <path d="M97 94 Q110 110 123 94" fill="none" stroke="var(--ill-outline)" stroke-width="5" stroke-linecap="round"/>
+          <!-- 코드 기호 -->
+          <path d="M62 46 L54 54 L62 62" fill="none" stroke="var(--ill-mint-deep)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M158 46 L166 54 L158 62" fill="none" stroke="var(--ill-mint-deep)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- 키보드 -->
+          <rect x="62" y="150" width="96" height="10" rx="5" fill="var(--ill-choco)" opacity="0"/>
+        </svg>
+      </div>
+
+      <div class="hero-text">
+        <h1 id="site-title">바이블쌤의 AI 교실<span class="sub">미래를 코딩하다</span></h1>
+        <p class="bubble">안녕하세요! 바이블쌤의 AI 교실에 오신 것을 환영합니다. 미래를 향한 우리의 여정, 함께 시작해 볼까요?</p>
+      </div>
+
+      <div class="art-right float late">
+        <svg class="char" viewBox="0 0 200 250" role="img" aria-label="귀여운 휴머노이드 캐릭터">
+          <ellipse cx="100" cy="242" rx="58" ry="6" fill="var(--ill-outline)" opacity=".15"/>
+          <!-- 안테나 -->
+          <line x1="100" y1="22" x2="100" y2="40" stroke="var(--ill-outline)" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="100" cy="16" r="9" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <!-- 다리 -->
+          <rect x="68" y="196" width="22" height="38" rx="11" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <rect x="110" y="196" width="22" height="38" rx="11" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <!-- 왼팔 -->
+          <path d="M60 142 Q36 156 40 180" fill="none" stroke="var(--ill-outline)" stroke-width="18" stroke-linecap="round"/>
+          <path d="M60 142 Q36 156 40 180" fill="none" stroke="var(--ill-mint)" stroke-width="8" stroke-linecap="round"/>
+          <!-- 몸 -->
+          <rect x="56" y="124" width="88" height="82" rx="28" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="6"/>
+          <path d="M100 186 C78 170 80 150 92 150 C96 150 99 153 100 156 C101 153 104 150 108 150 C120 150 122 170 100 186 Z" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="4" stroke-linejoin="round"/>
+          <!-- 오른팔(손 흔들기) -->
+          <g class="wave">
+            <path d="M144 142 Q170 138 168 108" fill="none" stroke="var(--ill-outline)" stroke-width="18" stroke-linecap="round"/>
+            <path d="M144 142 Q170 138 168 108" fill="none" stroke="var(--ill-mint)" stroke-width="8" stroke-linecap="round"/>
+          </g>
+          <!-- 머리 -->
+          <rect x="30" y="76" width="14" height="34" rx="7" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <rect x="156" y="76" width="14" height="34" rx="7" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <rect x="38" y="38" width="124" height="104" rx="38" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="6"/>
+          <rect x="52" y="56" width="96" height="66" rx="26" fill="var(--ill-cream)" stroke="var(--ill-outline)" stroke-width="4"/>
+          <g class="blink"><circle cx="80" cy="86" r="8" fill="var(--ill-outline)"/></g>
+          <g class="blink"><circle cx="120" cy="86" r="8" fill="var(--ill-outline)"/></g>
+          <circle cx="83" cy="83" r="2.8" fill="#fff"/>
+          <circle cx="123" cy="83" r="2.8" fill="#fff"/>
+          <ellipse cx="66" cy="102" rx="9" ry="6" fill="var(--ill-blush)"/>
+          <ellipse cx="134" cy="102" rx="9" ry="6" fill="var(--ill-blush)"/>
+          <path d="M89 102 Q100 114 111 102" fill="none" stroke="var(--ill-outline)" stroke-width="4.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section id="about" class="block" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">About Me</span>
+        <h2 id="about-title">미래의 나 소개</h2>
+      </div>
+
+      <div class="about-top">
+        <div class="card profile">
+          <svg class="char profile-art" viewBox="0 0 200 250" role="img" aria-label="귀여운 휴머노이드 캐릭터">
+            <line x1="100" y1="22" x2="100" y2="40" stroke="var(--ill-outline)" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="100" cy="16" r="9" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="5"/>
+            <rect x="30" y="76" width="14" height="34" rx="7" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="5"/>
+            <rect x="156" y="76" width="14" height="34" rx="7" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="5"/>
+            <rect x="38" y="38" width="124" height="104" rx="38" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="6"/>
+            <rect x="52" y="56" width="96" height="66" rx="26" fill="var(--ill-cream)" stroke="var(--ill-outline)" stroke-width="4"/>
+            <circle cx="80" cy="86" r="8" fill="var(--ill-outline)"/>
+            <circle cx="120" cy="86" r="8" fill="var(--ill-outline)"/>
+            <circle cx="83" cy="83" r="2.8" fill="#fff"/>
+            <circle cx="123" cy="83" r="2.8" fill="#fff"/>
+            <ellipse cx="66" cy="102" rx="9" ry="6" fill="var(--ill-blush)"/>
+            <ellipse cx="134" cy="102" rx="9" ry="6" fill="var(--ill-blush)"/>
+            <path d="M89 102 Q100 114 111 102" fill="none" stroke="var(--ill-outline)" stroke-width="4.5" stroke-linecap="round"/>
+            <rect x="56" y="150" width="88" height="80" rx="28" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="6"/>
+            <path d="M100 214 C78 198 80 178 92 178 C96 178 99 181 100 184 C101 181 104 178 108 178 C120 178 122 198 100 214 Z" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="4" stroke-linejoin="round"/>
+          </svg>
+          <dl class="facts">
+            <div><dt>이름</dt><dd>김바이블</dd></div>
+            <div><dt>나이</dt><dd>27살</dd></div>
+            <div><dt>직업</dt><dd>염메고등학교 교사</dd></div>
+            <div><dt>희망 직업</dt><dd>교사</dd></div>
+          </dl>
+        </div>
+
+        <div class="about-text">
+          <div class="card">
+            <span class="label">자기소개</span>
+            <p class="quote">학생의 개성과 가능성을 발견하고 AI와 디지털 도구를 활용해 배움을 돕는 교사입니다.</p>
+          </div>
+          <div class="card">
+            <span class="label">직업을 선택한 이유</span>
+            <p class="quote">학생들이 새로운 것을 배우고 성장하는 모습을 돕고 보는 게 보람 있기 때문입니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="roles">
+        <div class="card ai-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="6" y="8" width="52" height="38" rx="12" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="4"/>
+              <rect x="13" y="15" width="38" height="24" rx="8" fill="var(--ill-cream)" stroke="var(--ill-outline)" stroke-width="3"/>
+              <circle cx="25" cy="26" r="3" fill="var(--ill-outline)"/>
+              <circle cx="39" cy="26" r="3" fill="var(--ill-outline)"/>
+              <path d="M27 32 Q32 37 37 32" fill="none" stroke="var(--ill-outline)" stroke-width="3" stroke-linecap="round"/>
+              <rect x="28" y="46" width="8" height="8" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="3"/>
+              <rect x="16" y="54" width="32" height="6" rx="3" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="3"/>
+            </svg>
+            AI가 도와줄 일
+          </h3>
+          <ul class="list">
+            <li>학생 수준을 분석해서 개별 학습자료 및 퀴즈 제공</li>
+            <li>학생 데이터 분석</li>
+            <li>수업 아이디어 제안</li>
+            <li>반복적인 행정 업무 보조</li>
+          </ul>
+        </div>
+        <div class="card mine">
+          <h3>
+            <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M32 56 C8 40 10 18 22 16 C27 15 31 18 32 22 C33 18 37 15 42 16 C54 18 56 40 32 56 Z" fill="var(--ill-mint)" stroke="var(--ill-cream)" stroke-width="4" stroke-linejoin="round"/>
+              <circle cx="25" cy="30" r="2.6" fill="var(--ill-outline)"/>
+              <circle cx="39" cy="30" r="2.6" fill="var(--ill-outline)"/>
+              <path d="M28 37 Q32 41 36 37" fill="none" stroke="var(--ill-outline)" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            내가 직접 맡을 일
+          </h3>
+          <ul class="list">
+            <li>학생의 감정을 이해하고 공감해 주기</li>
+            <li>올바른 가치관과 태도 지도하기</li>
+            <li>AI 데이터 분석을 보고 학생별로 도움 주기</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Competencies -->
+  <section id="competencies" class="block" aria-labelledby="comp-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">My Competencies</span>
+        <h2 id="comp-title">내가 기를 AI 시대 역량 TOP 3</h2>
+      </div>
+      <div class="comp-grid">
+        <article class="card comp">
+          <div class="comp-top"><span class="rank">1위</span><h3>AI 활용 능력</h3></div>
+          <div class="part">
+            <span><span class="label">필요한 이유</span></span>
+            <p>수업 자료와 학습 활동을 더 효과적으로 만들고 학생별 학습을 지원하기 위해 필요하다.</p>
+          </div>
+          <div class="part">
+            <span><span class="label">앞으로의 계획</span></span>
+            <p>다양한 생성형 AI 도구를 직접 사용하고, 목적에 맞는 결과를 얻도록 프롬프트를 연습하겠다.</p>
+          </div>
+        </article>
+        <article class="card comp">
+          <div class="comp-top"><span class="rank">2위</span><h3>소통·협업 능력</h3></div>
+          <div class="part">
+            <span><span class="label">필요한 이유</span></span>
+            <p>학생·학부모·동료 교사와 신뢰를 쌓고 함께 문제를 해결해야 하기 때문이다.</p>
+          </div>
+          <div class="part">
+            <span><span class="label">앞으로의 계획</span></span>
+            <p>상대방의 말을 끝까지 듣고, 모둠 활동과 공동 프로젝트에서 의견을 조율하겠다.</p>
+          </div>
+        </article>
+        <article class="card comp">
+          <div class="comp-top"><span class="rank">3위</span><h3>비판적 사고</h3></div>
+          <div class="part">
+            <span><span class="label">필요한 이유</span></span>
+            <p>AI가 만든 정보가 항상 정확하거나 공정한 것은 아니므로 내용을 확인하고 판단해야 한다.</p>
+          </div>
+          <div class="part">
+            <span><span class="label">앞으로의 계획</span></span>
+            <p>자료의 출처와 근거를 확인하고, 여러 관점에서 생각한 뒤 판단하는 습관을 기르겠다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Teach -->
+  <section id="teach" class="block" aria-labelledby="teach-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What I Teach</span>
+        <h2 id="teach-title">내가 가르치는 교과목</h2>
+      </div>
+      <div class="teach-grid">
+        <article class="card subject">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <line x1="32" y1="4" x2="32" y2="12" stroke="var(--ill-outline)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="32" cy="5" r="3.5" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="3"/>
+            <rect x="8" y="12" width="48" height="42" rx="16" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="4"/>
+            <rect x="15" y="20" width="34" height="26" rx="10" fill="var(--ill-cream)" stroke="var(--ill-outline)" stroke-width="3"/>
+            <circle cx="25" cy="31" r="3" fill="var(--ill-outline)"/>
+            <circle cx="39" cy="31" r="3" fill="var(--ill-outline)"/>
+            <path d="M28 38 Q32 42 36 38" fill="none" stroke="var(--ill-outline)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <h3>인공지능 기초</h3>
+        </article>
+        <article class="card subject">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="6" y="6" width="52" height="52" rx="16" fill="var(--ill-cream)" stroke="var(--ill-outline)" stroke-width="4"/>
+            <rect x="15" y="34" width="9" height="16" rx="4" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="3"/>
+            <rect x="28" y="24" width="9" height="26" rx="4" fill="var(--ill-mint-deep)" stroke="var(--ill-outline)" stroke-width="3"/>
+            <rect x="41" y="14" width="9" height="36" rx="4" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="3"/>
+          </svg>
+          <h3>데이터 분석</h3>
+        </article>
+        <article class="card subject">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="6" y="6" width="52" height="52" rx="26" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="4"/>
+            <circle cx="32" cy="19" r="4.5" fill="var(--ill-outline)"/>
+            <rect x="27.5" y="27" width="9" height="19" rx="4.5" fill="var(--ill-outline)"/>
+          </svg>
+          <h3>정보</h3>
+        </article>
+        <article class="card subject">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="4" y="10" width="56" height="44" rx="14" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="4"/>
+            <path d="M24 24 L15 32 L24 40" fill="none" stroke="var(--ill-mint)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M40 24 L49 32 L40 40" fill="none" stroke="var(--ill-mint)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="35" y1="23" x2="29" y2="41" stroke="var(--ill-cream)" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <h3>프로그래밍</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="block" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Contact</span>
+        <h2 id="contact-title">연락처</h2>
+      </div>
+      <div class="card contact-card">
+        <svg class="char contact-art" viewBox="0 0 220 210" role="img" aria-label="귀여운 컴퓨터 캐릭터">
+          <rect x="100" y="150" width="20" height="26" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <rect x="70" y="170" width="80" height="22" rx="11" fill="var(--ill-choco)" stroke="var(--ill-outline)" stroke-width="5"/>
+          <rect x="30" y="14" width="160" height="140" rx="30" fill="var(--ill-mint)" stroke="var(--ill-outline)" stroke-width="6"/>
+          <rect x="46" y="30" width="128" height="104" rx="20" fill="var(--ill-cream)" stroke="var(--ill-outline)" stroke-width="4"/>
+          <circle cx="88" cy="76" r="9" fill="var(--ill-outline)"/>
+          <circle cx="132" cy="76" r="9" fill="var(--ill-outline)"/>
+          <circle cx="91" cy="73" r="3" fill="#fff"/>
+          <circle cx="135" cy="73" r="3" fill="#fff"/>
+          <ellipse cx="72" cy="96" rx="11" ry="7" fill="var(--ill-blush)"/>
+          <ellipse cx="148" cy="96" rx="11" ry="7" fill="var(--ill-blush)"/>
+          <path d="M97 94 Q110 110 123 94" fill="none" stroke="var(--ill-outline)" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <dl class="contact-list">
+          <div>
+            <dt>이메일</dt>
+            <dd><a href="mailto:abc@abc.com">abc@abc.com</a></dd>
+          </div>
+          <div>
+            <dt>휴대폰</dt>
+            <dd>010-0000-0000</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-end" aria-hidden="true"></div>
+</main>
+
+</body></html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>공간에 가치를 더하는 건축 설계사무소</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f9f8;--surface:#fff;--ink:#14262b;--muted:#51656a;--green:#1f7a5a;--blue:#1b5f8c;--deep:#0f3b4f;--line:#d5e2e1;--hero:#0f3b4f;--on-hero:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d1a1e;--surface:#142a30;--ink:#e8f1f0;--muted:#9db4b6;--green:#4cc19a;--blue:#6bb5e3;--deep:#0a2630;--line:#24424a;--hero:#0a2630}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0d1a1e;--surface:#142a30;--ink:#e8f1f0;--muted:#9db4b6;--green:#4cc19a;--blue:#6bb5e3;--deep:#0a2630;--line:#24424a;--hero:#0a2630}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 "Noto Sans KR",system-ui,sans-serif;word-break:keep-all}
+h1,h2,h3{font-family:"Noto Serif KR",Georgia,serif;line-height:1.35;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:11}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{max-width:1080px;margin:auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:700;text-decoration:none;color:var(--green);white-space:nowrap}
+nav{display:flex;gap:20px;overflow-x:auto}
+nav a{text-decoration:none;font-size:15px;color:var(--muted);white-space:nowrap;padding:6px 0}
+nav a:hover{color:var(--blue)}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+.hero{background:var(--hero);color:var(--on-hero);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center;padding-top:72px;padding-bottom:72px}
+.hero h1{font-size:clamp(32px,5.4vw,56px);font-weight:700}
+.hero p{font-size:clamp(17px,2.2vw,20px);max-width:30em;color:#d3e6e8;margin:20px 0 32px}
+.btn{display:inline-block;background:var(--green);color:#fff;text-decoration:none;font-weight:700;padding:14px 28px;border-radius:4px;border:0;font:inherit;font-weight:700;cursor:pointer}
+.btn.alt{background:transparent;border:2px solid #9cc7de;margin-left:8px}
+.hero svg{width:100%;height:auto}
+section{padding:80px 0}
+section.alt{background:var(--surface);border-block:1px solid var(--line)}
+h2{font-size:clamp(26px,4vw,36px);margin-bottom:12px}
+.lead{color:var(--muted);max-width:40em;margin:0 0 40px}
+.grid{display:grid;gap:24px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.box{border-left:4px solid var(--green);padding:4px 0 4px 20px}
+.box:nth-child(even){border-color:var(--blue)}
+.box h3{font-size:19px;margin-bottom:6px}
+.box p{margin:0;color:var(--muted)}
+.greet{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px}
+.greet blockquote{margin:0;padding:24px;background:var(--bg);border:1px solid var(--line);border-radius:4px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.proj svg{display:block;width:100%;height:auto}
+.proj div{padding:20px}
+.proj h3{font-size:18px}
+.proj p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.note{font-size:14px;color:var(--muted);margin-top:24px}
+.svc{padding:28px;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
+.svc svg{width:56px;height:56px;margin-bottom:12px}
+.svc h3{font-size:20px;margin-bottom:6px}
+.svc p{margin:0;color:var(--muted);font-size:15px}
+dl{margin:0;display:grid;grid-template-columns:100px 1fr;gap:14px 16px}
+dt{font-weight:700;color:var(--green)}
+dd{margin:0;color:var(--muted)}
+form{display:grid;gap:14px}
+label{font-weight:500;font-size:15px;display:grid;gap:6px}
+input,textarea{font:inherit;padding:12px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);width:100%}
+#msg{min-height:1.5em;color:var(--blue);font-weight:500;margin:0}
+footer{background:var(--deep);color:#c5dadd;padding:32px 0;font-size:14px;text-align:center}
+@media (max-width:820px){
+.hero .wrap,.g3,.g2,.greet{grid-template-columns:1fr}
+.hero .wrap{padding-top:48px;padding-bottom:48px}
+section{padding:56px 0}
+.btn.alt{margin:12px 0 0}
+dl{grid-template-columns:84px 1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="bar"><a class="logo" href="#top">건축 설계사무소</a>
+<nav aria-label="주요 메뉴"><a href="#about">회사 소개</a><a href="#philosophy">설계 철학</a><a href="#projects">주요 프로젝트</a><a href="#services">전문 분야</a><a href="#contact">상담 및 문의</a></nav></div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+<div>
+<h1>공간에 가치를 더하는<br>건축 설계사무소</h1>
+<p>사람과 공간, 환경을 이해하고 그 안에 담긴 가치를 건축으로 실현합니다.</p>
+<a class="btn" href="#contact">설계 상담 문의</a><a class="btn alt" href="#projects">프로젝트 보기</a>
+</div>
+<svg viewBox="0 0 480 340" role="img" aria-label="건축 도면과 건물 일러스트">
+<rect x="10" y="10" width="460" height="320" fill="none" stroke="#9cc7de" stroke-width="1.5" stroke-dasharray="6 6"/>
+<path d="M40 290h400" stroke="#9cc7de" stroke-width="2"/>
+<rect x="70" y="150" width="110" height="140" fill="#1b5f8c"/><rect x="190" y="70" width="120" height="220" fill="#1f7a5a"/><rect x="320" y="190" width="110" height="100" fill="#2c8ab8"/>
+<g fill="#e9f5f3" opacity=".85"><rect x="85" y="168" width="22" height="22"/><rect x="120" y="168" width="22" height="22"/><rect x="85" y="210" width="22" height="22"/><rect x="120" y="210" width="22" height="22"/><rect x="205" y="90" width="26" height="26"/><rect x="245" y="90" width="26" height="26"/><rect x="205" y="140" width="26" height="26"/><rect x="245" y="140" width="26" height="26"/><rect x="205" y="190" width="26" height="26"/><rect x="245" y="190" width="26" height="26"/><rect x="335" y="208" width="22" height="22"/><rect x="375" y="208" width="22" height="22"/></g>
+<path d="M190 70l60-34 60 34" fill="none" stroke="#e9f5f3" stroke-width="3"/>
+<path d="M70 120h110M70 112v16M180 112v16" stroke="#9cc7de" stroke-width="1.5"/><text x="125" y="108" fill="#9cc7de" font-size="13" text-anchor="middle">DRAFT</text>
+</svg>
+</div></div>
+
+<section id="about"><div class="wrap">
+<h2>회사 소개</h2>
+<p class="lead">우리는 건축이 사람의 일상과 도시의 풍경을 바꾸는 일이라고 믿습니다.</p>
+<div class="grid g3">
+<div class="box"><h3>설립 목적</h3><p>사람과 공간, 환경을 깊이 이해하고, 공간에 담긴 가치를 건축으로 실현하기 위해 설립되었습니다.</p></div>
+<div class="box"><h3>비전</h3><p>AI 기술을 활용한 효율적인 설계 위에 건축가의 판단력을 더해, 창의적이고 경쟁력 있는 건축물을 만들어 갑니다.</p></div>
+<div class="box"><h3>건축 철학</h3><p>건축은 기술과 사람의 이야기를 함께 짓는 일입니다. 모든 설계는 사용하는 사람에서 출발합니다.</p></div>
+</div>
+<div class="greet">
+<div><h3>대표 인사말</h3><p class="note" style="margin-top:8px">대표 건축사 임평욱</p></div>
+<blockquote>건축을 계획하고 계신 모든 분의 이야기를 먼저 듣겠습니다. 새로운 기술과 설계 방식을 꾸준히 배우며, 건축주와 구조기술자, 시공사 등 여러 전문가와 의견을 나누고 조율하여 한 분 한 분에게 의미 있는 공간을 완성하겠습니다.</blockquote>
+</div>
+</div></section>
+
+<section id="philosophy" class="alt"><div class="wrap">
+<h2>설계 철학</h2>
+<p class="lead">좋은 건축은 사람, 공간, 환경 사이의 균형에서 나옵니다.</p>
+<div class="grid g3">
+<div class="box"><h3>건축에 대한 가치관</h3><p>건축물은 완성된 뒤에도 사람들의 삶 속에서 계속 쓰이는 공간입니다. 그래서 보기 좋은 건물보다 오래 사랑받는 공간을 지향합니다.</p></div>
+<div class="box"><h3>추구하는 디자인 방향</h3><p>깔끔하고 단정한 디자인을 바탕으로, AI를 활용한 다양한 설계 아이디어를 빠르게 검토하고 발전시킵니다.</p></div>
+<div class="box"><h3>공간 설계에서 중요하게 생각하는 점</h3><p>쓰는 사람의 생활, 주변 환경과의 조화, 구조와 시공의 현실성을 함께 고려하며 최종 판단은 건축가가 책임집니다.</p></div>
+</div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+<h2>주요 프로젝트</h2>
+<p class="lead">진행한 건축물과 설계 사례를 사진, 설명과 함께 소개하는 공간입니다.</p>
+<div class="grid g3">
+<article class="proj"><svg viewBox="0 0 320 200" role="img" aria-label="주거 공간 예시 일러스트"><rect width="320" height="200" fill="#dcebe8"/><rect y="160" width="320" height="40" fill="#b5d4c9"/><path d="M80 160V90l80-45 80 45v70z" fill="#1f7a5a"/><rect x="140" y="110" width="40" height="50" fill="#e9f5f3"/><rect x="100" y="105" width="28" height="28" fill="#e9f5f3"/><rect x="192" y="105" width="28" height="28" fill="#e9f5f3"/></svg><div><h3>주거 공간 프로젝트</h3><p>프로젝트 사진과 설명이 이곳에 게재됩니다.</p></div></article>
+<article class="proj"><svg viewBox="0 0 320 200" role="img" aria-label="상업 공간 예시 일러스트"><rect width="320" height="200" fill="#d8e8f3"/><rect y="160" width="320" height="40" fill="#b3cfe2"/><rect x="60" y="60" width="200" height="100" fill="#1b5f8c"/><g fill="#e6f2fa"><rect x="76" y="76" width="40" height="30"/><rect x="140" y="76" width="40" height="30"/><rect x="204" y="76" width="40" height="30"/><rect x="76" y="120" width="40" height="40"/><rect x="204" y="120" width="40" height="40"/></g></svg><div><h3>상업 공간 프로젝트</h3><p>프로젝트 사진과 설명이 이곳에 게재됩니다.</p></div></article>
+<article class="proj"><svg viewBox="0 0 320 200" role="img" aria-label="공공건축 예시 일러스트"><rect width="320" height="200" fill="#dcebe8"/><rect y="160" width="320" height="40" fill="#b5d4c9"/><path d="M50 80h220L160 40z" fill="#0f3b4f"/><rect x="60" y="86" width="200" height="74" fill="#2c8ab8"/><g fill="#e6f2fa"><rect x="76" y="90" width="12" height="70"/><rect x="116" y="90" width="12" height="70"/><rect x="154" y="90" width="12" height="70"/><rect x="192" y="90" width="12" height="70"/><rect x="232" y="90" width="12" height="70"/></g></svg><div><h3>공공건축 프로젝트</h3><p>프로젝트 사진과 설명이 이곳에 게재됩니다.</p></div></article>
+</div>
+<p class="note">위 이미지는 분위기를 보여주는 일러스트이며 실제 프로젝트가 아닙니다. 진행한 프로젝트가 정리되는 대로 사진과 설명을 업데이트할 예정입니다.</p>
+</div></section>
+
+<section id="services" class="alt"><div class="wrap">
+<h2>전문 분야 및 서비스</h2>
+<p class="lead">주거, 상업, 공공 건축까지 공간의 목적에 맞는 설계를 제공합니다.</p>
+<div class="grid g3">
+<div class="svc"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M8 28L28 10l20 18v18H8z" fill="#1f7a5a"/><rect x="23" y="32" width="10" height="14" fill="#fff"/></svg><h3>주거 공간</h3><p>가족의 생활 방식에 맞춘 편안하고 효율적인 주거 공간을 설계합니다.</p></div>
+<div class="svc"><svg viewBox="0 0 56 56" aria-hidden="true"><rect x="8" y="14" width="40" height="32" fill="#1b5f8c"/><rect x="14" y="20" width="10" height="8" fill="#fff"/><rect x="32" y="20" width="10" height="8" fill="#fff"/><rect x="23" y="34" width="10" height="12" fill="#fff"/></svg><h3>상업 공간</h3><p>고객과 브랜드의 가치를 담아 사람이 머물고 싶은 상업 공간을 만듭니다.</p></div>
+<div class="svc"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M6 22h44L28 8z" fill="#0f3b4f"/><rect x="10" y="24" width="6" height="20" fill="#1f7a5a"/><rect x="25" y="24" width="6" height="20" fill="#1f7a5a"/><rect x="40" y="24" width="6" height="20" fill="#1f7a5a"/><rect x="6" y="44" width="44" height="4" fill="#0f3b4f"/></svg><h3>공공건축</h3><p>많은 사람이 함께 쓰는 공간을 안전하고 접근하기 쉽게 설계합니다.</p></div>
+</div>
+<h3 style="margin:48px 0 16px">제공하는 설계 서비스</h3>
+<div class="grid g2">
+<div class="box"><h3>설계 상담 및 기획</h3><p>건축 계획 단계에서 필요한 방향과 조건을 함께 정리합니다.</p></div>
+<div class="box"><h3>AI 활용 건축 디자인</h3><p>AI 도구로 다양한 디자인 안을 빠르게 검토하고, 건축가의 판단으로 완성도를 높입니다.</p></div>
+<div class="box"><h3>전문가 협업 조율</h3><p>건축주, 구조기술자, 시공사 등과 의견을 나누며 설계를 조율합니다.</p></div>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<h2>상담 및 문의</h2>
+<p class="lead">건축 계획이 있으시다면 편하게 문의해 주세요.</p>
+<div class="grid g2">
+<div>
+<h3 style="font-size:19px;margin-bottom:16px">상담 방법</h3>
+<p style="color:var(--muted);margin:0 0 20px">오른쪽 문의 양식으로 계획 중인 건축의 내용을 남겨 주세요. 확인 후 상담 방법을 안내해 드립니다.</p>
+<dl>
+<dt>연락처</dt><dd>추후 안내 예정</dd>
+<dt>이메일</dt><dd>추후 안내 예정</dd>
+<dt>사무실 위치</dt><dd>추후 안내 예정</dd>
+</dl>
+</div>
+<form id="f" novalidate>
+<label>이름<input name="n" autocomplete="name" required></label>
+<label>연락받을 방법<input name="c" placeholder="전화번호 또는 이메일" required></label>
+<label>문의 내용<textarea name="m" rows="4" placeholder="건축 종류(주거·상업·공공), 계획 중인 내용을 적어 주세요." required></textarea></label>
+<button class="btn" type="submit">문의 신청</button>
+<p id="msg" role="status"></p>
+</form>
+</div>
+</div></section>
+</main>
+<footer><div class="wrap">공간에 가치를 더하는 건축 설계사무소</div></footer>
+<script>
+document.getElementById("f").addEventListener("submit",function(e){
+e.preventDefault();var m=document.getElementById("msg"),ok=true;
+this.querySelectorAll("[required]").forEach(function(i){if(!i.value.trim())ok=false});
+m.textContent=ok?"문의 접수 기능은 준비 중입니다. 연락처가 공개되면 그곳으로 문의해 주세요.":"이름, 연락 방법, 문의 내용을 모두 입력해 주세요."});
+</script>
+</body>
+</html>

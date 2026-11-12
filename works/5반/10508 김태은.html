@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>간호사의 손길</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Gowun+Dodum&display=swap">
+<style>
+:root{--bg:#fff;--soft:#fff5f8;--pink:#f48fb1;--deep:#c2477a;--line:#fbd5e2;--text:#3b2a31;--sub:#7a6169;--card:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241a1f;--soft:#2d2026;--pink:#f48fb1;--deep:#f7a8c4;--line:#4a3039;--text:#f6e9ee;--sub:#c9b0b9;--card:#30222a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#241a1f;--soft:#2d2026;--pink:#f48fb1;--deep:#f7a8c4;--line:#4a3039;--text:#f6e9ee;--sub:#c9b0b9;--card:#30222a;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans KR",system-ui,sans-serif;line-height:1.75;font-size:17px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.35;margin:0}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav{max-width:1080px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.brand{font-family:"Gowun Dodum",sans-serif;font-weight:700;font-size:20px;color:var(--deep);margin-right:auto;display:flex;align-items:center;gap:8px}
+nav a.btn{font-size:14px;padding:6px 14px}
+.btn{display:inline-block;text-decoration:none;color:var(--deep);border:1.5px solid var(--pink);border-radius:999px;padding:10px 22px;font-weight:500;background:transparent}
+.btn:hover,.btn:focus-visible{background:var(--pink);color:#fff;outline:none}
+.btn.fill{background:var(--pink);color:#fff}
+.btn.fill:hover{background:var(--deep)}
+section{padding:88px 24px}
+section:nth-of-type(even){background:var(--soft)}
+.wrap{max-width:1080px;margin:0 auto}
+.tag{display:inline-flex;align-items:center;gap:8px;color:var(--deep);font-weight:700;font-size:15px;margin-bottom:12px}
+.tag svg{width:22px;height:22px}
+h2{font-size:34px;margin-bottom:10px}
+.lead{color:var(--sub);max-width:640px;margin:0 0 36px}
+.hero{padding:120px 24px 100px;background:var(--soft)}
+.hero h1{font-size:60px;color:var(--deep);margin-bottom:22px}
+.quote{font-family:"Gowun Dodum",sans-serif;font-size:26px;max-width:720px;border-left:5px solid var(--pink);padding:6px 0 6px 22px;margin:0 0 36px}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.card h3{font-size:21px;margin-bottom:8px;color:var(--deep)}
+.card p{margin:0;color:var(--text)}
+.ico{width:46px;height:46px;border-radius:50%;background:var(--soft);display:grid;place-items:center;margin-bottom:14px}
+section:nth-of-type(even) .ico{background:var(--bg)}
+.ico svg{width:24px;height:24px;stroke:var(--deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.label{font-weight:700;color:var(--deep);font-size:15px;margin:16px 0 4px}
+ul{margin:0;padding-left:20px}li{margin:4px 0}
+.profile{display:flex;gap:28px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:20px}
+.profile .name{font-size:28px;font-family:"Gowun Dodum",sans-serif;color:var(--deep)}
+.meta{color:var(--sub)}
+.rank{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.rank b{background:var(--pink);color:#fff;border-radius:999px;padding:2px 14px;font-size:15px}
+footer{text-align:center;padding:36px 24px;color:var(--sub);border-top:1px solid var(--line);font-size:15px}
+footer .btn{margin-bottom:14px}
+@media (max-width:820px){.g2,.g3{grid-template-columns:1fr}.hero h1{font-size:40px}}
+</style>
+</head>
+<body>
+<header><nav>
+<span class="brand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>간호사의 손길</span>
+<a class="btn" href="#greeting">인사말</a><a class="btn" href="#daily">나의 하루</a><a class="btn" href="#ai">미래 간호와 AI</a><a class="btn" href="#top3">핵심 역량</a><a class="btn" href="#future">나의 미래</a>
+</nav></header>
+
+<section class="hero" id="greeting">
+<div class="wrap">
+<div class="tag">① 인사말 – 나의 간호사 꿈</div>
+<h1>간호사의 손길</h1>
+<p class="quote">“AI가 환자의 몸을 돌본다면, 간호사는 환자의 마음까지 돌봅니다.”</p>
+<div class="grid g3">
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div><h3>간호사를 꿈꾸게 된 계기</h3><p>간호사는 현재 나의 목표입니다.</p></div>
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div><h3>웹사이트를 만든 목적</h3><p>AI가 발전하는 시대에 간호사에게 필요한 역량과 미래 간호사의 역할을 알리기 위해 만들었습니다.</p></div>
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></div><h3>환영합니다</h3><p>간호사를 꿈꾸는 학생, 간호학과 진학에 관심 있는 분들을 환영합니다.</p></div>
+</div>
+<p style="margin-top:36px"><a class="btn fill" href="#top3">핵심 역량 보러 가기</a></p>
+</div>
+</section>
+
+<section id="daily">
+<div class="wrap">
+<div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>② 나의 하루</div>
+<h2>예비 간호사의 일상</h2>
+<p class="lead">간호사가 되기 위해 노력하는 나의 하루를 소개합니다.</p>
+<div class="grid g3">
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><h3>간호사가 되기 위한 노력</h3><p>간호사가 되기 위해 노력하는 나의 일상</p></div>
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h7a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-6"/></svg></div><h3>공부와 진로 탐색</h3><p>간호 관련 공부와 진로 탐색 활동</p></div>
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6L12 16.7 6.7 19.6l1.1-6L3.4 9.4l6-.8z"/></svg></div><h3>작은 실천</h3><p>미래 간호사가 되기 위한 작은 실천</p></div>
+</div>
+</div>
+</section>
+
+<section id="ai">
+<div class="wrap">
+<div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01"/></svg>③ 미래 간호와 AI</div>
+<h2>달라지는 의료 현장</h2>
+<p class="lead">병원에서 활용되는 AI 기술과 AI가 간호사에게 미치는 영향, 그리고 AI 시대에 간호사가 필요한 이유를 다룹니다.</p>
+<div class="grid g2">
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4"/></svg></div><h3>AI가 도와줄 일</h3><ul><li>환자 상태 모니터링</li><li>기록 자동 정리</li></ul></div>
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div><h3>간호사가 직접 맡을 일</h3><ul><li>환자 곁에서 돌보고 마음 살피기</li></ul></div>
+</div>
+<p class="lead" style="margin:28px 0 0">AI가 환자의 몸을 돌본다면, 간호사는 환자의 마음까지 돌봅니다.</p>
+</div>
+</section>
+
+<section id="top3">
+<div class="wrap">
+<div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/></svg>④ 간호사의 핵심 역량</div>
+<h2>나의 TOP 3</h2>
+<p class="lead">AI 시대에 기르고 싶은 세 가지 역량과 각 역량을 기르는 나만의 방법입니다.</p>
+<div class="grid g3">
+<div class="card"><div class="rank"><b>1위</b></div><h3>공감능력</h3>
+<div class="label">필요한 이유</div><p>AI가 해주는 공감과 인간이 해주는 공감에는 차이가 있기 때문이다.</p>
+<div class="label">앞으로 이렇게 기를 거예요</div><ul><li>봉사활동에 참여하여 다양한 사람들과 소통하고, 상대방의 입장에서 생각하는 습관을 기른다.</li><li>다른 사람의 이야기를 끝까지 경청하고 감정을 이해하려고 노력한다.</li><li>환자와 보호자의 불안이나 어려움을 이해하고 배려하는 태도를 기른다.</li></ul></div>
+<div class="card"><div class="rank"><b>2위</b></div><h3>AI 활용 능력</h3>
+<div class="label">필요한 이유</div><p>계산이나 수치가 필요한 일은 인간보다 AI가 더 잘할 수 있으므로, AI를 활용하면 더욱 정확하게 환자의 질병을 파악하는 데 도움이 되기 때문이다. 실제로 혈압 측정과 같은 일에도 기계가 사용되므로 기계를 다루는 능력이 필요하다.</p>
+<div class="label">앞으로 이렇게 기를 거예요</div><ul><li>ChatGPT와 같은 AI 도구를 활용하여 간호 및 의료 관련 지식을 탐구한다.</li><li>AI 의료기술이 실제 병원에서 어떻게 활용되는지 조사한다.</li><li>AI를 활용해 의료 정보를 정리하고 학습하되, 정보의 정확성을 확인하는 습관을 기른다.</li></ul></div>
+<div class="card"><div class="rank"><b>3위</b></div><h3>비판적 사고</h3>
+<div class="label">필요한 이유</div><p>AI가 내린 결론이 정확한지 해당 분야를 전공한 사람이 직접 검토해야 한다고 생각한다. 사람을 돌보는 일이기 때문에 더욱 신중해야 한다고 판단했기 때문이다.</p>
+<div class="label">앞으로 이렇게 기를 거예요</div><ul><li>의료 관련 뉴스나 사례를 찾아보고 다양한 관점에서 분석한다.</li><li>AI가 제공하는 의료 정보가 정확한지 다른 자료와 비교하며 검증한다.</li><li>문제 상황에서 여러 해결 방법을 생각하고 환자에게 가장 적절한 방법이 무엇인지 판단하는 연습을 한다.</li></ul></div>
+</div>
+</div>
+</section>
+
+<section id="future">
+<div class="wrap">
+<div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>⑤ 나의 미래</div>
+<h2>따뜻한 간호사를 향한 다짐</h2>
+<p class="lead">미래의 나를 소개합니다.</p>
+<div class="profile">
+<div><div class="name">김태은</div><div class="meta">27세 · 서울아산병원 근무 · 간호사</div></div>
+<div class="meta">직업을 선택한 이유: 현재 나의 목표이기 때문</div>
+</div>
+<div class="grid g3">
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div><h3>되고 싶은 간호사의 모습</h3><p>환자 곁에서 돌보고 마음을 살피는 간호사</p></div>
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></div><h3>앞으로 이루고 싶은 목표</h3><p>간호사가 되어 서울아산병원에서 근무하기</p></div>
+<div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div><h3>환자에게 전하고 싶은 마음</h3><p>AI가 환자의 몸을 돌본다면, 간호사는 환자의 마음까지 돌봅니다.</p></div>
+</div>
+</div>
+</section>
+
+<footer><a class="btn" href="#greeting">맨 위로</a><br>간호사의 손길</footer>
+</body>
+</html>

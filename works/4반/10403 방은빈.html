@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>소아과가 궁금하다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fffdf5; --surface:#ffffff; --band:#fff4c2; --ink:#3b3220; --muted:#6e6248;
+  --yellow:#ffd23f; --yellow-deep:#f4b400; --line:#f3e3a0; --on-yellow:#3b3220;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1f1b10; --surface:#2b2616; --band:#332c14; --ink:#fff6d6; --muted:#d8cb9f;
+    --line:#4a4020; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1f1b10; --surface:#2b2616; --band:#332c14; --ink:#fff6d6; --muted:#d8cb9f;
+  --line:#4a4020; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Gowun Dodum","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:1.08rem;line-height:1.8;word-break:keep-all}
+h1,h2,h3{font-family:"Jua","Gowun Dodum","Malgun Gothic",sans-serif;font-weight:400;line-height:1.3;margin:0}
+p{margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:2px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:"Jua",sans-serif;font-size:1.25rem;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:8px 14px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.98rem}
+nav a:hover,nav a.on{background:var(--yellow);color:var(--on-yellow)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--yellow-deep);outline-offset:2px}
+.menu{display:none;background:var(--yellow);color:var(--on-yellow);border:0;border-radius:12px;width:44px;height:44px;font-size:1.3rem;cursor:pointer}
+
+/* hero */
+.hero{background:var(--yellow);color:var(--on-yellow);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding-top:64px;padding-bottom:88px}
+.hero h1{font-size:clamp(2.8rem,8vw,5.4rem);letter-spacing:-.02em}
+.hero .say{display:inline-block;margin-top:20px;background:#fff;color:#3b3220;padding:10px 22px;border-radius:999px;font-size:1.2rem;box-shadow:0 4px 0 rgba(59,50,32,.18)}
+.hero .purpose{margin-top:22px;max-width:30em}
+.hero .who{margin-top:10px;font-size:.98rem}
+.hero svg{width:100%;max-width:340px;justify-self:center}
+.wave{display:block;width:100%;height:48px;margin-top:-47px;position:relative}
+.wave path{fill:var(--bg)}
+
+/* sections */
+section{padding:72px 0}
+section.alt{background:var(--band)}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.title .ic{flex:none;width:56px;height:56px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-size:1.7rem}
+.title h2{font-size:clamp(1.7rem,4.5vw,2.3rem)}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:28px}
+
+.hello{text-align:center;font-size:1.35rem}
+.hello .card{max-width:640px;margin:0 auto;padding:40px 24px;position:relative}
+.hello .big{font-size:3rem;display:block;margin-bottom:8px}
+
+.profile{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.profile .card{text-align:center;padding:24px 16px}
+.profile .ico{font-size:2rem;display:block}
+.profile dt{color:var(--muted);font-size:.95rem;margin-top:6px}
+.profile dd{margin:2px 0 0;font-size:1.2rem}
+.profile dl{margin:0}
+
+.ranks{display:grid;gap:20px}
+.rank{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:start}
+.badge{background:var(--yellow);color:var(--on-yellow);border-radius:20px;text-align:center;padding:14px 6px;font-family:"Jua",sans-serif}
+.badge b{display:block;font-size:2.1rem;font-weight:400;line-height:1.1}
+.badge span{font-size:1.5rem;display:block}
+.rank h3{font-size:1.5rem;margin-bottom:12px}
+.rank h4{margin:0 0 2px;font-size:1rem;color:var(--yellow-deep);font-family:"Jua",sans-serif;font-weight:400}
+.rank .item+.item{margin-top:12px}
+.rank.first{border-color:var(--yellow-deep)}
+
+.role-intro{font-size:1.25rem;margin-bottom:24px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.split h3{font-size:1.4rem;margin-bottom:14px}
+.split ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.split li{display:flex;gap:10px;align-items:center;background:var(--band);border-radius:14px;padding:10px 14px}
+.split .ai{border-color:var(--line)}
+.split .me{background:var(--yellow);color:var(--on-yellow);border-color:var(--yellow-deep)}
+.split .me li{background:rgba(255,255,255,.6)}
+
+footer{background:var(--yellow);color:var(--on-yellow);text-align:center;padding:36px 20px calc(36px + env(safe-area-inset-bottom,0px))}
+footer p+p{font-size:.95rem;margin-top:4px}
+
+@media (max-width:760px){
+  .menu{display:block}
+  nav{position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:2px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;padding:12px 20px}
+  .hero .wrap{grid-template-columns:1fr;padding-top:40px;padding-bottom:72px;text-align:center}
+  .hero .purpose{margin-inline:auto}
+  .hero svg{max-width:220px;order:-1}
+  .rank{grid-template-columns:1fr}
+  .badge{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px}
+  .split{grid-template-columns:1fr}
+  section{padding:56px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">🐥 소아과가 궁금하다</a>
+    <button class="menu" id="menu" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+    <nav id="nav" aria-label="섹션 이동">
+      <ul>
+        <li><a href="#hello">인사말</a></li>
+        <li><a href="#me">미래의 나</a></li>
+        <li><a href="#skills">AI 시대 역량</a></li>
+        <li><a href="#role">나의 역할</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>소아과가<br>궁금하다</h1>
+        <p class="say">“방문하면 생각이 바뀐다”</p>
+        <p class="purpose">내가 어떻게 소아과에 관심을 갖게 되었고, 소아과에서는 어떤 일을 하는지 등을 알려주기 위해 만든 웹사이트입니다. 소아과에 오고 싶은 사람들이 방문자입니다.</p>
+        <p class="who">제작자: 방은빈</p>
+      </div>
+      <svg viewBox="0 0 300 300" role="img" aria-label="하트와 십자가가 있는 해님 그림">
+        <g stroke="#fff" stroke-width="10" stroke-linecap="round">
+          <path d="M150 12v34M150 254v34M12 150h34M254 150h34M52 52l24 24M224 224l24 24M248 52l-24 24M76 224l-24 24"/>
+        </g>
+        <circle cx="150" cy="150" r="92" fill="#fff"/>
+        <path d="M150 208c-34-24-52-42-52-64 0-16 12-28 27-28 11 0 20 6 25 15 5-9 14-15 25-15 15 0 27 12 27 28 0 22-18 40-52 64z" fill="#ff8a7a"/>
+        <path d="M150 128v36M132 146h36" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <svg class="wave" viewBox="0 0 1200 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 48V24C150 0 300 0 450 18s300 30 450 12 225-24 300-12v26z"/></svg>
+  </div>
+
+  <section id="hello" class="hello">
+    <div class="wrap">
+      <div class="card">
+        <span class="big" aria-hidden="true">👋</span>
+        <h2 class="sr" style="position:absolute;left:-9999px">인사말</h2>
+        <p>안녕하세요.<br>들어와 주셔서 감사합니다.<br>재밌게 읽어 주세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="me" class="alt">
+    <div class="wrap">
+      <div class="title"><span class="ic" aria-hidden="true">🌟</span><h2>미래의 나 소개</h2></div>
+      <div class="profile">
+        <dl class="card"><span class="ico" aria-hidden="true">🧑‍⚕️</span><dt>이름</dt><dd>방은빈</dd></dl>
+        <dl class="card"><span class="ico" aria-hidden="true">🎂</span><dt>나이</dt><dd>38세</dd></dl>
+        <dl class="card"><span class="ico" aria-hidden="true">💛</span><dt>직업</dt><dd>소아 전문 간호사</dd></dl>
+        <dl class="card"><span class="ico" aria-hidden="true">🏥</span><dt>일하는 곳</dt><dd>병원</dd></dl>
+        <dl class="card"><span class="ico" aria-hidden="true">🌈</span><dt>직업을 선택한 이유</dt><dd>꿈이어서</dd></dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="title"><span class="ic" aria-hidden="true">🏆</span><h2>내가 기른 AI 시대 역량 TOP 3</h2></div>
+      <div class="ranks">
+        <article class="card rank first">
+          <div class="badge"><b>1위</b><span aria-hidden="true">🛡️</span></div>
+          <div>
+            <h3>윤리·책임 의식</h3>
+            <div class="item"><h4>필요한 이유</h4><p>환자를 보기 위해서는 책임감이 필요하고 환자의 개인정보를 지켜야 하기 때문에 필요합니다.</p></div>
+            <div class="item"><h4>앞으로의 계획</h4><p>공부를 하며 책임감을 기르고 개인정보를 어떻게 지켜야 하는지 등을 공부할 것입니다.</p></div>
+          </div>
+        </article>
+        <article class="card rank">
+          <div class="badge"><b>2위</b><span aria-hidden="true">🤗</span></div>
+          <div>
+            <h3>공감 능력</h3>
+            <div class="item"><h4>필요한 이유</h4><p>환자를 치료만 하는 것이 아닌 환자의 마음도 알아가고 아픔을 공감하는 마음도 있어야 하기 때문에 필요합니다.</p></div>
+            <div class="item"><h4>앞으로의 계획</h4><p>평소 사람들과 대화할 때 공감을 많이 해서 기를 것입니다.</p></div>
+          </div>
+        </article>
+        <article class="card rank">
+          <div class="badge"><b>3위</b><span aria-hidden="true">💬</span></div>
+          <div>
+            <h3>소통·협업 능력</h3>
+            <div class="item"><h4>필요한 이유</h4><p>환자와 소통하며 치료하는 분야도 있기 때문에 필요합니다.</p></div>
+            <div class="item"><h4>앞으로의 계획</h4><p>사람들과 소통을 많이 하는 프로그램이나 다른 활동을 많이 해 보고 기를 것입니다.</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="role" class="alt">
+    <div class="wrap">
+      <div class="title"><span class="ic" aria-hidden="true">🌍</span><h2>미래 사회에서 나의 역할</h2></div>
+      <p class="role-intro">미래의 나는 소아 전문 간호사로서 아이들을 치료하고 보살피는 역할을 합니다.</p>
+      <div class="split">
+        <div class="card ai">
+          <h3>🤖 AI가 도와줄 일</h3>
+          <ul><li><span aria-hidden="true">🔎</span>환자가 누구인지 알려줍니다.</li></ul>
+        </div>
+        <div class="card me">
+          <h3>🧑‍⚕️ 내가 직접 맡을 일</h3>
+          <ul>
+            <li><span aria-hidden="true">👶</span>환자 보기</li>
+            <li><span aria-hidden="true">🩺</span>진료 도움</li>
+            <li><span aria-hidden="true">💉</span>치료</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>소아과가 궁금하다</p>
+  <p>제작자: 방은빈</p>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menu'),nav=document.getElementById('nav');
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  function close(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰';}
+  btn.addEventListener('click',function(){
+    var o=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded',o);btn.textContent=o?'✕':'☰';
+  });
+  links.forEach(function(a){a.addEventListener('click',close);});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id);});
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    ['hello','me','skills','role'].forEach(function(id){io.observe(document.getElementById(id));});
+  }
+})();
+</script>
+</body>
+</html>

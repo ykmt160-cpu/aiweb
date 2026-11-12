@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>메이크업아티스트이서윤</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap">
+<style>
+:root{--pk:#ff5c9a;--pk2:#ffd6e6;--pk3:#fff0f6;--rd:#d4103c;--rd2:#8f0a28;--ink:#4a0f22;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--pk3);color:var(--ink);font-family:"Gowun Dodum","Noto Sans KR","Malgun Gothic",sans-serif;font-size:18px;line-height:1.8;word-break:keep-all;overflow-x:hidden}
+h1,h2,h3,.big{font-family:"Black Han Sans","Noto Sans KR","Malgun Gothic",sans-serif;font-weight:400;margin:0}
+p{margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px;position:relative}
+.ico,.gem{flex:none;width:52px;height:52px}
+.ico{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.gem{width:34px;height:34px}
+.row{display:flex;align-items:center;gap:16px}
+.hero{background:linear-gradient(135deg,var(--rd2),var(--rd) 45%,var(--pk));color:#fff;text-align:center;padding:96px 0 88px;border-bottom:8px solid var(--pk2)}
+.hero .row{justify-content:center;margin-bottom:28px}
+.hero .ico{color:#fff;width:56px;height:56px}
+.hero h1{font-size:clamp(34px,8vw,76px);line-height:1.25;text-shadow:0 3px 0 var(--rd2),0 8px 24px rgba(0,0,0,.25);letter-spacing:.02em}
+.hero .big{font-size:clamp(22px,4vw,34px);margin-top:20px;color:var(--pk2)}
+section{padding:80px 0;position:relative}
+.s1{background:var(--pk3)}
+.s2{background:var(--pk2)}
+.s3{background:#fff}
+.s4{background:linear-gradient(135deg,var(--pk),var(--rd));color:#fff}
+.s5{background:var(--rd2);color:#fff;text-align:center}
+.head{display:flex;align-items:center;gap:16px;margin-bottom:36px;padding-bottom:16px;border-bottom:3px solid currentColor}
+.head .ico{color:var(--rd)}
+.s4 .head .ico,.s5 .head .ico{color:#fff}
+.s5 .head{justify-content:center}
+h2{font-size:clamp(26px,5vw,40px);line-height:1.3;color:var(--rd);flex:1}
+.s4 h2,.s5 h2{color:#fff}
+dl{display:grid;grid-template-columns:130px 1fr;margin:0 0 28px;background:#fff;border:2px solid var(--pk);border-radius:20px;overflow:hidden;box-shadow:0 8px 0 var(--pk2)}
+dt,dd{margin:0;padding:14px 22px;border-bottom:1px solid var(--pk2)}
+dt{color:var(--rd);font-weight:700;background:var(--pk3)}
+dt:nth-last-of-type(1),dd:last-of-type{border-bottom:0}
+.lead{font-size:1.3em;color:var(--rd2)}
+.s2 .lead{margin-bottom:16px}
+.ranks{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rank{border:2px solid var(--pk);border-radius:20px;padding:28px 24px;background:var(--pk3);box-shadow:0 8px 0 var(--pk2)}
+.rank .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.rank .no{font-family:"Black Han Sans",sans-serif;font-size:42px;color:var(--rd);line-height:1.2}
+.rank h3{font-size:24px;color:var(--rd2);margin-bottom:20px;line-height:1.35}
+.rank h4{margin:0 0 4px;font-size:15px;color:var(--rd);background:var(--pk2);display:inline-block;padding:2px 12px;border-radius:99px}
+.rank p{margin-bottom:18px}
+.rank p:last-child{margin-bottom:0}
+.s4 .big{font-size:clamp(24px,4.5vw,38px);line-height:1.5;text-align:center;text-shadow:0 3px 14px rgba(120,0,30,.35)}
+.gems{display:flex;justify-content:center;gap:14px;margin-top:28px}
+.vow{font-family:"Black Han Sans",sans-serif;font-size:clamp(28px,6vw,54px);line-height:1.4;color:#fff;background:linear-gradient(135deg,var(--rd),var(--pk));padding:40px 24px;border-radius:24px;border:4px solid var(--pk2);box-shadow:0 0 0 6px var(--rd),0 14px 30px rgba(0,0,0,.35)}
+.s5 .gems{margin:0 0 28px}
+.hero#intro{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center}
+.hero#intro .wrap{width:100%}
+.hero h1{font-size:clamp(56px,16vw,140px)}
+.go{margin-top:44px;font-family:"Black Han Sans","Noto Sans KR",sans-serif;font-size:22px;min-height:60px;padding:14px 40px;border-radius:99px;border:3px solid var(--pk2);background:#fff;color:var(--rd);cursor:pointer;box-shadow:0 6px 0 var(--rd2),0 14px 24px rgba(0,0,0,.3);max-width:100%}
+.go:active{transform:translateY(4px);box-shadow:0 2px 0 var(--rd2)}
+.go:focus-visible{outline:4px solid #fff;outline-offset:4px}
+[hidden]{display:none!important}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+.role{background:#fff;border:2px solid var(--pk);border-radius:20px;padding:22px 24px;box-shadow:0 8px 0 var(--pk2)}
+.role h3{font-size:22px;color:var(--rd);margin-bottom:10px}
+.role ul{margin:0;padding-left:22px}
+@media(max-width:860px){.roles{grid-template-columns:1fr}}
+@media(max-width:860px){.ranks{grid-template-columns:1fr}}
+@media(max-width:560px){body{font-size:16.5px}section{padding:56px 0}.hero{padding:64px 0 56px}.wrap{padding:0 18px}dl{grid-template-columns:96px 1fr}dt,dd{padding:12px 14px}.ico{width:42px;height:42px}.hero .ico{width:42px;height:42px}.hero .row{gap:10px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#ff5c9a"/><stop offset="1" stop-color="#d4103c"/></linearGradient>
+<symbol id="gm" viewBox="0 0 48 48"><path d="M12 6h24l9 12-21 24L3 18z" fill="url(#gg)" stroke="#8f0a28" stroke-width="2" stroke-linejoin="round"/><path d="M3 18h42M17 6l-5 12 12 24M31 6l5 12-12 24M17 6l7 12 7-12" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+<symbol id="lip" viewBox="0 0 48 48"><rect x="16" y="26" width="16" height="14"/><rect x="14" y="40" width="20" height="4"/><path d="M18 26V16l8-8 4 4v14"/></symbol>
+<symbol id="brs" viewBox="0 0 48 48"><path d="M10 38L34 8l5 4-24 30z"/><path d="M10 38c-3 1-4 4-4 6 3 0 6-1 6-4"/><path d="M34 8l4-4 6 5-4 3"/></symbol>
+<symbol id="cmp" viewBox="0 0 48 48"><circle cx="24" cy="22" r="14"/><path d="M13 36h22v8H13z"/><path d="M17 22a7 7 0 0 1 7-7"/></symbol>
+<symbol id="pal" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="4"/><circle cx="16" cy="20" r="4"/><circle cx="28" cy="20" r="4"/><circle cx="16" cy="31" r="3"/><circle cx="26" cy="31" r="3"/><circle cx="35" cy="31" r="3"/></symbol>
+</defs>
+</svg>
+
+<header class="hero" id="intro">
+<div class="wrap">
+<div class="row" aria-hidden="true">
+<svg class="ico"><use href="#lip"/></svg><svg class="gem"><use href="#gm"/></svg><svg class="ico"><use href="#brs"/></svg><svg class="gem"><use href="#gm"/></svg><svg class="ico"><use href="#cmp"/></svg><svg class="gem"><use href="#gm"/></svg><svg class="ico"><use href="#pal"/></svg>
+</div>
+<h1>이서윤</h1>
+<p class="big">환영합니다</p>
+<button type="button" class="go" id="go">메인 페이지로 이동</button>
+</div>
+</header>
+
+<main id="main" hidden>
+<section class="s1">
+<div class="wrap">
+<div class="head"><svg class="ico" aria-hidden="true"><use href="#lip"/></svg><h2>자기소개</h2><svg class="gem" aria-hidden="true"><use href="#gm"/></svg></div>
+<dl>
+<dt>이름</dt><dd>이서윤</dd>
+<dt>나이</dt><dd>30살</dd>
+<dt>직업</dt><dd>메이크업아티스트</dd>
+<dt>일하는 곳</dt><dd>메이크업샵</dd>
+</dl>
+<p class="lead">다양한 사람들의 취향을 고려하여 어울리는 메이크업을 해주는 사람</p>
+<div class="roles">
+<div class="role"><h3>AI가 도와줄 일</h3><ul><li>고객들 관련 데이터</li><li>예약 관리</li><li>어떤 메이크업이 어울리는지 가상 시뮬레이션</li></ul></div>
+<div class="role"><h3>내가 직접 맡을 일</h3><p>사람들과 소통하면서 고객들에게 어울리는 메이크업을 섬세하게 작업함.</p></div>
+</div>
+</div>
+</section>
+
+<section class="s2">
+<div class="wrap">
+<div class="head"><svg class="ico" aria-hidden="true"><use href="#brs"/></svg><h2>메이크업아티스트가 된 이유</h2><svg class="gem" aria-hidden="true"><use href="#gm"/></svg></div>
+<p class="lead">사람들이 내 손길을 거쳐서 예뻐진다는 게 뿌듯하고 화장하는 것을 좋아해서 이 직업을 선택했다.</p>
+</div>
+</section>
+
+<section class="s3">
+<div class="wrap">
+<div class="head"><svg class="ico" aria-hidden="true"><use href="#pal"/></svg><h2>내가 기른 역량</h2><svg class="gem" aria-hidden="true"><use href="#gm"/></svg></div>
+<div class="ranks">
+<article class="rank">
+<div class="top"><span class="no">1위</span><svg class="gem" aria-hidden="true"><use href="#gm"/></svg></div>
+<h3>창의·융합 사고</h3>
+<h4>필요한 이유</h4>
+<p>고객에게 어울리는 이미지를 찾아내 표현하는 직업이기 때문이다.</p>
+<h4>앞으로 이렇게 기를 거예요</h4>
+<p>다양한 메이크업 이미지 찾아보기, 다양한 얼굴에 메이크업 실습해 본다.</p>
+</article>
+<article class="rank">
+<div class="top"><span class="no">2위</span><svg class="gem" aria-hidden="true"><use href="#gm"/></svg></div>
+<h3>질문·문제 정의력</h3>
+<h4>필요한 이유</h4>
+<p>고객이 원하는 추구미와 어떤 문제점을 가졌는지 구체적으로 묻고 이해해야 하기 때문이다.</p>
+<h4>앞으로 이렇게 기를 거예요</h4>
+<p>어떻게 질문해야 효율적이고 정확한 대답이 나올지 AI에게 질문하고 답을 비교한다.</p>
+</article>
+<article class="rank">
+<div class="top"><span class="no">3위</span><svg class="gem" aria-hidden="true"><use href="#gm"/></svg></div>
+<h3>소통·협업 능력</h3>
+<h4>필요한 이유</h4>
+<p>서비스직이고 고객과 소통이 잘 되어야 하는 직업이기 때문이다.</p>
+<h4>앞으로 이렇게 기를 거예요</h4>
+<p>대화 상대의 말에 경청하고 다른 의견에도 수용하는 연습을 한다.</p>
+</article>
+</div>
+</div>
+</section>
+
+<section class="s4">
+<div class="wrap">
+<div class="head"><svg class="ico" aria-hidden="true"><use href="#cmp"/></svg><h2>내가 지향하는 삶</h2><svg class="gem" aria-hidden="true"><use href="#gm"/></svg></div>
+<p class="big">사람들에게 선한 영향력을 끼치고 자존감을 높여주는 삶</p>
+<div class="gems" aria-hidden="true"><svg class="gem"><use href="#gm"/></svg><svg class="gem"><use href="#gm"/></svg><svg class="gem"><use href="#gm"/></svg></div>
+</div>
+</section>
+
+<section class="s5">
+<div class="wrap">
+<div class="head"><svg class="ico" aria-hidden="true"><use href="#brs"/></svg><h2>나의 다짐</h2><svg class="gem" aria-hidden="true"><use href="#gm"/></svg></div>
+<div class="gems" aria-hidden="true"><svg class="gem"><use href="#gm"/></svg><svg class="gem"><use href="#gm"/></svg><svg class="gem"><use href="#gm"/></svg></div>
+<p class="vow">“노력해 보지도 않고 포기하지 않기”</p>
+</div>
+</section>
+</main>
+<script>
+document.getElementById("go").addEventListener("click",function(){
+document.getElementById("intro").hidden=true;
+document.getElementById("main").hidden=false;
+window.scrollTo(0,0);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>생명을 지키는 간호사, 미래를 준비하는 나</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2347;--navy2:#1b3a6b;--bg:#f5f7fa;--card:#fff;--text:#1c2a40;--sub:#5d6b82;--silver:#c5ccd6;--line:#e1e5eb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1730;--card:#13264a;--text:#eef1f6;--sub:#aab4c6;--silver:#c5ccd6;--line:#25395f;--navy:#06112a}}
+:root[data-theme="dark"]{--bg:#0a1730;--card:#13264a;--text:#eef1f6;--sub:#aab4c6;--silver:#c5ccd6;--line:#25395f;--navy:#06112a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:300;line-height:1.8}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--navy);display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:60px}
+nav b{color:#fff;font-weight:400;font-size:15px;letter-spacing:.02em}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav a{color:var(--silver);text-decoration:none;font-size:14px;padding:8px 14px;border-radius:20px;transition:.3s;display:block}
+nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+#tg{display:none;background:none;border:1px solid var(--silver);color:var(--silver);border-radius:8px;padding:6px 12px;font:inherit;font-size:13px}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;text-align:center;padding:96px 24px 88px}
+.hero svg{width:56px;height:56px;margin-bottom:20px}
+.hero h1{font-weight:300;font-size:clamp(28px,5vw,46px);margin:0 0 20px;line-height:1.35}
+.hero p{max-width:640px;margin:0 auto 12px;color:#d5dbe6}
+.tag{display:inline-block;border:1px solid var(--silver);color:var(--silver);border-radius:20px;padding:3px 16px;font-size:13px;margin-bottom:24px}
+.quote{max-width:640px;margin:32px auto 0;padding-top:28px;border-top:1px solid rgba(197,204,214,.4);font-size:18px;color:#fff}
+section{max-width:960px;margin:0 auto;padding:80px 24px}
+h2{font-weight:400;font-size:28px;margin:0 0 8px;color:var(--text)}
+h2::after{content:"";display:block;width:48px;height:3px;background:var(--silver);margin:12px 0 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;box-shadow:0 4px 18px rgba(15,35,71,.06)}
+.card h3{font-weight:500;font-size:16px;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+.card h3 svg{width:22px;height:22px;flex:none;stroke:var(--navy2)}
+@media (prefers-color-scheme:dark){.card h3 svg{stroke:var(--silver)}}
+.card p,.card li{margin:0;color:var(--sub);font-size:15px}
+.card ul{margin:0;padding-left:18px}
+.big{font-size:44px;font-weight:300;color:var(--navy2);line-height:1.1;margin-bottom:6px}
+.rank{font-size:13px;color:var(--sub);letter-spacing:.08em}
+.pledge{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:14px;padding:32px;margin-top:28px}
+.pledge p{margin:0;color:#e4e8f0}
+.sub{margin:48px 0 18px;font-weight:400;font-size:20px}
+footer{background:var(--navy);color:var(--silver);text-align:center;padding:28px 24px;font-size:14px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (max-width:720px){
+#tg{display:block}
+nav ul{display:none;position:absolute;top:60px;left:0;right:0;background:var(--navy);flex-direction:column;padding:8px 16px 16px}
+nav ul.open{display:flex}
+section{padding:56px 20px}.hero{padding:72px 20px 64px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{transition:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav>
+<b>양하람 · 간호사</b>
+<button id="tg" aria-label="메뉴">메뉴</button>
+<ul id="menu">
+<li><a href="#intro">나를 소개합니다</a></li>
+<li><a href="#dream">나의 꿈과 진로</a></li>
+<li><a href="#role">간호사의 역할</a></li>
+<li><a href="#future">나의 미래와 가치관</a></li>
+</ul>
+</nav>
+
+<header class="hero">
+<svg viewBox="0 0 24 24" fill="none" stroke="#c5ccd6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.3-9A5.2 5.2 0 0 1 12 6.2 5.2 5.2 0 0 1 21.3 12C19 16.5 12 21 12 21z"/><path d="M12 9.5v5M9.5 12h5"/></svg>
+<div><span class="tag">간호사를 꿈꾸는 사람들에게</span></div>
+<h1>생명을 지키는 간호사,<br>미래를 준비하는 나</h1>
+<p>나의 꿈인 간호사를 소개하고, 간호사가 되기 위해 필요한 역량과 목표를 사람들에게 알리기 위해서입니다.</p>
+<p class="quote">“누구나 자신의 가능성을 믿고 한 걸음씩 나아간다면, 원하는 미래에 가까워질 수 있습니다.”</p>
+</header>
+
+<section id="intro" class="rv">
+<h2>나를 소개합니다</h2>
+<div class="grid">
+<div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>이름</h3><p class="big">양하람</p><p>미래의 나이 27살 · 서울아산병원 간호사</p></div>
+<div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.6l1.1-6L3.4 9.4l6-.8z"/></svg>미래의 모습</h3><p>경제적으로 안정되고, 좋은 직장에서 당당하게 일하는 간호사</p></div>
+<div class="card"><h3>성격</h3><p>내용 준비 중</p></div>
+<div class="card"><h3>장점</h3><p>내용 준비 중</p></div>
+<div class="card"><h3>관심사</h3><p>내용 준비 중</p></div>
+</div>
+</section>
+
+<section id="dream" class="rv">
+<h2>나의 꿈과 진로</h2>
+<div class="grid">
+<div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.3-9A5.2 5.2 0 0 1 12 6.2 5.2 5.2 0 0 1 21.3 12C19 16.5 12 21 12 21z"/></svg>희망 직업</h3><p class="big">간호사</p></div>
+<div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>직업을 선택한 이유</h3><p>어려운 사람들에게 봉사하며 도움을 주고, 안정적인 수입을 통해 경제적으로도 여유로운 삶을 살고 싶어서입니다.</p></div>
+</div>
+</section>
+
+<section id="role" class="rv">
+<h2>간호사의 역할</h2>
+<div class="grid">
+<div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>AI가 도와줄 일</h3><ul><li>간호 기록 작성</li><li>약물 관리</li></ul></div>
+<div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.3-9A5.2 5.2 0 0 1 12 6.2 5.2 5.2 0 0 1 21.3 12C19 16.5 12 21 12 21z"/></svg>내가 직접 맡을 일</h3><ul><li>환자의 건강 상태 확인</li><li>치료와 간호를 통해 환자의 회복 돕기</li></ul></div>
+</div>
+</section>
+
+<section id="future" class="rv">
+<h2>나의 미래와 가치관</h2>
+<div class="card"><p>미래의 간호사로서 경제적으로 안정되고 좋은 직장에서 당당하게 일하는 사람이 되고 싶습니다. 어려운 사람들에게 봉사하며 도움을 주고, 환자의 회복을 돕는 간호사가 되기 위해 노력할 것입니다.</p></div>
+
+<h3 class="sub">내가 기를 AI 시대 역량 TOP 3</h3>
+<div class="grid">
+<div class="card"><div class="rank">1위</div><h3>소통 능력</h3><p><b>필요한 이유</b><br>환자와 보호자, 의료진과 원활하게 소통해야 하기 때문입니다.</p><p style="margin-top:10px"><b>실천 계획</b><br>다른 사람의 말을 잘 듣고 협력하는 연습을 할 것입니다.</p></div>
+<div class="card"><div class="rank">2위</div><h3>AI 활용 능력</h3><p><b>필요한 이유</b><br>AI를 활용해 환자의 건강 상태와 검사 결과를 확인할 수 있기 때문입니다.</p><p style="margin-top:10px"><b>실천 계획</b><br>AI 관련 지식을 배우고 다양한 AI 도구를 사용해 볼 것입니다.</p></div>
+<div class="card"><div class="rank">3위</div><h3>윤리·책임 의식</h3><p><b>필요한 이유</b><br>환자의 생명과 개인정보를 다루는 중요한 직업이기 때문입니다.</p><p style="margin-top:10px"><b>실천 계획</b><br>책임감을 가지고 생명과 개인정보를 소중히 여기는 태도를 기를 것입니다.</p></div>
+</div>
+
+<div class="pledge"><p>“누구나 자신의 가능성을 믿고 한 걸음씩 나아간다면, 원하는 미래에 가까워질 수 있습니다.”</p></div>
+</section>
+
+<footer>생명을 지키는 간호사, 미래를 준비하는 나 · 양하람</footer>
+
+<script>
+var m=document.getElementById('menu');
+document.getElementById('tg').onclick=function(){m.classList.toggle('open')};
+m.addEventListener('click',function(){m.classList.remove('open')});
+var els=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+els.forEach(function(e){io.observe(e)});
+}else{els.forEach(function(e){e.classList.add('in')})}
+</script>
+</body>
+</html>

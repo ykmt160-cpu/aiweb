@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>미래의 요양간호사</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --yellow:#FFD93D; --yellow-soft:#FFF6CC;
+  --sky:#8FD3F4; --sky-soft:#E4F5FD;
+  --green:#6DBE6B; --green-soft:#E6F4E2;
+  --bg:#FFFEF7; --card:#FFFFFF; --text:#2F3B2E; --muted:#5E6B5C; --line:#EDE9D2;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --yellow-soft:#4A4217; --sky-soft:#173A4A; --green-soft:#1F3A1E;
+    --bg:#1B2019; --card:#242B22; --text:#F1F4EC; --muted:#B9C4B5; --line:#38422F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --yellow-soft:#4A4217; --sky-soft:#173A4A; --green-soft:#1F3A1E;
+  --bg:#1B2019; --card:#242B22; --text:#F1F4EC; --muted:#B9C4B5; --line:#38422F;
+  color-scheme:dark;
+}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  line-height:1.8;font-size:17px;word-break:keep-all}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+section{padding:72px 0}
+.tag{display:inline-block;background:var(--yellow);color:#3a3000;font-weight:700;
+  font-size:14px;padding:4px 14px;border-radius:999px;margin-bottom:12px}
+h1,h2,h3{line-height:1.35;margin:0 0 14px}
+h2{font-size:clamp(26px,5vw,34px);font-weight:900}
+h3{font-size:20px}
+p{margin:0 0 12px}
+nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--text);font-size:15px;font-weight:500;
+  padding:6px 14px;border-radius:999px;background:var(--sky-soft)}
+nav a:hover{background:var(--yellow)}
+/* hero */
+.hero{background:linear-gradient(160deg,var(--yellow-soft),var(--sky-soft) 60%,var(--green-soft));
+  padding:80px 0 72px;text-align:center}
+.hero h1{font-size:clamp(34px,8vw,56px);font-weight:900;margin-bottom:10px}
+.hero .sub{font-size:clamp(18px,3.5vw,22px);color:var(--muted);margin-bottom:34px}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;text-align:left}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.card .label{font-size:14px;font-weight:700;color:var(--green);margin-bottom:6px}
+.quote{margin-top:34px;background:var(--card);border-left:8px solid var(--yellow);
+  border-radius:16px;padding:20px 24px;font-size:clamp(19px,3.8vw,24px);font-weight:700;text-align:left}
+/* schedule */
+.sched{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.col{border-radius:20px;padding:24px}
+.col.ai{background:var(--sky-soft)} .col.human{background:var(--green-soft)}
+.col ul{margin:0;padding-left:20px}
+.col li{margin-bottom:6px}
+/* ai */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.three .card{border-top:6px solid var(--sky)}
+.num{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--sky);color:#06293a;
+  font-weight:900;align-items:center;justify-content:center;margin-bottom:10px}
+/* human */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.compare .box{border-radius:20px;padding:20px 24px}
+.compare .a{background:var(--sky-soft)} .compare .h{background:var(--yellow-soft)}
+.compare b{display:block;font-size:18px;margin-bottom:4px}
+.three.human .card{border-top-color:var(--green)}
+.three.human .num{background:var(--green);color:#0f2b0e}
+/* top3 */
+.rank{display:flex;flex-direction:column;gap:18px}
+.rank .item{display:grid;grid-template-columns:96px 1fr;gap:20px;background:var(--card);
+  border:1px solid var(--line);border-radius:22px;padding:24px;align-items:start}
+.badge{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:18px;padding:14px 6px;font-weight:900;color:#2b2500;text-align:center}
+.badge small{font-size:13px;font-weight:700} .badge span{font-size:38px;line-height:1}
+.r1 .badge{background:var(--yellow)} .r2 .badge{background:var(--sky)} .r3 .badge{background:var(--green);color:#0f2b0e}
+.item h3{margin-bottom:10px}
+.item dt{font-weight:700;color:var(--green);font-size:15px;margin-top:8px}
+.item dd{margin:0 0 4px}
+.r1{border-width:2px;border-color:var(--yellow)}
+.closing{margin-top:40px;text-align:center;background:linear-gradient(160deg,var(--yellow-soft),var(--green-soft));
+  border-radius:24px;padding:40px 22px;font-size:clamp(22px,5vw,32px);font-weight:900}
+footer{text-align:center;color:var(--muted);font-size:14px;padding:28px 22px 36px}
+@media (max-width:720px){
+  section{padding:52px 0}
+  .sched,.three,.compare{grid-template-columns:1fr}
+  .rank .item{grid-template-columns:1fr}
+  .badge{flex-direction:row;gap:10px;padding:10px}
+  .badge span{font-size:30px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a href="#s1">AI 시대의 요양간호사</a><a href="#s2">내 일정</a><a href="#s3">AI는 어떻게 사용할까</a><a href="#s4">가장 중요한 것</a><a href="#s5">다짐</a>
+</div></nav>
+
+<header class="hero" id="s1">
+  <div class="wrap">
+    <span class="tag">AI 시대의 요양간호사</span>
+    <h1>미래의 요양간호사</h1>
+    <p class="sub">AI 시대에서 요양간호사의 역할을 예측해 봅니다</p>
+    <div class="info">
+      <div class="card"><div class="label">희망 직업</div><h3>요양간호사</h3></div>
+      <div class="card"><div class="label">미래의 모습</div><p>36살에 요양병원이나 보훈병원에서 대상자들을 간호하고 있습니다.</p></div>
+      <div class="card"><div class="label">직업을 선택한 이유</div><p>준비해야 하는 자격증이나 경력도 충분히 필요하지만, 요양이 필요한 대상자들에게 도움이 되고 싶기 때문입니다.</p></div>
+    </div>
+    <div class="quote">“결국 가장 중요한 일을 하는 건 사람입니다.”</div>
+  </div>
+</header>
+
+<section id="s2"><div class="wrap">
+  <span class="tag">섹션 2</span>
+  <h2>내 일정</h2>
+  <p>36살, 요양병원이나 보훈병원에서 대상자들을 간호하는 미래 요양간호사의 하루입니다. 하루 동안 AI는 업무를 돕고, 사람은 대상자 곁에서 직접 돌봅니다.</p>
+  <div class="sched">
+    <div class="col ai"><h3>AI가 도와주는 일</h3>
+      <ul><li>낙상 위험 감지</li><li>간호일지 및 기록 보조</li><li>전화나 상담 응대</li></ul></div>
+    <div class="col human"><h3>내가 직접 하는 일</h3>
+      <ul><li>대상자와의 정서적 교감과 심리적 지지</li><li>존엄성을 지켜주는 섬세한 케어</li><li>직관과 경험에 기반한 복합적 판단</li></ul></div>
+  </div>
+</div></section>
+
+<section id="s3" style="background:var(--sky-soft)"><div class="wrap">
+  <span class="tag">섹션 3</span>
+  <h2>AI는 어떻게 사용할까</h2>
+  <p>미래의 요양간호사는 AI를 이렇게 활용합니다.</p>
+  <div class="three">
+    <div class="card"><div class="num">1</div><h3>낙상 위험 감지</h3><p>AI가 낙상 위험을 감지하도록 돕습니다.</p></div>
+    <div class="card"><div class="num">2</div><h3>간호일지 및 기록 보조</h3><p>AI가 간호일지와 기록 작성을 보조합니다.</p></div>
+    <div class="card"><div class="num">3</div><h3>전화나 상담 응대</h3><p>AI가 전화나 상담 응대를 도와줍니다.</p></div>
+  </div>
+</div></section>
+
+<section id="s4"><div class="wrap">
+  <span class="tag">섹션 4</span>
+  <h2>가장 중요한 것</h2>
+  <p>AI가 아닌 사람이 직접 해야 하는 역할입니다.</p>
+  <div class="compare">
+    <div class="box a"><b>AI가 도와주는 일</b>낙상 위험 감지 · 간호일지 및 기록 보조 · 전화나 상담 응대</div>
+    <div class="box h"><b>사람이 직접 맡는 일</b>정서적 교감 · 섬세한 케어 · 경험에 기반한 판단</div>
+  </div>
+  <div class="three human">
+    <div class="card"><div class="num">1</div><h3>정서적 교감과 심리적 지지</h3><p>대상자와의 정서적 교감과 심리적 지지는 사람이 직접 합니다.</p></div>
+    <div class="card"><div class="num">2</div><h3>존엄성을 지켜주는 섬세한 케어</h3><p>대상자의 존엄성을 지켜주는 섬세한 케어는 사람이 직접 합니다.</p></div>
+    <div class="card"><div class="num">3</div><h3>직관과 경험에 기반한 복합적 판단</h3><p>직관과 경험에 기반한 복합적 판단은 사람이 직접 합니다.</p></div>
+  </div>
+  <div class="quote">“결국 가장 중요한 일을 하는 건 사람입니다.”</div>
+</div></section>
+
+<section id="s5" style="background:var(--green-soft)"><div class="wrap">
+  <span class="tag">섹션 5</span>
+  <h2>다짐</h2>
+  <p>미래의 요양간호사로서 갖추고 싶은 역량 TOP 3입니다.</p>
+  <div class="rank">
+    <article class="item r1">
+      <div class="badge"><small>TOP</small><span>1위</span></div>
+      <div><h3>정서적 교감 및 공감 능력</h3><dl>
+        <dt>필요한 이유</dt><dd>정서적 교감은 인간 고유의 능력이기 때문에 대상자의 외로움, 불안, 우울 등을 위로하고 공감하는 능력이 필요합니다.</dd>
+        <dt>기르는 방법</dt><dd>학교나 학원, 친구들이나 선생님, 가족처럼 가까운 사람들부터 조금은 거리가 있는 주변인들과 대화하고 공감하며 위로할 수 있는 능력을 기를 것입니다.</dd></dl></div>
+    </article>
+    <article class="item r2">
+      <div class="badge"><small>TOP</small><span>2위</span></div>
+      <div><h3>인공지능 기술 활용 능력</h3><dl>
+        <dt>필요한 이유</dt><dd>AI 돌봄 기기들을 원활하고 효율적으로 운용할 수 있는 능력이 필요합니다.</dd>
+        <dt>기르는 방법</dt><dd>인공지능 기기나 챗GPT 같은 AI를 더 효율적으로 다루는 방법을 익히고, 기기들의 사용법 등을 손쉽게 외울 수 있도록 할 것입니다.</dd></dl></div>
+    </article>
+    <article class="item r3">
+      <div class="badge"><small>TOP</small><span>3위</span></div>
+      <div><h3>비판적 판단과 복합적 상황 해결력</h3><dl>
+        <dt>필요한 이유</dt><dd>AI가 제안하는 돌봄 계획에 대해 인간의 경험으로 오류를 걸러내거나 낙상이나 급성 발작 등 예측 불가능한 응급 상황에서 즉각적으로 대처할 수 있는 능력이 필요합니다.</dd>
+        <dt>기르는 방법</dt><dd>병원 현장 실습이나 관련 영상들을 시청하면서 예측 불가능한 응급 상황에서 대처할 수 있는 능력을 기르고, 그 경험을 바탕으로 AI가 제안하는 답을 거를 수 있습니다.</dd></dl></div>
+    </article>
+  </div>
+  <div class="closing">“결국 가장 중요한 일을 하는 건 사람입니다.”</div>
+</div></section>
+
+<footer>미래의 요양간호사</footer>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>나만의 피부관리</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: 하늘색 히어로 + 흰색/연한 파란색 섹션이 번갈아 이어지는 한 페이지 스크롤. 카드는 정보가 모이는 곳에만 사용 */
+:root {
+  --bg: #ffffff;
+  --bg-soft: #eef7fd;
+  --bg-sky: #d6edfb;
+  --surface: #ffffff;
+  --fg: #12324a;
+  --fg-muted: #44627a;
+  --line: #cfe4f3;
+  --accent: #1f8fd6;
+  --accent-strong: #0f6fb0;
+  --on-accent: #ffffff;
+  --sky-1: #bfe3f8;
+  --sky-2: #8fcbef;
+  --font: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1c2a; --bg-soft: #112739; --bg-sky: #153450; --surface: #12283a;
+    --fg: #e8f4fc; --fg-muted: #a8c4d8; --line: #24425a;
+    --accent: #5fb7ee; --accent-strong: #8fcbef; --on-accent: #08202f;
+    --sky-1: #1c4565; --sky-2: #2a6a96;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1c2a; --bg-soft: #112739; --bg-sky: #153450; --surface: #12283a;
+  --fg: #e8f4fc; --fg-muted: #a8c4d8; --line: #24425a;
+  --accent: #5fb7ee; --accent-strong: #8fcbef; --on-accent: #08202f;
+  --sky-1: #1c4565; --sky-2: #2a6a96;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+h1, h2, h3, p, dl, dd { margin: 0; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.3; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { width: 100%; max-width: 1080px; margin-inline: auto; }
+.icon { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* 상단 바 */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.brand .mark { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font-size: 22px; }
+.nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.nav a { text-decoration: none; font-size: 0.95rem; font-weight: 500; color: var(--fg-muted); padding: 6px 12px; border-radius: 999px; }
+.nav a:hover { background: var(--bg-sky); color: var(--fg); }
+
+/* 히어로 */
+.hero-band { background: linear-gradient(180deg, var(--bg-sky) 0%, var(--bg) 100%); margin-inline: calc(50% - 50vw); padding-inline: calc(50vw - 50%); }
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 40px; align-items: center; padding-block: 40px 72px; }
+.hero h1 { font-size: clamp(2.1rem, 5.2vw, 3.6rem); font-weight: 800; letter-spacing: -0.02em; }
+.hero h1 em { font-style: normal; color: var(--accent-strong); }
+.key { margin-top: 24px; font-size: clamp(1.15rem, 2.4vw, 1.4rem); font-weight: 500; color: var(--fg); display: flex; gap: 12px; align-items: flex-start; }
+.key .icon { margin-top: 0.3em; font-size: 1.3em; color: var(--accent); }
+.actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 26px; border-radius: 999px; font: inherit; font-weight: 700; font-size: 1.05rem; text-decoration: none; background: var(--accent); color: var(--on-accent); border: 2px solid var(--accent); transition: background .2s, transform .2s; }
+.btn:hover { background: var(--accent-strong); border-color: var(--accent-strong); transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--accent-strong); }
+.btn.ghost:hover { background: var(--accent); color: var(--on-accent); }
+.hero-art { width: 100%; max-width: 460px; margin-inline: auto; }
+.hero-art svg { width: 100%; height: auto; display: block; }
+
+/* 섹션 공통 */
+section { scroll-margin-top: 16px; }
+.block { padding-block: 72px; }
+.band { margin-inline: calc(50% - 50vw); padding-inline: calc(50vw - 50%); }
+.band.soft { background: var(--bg-soft); }
+.sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.sec-head .chip { width: 52px; height: 52px; border-radius: 16px; background: var(--bg-sky); color: var(--accent-strong); display: grid; place-items: center; font-size: 28px; flex: none; }
+.sec-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.2rem); font-weight: 800; letter-spacing: -0.01em; }
+
+/* 제작 목적 / 대상 방문자 */
+.about { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
+.about-art { max-width: 420px; width: 100%; margin-inline: auto; }
+.about-art svg { width: 100%; height: auto; display: block; }
+.fact + .fact { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
+.fact h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent-strong); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.fact p { font-size: 1.2rem; }
+
+/* 인사말 · 나의 다짐 · 미래 사회에서 나의 역할 */
+.statement { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px; align-items: start; }
+.statement .big-icon { width: 84px; height: 84px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font-size: 42px; }
+.statement p { font-size: clamp(1.3rem, 2.8vw, 1.75rem); font-weight: 500; line-height: 1.65; max-width: 30em; }
+.statement .sec-head { margin-bottom: 16px; }
+
+/* 미래의 나 소개 */
+.profile { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 32px; align-items: stretch; }
+.id-card { background: var(--accent); color: var(--on-accent); border-radius: 28px; padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; position: relative; overflow: hidden; }
+.id-card::after { content: ""; position: absolute; right: -60px; top: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,.14); }
+.id-card .avatar { width: 88px; height: 88px; border-radius: 50%; background: rgba(255,255,255,.22); display: grid; place-items: center; font-size: 48px; position: relative; z-index: 1; }
+.id-card .name { font-size: 2.2rem; font-weight: 800; line-height: 1.2; position: relative; z-index: 1; }
+.id-card .meta { margin-top: 6px; font-size: 1.15rem; opacity: .95; position: relative; z-index: 1; }
+.rows { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 8px 32px; }
+.row { display: grid; grid-template-columns: 11em minmax(0, 1fr); gap: 16px; padding-block: 18px; align-items: baseline; }
+.row + .row { border-top: 1px solid var(--line); }
+.row dt { font-weight: 700; color: var(--accent-strong); font-size: 1rem; }
+.row dd { font-size: 1.15rem; }
+
+/* TOP 3 */
+.top3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.comp { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; gap: 22px; }
+.comp-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.rank { font-size: 1.05rem; font-weight: 800; background: var(--accent); color: var(--on-accent); padding: 4px 16px; border-radius: 999px; }
+.comp .chip2 { width: 56px; height: 56px; border-radius: 18px; background: var(--bg-sky); color: var(--accent-strong); display: grid; place-items: center; font-size: 30px; }
+.comp h3 { font-size: 1.5rem; font-weight: 800; }
+.comp h4 { margin: 0 0 6px; font-size: 0.98rem; font-weight: 700; color: var(--accent-strong); }
+.comp p { font-size: 1.05rem; line-height: 1.75; color: var(--fg); }
+.comp .part + .part { padding-top: 20px; border-top: 1px dashed var(--line); }
+
+/* 푸터 */
+.foot { margin-inline: calc(50% - 50vw); padding-inline: calc(50vw - 50%); background: var(--bg-sky); }
+.foot-in { padding-block: 56px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+.foot-in .icon { font-size: 34px; color: var(--accent-strong); }
+.foot-in h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800; }
+.foot-in p { font-size: 1.1rem; color: var(--fg-muted); }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 24px 56px; }
+  .hero-art { max-width: 360px; }
+  .about { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .profile { grid-template-columns: minmax(0, 1fr); }
+  .top3 { grid-template-columns: minmax(0, 1fr); }
+  .block { padding-block: 56px; }
+  .nav { display: none; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .statement { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .statement .big-icon { width: 68px; height: 68px; font-size: 34px; }
+  .row { grid-template-columns: minmax(0, 1fr); gap: 2px; padding-block: 14px; }
+  .rows { padding: 6px 22px; }
+  .id-card { padding: 28px 24px; }
+  .actions .btn { flex: 1 1 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+  .btn:hover { transform: none; }
+  .float { animation: none !important; }
+}
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.float { animation: bob 5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.float.d2 { animation-delay: -1.7s; }
+.float.d3 { animation-delay: -3.2s; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3.2 4 6 7 6 10.5a6 6 0 0 1-12 0C6 10 8.8 7 12 3z"/><path d="M9.5 14.5a2.6 2.6 0 0 0 2.2 2"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+    <symbol id="i-face" viewBox="0 0 24 24"><path d="M12 3.5c-4 0-6.5 3-6.5 7 0 4.6 2.8 9 6.5 9s6.5-4.400 6.500-9c0-4-2.500-7-6.500-7z"/><path d="M9 11c.6-.6 1.600-.6 2.200 0M12.800 11c.6-.6 1.600-.6 2.200 0"/><path d="M9.800 15c1.300 1 3.100 1 4.400 0"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19c3-5 6-8 10-10"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2.500"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/><path d="M10 12.500l1.500 1.500 2.800-3"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6.500A2.500 2.500 0 0 1 6.500 4h7A2.500 2.500 0 0 1 16 6.500v4a2.500 2.500 0 0 1-2.500 2.500H9l-3 2.500V13A2.500 2.500 0 0 1 4 10.500z"/><path d="M18 9.500h.5A2.500 2.500 0 0 1 21 12v4a2.500 2.500 0 0 1-2 2.400V21l-3-2.500h-4.500A2.500 2.500 0 0 1 9 16.700"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.500" cy="10.500" r="6.500"/><path d="M15.500 15.500L21 21"/><path d="M8 10.500l1.800 1.800 3-3.300"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.500-4.600-7.500-10.200A4.300 4.300 0 0 1 12 7.300a4.300 4.300 0 0 1 7.500 2.500C19.500 15.400 12 20 12 20z"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12V6.500a1.500 1.500 0 0 1 3 0V11M11 10.500V5a1.500 1.500 0 0 1 3 0v6M14 8.500a1.500 1.500 0 0 1 3 0V13c0 4.400-2.500 7-6 7-3 0-4.500-1.800-6-4.500l-1.300-2.300a1.400 1.400 0 0 1 2.300-1.500L8 13"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4"/><path d="M6 5c4-2 7 2 12 0v8c-5 2-8-2-12 0"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500"/><path d="M3.500 12h17M12 3.500c2.500 2.500 3.500 5.500 3.500 8.500s-1 6-3.500 8.500c-2.500-2.500-3.500-5.500-3.500-8.500s1-6 3.500-8.500z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.800"/><path d="M4.500 20c.8-3.800 3.800-5.800 7.500-5.800s6.700 2 7.500 5.800"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500"/><circle cx="12" cy="12" r="4.500"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.500" r="3.200"/><path d="M3 19.500c.7-3.200 3-4.800 6-4.800s5.300 1.600 6 4.800"/><circle cx="17" cy="9.500" r="2.500"/><path d="M17 14.500c2.300 0 3.700 1.400 4.200 4"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top"><span class="mark"><svg class="icon"><use href="#i-drop"/></svg></span>나만의 피부관리</a>
+    <nav class="nav" aria-label="섹션">
+      <a href="#greeting">인사말</a>
+      <a href="#me">미래의 나 소개</a>
+      <a href="#top3">TOP 3</a>
+      <a href="#promise">나의 다짐</a>
+      <a href="#role">미래 사회에서 나의 역할</a>
+    </nav>
+  </header>
+</div>
+
+<main id="top">
+  <div class="hero-band">
+    <div class="wrap hero">
+      <div>
+        <h1>피부를 아름답고 건강하게,<br><em>나만의 피부관리</em></h1>
+        <p class="key"><svg class="icon"><use href="#i-sparkle"/></svg><span>건강하고 아름다운 피부는 올바른 관리에서 시작됩니다.</span></p>
+        <div class="actions">
+          <a class="btn" href="#greeting"><svg class="icon"><use href="#i-heart"/></svg>인사말</a>
+          <a class="btn ghost" href="#promise"><svg class="icon"><use href="#i-flag"/></svg>나의 다짐</a>
+        </div>
+      </div>
+
+      <div class="hero-art" role="img" aria-label="피부 관리를 하는 얼굴 그림">
+        <svg viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="230" cy="230" r="210" style="fill:var(--sky-1)"/>
+          <circle cx="230" cy="230" r="160" style="fill:var(--surface);opacity:.55"/>
+          <!-- hair -->
+          <path d="M138 232c-6-86 42-128 92-128s98 42 92 128c-8-46-34-74-92-74s-84 28-92 74z" style="fill:var(--accent-strong)"/>
+          <!-- neck & shoulders -->
+          <path d="M200 318h60v34c0 12 40 18 66 30 10 5 18 12 22 22H112c4-10 12-17 22-22 26-12 66-18 66-30z" style="fill:var(--sky-2)"/>
+          <!-- face -->
+          <path d="M160 226c0-52 30-80 70-80s70 28 70 80c0 54-30 98-70 98s-70-44-70-98z" style="fill:var(--surface);stroke:var(--accent-strong);stroke-width:4"/>
+          <!-- closed eyes -->
+          <path d="M193 238c7 7 17 7 24 0M243 238c7 7 17 7 24 0" fill="none" style="stroke:var(--accent-strong)" stroke-width="5" stroke-linecap="round"/>
+          <!-- cheeks -->
+          <ellipse cx="190" cy="268" rx="15" ry="9" style="fill:var(--sky-1)"/>
+          <ellipse cx="270" cy="268" rx="15" ry="9" style="fill:var(--sky-1)"/>
+          <!-- smile -->
+          <path d="M213 284c10 9 24 9 34 0" fill="none" style="stroke:var(--accent-strong)" stroke-width="5" stroke-linecap="round"/>
+          <!-- headband -->
+          <path d="M156 196c20-26 48-36 74-36s54 10 74 36v20c-20-22-48-32-74-32s-54 10-74 32z" style="fill:var(--accent)"/>
+          <!-- droplets & sparkles -->
+          <g class="float">
+            <path d="M92 130c14 18 26 30 26 46a26 26 0 0 1-52 0c0-16 12-28 26-46z" style="fill:var(--accent)"/>
+            <path d="M82 170a12 12 0 0 0 10 10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+          </g>
+          <g class="float d2">
+            <path d="M376 96l9 24 24 9-24 9-9 24-9-24-24-9 24-9z" style="fill:var(--accent)"/>
+          </g>
+          <g class="float d3">
+            <path d="M370 300c10 13 18 21 18 32a18 18 0 0 1-36 0c0-11 8-19 18-32z" style="fill:var(--sky-2)"/>
+          </g>
+          <g class="float d2">
+            <path d="M78 300l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" style="fill:var(--sky-2)"/>
+          </g>
+          <!-- leaf -->
+          <g class="float d3">
+            <path d="M120 392c0-34 22-58 62-58 0 40-24 62-56 62z" style="fill:var(--accent)"/>
+            <path d="M124 390c12-22 26-36 44-46" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 제작 목적 · 대상 방문자 -->
+  <div class="wrap block" style="padding-top:24px">
+    <div class="about">
+      <div class="about-art" role="img" aria-label="피부 관리를 알려주는 그림">
+        <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="30" width="360" height="360" rx="40" style="fill:var(--bg-sky)"/>
+          <!-- mirror -->
+          <circle cx="210" cy="180" r="104" style="fill:var(--surface);stroke:var(--accent);stroke-width:10"/>
+          <path d="M184 276h52v50a12 12 0 0 1-12 12h-28a12 12 0 0 1-12-12z" style="fill:var(--accent)"/>
+          <!-- face inside mirror -->
+          <path d="M170 176c0-34 18-52 40-52s40 18 40 52c0 36-18 64-40 64s-40-28-40-64z" style="fill:var(--bg-soft);stroke:var(--accent-strong);stroke-width:4"/>
+          <path d="M188 172c4 4 10 4 14 0M218 172c4 4 10 4 14 0" fill="none" style="stroke:var(--accent-strong)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M198 200c8 6 16 6 24 0" fill="none" style="stroke:var(--accent-strong)" stroke-width="4" stroke-linecap="round"/>
+          <!-- sparkles on mirror -->
+          <path d="M290 110l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" style="fill:var(--accent)"/>
+          <path d="M122 120l4 11 11 4-11 4-4 11-4-11-11-4 11-4z" style="fill:var(--accent)"/>
+          <!-- droplet bottle -->
+          <rect x="62" y="262" width="58" height="96" rx="14" style="fill:var(--surface);stroke:var(--accent);stroke-width:6"/>
+          <rect x="76" y="244" width="30" height="22" rx="6" style="fill:var(--accent)"/>
+          <path d="M91 290c8 10 14 16 14 24a14 14 0 0 1-28 0c0-8 6-14 14-24z" style="fill:var(--sky-2)"/>
+          <!-- jar -->
+          <rect x="300" y="300" width="70" height="56" rx="14" style="fill:var(--surface);stroke:var(--accent);stroke-width:6"/>
+          <rect x="294" y="282" width="82" height="24" rx="10" style="fill:var(--accent)"/>
+          <!-- leaf -->
+          <path d="M290 262c0-22 14-36 38-36 0 24-14 38-34 38z" style="fill:var(--sky-2)"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fact">
+          <h3><svg class="icon"><use href="#i-target"/></svg>제작 목적</h3>
+          <p>사람들에게 올바른 피부 관리 방법과 피부 유형별 관리법을 알려주고, 건강하고 아름다운 피부를 가꾸는 데 도움을 주기 위해 만든다.</p>
+        </div>
+        <div class="fact">
+          <h3><svg class="icon"><use href="#i-people"/></svg>대상 방문자</h3>
+          <p>피부 관리에 관심이 있는 사람, 피부 고민이 있는 사람, 피부관리사가 되고 싶은 사람</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 1. 인사말 -->
+  <section id="greeting" class="band soft">
+    <div class="wrap block">
+      <div class="statement">
+        <div class="big-icon"><svg class="icon"><use href="#i-heart"/></svg></div>
+        <div>
+          <div class="sec-head"><h2>인사말</h2></div>
+          <p>나의 꿈은 피부관리사입니다. 사람들의 피부 고민을 해결하고 건강하고 아름다운 피부를 만들어 주고 싶습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 미래의 나 소개 -->
+  <section id="me">
+    <div class="wrap block">
+      <div class="sec-head"><span class="chip"><svg class="icon"><use href="#i-user"/></svg></span><h2>미래의 나 소개</h2></div>
+      <div class="profile">
+        <div class="id-card">
+          <div class="avatar"><svg class="icon"><use href="#i-face"/></svg></div>
+          <div>
+            <div class="name">최다혜</div>
+            <div class="meta">22세 · 피부관리사</div>
+          </div>
+        </div>
+        <dl class="rows">
+          <div class="row"><dt>이름</dt><dd>최다혜</dd></div>
+          <div class="row"><dt>나이</dt><dd>22세</dd></div>
+          <div class="row"><dt>희망 직업</dt><dd>피부관리사</dd></div>
+          <div class="row"><dt>일하는 곳</dt><dd>끌리매</dd></div>
+          <div class="row"><dt>직업을 선택한 이유</dt><dd>홍보왔을 때 좋았어서</dd></div>
+          <div class="row"><dt>AI가 도와줄 일</dt><dd>마케팅</dd></div>
+          <div class="row"><dt>내가 직접 맡을 일</dt><dd>피부관리</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI 시대에 기를 역량 TOP 3 -->
+  <section id="top3" class="band soft">
+    <div class="wrap block">
+      <div class="sec-head"><span class="chip"><svg class="icon"><use href="#i-sparkle"/></svg></span><h2>AI 시대에 기를 역량 TOP 3</h2></div>
+      <div class="top3">
+        <article class="comp">
+          <div class="comp-top"><span class="rank">1위</span><span class="chip2"><svg class="icon"><use href="#i-chip"/></svg></span></div>
+          <h3>AI 활용 능력</h3>
+          <div class="part"><h4>필요한 이유</h4><p>AI를 활용하면 고객의 피부 상태와 피부 고민에 맞는 관리 방법이나 제품을 찾는 데 도움을 받을 수 있기 때문이다.</p></div>
+          <div class="part"><h4>앞으로의 계획</h4><p>AI를 활용해 다양한 피부 관리 정보를 찾아보고, 피부 유형에 맞는 관리 방법을 공부하며 AI를 올바르게 사용하는 능력을 기를 것이다.</p></div>
+        </article>
+        <article class="comp">
+          <div class="comp-top"><span class="rank">2위</span><span class="chip2"><svg class="icon"><use href="#i-chat"/></svg></span></div>
+          <h3>소통·협업 능력</h3>
+          <div class="part"><h4>필요한 이유</h4><p>피부관리사는 고객과 직접 소통하며 피부 고민과 원하는 관리 방법을 파악해야 하고, 고객이 편안하게 관리받을 수 있도록 신뢰를 쌓아야 하기 때문이다.</p></div>
+          <div class="part"><h4>앞으로의 계획</h4><p>다른 사람의 말을 잘 듣고 상대방의 입장에서 생각하는 연습을 하며, 내 의견도 정확하게 전달하는 능력을 기를 것이다.</p></div>
+        </article>
+        <article class="comp">
+          <div class="comp-top"><span class="rank">3위</span><span class="chip2"><svg class="icon"><use href="#i-search"/></svg></span></div>
+          <h3>비판적 사고</h3>
+          <div class="part"><h4>필요한 이유</h4><p>모든 사람의 피부 상태가 다르기 때문에 인터넷이나 AI의 정보를 무조건 믿기보다는 고객에게 맞는 정보인지 판단하고 적절한 관리 방법을 선택해야 하기 때문이다.</p></div>
+          <div class="part"><h4>앞으로의 계획</h4><p>피부와 관련된 다양한 정보를 찾아보고 여러 정보를 비교하며, 정확하고 믿을 수 있는 정보인지 판단하는 습관을 기를 것이다.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 2. 나의 다짐 -->
+  <section id="promise">
+    <div class="wrap block">
+      <div class="statement">
+        <div class="big-icon"><svg class="icon"><use href="#i-flag"/></svg></div>
+        <div>
+          <div class="sec-head"><h2>나의 다짐</h2></div>
+          <p>꾸준히 피부 관리 지식을 배우고 실력을 키워 고객에게 믿음과 만족을 주는 피부관리사가 되겠습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 3. 미래 사회에서 나의 역할 -->
+  <section id="role" class="band soft">
+    <div class="wrap block">
+      <div class="statement">
+        <div class="big-icon"><svg class="icon"><use href="#i-globe"/></svg></div>
+        <div>
+          <div class="sec-head"><h2>미래 사회에서 나의 역할</h2></div>
+          <p>AI 기술을 활용해 고객에게 더 정확하고 효과적인 피부 관리 서비스를 제공하는 피부관리사가 되고 싶습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <svg class="icon"><use href="#i-drop"/></svg>
+    <h2>피부를 아름답고 건강하게, 나만의 피부관리</h2>
+    <p>건강하고 아름다운 피부는 올바른 관리에서 시작됩니다.</p>
+  </div>
+</footer>
+
+</body></html>

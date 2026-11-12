@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>박준익</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{--g:#16c75a;--gd:#0b6b30;--ink:#07110b;--ink2:#0e1d14;--paper:#f4f8f5;--text:#0b1a11;--card:#fff;--line:rgba(11,26,17,.12);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0b150e;--text:#eaf3ed;--card:#12231a;--line:rgba(255,255,255,.12)}}
+:root[data-theme="dark"]{--paper:#0b150e;--text:#eaf3ed;--card:#12231a;--line:rgba(255,255,255,.12)}
+html{scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Noto Sans KR',system-ui,sans-serif;background:var(--paper);color:var(--text);line-height:1.7;overflow-x:hidden}
+.en{font-family:'Bebas Neue','Oswald',Impact,sans-serif;letter-spacing:.06em;font-weight:400}
+header{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(7,17,11,.82);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid rgba(22,199,90,.25)}
+.bar{max-width:1200px;margin:auto;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.logo{color:#fff;font-weight:900;font-size:20px;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:12px;height:12px;border-radius:50%;background:var(--g);display:inline-block}
+nav{display:flex;gap:6px}
+nav a{color:#d6e6dc;text-decoration:none;font-size:13px;padding:8px 12px;border-radius:99px;transition:.25s;letter-spacing:.05em}
+nav a:hover,nav a.on{background:var(--g);color:#04130a}
+.burger{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
+@media(max-width:860px){.burger{display:block}nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#07110b;padding:10px 20px 18px;display:none}nav.open{display:flex}nav a{font-size:15px}}
+.hero{min-height:100vh;min-height:100svh;position:relative;display:flex;align-items:center;color:#fff;overflow:hidden;
+background:radial-gradient(ellipse at 70% 40%,rgba(22,199,90,.35),transparent 55%),repeating-linear-gradient(90deg,#0a5a28 0 90px,#0c6a2f 90px 180px);}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,17,11,.55),rgba(7,17,11,.9))}
+.pitch{position:absolute;inset:0;opacity:.28;width:100%;height:100%}
+.hero .in{position:relative;max-width:1200px;margin:auto;padding:120px 24px 80px;width:100%}
+.tag{display:inline-block;border:1px solid var(--g);color:var(--g);padding:4px 14px;border-radius:99px;font-size:13px;letter-spacing:.15em}
+.hero h1{font-size:clamp(84px,19vw,230px);line-height:.9;margin:18px 0 8px;font-weight:400}
+.hero h1 span{color:var(--g)}
+.hero p.sub{font-size:clamp(16px,2.4vw,24px);max-width:560px;color:#dcebe1}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-block;padding:14px 28px;border-radius:99px;font-weight:700;text-decoration:none;font-size:15px;transition:.25s;cursor:pointer;border:2px solid var(--g)}
+.btn.fill{background:var(--g);color:#04130a}.btn.fill:hover{background:#fff;border-color:#fff;transform:translateY(-3px)}
+.btn.line{color:#fff}.btn.line:hover{background:var(--g);color:#04130a;transform:translateY(-3px)}
+.ball{position:absolute;right:6%;bottom:12%;width:clamp(120px,24vw,300px);animation:roll 9s linear infinite;filter:drop-shadow(0 30px 30px rgba(0,0,0,.5))}
+@keyframes roll{to{transform:rotate(360deg)}}
+section{padding:110px 24px}
+.wrap{max-width:1100px;margin:auto}
+.eyebrow{color:var(--g);font-size:20px}
+h2{font-size:clamp(30px,5vw,52px);font-weight:900;line-height:1.2;margin:4px 0 36px}
+.about{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
+@media(max-width:800px){.about{grid-template-columns:1fr}section{padding:80px 20px}}
+.profile{background:var(--ink2);color:#fff;border-radius:22px;padding:34px;border-top:6px solid var(--g)}
+.profile dl{display:grid;grid-template-columns:auto 1fr;gap:14px 24px;margin-top:20px}
+.profile dt{color:var(--g);font-size:14px;letter-spacing:.1em}
+.profile dd{font-weight:700;font-size:18px}
+.profile .big{font-size:56px;color:#fff;line-height:1}
+.why{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px}
+.why h3{color:var(--g);font-size:15px;letter-spacing:.12em;margin-bottom:12px}
+.why q{font-size:clamp(20px,2.6vw,27px);font-weight:700;line-height:1.6;quotes:"“" "”"}
+.goal{background:var(--ink);color:#fff;text-align:center;position:relative;overflow:hidden}
+.goal::before{content:"";position:absolute;left:50%;top:50%;width:620px;height:620px;transform:translate(-50%,-50%);border:3px solid rgba(22,199,90,.25);border-radius:50%}
+.goal::after{content:"";position:absolute;left:0;right:0;top:50%;height:3px;background:rgba(22,199,90,.25)}
+.goal .wrap{position:relative;z-index:1}
+.goal blockquote{font-size:clamp(30px,6.2vw,70px);font-weight:900;line-height:1.3;margin:10px 0 30px;word-break:keep-all}
+.goal em{font-style:normal;color:var(--g);text-shadow:0 0 30px rgba(22,199,90,.5)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.cards{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;transition:.3s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-8px);border-color:var(--g);box-shadow:0 18px 40px rgba(22,199,90,.18)}
+.ico{font-size:34px;margin-bottom:8px}
+.card h3{font-size:20px;margin-bottom:8px}
+.card h4{color:var(--g);font-size:13px;letter-spacing:.1em;margin-top:14px}
+.rank{position:absolute;right:16px;top:2px;font-size:84px;color:var(--g);opacity:.2;line-height:1}
+.ai-list{display:grid;gap:12px;margin-bottom:56px}
+.ai-list div{display:flex;gap:16px;align-items:center;background:var(--ink2);color:#fff;border-left:5px solid var(--g);border-radius:12px;padding:18px 22px;font-weight:500}
+.ai-list b{font-size:28px;color:var(--g);min-width:34px}
+.sub-t{font-size:24px;font-weight:900;margin-bottom:20px}
+.grow{background:linear-gradient(180deg,var(--paper),var(--paper))}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.g4{grid-template-columns:1fr}}
+.g4 .card{text-align:center;padding:36px 20px}
+.g4 .circ{width:84px;height:84px;margin:0 auto 18px;border-radius:50%;background:var(--ink2);display:grid;place-items:center;font-size:38px;border:3px solid var(--g);transition:.3s}
+.g4 .card:hover .circ{background:var(--g);transform:rotate(-8deg) scale(1.08)}
+.g4 .n{color:var(--g);font-size:18px}
+.promise{background:var(--ink);color:#fff;text-align:center;position:relative;overflow:hidden;padding-bottom:130px}
+.promise::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(22,199,90,.05) 0 80px,transparent 80px 160px),radial-gradient(ellipse at 50% 0,rgba(22,199,90,.25),transparent 60%)}
+.promise .wrap{position:relative}
+.pl{font-size:clamp(24px,4.6vw,48px);font-weight:900;line-height:1.4;margin:26px auto;max-width:900px;word-break:keep-all}
+.pl:nth-of-type(2){color:var(--g)}
+.name{margin-top:70px;font-size:clamp(70px,16vw,170px);line-height:1}
+.name span{color:var(--g)}
+footer{background:#000;color:#7d9a89;text-align:center;padding:22px;font-size:13px}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s}
+.rv.show{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.ball{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a class="logo" href="#home" data-go="home"><i></i>박준익</a>
+<button class="burger" aria-label="메뉴">☰</button>
+<nav>
+<a href="#home" data-go="home" class="en">HOME</a><a href="#about" data-go="about" class="en">ABOUT ME</a><a href="#goal" data-go="goal" class="en">MY GOAL</a><a href="#ai" data-go="ai" class="en">AI &amp; FOOTBALL</a><a href="#growth" data-go="growth" class="en">GROWTH PLAN</a><a href="#promise" data-go="promise" class="en">MY PROMISE</a>
+</nav></div></header>
+
+<div class="hero" id="home">
+<svg class="pitch" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#fff" stroke-width="3"><rect x="30" y="30" width="740" height="440"/><line x1="400" y1="30" x2="400" y2="470"/><circle cx="400" cy="250" r="70"/><rect x="30" y="140" width="110" height="220"/><rect x="660" y="140" width="110" height="220"/><rect x="30" y="195" width="40" height="110"/><rect x="730" y="195" width="40" height="110"/></svg>
+<svg class="ball" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/><polygon points="50,30 69,44 62,66 38,66 31,44" fill="#07110b"/><g stroke="#07110b" stroke-width="2.5" fill="none"><path d="M50 30V8M69 44l21-8M62 66l13 18M38 66L25 84M31 44L10 36"/></g><g fill="#07110b"><polygon points="50,2 62,9 50,14 38,9"/><polygon points="96,38 92,52 84,44 88,34"/><polygon points="78,88 64,90 66,80 76,78"/><polygon points="22,88 36,90 34,80 24,78"/><polygon points="4,38 8,52 16,44 12,34"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="#16c75a" stroke-width="2"/></svg>
+<div class="in">
+<span class="tag en">OFFICIAL PORTFOLIO</span>
+<h1 class="en rv">PARK <span>JOONIK</span></h1>
+<p class="sub rv"><b>박준익</b> — 미래의 프로 축구선수.<br>꿈을 향해, 매 순간 최선을 다합니다.</p>
+<div class="btns rv"><a class="btn fill" href="#goal" data-go="goal">나의 목표 보기 ⚽</a><a class="btn line" href="#about" data-go="about">ABOUT ME</a></div>
+</div></div>
+
+<section id="about"><div class="wrap">
+<div class="eyebrow en rv">SECTION 01</div><h2 class="rv">나의 소개 <span class="en" style="color:var(--g);font-weight:400">ABOUT ME</span></h2>
+<div class="about">
+<div class="profile rv"><div class="en" style="color:var(--g);font-size:20px">PLAYER PROFILE</div><div class="big en">PARK JOONIK</div>
+<dl><dt>이름</dt><dd>박준익</dd><dt>나이</dt><dd>27세</dd><dt>직업</dt><dd>축구선수</dd><dt>일하는 곳</dt><dd>명문구단</dd></dl></div>
+<div class="why rv"><h3 class="en">WHY FOOTBALL?</h3><p style="font-weight:700;margin-bottom:14px">축구선수를 꿈꾸게 된 이유</p><q>어렸을 때부터 축구에 관심이 많았고, 축구를 할 때 즐겁고 재미있어서 자연스럽게 꿈을 갖게 되었다.</q></div>
+</div></div></section>
+
+<section class="goal" id="goal"><div class="wrap">
+<div class="eyebrow en rv">SECTION 02</div><h2 class="rv">나의 목표 <span class="en" style="color:var(--g);font-weight:400">MY GOAL</span></h2>
+<blockquote class="rv">“<em>세계적인 명문 구단</em>에서<br><em>연봉 100억 이상</em>을 받는<br>뛰어난 선수가 될 것이다.”</blockquote>
+<a class="btn fill rv" href="#growth" data-go="growth">목표를 위한 성장 계획 →</a>
+</div></section>
+
+<section id="ai"><div class="wrap">
+<div class="eyebrow en rv">SECTION 03</div><h2 class="rv">AI와 축구 <span class="en" style="color:var(--g);font-weight:400">AI &amp; FOOTBALL</span></h2>
+<p class="sub-t rv">AI가 도와줄 일</p>
+<div class="ai-list">
+<div class="rv"><b class="en">01</b>AI가 선수의 경기 영상을 분석해 부족한 점을 알려준다.</div>
+<div class="rv"><b class="en">02</b>운동량과 몸 상태를 확인해 부상을 예방하도록 도와준다.</div>
+<div class="rv"><b class="en">03</b>축구 전술과 상대 팀의 경기 정보를 분석한다.</div></div>
+<p class="sub-t rv">내가 기를 AI 시대 역량 TOP 3</p>
+<div class="cards">
+<div class="card rv"><span class="rank en">1</span><div class="ico">🤖</div><h3>AI 활용 능력</h3><h4>필요한 이유</h4><p>AI를 이용해 경기 영상을 분석하고 나의 부족한 점을 찾을 수 있기 때문이다.</p><h4>앞으로의 계획</h4><p>AI를 활용해 축구 기술과 전술을 공부하고 경기 분석을 해볼 것이다.</p></div>
+<div class="card rv"><span class="rank en">2</span><div class="ico">🧠</div><h3>비판적 사고</h3><h4>필요한 이유</h4><p>AI가 알려주는 정보를 무조건 믿지 않고 나에게 맞는 훈련 방법인지 판단해야 하기 때문이다.</p><h4>앞으로의 계획</h4><p>다양한 정보를 비교하고 올바른 판단을 내리는 연습을 할 것이다.</p></div>
+<div class="card rv"><span class="rank en">3</span><div class="ico">🤝</div><h3>소통·협업 능력</h3><h4>필요한 이유</h4><p>축구는 혼자 하는 운동이 아니라 팀원들과 협력해야 하는 스포츠이기 때문이다.</p><h4>앞으로의 계획</h4><p>팀원들의 의견을 잘 듣고 서로 배려하며 협력하는 습관을 기를 것이다.</p></div>
+</div></div></section>
+
+<section class="grow" id="growth"><div class="wrap">
+<div class="eyebrow en rv">SECTION 04</div><h2 class="rv">나의 성장 계획 <span class="en" style="color:var(--g);font-weight:400">GROWTH PLAN</span></h2>
+<p class="rv" style="margin:-20px 0 32px">축구선수가 되기 위해 내가 직접 맡을 일</p>
+<div class="g4">
+<div class="card rv"><div class="circ">⚽</div><div class="n en">01</div><h3>나의 축구 실력 발전시키기</h3></div>
+<div class="card rv"><div class="circ">🛡️</div><div class="n en">02</div><h3>부상 방지</h3></div>
+<div class="card rv"><div class="circ">⏱️</div><div class="n en">03</div><h3>자기관리</h3></div>
+<div class="card rv"><div class="circ">🌟</div><div class="n en">04</div><h3>인성과 태도 관리</h3></div>
+</div></div></section>
+
+<section class="promise" id="promise"><div class="wrap">
+<div class="eyebrow en rv">SECTION 05</div><h2 class="rv">미래의 나의 다짐 <span class="en" style="color:var(--g);font-weight:400">MY PROMISE</span></h2>
+<p class="pl rv">“향상심을 가지고 매 순간 최선을 다할 것!”</p>
+<p class="pl rv">“어제보다 한 발씩 발전한다는 마음가짐으로 하루하루 성장해 나가기!”</p>
+<p class="pl rv">“남을 의식하지 않고 나와의 싸움이다!”</p>
+<div class="name rv"><span>박</span>준익</div>
+</div></section>
+<footer>© 박준익 · 미래의 프로 축구선수</footer>
+
+<script>
+(function(){
+var nav=document.querySelector('nav'),links=[].slice.call(document.querySelectorAll('[data-go]'));
+document.querySelector('.burger').addEventListener('click',function(){nav.classList.toggle('open')});
+links.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();
+var t=document.getElementById(a.getAttribute('data-go'));
+if(t)t.scrollIntoView({behavior:'smooth',block:'start'});nav.classList.remove('open')})});
+var items=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}})},{threshold:.15});
+items.forEach(function(el){io.observe(el)});
+}else{items.forEach(function(el){el.classList.add('show')})}
+var secs=['home','about','goal','ai','growth','promise'].map(function(i){return document.getElementById(i)});
+function spy(){var y=window.scrollY+140,cur='home';secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+document.querySelectorAll('nav a').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-go')===cur)})}
+window.addEventListener('scroll',spy,{passive:true});spy();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WORK OUT</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{--y:#FFC400;--b:#1E4FD8;--r:#E02A2A;--bg:#FFFBEF;--card:#fff;--tx:#17203A;--mu:#5B647C;--ln:#E6E1CF;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101733;--card:#18214A;--tx:#F3F5FF;--mu:#AAB3D6;--ln:#2B376B}}
+:root[data-theme="dark"]{--bg:#101733;--card:#18214A;--tx:#F3F5FF;--mu:#AAB3D6;--ln:#2B376B}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.65}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px}
+header.top{background:var(--b);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:4px solid var(--y)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--b);z-index:21}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;max-width:960px;margin:0 auto;flex-wrap:wrap}
+.logo{font-weight:900;font-size:22px;letter-spacing:.06em}
+.logo span{color:var(--y)}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button{background:transparent;color:#fff;border:2px solid transparent;border-radius:999px;padding:6px 14px;font:inherit;font-weight:500;font-size:15px;cursor:pointer}
+nav button.on,nav button:hover{background:var(--y);color:#17203A;font-weight:700}
+.hero{background:linear-gradient(135deg,var(--y) 0 60%,#FFD84D);color:#17203A;padding:44px 0 36px;border-bottom:6px solid var(--r)}
+.hero h1{margin:0;font-size:clamp(38px,9vw,68px);font-weight:900;letter-spacing:.05em;line-height:1.1}
+.hero h1 em{font-style:normal;color:var(--r)}
+.hero p.one{font-size:clamp(18px,4vw,26px);font-weight:700;margin:12px 0 0;color:var(--b)}
+.hero p.sub{margin:8px 0 0;font-size:16px;max-width:620px}
+.cheer{background:var(--r);color:#fff;text-align:center;padding:12px 18px;font-weight:700}
+section.view{display:none;padding:28px 0 48px}
+section.view.on{display:block}
+h2{font-size:26px;margin:0 0 6px;border-left:8px solid var(--r);padding-left:12px}
+.lead{color:var(--mu);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 2px 0 var(--ln)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card h3{margin:0 0 8px;font-size:19px;color:var(--b)}
+.tag{display:inline-block;background:var(--y);color:#17203A;font-weight:900;border-radius:8px;padding:2px 10px;margin-bottom:8px}
+.card p{margin:4px 0}
+.k{font-weight:700;color:var(--r)}
+input[type=text]{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--ln);border-radius:12px;background:var(--bg);color:var(--tx)}
+input[type=text]:focus{outline:3px solid var(--y);border-color:var(--b)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row input{flex:1 1 200px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:12px;padding:12px 20px;cursor:pointer;background:var(--b);color:#fff}
+.btn.y{background:var(--y);color:#17203A}
+.btn.r{background:var(--r)}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.55;cursor:wait}
+ul.list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+ul.list li{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--ln);border-left:6px solid var(--b);border-radius:10px;padding:10px 14px}
+ul.list li button{background:none;border:0;color:var(--r);font:inherit;font-weight:700;cursor:pointer}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0}
+@media(min-width:640px){.scale{grid-template-columns:repeat(10,1fr)}}
+.scale button{font:inherit;font-weight:900;font-size:18px;padding:14px 0;border-radius:12px;border:2px solid var(--ln);background:var(--card);color:var(--tx);cursor:pointer}
+.scale button.on{background:var(--b);color:#fff;border-color:var(--b)}
+.scale button.hi.on{background:var(--r);border-color:var(--r)}
+.result{border-radius:14px;padding:16px 18px;margin-top:10px;font-weight:700;font-size:18px;background:var(--y);color:#17203A;display:none}
+.result.show{display:block}
+.answer{white-space:pre-wrap;margin-top:14px;display:none}
+.answer.show{display:block}
+.note{color:var(--mu);font-size:14px}
+footer{background:var(--b);color:#fff;text-align:center;padding:22px 18px;border-top:4px solid var(--y);font-weight:700}
+footer span{color:var(--y)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <div class="logo">WORK <span>OUT</span></div>
+    <nav id="nav">
+      <button data-v="home" class="on">홈</button>
+      <button data-v="routine">나의 루틴</button>
+      <button data-v="how">운동 방법</button>
+      <button data-v="intensity">강도</button>
+      <button data-v="rpe">RPE</button>
+    </nav>
+  </div>
+</header>
+
+<section class="view on" id="home">
+  <div class="hero"><div class="wrap">
+    <h1>WORK <em>OUT</em></h1>
+    <p class="one">포기하지 않는 끈기</p>
+    <p class="sub">운동할 때 궁금한 부분이나 보완해야 할 부분을 물어보기 위한 사이트입니다.<br>운동선수, 운동을 시작해 보고 싶은 사람, 재활자를 위한 공간입니다.</p>
+  </div></div>
+  <div class="cheer" id="cheer">포기하지 않는 끈기, 끝까지 함께 응원합니다!</div>
+  <div class="wrap" style="padding-top:28px">
+    <h2>나의 꿈과 목표</h2>
+    <p class="lead">축구선수의 꿈을 향해 노력합니다.</p>
+    <div class="grid">
+      <div class="card"><span class="tag">희망 직업</span><p>축구선수</p></div>
+      <div class="card"><span class="tag">미래의 나</span><p>축구선수로 성공해서 프리미어리그에 진출하는 사람</p></div>
+      <div class="card"><span class="tag">직업을 선택한 이유</span><p>축구를 잘하고 재미있기 때문</p></div>
+      <div class="card"><span class="tag">AI가 도와줄 일</span><p>몸 관리하는 법이나 부상을 예방하는 방법</p></div>
+      <div class="card"><span class="tag">내가 직접 맡을 일</span><p>열심히 운동하고 실력을 키우는 일</p></div>
+    </div>
+    <h2 style="margin-top:32px">AI 시대에 필요한 역량 TOP 3</h2>
+    <p class="lead">&nbsp;</p>
+    <div class="grid">
+      <div class="card"><span class="tag">1위</span><h3>소통·협업 능력</h3>
+        <p><span class="k">필요한 이유</span><br>내가 궁금한 것을 물어보고 소통하면서 이야기를 나눈다.</p>
+        <p><span class="k">기르는 방법</span><br>책을 읽어서 기른다.</p></div>
+      <div class="card"><span class="tag">2위</span><h3>AI 활용 능력</h3>
+        <p><span class="k">필요한 이유</span><br>AI로 정확한 정보를 얻는다.</p>
+        <p><span class="k">기르는 방법</span><br>궁금한 것을 책이나 사전에서 찾아본다.</p></div>
+      <div class="card"><span class="tag">3위</span><h3>창의·융합 사고</h3>
+        <p><span class="k">필요한 이유</span><br>창의적인 답변이나 더 좋은 답변을 줄 수 있게 하기 위해서다.</p>
+        <p><span class="k">기르는 방법</span><br>친구들과 토론과 대화를 많이 해 본다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="routine"><div class="wrap">
+  <h2>나의 루틴</h2>
+  <p class="lead">내가 자주 하는 운동이나 하고 싶은 운동을 보여주는 공간</p>
+  <div class="card">
+    <div class="row">
+      <input type="text" id="rIn" placeholder="운동 이름을 입력하세요" maxlength="40">
+      <button class="btn y" id="rAdd">추가</button>
+    </div>
+    <ul class="list" id="rList"></ul>
+    <p class="note" id="rEmpty">아직 추가한 운동이 없습니다.</p>
+  </div>
+</div></section>
+
+<section class="view" id="how"><div class="wrap">
+  <h2>운동 방법</h2>
+  <p class="lead">하고 싶은 운동을 입력하면 해당 운동을 어떻게 하는지 알려줍니다.</p>
+  <div class="card">
+    <div class="row">
+      <input type="text" id="hIn" placeholder="하고 싶은 운동을 입력하세요" maxlength="60">
+      <button class="btn" id="hGo">알아보기</button>
+    </div>
+    <div class="answer" id="hOut"></div>
+  </div>
+</div></section>
+
+<section class="view" id="intensity"><div class="wrap">
+  <h2>강도</h2>
+  <p class="lead">운동 중간중간 쉬는 시간에 힘든 정도를 체크하세요. 체크한 내용을 바탕으로 운동 강도를 조절합니다.</p>
+  <div class="card">
+    <h3>지금 얼마나 힘든가요?</h3>
+    <p class="note">1 = 매우 편함 · 10 = 매우 힘듦</p>
+    <div class="scale" id="iScale"></div>
+    <div class="result" id="iRes"></div>
+  </div>
+</div></section>
+
+<section class="view" id="rpe"><div class="wrap">
+  <h2>RPE</h2>
+  <p class="lead">운동이 끝난 후 운동 강도를 확인하세요. 확인한 강도를 바탕으로 다음 운동을 쉴지, 높은 강도로 진행할지 알려줍니다.</p>
+  <div class="card">
+    <h3>오늘 운동은 얼마나 힘들었나요?</h3>
+    <p class="note">1 = 매우 편함 · 10 = 매우 힘듦</p>
+    <div class="scale" id="pScale"></div>
+    <div class="result" id="pRes"></div>
+  </div>
+</div></section>
+
+<footer>포기하지 않는 끈기 · <span>WORK OUT</span></footer>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  // 메뉴 전환
+  var btns=document.querySelectorAll('#nav button'),views=document.querySelectorAll('section.view');
+  function show(id){
+    views.forEach(function(v){v.classList.toggle('on',v.id===id)});
+    btns.forEach(function(b){b.classList.toggle('on',b.dataset.v===id)});
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(location.hash!=='#'+id){try{history.replaceState(null,'','#'+id)}catch(e){}}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.v)})});
+  var h=location.hash.slice(1);
+  if(h&&document.getElementById(h)&&/^(home|routine|how|intensity|rpe)$/.test(h))show(h);
+  window.addEventListener('hashchange',function(){var x=location.hash.slice(1);if(/^(home|routine|how|intensity|rpe)$/.test(x))show(x)});
+
+  // 응원 문구
+  var cheers=['포기하지 않는 끈기, 끝까지 함께 응원합니다!','한 걸음씩, 포기하지 마세요!','오늘의 노력이 꿈이 됩니다!','끈기 있게, 끝까지 해내요!'];
+  var ci=0;setInterval(function(){ci=(ci+1)%cheers.length;$('#cheer').textContent=cheers[ci]},4000);
+
+  // 나의 루틴
+  var routine=[];
+  try{routine=JSON.parse(localStorage.getItem('workout_routine')||'[]')}catch(e){routine=[]}
+  if(!Array.isArray(routine))routine=[];
+  function saveR(){try{localStorage.setItem('workout_routine',JSON.stringify(routine))}catch(e){}}
+  function drawR(){
+    var ul=$('#rList');ul.textContent='';
+    routine.forEach(function(t,i){
+      var li=document.createElement('li'),s=document.createElement('span'),d=document.createElement('button');
+      s.textContent=t;d.textContent='삭제';d.setAttribute('aria-label',t+' 삭제');
+      d.addEventListener('click',function(){routine.splice(i,1);saveR();drawR()});
+      li.appendChild(s);li.appendChild(d);ul.appendChild(li);
+    });
+    $('#rEmpty').style.display=routine.length?'none':'block';
+  }
+  function addR(){
+    var v=$('#rIn').value.trim();if(!v)return;
+    routine.push(v);saveR();drawR();$('#rIn').value='';
+  }
+  $('#rAdd').addEventListener('click',addR);
+  $('#rIn').addEventListener('keydown',function(e){if(e.key==='Enter')addR()});
+  drawR();
+
+  // 운동 방법 (Claude에게 질문)
+  var sampleP=null;
+  async function getSample(){if(sampleP===null){try{sampleP=await claude.use('sample')}catch(e){sampleP=false}}return sampleP||null}
+  async function ask(){
+    var q=$('#hIn').value.trim(),out=$('#hOut'),b=$('#hGo');
+    if(!q)return;
+    out.className='answer show';out.textContent='알아보는 중…';b.disabled=true;
+    try{
+      var s=window.claude?await getSample():null;
+      if(!s){out.textContent='지금은 이 기능을 사용할 수 없습니다.';return}
+      await s('다음 운동을 어떻게 하는지 한국어로 간단하고 정확하게 단계별로 알려줘. 운동: '+q,{cache:false,onText:function(t){out.textContent=t.text}});
+    }catch(e){out.textContent='답변을 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.'}
+    finally{b.disabled=false}
+  }
+  $('#hGo').addEventListener('click',ask);
+  $('#hIn').addEventListener('keydown',function(e){if(e.key==='Enter')ask()});
+
+  // 강도 / RPE 척도
+  function scale(id,fn){
+    var box=$(id);
+    for(var i=1;i<=10;i++){(function(n){
+      var b=document.createElement('button');b.textContent=n;if(n>=7)b.className='hi';
+      b.addEventListener('click',function(){
+        box.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});
+        b.classList.add('on');fn(n);
+      });box.appendChild(b);
+    })(i)}
+  }
+  scale('#iScale',function(n){
+    var r=$('#iRes');r.classList.add('show');
+    r.textContent=n>=8?'많이 힘들어요. 운동 강도를 낮춰 보세요. 포기하지 말고 천천히 이어가요!':
+                 n>=5?'알맞은 강도예요. 지금 강도를 유지해 보세요!':
+                 '아직 여유가 있어요. 운동 강도를 높여 보세요!';
+  });
+  scale('#pScale',function(n){
+    var r=$('#pRes');r.classList.add('show');
+    r.textContent=n>=7?'다음 운동은 쉬세요. 잘 쉬어야 다시 힘차게 달릴 수 있어요!':
+                 '다음 운동은 더 높은 강도로 진행해 보세요. 끈기 있게 해내고 있어요!';
+  });
+})();
+</script>
+</body>
+</html>

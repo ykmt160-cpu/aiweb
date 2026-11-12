@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>간호사란.</title>
+<style>
+:root{
+  --bg:#f6efe4; --card:#fffaf1; --text:#3b2a1e; --sub:#6b5646; --brown:#7a4e2d; --brown-d:#5c3a20; --beige:#e8d9c0; --line:#d9c6a6; --btn-text:#fffaf1;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#2a1f17;--card:#38291e;--text:#f3e8d6;--sub:#cdb89d;--brown:#c99a6b;--brown-d:#e0b88a;--beige:#4a372a;--line:#5a4533;--btn-text:#2a1f17;color-scheme:dark;}
+}
+:root[data-theme="dark"]{--bg:#2a1f17;--card:#38291e;--text:#f3e8d6;--sub:#cdb89d;--brown:#c99a6b;--brown-d:#e0b88a;--beige:#4a372a;--line:#5a4533;--btn-text:#2a1f17;color-scheme:dark;}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Serif KR","Nanum Myeongjo","Malgun Gothic","Apple SD Gothic Neo",serif;line-height:1.8;font-size:17px;word-break:keep-all}
+header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+header strong{font-size:20px;color:var(--brown-d)}
+nav{display:flex;flex-wrap:wrap;gap:6px}
+.btn{display:inline-block;background:var(--brown);color:var(--btn-text);border:0;border-radius:999px;padding:8px 16px;font:inherit;font-size:15px;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--brown-d)}
+.btn.alt{background:transparent;color:var(--brown-d);border:1.5px solid var(--brown)}
+main{max-width:860px;margin:0 auto;padding:0 18px}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.label{color:var(--brown);font-size:14px;letter-spacing:.05em;margin:0 0 6px}
+h1{font-size:clamp(34px,8vw,52px);margin:0 0 12px;color:var(--brown-d)}
+h2{font-size:clamp(24px,5vw,32px);margin:0 0 20px;color:var(--brown-d)}
+h3{margin:0 0 6px;font-size:20px;color:var(--brown-d)}
+p{margin:0 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px}
+.profile{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.profile div{background:var(--beige);border-radius:12px;padding:14px 16px}
+.profile span{display:block;font-size:13px;color:var(--sub)}
+.profile b{font-size:18px}
+.greet{background:var(--beige);border-radius:12px;padding:16px 20px;font-size:20px;text-align:center;color:var(--brown-d);margin-top:20px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:19px;color:var(--brown-d)}
+summary::-webkit-details-marker{display:none}
+summary .rank{background:var(--brown);color:var(--btn-text);border-radius:999px;padding:2px 12px;font-size:14px;margin-right:10px}
+summary .tag{font-size:14px;border:1.5px solid var(--brown);border-radius:999px;padding:4px 12px;white-space:nowrap}
+details[open] summary .tag{background:var(--brown);color:var(--btn-text)}
+.body{padding:0 20px 18px}
+.body b{color:var(--brown)}
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.motto{text-align:center;padding:36px 20px}
+.motto q{display:block;font-size:clamp(22px,5vw,32px);color:var(--brown-d);margin-bottom:24px;quotes:"“" "”"}
+footer{text-align:center;padding:24px 18px 40px;color:var(--sub);font-size:14px}
+</style>
+</head>
+<body>
+<header id="top">
+  <strong>간호사란.</strong>
+  <nav>
+    <a class="btn alt" href="#intro">소개</a>
+    <a class="btn alt" href="#skills">역량</a>
+    <a class="btn alt" href="#role">역할</a>
+    <a class="btn alt" href="#pledge">다짐</a>
+  </nav>
+</header>
+<main>
+  <section id="intro">
+    <p class="label">섹션 1 · 인사말 및 미래의 나 소개</p>
+    <h1>간호사란.</h1>
+    <p>간호사를 꿈꾸는 나의 소개입니다.</p>
+    <p style="color:var(--sub)">이 홈페이지는 간호사라는 꿈이 아직 확실한지 다시 한번 더 확인하고 싶어서 만들었습니다.</p>
+    <div class="profile">
+      <div><span>이름</span><b>최서연</b></div>
+      <div><span>나이</span><b>24세</b></div>
+      <div><span>직업</span><b>간호사</b></div>
+      <div><span>일하는 곳</span><b>대학병원</b></div>
+    </div>
+    <div class="card">
+      <h3>간호사를 선택한 이유</h3>
+      <p>어렸을 때 몸이 많이 안 좋아서 병원을 많이 다녔는데, 그때마다 반겨주시고 챙겨주신 간호사분들처럼 되고 싶어서입니다.</p>
+    </div>
+    <div class="greet">좋은 하루 보내세요.</div>
+    <p style="text-align:center;margin-top:24px"><a class="btn" href="#skills">내가 기른 역량 보기</a></p>
+  </section>
+
+  <section id="skills">
+    <p class="label">섹션 2</p>
+    <h2>내가 기른 역량</h2>
+    <p style="color:var(--sub)">각 역량을 눌러 필요한 이유와 앞으로 기르는 방법을 확인해 보세요.</p>
+
+    <details>
+      <summary><span><span class="rank">1위</span>공감 능력</span><span class="tag">내용 확인</span></summary>
+      <div class="body">
+        <p><b>필요한 이유</b><br>버티기 힘든 환자나 불안해하는 환자의 마음을 공감하는 역량이기 때문입니다.</p>
+        <p><b>기르는 방법</b><br>상대방의 말을 끝까지 듣는 것은 당연한 일이지만, 더 귀를 기울여 듣고 답하기.</p>
+      </div>
+    </details>
+    <details>
+      <summary><span><span class="rank">2위</span>윤리·책임 의식</span><span class="tag">내용 확인</span></summary>
+      <div class="body">
+        <p><b>필요한 이유</b><br>환자의 개인 기록과 프라이버시를 지키기에 좋은 역량이기 때문입니다.</p>
+        <p><b>기르는 방법</b><br>기록을 제출하거나 보여주기 전 한 번 더 자세히 확인하기.</p>
+      </div>
+    </details>
+    <details>
+      <summary><span><span class="rank">3위</span>자기주도학습력</span><span class="tag">내용 확인</span></summary>
+      <div class="body">
+        <p><b>필요한 이유</b><br>환자를 포함해 보호자가 더 좋은 병원 생활을 하기 위해 부족한 점을 채우는 데 필요한 역량이기 때문입니다.</p>
+        <p><b>기르는 방법</b><br>부족한 것을 배우며 채우기.</p>
+      </div>
+    </details>
+    <p style="text-align:center;margin-top:24px"><a class="btn" href="#role">나의 역할 보기</a></p>
+  </section>
+
+  <section id="role">
+    <p class="label">섹션 3</p>
+    <h2>미래 사회에서의 나의 역할</h2>
+    <div class="roles">
+      <div class="card">
+        <h3>AI의 역할</h3>
+        <p>AI가 여러 작업 중 반복적인 작업을 맡는 것입니다.</p>
+      </div>
+      <div class="card">
+        <h3>나의 역할</h3>
+        <p>나는 환자의 곁에서 보조해 주는 역할뿐만 아니라 환자의 마음도 치료해 주는 역할을 합니다.</p>
+        <p>환자의 상태와 감정에 공감하며 옆에서 함께하고 동반자가 되어주는 것입니다.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px"><a class="btn" href="#pledge">나의 다짐 보기</a></p>
+  </section>
+
+  <section id="pledge">
+    <p class="label" style="text-align:center">섹션 4</p>
+    <h2 style="text-align:center">나의 다짐</h2>
+    <div class="card motto">
+      <q>늦었다고 생각할 때가 첫 시작이다.</q>
+      <button class="btn" type="button" onclick="window.scrollTo(0,0)">맨 위로 돌아가기</button>
+    </div>
+  </section>
+</main>
+<footer>좋은 하루 보내세요.</footer>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>미래 피부관리사</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;600;700&display=swap">
+<style>
+/* Layout: sticky title + menu bar, a hero with the therapist illustration, then four quiet bands separated by thin sky-blue rules. */
+:root {
+  --bg: #f8fcff;
+  --surface: #ffffff;
+  --sky: #cde7f6;
+  --sky-soft: #eaf5fc;
+  --accent: #6ab0d9;
+  --accent-text: #266a96;
+  --ink: #22394b;
+  --muted: #566d80;
+  --line: #d5e7f2;
+  --serif: "Noto Serif KR", "Nanum Myeongjo", "Batang", serif;
+  --sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  /* illustration colors stay fixed in both themes */
+  --ill-bg: #cde7f6;
+  --ill-skin: #f6d9c8;
+  --ill-hair: #3b3a52;
+  --ill-coat: #ffffff;
+  --ill-blue: #8cc4e6;
+  --ill-line: #b7d6e8;
+  --ill-ink: #22394b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1a25;
+    --surface: #152636;
+    --sky: #1f3a50;
+    --sky-soft: #132434;
+    --accent: #8cc7ea;
+    --accent-text: #9fd1ee;
+    --ink: #e7f2fa;
+    --muted: #9db4c6;
+    --line: #27425a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1a25;
+  --surface: #152636;
+  --sky: #1f3a50;
+  --sky-soft: #132434;
+  --accent: #8cc7ea;
+  --accent-text: #9fd1ee;
+  --ink: #e7f2fa;
+  --muted: #9db4c6;
+  --line: #27425a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--bg);
+}
+h1, h2, h3, p, ul, dl, dd { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; border-radius: 6px; }
+
+.wrap {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 24px;
+  min-height: 64px;
+}
+.brand {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 64px;
+}
+.brand-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  background: var(--sky-soft);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: 500 0.9rem var(--sans);
+  cursor: pointer;
+}
+.menu-toggle .bars { width: 16px; height: 10px; position: relative; display: inline-block; }
+.menu-toggle .bars::before, .menu-toggle .bars::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 2px; background: currentColor; border-radius: 2px;
+  transition: transform .2s ease, top .2s ease;
+}
+.menu-toggle .bars::before { top: 1px; }
+.menu-toggle .bars::after { top: 7px; }
+.menu-toggle[aria-expanded="true"] .bars::before { top: 4px; transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .bars::after { top: 4px; transform: rotate(-45deg); }
+
+.nav ul { display: flex; gap: 4px; }
+.nav a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: background .2s ease, color .2s ease;
+}
+.nav a:hover { background: var(--sky-soft); color: var(--ink); }
+.nav a.active { background: var(--sky); color: var(--ink); }
+
+/* Hero */
+.hero { background: linear-gradient(180deg, var(--sky-soft) 0%, var(--bg) 100%); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+  padding-block: clamp(40px, 8vw, 88px);
+}
+.hero-text { min-width: 0; }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 8vw, 4.25rem);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.hero .greeting {
+  margin-top: 20px;
+  font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+  color: var(--muted);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 32px;
+  padding: 0 28px;
+  background: var(--accent);
+  color: #12354c;
+  border: 0;
+  border-radius: 999px;
+  font: 700 0.95rem var(--sans);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -10px var(--accent); }
+.hero-art { min-width: 0; justify-self: center; width: 100%; max-width: 400px; }
+.hero-art svg { display: block; width: 100%; height: auto; }
+
+/* Sections */
+.section { padding-block: clamp(56px, 9vw, 104px); scroll-margin-top: 72px; border-top: 1px solid var(--line); }
+.section.tint { background: var(--sky-soft); }
+.section-head { max-width: 640px; margin-bottom: clamp(28px, 5vw, 48px); }
+.section-head h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+.section-head p { margin-top: 12px; color: var(--muted); }
+.rule { width: 40px; height: 3px; border-radius: 3px; background: var(--accent); margin-bottom: 18px; }
+
+/* Profile */
+.profile {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(24px, 5vw, 44px);
+}
+.profile dl { display: grid; grid-template-columns: 180px 1fr; }
+.profile dt, .profile dd { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.profile dt { color: var(--accent-text); font-weight: 700; font-size: 0.92rem; }
+.profile dd { font-size: 1.05rem; min-width: 0; }
+.profile dt:last-of-type, .profile dd:last-of-type { border-bottom: 0; }
+.profile .name { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; }
+
+/* Cards */
+.card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(24px, 4vw, 36px);
+  min-width: 0;
+}
+.card .mark {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--sky);
+  display: grid; place-items: center;
+  margin-bottom: 20px;
+}
+.card .mark svg { width: 22px; height: 22px; stroke: var(--accent-text); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; line-height: 1.5; }
+
+/* Roles */
+.roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.role { border-radius: 20px; padding: clamp(24px, 4vw, 40px); min-width: 0; }
+.role.ai { background: var(--surface); border: 1px solid var(--line); }
+.role.me { background: var(--sky); border: 1px solid var(--sky); }
+.role h3 { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; margin-bottom: 20px; }
+.role li { display: flex; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+.role.me li { border-top-color: color-mix(in srgb, var(--ink) 14%, transparent); }
+.role li::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-text);
+  flex: none; margin-top: 0.8em;
+}
+
+/* Ranking */
+.rank-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.rank { display: flex; flex-direction: column; gap: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(24px, 3.5vw, 32px); min-width: 0; }
+.rank .badge {
+  align-self: flex-start;
+  background: var(--sky);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 4px 16px;
+  border-radius: 999px;
+}
+.rank h3 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; line-height: 1.4; }
+.rank .label { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; color: var(--accent-text); margin-bottom: 6px; }
+.rank .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.rank .tags li { background: var(--sky-soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; font-size: 0.92rem; }
+
+/* Closing */
+.closing { text-align: center; background: var(--sky); border-top: 1px solid var(--line); padding-block: clamp(64px, 10vw, 112px); }
+.closing p { font-family: var(--serif); font-weight: 600; font-size: clamp(1.5rem, 4.8vw, 2.4rem); line-height: 1.5; text-wrap: balance; }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .hero-art { max-width: 320px; }
+  .rank-grid { grid-template-columns: 1fr; }
+  .card-grid, .roles { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .menu-toggle { display: inline-flex; }
+  .nav { flex-basis: 100%; display: none; padding-bottom: 12px; }
+  .nav.open { display: block; }
+  .nav ul { flex-direction: column; gap: 2px; }
+  .nav a { padding: 12px 14px; border-radius: 12px; }
+  .profile dl { grid-template-columns: 1fr; }
+  .profile dt { padding: 18px 0 0; border-bottom: 0; }
+  .profile dd { padding: 4px 0 18px; }
+  .profile dd:last-of-type { padding-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top"><span class="brand-dot"></span>미래 피부관리사</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">
+      <span class="bars" aria-hidden="true"></span><span>메뉴</span>
+    </button>
+    <nav class="nav" id="siteNav" aria-label="섹션 메뉴">
+      <ul>
+        <li><a href="#intro">자기소개</a></li>
+        <li><a href="#ai">AI와 피부관리사</a></li>
+        <li><a href="#skills">피부관리사의 역량</a></li>
+        <li><a href="#future">미래의 피부관리사</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1>미래 피부관리사</h1>
+        <p class="greeting">미래 피부관리사에 대해 알아보아요.</p>
+        <a class="btn" href="#intro">자기소개 보기</a>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 400 420" role="img" aria-label="피부관리사 일러스트" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="215" r="175" fill="var(--ill-bg)"/>
+          <path d="M92 118l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" fill="#fff" opacity=".95"/>
+          <path d="M324 160l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#fff" opacity=".95"/>
+          <path d="M70 250l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#fff" opacity=".8"/>
+          <!-- hair back and bun -->
+          <circle cx="200" cy="96" r="32" fill="var(--ill-hair)"/>
+          <ellipse cx="200" cy="190" rx="80" ry="82" fill="var(--ill-hair)"/>
+          <!-- neck -->
+          <rect x="182" y="240" width="36" height="70" rx="16" fill="var(--ill-skin)"/>
+          <!-- coat -->
+          <path d="M56 420C56 336 112 296 200 296s144 40 144 124z" fill="var(--ill-coat)" stroke="var(--ill-line)" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M164 298L200 346 236 298z" fill="var(--ill-skin)"/>
+          <path d="M164 298L200 346 172 392 128 322z" fill="var(--ill-blue)" stroke="var(--ill-line)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M236 298L200 346 228 392 272 322z" fill="var(--ill-blue)" stroke="var(--ill-line)" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="262" y="356" width="46" height="24" rx="6" fill="var(--ill-bg)" stroke="var(--ill-line)" stroke-width="2"/>
+          <path d="M270 368h30" stroke="var(--ill-ink)" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+          <!-- face -->
+          <ellipse cx="200" cy="198" rx="62" ry="70" fill="var(--ill-skin)"/>
+          <path d="M136 192C136 124 264 124 264 192 244 162 176 162 136 192z" fill="var(--ill-hair)"/>
+          <path d="M168 206q10-9 20 0M212 206q10-9 20 0" fill="none" stroke="var(--ill-ink)" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="166" cy="226" r="9" fill="#f2a9a4" opacity=".45"/>
+          <circle cx="234" cy="226" r="9" fill="#f2a9a4" opacity=".45"/>
+          <path d="M184 238q16 14 32 0" fill="none" stroke="var(--ill-ink)" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="intro">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>자기소개</h2>
+        <p>미래의 나를 소개합니다.</p>
+      </div>
+      <div class="profile">
+        <dl>
+          <dt>이름</dt><dd class="name">김하정</dd>
+          <dt>나이</dt><dd>26살</dd>
+          <dt>직업</dt><dd>피부과에서 일하는 피부관리사</dd>
+          <dt>직업을 선택한 이유</dt><dd>AI가 대체하지 못하는 직업이라 사라질 걱정이 없고, 피부가 재미있기 때문에 선택하였다.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="ai">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>AI와 피부관리사</h2>
+        <p>AI가 피부관리사의 업무에서 어떤 도움을 주는지 설명합니다.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.2-4.2"/></svg></div>
+          <h3>고객의 피부 상태를 진단해 준다.</h3>
+        </article>
+        <article class="card">
+          <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <h3>고객에게 맞춤형 화장품과 관리를 추천해 준다.</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>피부관리사의 역량</h2>
+        <p>AI가 도와주는 일과 내가 직접 맡아야 하는 일을 구분해서 보여 줍니다.</p>
+      </div>
+      <div class="roles">
+        <div class="role ai">
+          <h3>AI가 도와주는 일</h3>
+          <ul>
+            <li>고객의 피부 상태를 진단해 준다.</li>
+            <li>고객에게 맞춤형 화장품과 관리를 추천해 준다.</li>
+          </ul>
+        </div>
+        <div class="role me">
+          <h3>내가 직접 맡을 일</h3>
+          <ul>
+            <li>고객의 고민을 상담해 준다.</li>
+            <li>각종 관리를 통해 고객의 고민을 해결해 준다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="future">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>미래의 피부관리사</h2>
+        <p>미래의 피부관리사에게 필요한 역량 TOP 3를 소개합니다.</p>
+      </div>
+      <div class="rank-grid">
+        <article class="rank">
+          <span class="badge">1위</span>
+          <h3>소통·협업 능력</h3>
+          <div>
+            <div class="label">필요한 이유</div>
+            <p>피부관리사는 서비스직이기 때문에 고객과의 소통 능력이 중요하다고 생각한다.</p>
+          </div>
+          <div>
+            <div class="label">기르는 방법</div>
+            <ul class="tags"><li>경청의 태도 기르기</li><li>상담 관련 서적 읽어보기</li></ul>
+          </div>
+        </article>
+        <article class="rank">
+          <span class="badge">2위</span>
+          <h3>창의·융합 사고</h3>
+          <div>
+            <div class="label">필요한 이유</div>
+            <p>사람마다 피부 타입이 다르고 가지고 있는 트러블이 다르기 때문에 그 상황에 맞는 관리를 찾아야 하기 때문에 필요하다고 생각한다.</p>
+          </div>
+          <div>
+            <div class="label">기르는 방법</div>
+            <ul class="tags"><li>전공 공부 열심히 하기</li><li>관련 서적 읽기</li><li>경험 쌓기</li></ul>
+          </div>
+        </article>
+        <article class="rank">
+          <span class="badge">3위</span>
+          <h3>AI 활용 능력</h3>
+          <div>
+            <div class="label">필요한 이유</div>
+            <p>기계를 활용하여 정확한 피부 타입 등을 파악하기 위해 필요하다고 생각한다.</p>
+          </div>
+          <div>
+            <div class="label">기르는 방법</div>
+            <ul class="tags"><li>기계 사용법 알아보기</li><li>관련 기계 알아보기</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <p>미래 피부관리사에 대해 알아보아요.</p>
+      <button class="btn" id="toTop" type="button">맨 위로</button>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var toggle = document.getElementById("menuToggle");
+  var nav = document.getElementById("siteNav");
+  var links = Array.prototype.slice.call(nav.querySelectorAll("a"));
+
+  function setOpen(open) {
+    nav.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  toggle.addEventListener("click", function () {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+  links.forEach(function (a) {
+    a.addEventListener("click", function () { setOpen(false); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") setOpen(false);
+  });
+
+  document.getElementById("toTop").addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  });
+
+  if ("IntersectionObserver" in window) {
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && map[en.target.id]) {
+          links.forEach(function (a) { a.classList.remove("active"); a.removeAttribute("aria-current"); });
+          map[en.target.id].classList.add("active");
+          map[en.target.id].setAttribute("aria-current", "true");
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+})();
+</script>
+
+</body></html>

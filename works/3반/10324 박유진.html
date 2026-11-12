@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>내 미래 소개</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff9ef;--card:#ffffff;--beige:#f6e9d4;--pink:#ffb7c9;--pink-d:#e8799a;--sky:#a8d8f0;--sky-d:#4a9cc8;--text:#4a3f45;--sub:#7d6e76;--ok:#5bbd8a;--bad:#e8799a;color-scheme:light;
+padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a2428;--card:#382f35;--beige:#4a3f3a;--text:#fbeff3;--sub:#d9c6cf;--pink:#d98aa3;--sky:#5d9bbb;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Jua','Malgun Gothic','Apple SD Gothic Neo',sans-serif;font-size:19px;line-height:1.7}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:3px solid var(--pink);padding:10px 16px}
+.bar{max-width:1000px;margin:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.logo{font-size:22px;color:var(--pink-d)}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--text);background:var(--beige);padding:5px 14px;border-radius:20px;font-size:16px;transition:.2s}
+nav a:hover,nav a.on{background:var(--pink);transform:translateY(-2px)}
+.hud{max-width:1000px;margin:8px auto 0;display:flex;gap:12px;align-items:center;font-size:16px}
+.lv{background:var(--sky);padding:2px 12px;border-radius:14px;white-space:nowrap}
+.xp{flex:1;height:16px;background:var(--beige);border-radius:10px;overflow:hidden;border:2px solid var(--sky)}
+.xp i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--sky));transition:width .5s}
+main{max-width:1000px;margin:auto;padding:0 18px 60px}
+section{padding:56px 0 20px}
+.stage{display:inline-block;background:var(--sky);color:#25506b;padding:2px 16px;border-radius:20px;font-size:16px}
+h2{font-size:32px;margin:8px 0 6px;color:var(--pink-d)}
+.hero{text-align:center;padding:50px 0 30px}
+.hero h1{font-size:clamp(40px,9vw,68px);margin:6px 0;color:var(--pink-d);text-shadow:3px 3px 0 var(--sky)}
+.btn{font-family:inherit;font-size:20px;border:0;border-radius:30px;padding:10px 28px;background:var(--pink);color:#4a2733;cursor:pointer;box-shadow:0 5px 0 var(--pink-d);transition:.15s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--pink-d)}
+.btn.sky{background:var(--sky);box-shadow:0 5px 0 var(--sky-d);color:#1f4458}
+.btn.sky:active{box-shadow:0 1px 0 var(--sky-d)}
+.float{animation:fl 3s ease-in-out infinite}@keyframes fl{50%{transform:translateY(-10px)}}
+.card{background:var(--card);border:3px solid var(--beige);border-radius:24px;padding:22px;margin-top:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.tag{display:inline-block;background:var(--beige);border-radius:12px;padding:0 12px;margin:2px 4px 2px 0;font-size:16px}
+.flip{cursor:pointer;border:3px solid var(--sky);background:var(--card);color:var(--text);font-family:inherit;font-size:18px;border-radius:20px;padding:18px;text-align:left;transition:.2s;min-height:130px}
+.flip:hover{transform:translateY(-4px) rotate(-1deg)}
+.flip.done{background:var(--beige);border-color:var(--pink)}
+.flip b{display:block;font-size:21px;color:var(--sky-d)}
+.flip small{font-size:15px;color:var(--sub)}
+.skill{cursor:pointer;text-align:center}
+.skill .ic{font-size:50px}
+.skill .more{display:none;text-align:left;margin-top:10px;font-size:17px}
+.skill.open .more{display:block}
+.skill.open{border-color:var(--pink)}
+.badge{display:none;color:var(--ok)}.skill.open .badge{display:inline}
+.arena{text-align:center}
+.q{font-size:26px;background:var(--beige);border-radius:20px;padding:26px 14px;margin:14px 0;min-height:100px}
+.choices{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.fb{min-height:34px;font-size:20px}
+.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.hearts{font-size:24px;letter-spacing:4px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}
+.cols ul{margin:6px 0 0;padding-left:22px;font-size:17px}
+.road{list-style:none;padding:0;margin:0;position:relative}
+.road li{display:flex;gap:14px;margin:14px 0}
+.road .node{flex:none;width:54px;height:54px;border-radius:50%;background:var(--beige);border:3px dashed var(--sky-d);display:grid;place-items:center;font-size:24px}
+.road li.on .node{background:var(--pink);border:3px solid var(--pink-d)}
+.road li .t{flex:1;background:var(--card);border:3px solid var(--beige);border-radius:20px;padding:10px 16px;font-size:18px;color:var(--sub)}
+.road li.on .t{color:var(--text);border-color:var(--pink)}
+.end{display:none;text-align:center}.end.show{display:block;animation:fl 3s ease-in-out infinite}
+.end h3{font-size:30px;color:var(--pink-d);margin:6px 0}
+footer{text-align:center;color:var(--sub);padding:20px;font-size:16px}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);background:var(--sky);color:#1f4458;padding:8px 22px;border-radius:24px;transition:.4s;z-index:30;font-size:18px}
+#toast.show{transform:translate(-50%,0)}
+@media (max-width:600px){body{font-size:18px}h2{font-size:27px}.q{font-size:22px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="bar">
+  <div class="logo">🩺 내 미래 소개</div>
+  <nav id="nav">
+   <a href="#s1">1 미래의 나</a><a href="#s2">2 역량</a><a href="#s3">3 내 역할</a><a href="#s4">4 다짐</a>
+  </nav>
+ </div>
+ <div class="hud"><span class="lv" id="lv">Lv.1</span><div class="xp"><i id="xp"></i></div><span id="pc">0%</span></div>
+</header>
+
+<main>
+<div class="hero">
+ <div class="float">
+  <svg width="150" height="150" viewBox="0 0 150 150" aria-label="간호사 캐릭터">
+   <circle cx="75" cy="75" r="70" fill="#fbe3ea"/>
+   <path d="M30 140c0-30 20-48 45-48s45 18 45 48z" fill="#fff"/>
+   <path d="M75 92v48" stroke="#a8d8f0" stroke-width="4"/>
+   <circle cx="75" cy="62" r="28" fill="#ffe3cf"/>
+   <path d="M44 58c4-26 58-26 62 0-10-10-52-10-62 0z" fill="#8a6a5a"/>
+   <rect x="52" y="30" width="46" height="16" rx="6" fill="#fff" stroke="#ffb7c9" stroke-width="3"/>
+   <path d="M75 33v10M70 38h10" stroke="#e8799a" stroke-width="3"/>
+   <circle cx="65" cy="64" r="3" fill="#4a3f45"/><circle cx="85" cy="64" r="3" fill="#4a3f45"/>
+   <circle cx="58" cy="72" r="5" fill="#ffb7c9" opacity=".7"/><circle cx="92" cy="72" r="5" fill="#ffb7c9" opacity=".7"/>
+   <path d="M69 74q6 6 12 0" stroke="#4a3f45" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+   <path d="M56 100q-6 22 19 24q25-2 19-24" stroke="#4a9cc8" stroke-width="4" fill="none"/>
+   <circle cx="75" cy="126" r="6" fill="#4a9cc8"/>
+  </svg>
+ </div>
+ <h1>내 미래 소개</h1>
+ <p>대학병원에서 일하는 20대 중반 간호사가 된 나를 만나러 가는 모험!<br>단계를 하나씩 클리어하면 경험치가 쌓여요.</p>
+ <a href="#s1"><button class="btn" type="button">▶ 게임 시작</button></a>
+</div>
+
+<section id="s1">
+ <span class="stage">STAGE 1</span>
+ <h2>미래의 나 소개</h2>
+ <div class="card">
+  <div class="grid">
+   <div>
+    <p>🎓 <b>미래의 직업</b> : 간호사</p>
+    <p>🏥 <b>미래의 모습</b> : 20대 중반의 나, 대학병원에서 환자와 방문객을 상대로 병원 업무를 담당하는 간호사</p>
+    <p>💗 <b>직업을 선택한 이유</b> : 간호사는 미래에도 필요한 희망적인 직업이며 안정적으로 일할 수 있기 때문</p>
+   </div>
+   <svg viewBox="0 0 300 200" role="img" aria-label="간호사가 환자를 돌보는 일러스트" style="width:100%;max-width:340px;margin:auto">
+    <rect width="300" height="200" rx="24" fill="#e6f4fb"/>
+    <rect x="20" y="130" width="260" height="40" rx="12" fill="#fff"/>
+    <rect x="20" y="118" width="260" height="20" rx="10" fill="#ffb7c9"/>
+    <circle cx="200" cy="105" r="20" fill="#ffe3cf"/><path d="M182 98c4-14 32-14 36 0" fill="#8a6a5a"/>
+    <rect x="175" y="122" width="90" height="14" rx="7" fill="#a8d8f0"/>
+    <circle cx="193" cy="107" r="2.5" fill="#4a3f45"/><circle cx="207" cy="107" r="2.5" fill="#4a3f45"/>
+    <path d="M196 114q4 4 8 0" stroke="#4a3f45" stroke-width="2" fill="none"/>
+    <path d="M60 175c0-38 14-60 36-60s36 22 36 60z" fill="#fff" stroke="#ffb7c9" stroke-width="3"/>
+    <circle cx="96" cy="90" r="22" fill="#ffe3cf"/>
+    <rect x="78" y="62" width="36" height="12" rx="5" fill="#fff" stroke="#ffb7c9" stroke-width="3"/>
+    <path d="M96 64v8M92 68h8" stroke="#e8799a" stroke-width="2.5"/>
+    <path d="M76 86c4-18 36-18 40 0-8-8-32-8-40 0z" fill="#8a6a5a"/>
+    <circle cx="89" cy="92" r="2.5" fill="#4a3f45"/><circle cx="103" cy="92" r="2.5" fill="#4a3f45"/>
+    <path d="M91 99q5 5 10 0" stroke="#4a3f45" stroke-width="2" fill="none"/>
+    <path d="M126 130q30-6 52-18" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+    <path d="M85 118q0 20 11 20" stroke="#4a9cc8" stroke-width="3" fill="none"/>
+    <text x="150" y="40" font-size="26">💗</text><text x="235" y="60" font-size="20">✚</text>
+   </svg>
+  </div>
+ </div>
+ <h3 style="margin:22px 0 0">간호사의 종류와 역할 <small style="font-size:16px;color:var(--sub)">(카드를 눌러 확인해요)</small></h3>
+ <div class="grid" id="types"></div>
+</section>
+
+<section id="s2">
+ <span class="stage">STAGE 2</span>
+ <h2>나의 역량 소개</h2>
+ <p>카드를 눌러 역량을 획득해요!</p>
+ <div class="grid" id="skills"></div>
+</section>
+
+<section id="s3">
+ <span class="stage">STAGE 3</span>
+ <h2>미래의 내 역할</h2>
+ <p>AI가 발전한 미래, 이 일은 누가 할까요? 알맞은 쪽을 골라 보세요.</p>
+ <div class="card arena">
+  <div class="hearts" id="hearts">💗💗💗</div>
+  <div class="q" id="q">준비됐나요?</div>
+  <div class="choices">
+   <button class="btn sky" type="button" data-a="ai">🤖 AI가 도와줘요</button>
+   <button class="btn" type="button" data-a="me">🧑‍⚕️ 내가 직접 해요</button>
+  </div>
+  <div class="fb" id="fb"></div>
+  <button class="btn" id="restart" type="button" style="display:none;margin-top:10px">다시 하기</button>
+ </div>
+ <div class="cols">
+  <div class="card" style="border-color:var(--sky)"><b>🤖 AI가 도와주는 일</b><ul>
+   <li>환자의 건강 상태와 생체 정보를 분석</li><li>환자 상태 변화 감지</li><li>환자 기록 및 의료 데이터 정리</li><li>간호사가 환자를 관리할 때 필요한 정보 제공</li></ul></div>
+  <div class="card" style="border-color:var(--pink)"><b>🧑‍⚕️ 내가 직접 해야 하는 일</b><ul>
+   <li>환자의 몸 상태를 직접 측정하고 살피기</li><li>환자의 불편함과 감정에 공감하기</li><li>환자 및 보호자와 소통하기</li><li>AI가 제공하는 정보를 확인하고 올바르게 판단하기</li><li>환자에게 필요한 간호와 돌봄 제공하기</li></ul></div>
+ </div>
+</section>
+
+<section id="s4">
+ <span class="stage">STAGE 4</span>
+ <h2>나의 현재와 미래 다짐</h2>
+ <p>레벨 노드를 순서대로 눌러 다짐을 열어 보세요!</p>
+ <div class="card"><ol class="road" id="road"></ol>
+  <button class="btn sky" id="next" type="button">다음 다짐 열기 ➜</button></div>
+ <div class="card end" id="end"><div style="font-size:50px">🏆</div><h3>미션 클리어!</h3>
+  <p>대학병원에서 환자를 위한 따뜻하고 믿음직한 간호사가 될게요.</p>
+  <button class="btn" id="again" type="button">처음부터 다시 하기</button></div>
+</section>
+</main>
+<footer>🩺 내 미래 소개 · 따뜻한 마음과 전문성을 갖춘 간호사를 꿈꿉니다</footer>
+<div id="toast"></div>
+
+<script>
+var types=[
+["🛏️","병동 간호사","입원한 환자의 상태를 살피고 돌봐요."],
+["🏥","외래 간호사","진료를 받으러 온 환자를 안내하고 도와요."],
+["🔪","수술실 간호사","수술이 안전하게 진행되도록 도와요."],
+["🚑","응급실 간호사","응급 환자의 상태를 빠르게 살펴요."],
+["💓","중환자실 간호사","중환자를 가까이서 세심하게 관찰해요."]];
+var skills=[
+["💬","소통 능력","환자, 보호자, 의사와 원활하게 소통해야 의료 과정에서 문제가 발생하지 않기 때문","상대방의 말을 중점적으로 듣고 경청하는 자세를 갖추기"],
+["⚖️","윤리적 책임 의식","간호사는 자신의 업무에 책임감을 가지고 행동해야 하기 때문","내가 직접 맡은 일에 책임감을 가지고 신중하게 행동하기"],
+["🔍","비판적 사고","상황의 옳고 그름을 정확하게 판단하여 의료사고와 문제를 예방하기 위해 필요하기 때문","현재 가지고 있는 비판적인 사고 성향을 발전시켜 올바른 판단 능력 기르기"]];
+var items=[
+["환자의 건강 상태와 생체 정보를 분석","ai"],["환자의 몸 상태를 직접 측정하고 살피기","me"],["환자 상태 변화 감지","ai"],
+["환자의 불편함과 감정에 공감하기","me"],["환자 기록 및 의료 데이터 정리","ai"],["환자 및 보호자와 소통하기","me"],
+["간호사가 환자를 관리할 때 필요한 정보 제공","ai"],["AI가 제공하는 정보를 확인하고 올바르게 판단하기","me"],["환자에게 필요한 간호와 돌봄 제공하기","me"]];
+var road=[
+["📚","지금은 간호과에 가기 위한 기준에 맞춰 공부하고, 성적을 향상시킬 거예요."],
+["🏥","병원 실습을 나가며 병원 업무를 일찍 익히도록 노력할 거예요."],
+["🎓","대학에 진학해서 4년 동안 간호 공부를 열심히 할 거예요."],
+["💗","대학병원에 취업해 일하고, 환자를 위한 어떤 간호사가 되어야 할지 공부할 거예요."]];
+var TOTAL=types.length+skills.length+items.length+road.length, done=0;
+function $(s){return document.querySelector(s)}
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('show')},1500)}
+function gain(m){done++;var p=Math.round(done/TOTAL*100);$('#xp').style.width=p+'%';$('#pc').textContent=p+'%';
+ $('#lv').textContent='Lv.'+(1+Math.floor(done/TOTAL*5));toast('✨ '+m+' +1 경험치')}
+// stage1
+var tw=$('#types');
+types.forEach(function(t){var b=document.createElement('button');b.type='button';b.className='flip';
+ b.innerHTML='<b>'+t[0]+' '+t[1]+'</b><small>눌러서 확인하기</small>';
+ b.onclick=function(){if(!b.classList.contains('done')){b.classList.add('done');gain(t[1])}
+  b.querySelector('small').textContent=t[2]};tw.appendChild(b)});
+// stage2
+var sw=$('#skills');
+skills.forEach(function(s){var d=document.createElement('div');d.className='card skill';
+ d.innerHTML='<div class="ic">'+s[0]+'</div><b>'+s[1]+'</b> <span class="badge">⭐ 획득!</span><div class="more"><p><b>필요한 이유</b><br>'+s[2]+'</p><p><b>앞으로의 노력</b><br>'+s[3]+'</p></div>';
+ d.onclick=function(){if(!d.classList.contains('open')){d.classList.add('open');gain(s[1])}};sw.appendChild(d)});
+// stage3
+var order,idx,hp,fresh;
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var x=a[i];a[i]=a[j];a[j]=x}return a}
+var got={};
+function start(){order=shuffle(items);idx=0;hp=3;heart();$('#restart').style.display='none';$('#fb').textContent='';show();
+ document.querySelectorAll('.choices button').forEach(function(b){b.disabled=false})}
+function heart(){$('#hearts').textContent='💗'.repeat(hp)+'🤍'.repeat(3-hp)}
+function show(){$('#q').textContent=order[idx][0]}
+function over(msg){$('#fb').textContent=msg;$('#restart').style.display='inline-block';
+ document.querySelectorAll('.choices button').forEach(function(b){b.disabled=true})}
+document.querySelectorAll('.choices button').forEach(function(b){b.onclick=function(){
+ var it=order[idx];
+ if(b.dataset.a===it[1]){$('#fb').textContent='⭕ 정답이에요!';$('#fb').style.color='var(--ok)';
+  if(!got[it[0]]){got[it[0]]=1;gain('역할 분류')}
+  idx++;if(idx>=order.length){$('#q').textContent='🎉 모든 역할을 맞혔어요!';over('⭕ 클리어! AI는 돕고, 나는 직접 돌봐요.')}else show()}
+ else{hp--;heart();$('#q').classList.remove('shake');void $('#q').offsetWidth;$('#q').classList.add('shake');
+  $('#fb').textContent='❌ 다시 생각해 볼까요?';$('#fb').style.color='var(--bad)';
+  if(hp<=0)over('💔 하트가 모두 사라졌어요. 다시 도전해요!')}}});
+$('#restart').onclick=start;start();
+// stage4
+var rl=$('#road'),step=0;
+road.forEach(function(r,i){var li=document.createElement('li');
+ li.innerHTML='<div class="node">'+(i+1)+'</div><div class="t">🔒 잠겨 있어요</div>';rl.appendChild(li)});
+function unlock(){if(step>=road.length)return;var li=rl.children[step];li.classList.add('on');
+ li.querySelector('.node').textContent=road[step][0];li.querySelector('.t').textContent=road[step][1];gain('다짐 '+(step+1)+'단계');step++;
+ if(step>=road.length){$('#next').style.display='none';$('#end').classList.add('show')}}
+$('#next').onclick=unlock;
+Array.prototype.forEach.call(rl.children,function(li,i){li.querySelector('.node').style.cursor='pointer';
+ li.querySelector('.node').onclick=function(){if(i===step)unlock();else if(i>step)toast('앞 단계부터 열어 주세요')}});
+$('#again').onclick=function(){location.reload()};
+// nav highlight
+var links=document.querySelectorAll('#nav a');
+window.addEventListener('scroll',function(){var cur='';['s1','s2','s3','s4'].forEach(function(id){
+ if($('#'+id).getBoundingClientRect().top<200)cur='#'+id});
+ links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===cur)})});
+</script>
+</body>
+</html>

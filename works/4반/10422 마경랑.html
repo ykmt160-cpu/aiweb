@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>따뜻한 마음으로 생명을 지키는 간호사</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#8fd3f4; --sky-deep:#4aa8d8; --sky-soft:#e8f6fd;
+    --pink:#ffb3c8; --pink-deep:#f0709a; --pink-soft:#fff0f5;
+    --white:#ffffff; --text:#33465a; --muted:#6b7f93;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Gowun Dodum','Noto Sans KR',sans-serif;color:var(--text);background:var(--white);font-size:18px;line-height:1.85}
+  svg{display:block}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--sky-soft)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--sky-deep);font-size:17px}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav a{text-decoration:none;color:var(--text);font-size:16px;padding:6px 2px;border-bottom:3px solid transparent;transition:.2s}
+  nav a:hover{color:var(--pink-deep);border-color:var(--pink)}
+
+  /* hero */
+  .hero{background:linear-gradient(135deg,var(--sky-soft) 0%,var(--white) 50%,var(--pink-soft) 100%);position:relative;overflow:hidden;padding:90px 0 100px}
+  .hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--pink);color:var(--pink-deep);padding:6px 18px;border-radius:999px;font-size:15px;font-weight:700;margin-bottom:22px}
+  h1{font-size:50px;line-height:1.35;color:var(--sky-deep);margin-bottom:28px;letter-spacing:-1px}
+  h1 em{font-style:normal;color:var(--pink-deep)}
+  .key{background:var(--white);border-left:8px solid var(--pink);border-radius:0 20px 20px 0;padding:22px 28px;font-size:21px;box-shadow:0 8px 24px rgba(74,168,216,.15);color:var(--text)}
+  .key b{color:var(--pink-deep)}
+  .float{position:absolute;opacity:.55}
+
+  /* sections */
+  section{padding:96px 0}
+  section:nth-of-type(even){background:var(--sky-soft)}
+  section:nth-of-type(odd){background:var(--white)}
+  .sec-head{text-align:center;margin-bottom:56px}
+  .sec-num{display:inline-block;background:var(--pink);color:var(--white);font-weight:700;padding:3px 18px;border-radius:999px;font-size:14px;letter-spacing:1px;margin-bottom:12px}
+  h2{font-size:36px;color:var(--sky-deep);display:flex;align-items:center;justify-content:center;gap:14px}
+  .line{width:70px;height:5px;border-radius:5px;background:linear-gradient(90deg,var(--sky),var(--pink));margin:16px auto 0}
+
+  .card{background:var(--white);border-radius:28px;padding:40px;box-shadow:0 10px 30px rgba(74,168,216,.14);border:2px solid var(--sky-soft)}
+  section:nth-of-type(even) .card{border-color:var(--white)}
+
+  /* greeting */
+  .greet{display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:center}
+  .greet p{margin-bottom:14px}
+  .greet strong{color:var(--pink-deep)}
+
+  /* future me */
+  .profile{display:grid;grid-template-columns:340px 1fr;gap:40px;align-items:stretch}
+  .id-card{background:linear-gradient(160deg,var(--sky) 0%,var(--sky-deep) 100%);color:var(--white);border-radius:28px;padding:36px 28px;text-align:center;box-shadow:0 12px 30px rgba(74,168,216,.35)}
+  .id-card .avatar{width:150px;height:150px;border-radius:50%;background:var(--white);margin:0 auto 18px;overflow:hidden;border:6px solid var(--pink)}
+  .id-card h3{font-size:32px;margin-bottom:4px}
+  .id-card .job{opacity:.95;font-size:17px}
+  .facts{list-style:none;display:grid;gap:14px;margin-bottom:26px}
+  .facts li{display:flex;align-items:center;gap:16px;background:var(--sky-soft);padding:16px 22px;border-radius:18px}
+  .facts .k{background:var(--pink);color:var(--white);padding:2px 14px;border-radius:999px;font-size:14px;font-weight:700;min-width:64px;text-align:center}
+  .reason{background:var(--pink-soft);border-radius:20px;padding:24px 28px;border:2px dashed var(--pink)}
+  .reason h4{color:var(--pink-deep);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+
+  /* day */
+  .tasks{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .task{text-align:center;transition:.25s;position:relative}
+  .task:hover{transform:translateY(-8px)}
+  .task .ico{width:96px;height:96px;border-radius:50%;background:var(--sky-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+  .task:nth-child(2) .ico{background:var(--pink-soft)}
+  .task h3{font-size:24px;color:var(--sky-deep);margin-bottom:8px}
+  .task .n{position:absolute;top:18px;left:22px;font-weight:700;color:var(--pink);font-size:22px}
+
+  /* AI */
+  .intro-ai{text-align:center;max-width:760px;margin:-20px auto 44px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .col{border-radius:28px;padding:36px;color:var(--text)}
+  .col.ai{background:var(--white);border:3px solid var(--sky)}
+  .col.me{background:var(--white);border:3px solid var(--pink)}
+  .col h3{display:flex;align-items:center;gap:12px;font-size:25px;margin-bottom:22px}
+  .col.ai h3{color:var(--sky-deep)} .col.me h3{color:var(--pink-deep)}
+  .col ul{list-style:none;display:grid;gap:14px}
+  .col li{padding:16px 22px 16px 54px;border-radius:16px;position:relative;font-size:18.5px}
+  .col.ai li{background:var(--sky-soft)} .col.me li{background:var(--pink-soft)}
+  .col li::before{content:"";position:absolute;left:20px;top:50%;width:20px;height:20px;transform:translateY(-50%);background-size:contain;background-repeat:no-repeat}
+  .col.ai li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234aa8d8'%3E%3Ccircle cx='12' cy='12' r='11'/%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+  .col.me li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f0709a'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.800-8 11-8 11z'/%3E%3C/svg%3E")}
+
+  /* goals */
+  .vow{text-align:center;background:linear-gradient(135deg,var(--pink-soft),var(--sky-soft));border-radius:28px;padding:44px 40px;margin-bottom:56px;border:2px solid var(--white);box-shadow:0 10px 30px rgba(240,112,154,.15)}
+  .vow .heart{margin:0 auto 14px}
+  .vow p{font-size:25px;color:var(--text);line-height:1.7}
+  .vow p b{color:var(--pink-deep)}
+  .sub-title{text-align:center;font-size:28px;color:var(--sky-deep);margin-bottom:30px}
+  .sub-title span{color:var(--pink-deep)}
+  .skills{display:grid;gap:22px}
+  .skill{display:grid;grid-template-columns:100px 1fr;gap:28px;align-items:start;padding:30px 36px}
+  .rank{width:84px;height:84px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);font-weight:700;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+  .rank small{font-size:13px;line-height:1}
+  .rank strong{font-size:34px;line-height:1.1}
+  .r1{background:linear-gradient(135deg,var(--pink),var(--pink-deep))}
+  .r2{background:linear-gradient(135deg,var(--sky),var(--sky-deep))}
+  .r3{background:linear-gradient(135deg,var(--pink),var(--sky-deep))}
+  .skill h4{font-size:24px;color:var(--sky-deep);margin-bottom:12px}
+  .skill dl{display:grid;grid-template-columns:110px 1fr;gap:10px 16px}
+  .skill dt{background:var(--pink-soft);color:var(--pink-deep);font-weight:700;font-size:15px;text-align:center;border-radius:999px;padding:2px 0;height:fit-content;margin-top:4px}
+  .skill dd{margin:0}
+
+  footer{background:linear-gradient(135deg,var(--sky) 0%,var(--sky-deep) 100%);color:var(--white);text-align:center;padding:48px 0}
+  footer p{font-size:19px;margin-top:10px}
+  footer .t{font-weight:700;font-size:22px}
+</style>
+</head>
+<body>
+
+<!-- SVG 아이콘 정의 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8.500-5.400-8.500-11.500A4.800 4.800 0 0 1 12 6.800a4.800 4.800 0 0 1 8.500 2.700C20.500 15.600 12 21 12 21z" fill="currentColor"/></symbol>
+    <symbol id="steth" viewBox="0 0 64 64">
+      <path d="M16 6v16a10 10 0 0 0 20 0V6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="16" cy="6" r="3" fill="currentColor"/><circle cx="36" cy="6" r="3" fill="currentColor"/>
+      <path d="M26 32v10a12 12 0 0 0 24 0v-6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="50" cy="30" r="7" fill="none" stroke="currentColor" stroke-width="4"/>
+      <circle cx="50" cy="30" r="2.500" fill="currentColor"/>
+    </symbol>
+    <symbol id="syringe" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M42 8l14 14M46 4l14 14M36 14l14 14"/>
+        <path d="M38 18L16 40l8 8 22-22z"/>
+        <path d="M20 44L8 56M26 30l8 8M32 24l8 8"/>
+      </g>
+    </symbol>
+    <symbol id="hospital" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="8" y="14" width="48" height="42" rx="4"/>
+        <path d="M26 56V42h12v14M32 20v14M25 27h14"/>
+        <path d="M14 8h36"/>
+      </g>
+    </symbol>
+    <symbol id="clip" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="12" y="10" width="40" height="48" rx="5"/><rect x="22" y="5" width="20" height="10" rx="3"/>
+        <path d="M22 28h20M22 38h20M22 48h12"/>
+      </g>
+    </symbol>
+    <symbol id="nurse" viewBox="0 0 200 200">
+      <!-- body -->
+      <path d="M30 200c0-42 30-62 70-62s70 20 70 62z" fill="#ffffff" stroke="#8fd3f4" stroke-width="4"/>
+      <path d="M100 138l-22 20 22 26 22-26z" fill="#ffb3c8"/>
+      <!-- neck / face -->
+      <rect x="88" y="118" width="24" height="24" rx="8" fill="#ffe0cf"/>
+      <circle cx="100" cy="86" r="42" fill="#ffe9dc"/>
+      <!-- hair -->
+      <path d="M58 86c-4-34 20-54 44-52 26 2 42 24 40 52-8-22-24-30-42-30s-34 8-42 30z" fill="#5a3d37"/>
+      <!-- cap -->
+      <path d="M66 52c4-16 18-24 34-24s30 8 34 24c-12-8-22-10-34-10s-22 2-34 10z" fill="#ffffff" stroke="#ffb3c8" stroke-width="3"/>
+      <rect x="95" y="30" width="10" height="3" fill="#f0709a"/><rect x="98.500" y="26.500" width="3" height="10" fill="#f0709a"/>
+      <!-- eyes -->
+      <circle cx="84" cy="90" r="5" fill="#33465a"/><circle cx="116" cy="90" r="5" fill="#33465a"/>
+      <circle cx="85.500" cy="88" r="1.600" fill="#fff"/><circle cx="117.500" cy="88" r="1.600" fill="#fff"/>
+      <!-- cheeks / smile -->
+      <circle cx="72" cy="102" r="7" fill="#ffb3c8" opacity=".7"/><circle cx="128" cy="102" r="7" fill="#ffb3c8" opacity=".7"/>
+      <path d="M90 104q10 10 20 0" fill="none" stroke="#f0709a" stroke-width="3.500" stroke-linecap="round"/>
+      <!-- stethoscope -->
+      <path d="M72 140c-6 20 4 34 20 34s26-12 20-30" fill="none" stroke="#4aa8d8" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="112" cy="146" r="6" fill="#ffffff" stroke="#4aa8d8" stroke-width="4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><svg width="30" height="30" style="color:var(--pink-deep)"><use href="#heart"/></svg> 간호사 마경랑</div>
+    <ul>
+      <li><a href="#greeting">인사말</a></li>
+      <li><a href="#future">미래의 나</a></li>
+      <li><a href="#day">간호사의 하루</a></li>
+      <li><a href="#ai">간호사와 AI</a></li>
+      <li><a href="#goal">나의 목표와 다짐</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="float" width="70" height="70" style="top:40px;left:5%;color:var(--pink)"><use href="#heart"/></svg>
+  <svg class="float" width="90" height="90" style="bottom:50px;left:42%;color:var(--sky)"><use href="#steth"/></svg>
+  <svg class="float" width="56" height="56" style="top:60px;right:6%;color:var(--pink)"><use href="#heart"/></svg>
+  <svg class="float" width="70" height="70" style="bottom:40px;right:4%;color:var(--sky)"><use href="#syringe"/></svg>
+  <div class="wrap">
+    <div>
+      <div class="badge"><svg width="20" height="20"><use href="#heart"/></svg> 미래의 간호사가 된 나를 소개합니다</div>
+      <h1>따뜻한 마음으로<br><em>생명을 지키는</em> 간호사</h1>
+      <p class="key"><b>“</b>작은 관심과 따뜻한 말 한마디가 누군가에게 큰 힘이 될 수 있습니다.<b>”</b></p>
+    </div>
+    <div>
+      <svg viewBox="0 0 200 200" width="100%" style="max-width:380px;margin:auto;filter:drop-shadow(0 14px 24px rgba(74,168,216,.3))"><use href="#nurse"/></svg>
+    </div>
+  </div>
+</header>
+
+<section id="greeting">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">SECTION 01</span>
+      <h2><svg width="38" height="38" style="color:var(--pink-deep)"><use href="#heart"/></svg>인사말</h2>
+      <div class="line"></div>
+    </div>
+    <div class="card greet">
+      <div style="background:var(--sky-soft);border-radius:50%;width:260px;height:260px;display:flex;align-items:center;justify-content:center">
+        <svg viewBox="0 0 200 200" width="220" height="220"><use href="#nurse"/></svg>
+      </div>
+      <div>
+        <p>안녕하세요! 저는 대학병원에서 일하는 27살 간호사 <strong>마경랑</strong>입니다.</p>
+        <p>이 웹사이트는 미래에 간호사가 된 저의 모습과 간호사라는 직업의 가치, 그리고 앞으로 이루고 싶은 목표를 소개하기 위해 만들었습니다.</p>
+        <p>선생님, 친구들, 그리고 간호사에 관심 있는 모든 분께 제 이야기가 따뜻하게 전해지면 좋겠습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="future">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">SECTION 02</span>
+      <h2><svg width="42" height="42" style="color:var(--sky-deep)"><use href="#hospital"/></svg>미래의 나</h2>
+      <div class="line"></div>
+    </div>
+    <div class="profile">
+      <div class="id-card">
+        <div class="avatar"><svg viewBox="0 0 200 200" width="150" height="150" style="margin-top:6px"><use href="#nurse"/></svg></div>
+        <h3>마경랑</h3>
+        <p class="job">27살 · 대학병원 간호사</p>
+        <svg width="40" height="40" style="margin:18px auto 0;color:var(--pink)"><use href="#heart"/></svg>
+      </div>
+      <div class="card">
+        <ul class="facts">
+          <li><span class="k">이름</span> 마경랑</li>
+          <li><span class="k">나이</span> 27살</li>
+          <li><span class="k">직업</span> 대학병원 간호사</li>
+        </ul>
+        <div class="reason">
+          <h4><svg width="22" height="22"><use href="#heart"/></svg> 간호사를 선택한 이유</h4>
+          <p>나는 다른 사람의 마음에 공감하는 성격입니다. 이러한 내 성격이 간호사라는 직업과 잘 맞을 것 같아서 선택했습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="day">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">SECTION 03</span>
+      <h2><svg width="42" height="42" style="color:var(--pink-deep)"><use href="#steth"/></svg>간호사의 하루</h2>
+      <div class="line"></div>
+    </div>
+    <div class="tasks">
+      <div class="card task">
+        <span class="n">01</span>
+        <div class="ico"><svg width="54" height="54" style="color:var(--sky-deep)"><use href="#steth"/></svg></div>
+        <h3>환자 건강 상태 확인</h3>
+        <p>환자의 건강 상태를 확인합니다.</p>
+      </div>
+      <div class="card task">
+        <span class="n">02</span>
+        <div class="ico"><svg width="54" height="54" style="color:var(--pink-deep)"><use href="#syringe"/></svg></div>
+        <h3>치료 보조</h3>
+        <p>환자의 치료를 보조합니다.</p>
+      </div>
+      <div class="card task">
+        <span class="n">03</span>
+        <div class="ico"><svg width="54" height="54" style="color:var(--sky-deep)"><use href="#clip"/></svg></div>
+        <h3>간호 기록</h3>
+        <p>간호 내용을 기록합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">SECTION 04</span>
+      <h2><svg width="42" height="42" style="color:var(--sky-deep)"><use href="#hospital"/></svg>간호사와 AI</h2>
+      <div class="line"></div>
+    </div>
+    <p class="intro-ai">AI와 의료기술이 발전하면서 미래의 간호 환경도 달라질 것입니다. AI가 맡을 일과 제가 직접 맡을 일을 나누어 소개합니다.</p>
+    <div class="split">
+      <div class="col ai">
+        <h3><svg width="38" height="38"><use href="#clip"/></svg>AI가 도와줄 일</h3>
+        <ul>
+          <li>AI를 활용한 의료정보 검색</li>
+          <li>환자 건강 상태 분석</li>
+          <li>간호 업무 보조</li>
+        </ul>
+      </div>
+      <div class="col me">
+        <h3><svg width="38" height="38"><use href="#heart"/></svg>내가 직접 맡을 일</h3>
+        <ul>
+          <li>환자 치료</li>
+          <li>환자와 공감하고 소통하기</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="goal">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">SECTION 05</span>
+      <h2><svg width="38" height="38" style="color:var(--pink-deep)"><use href="#heart"/></svg>나의 목표와 다짐</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="vow">
+      <svg class="heart" width="56" height="56" style="color:var(--pink-deep)"><use href="#heart"/></svg>
+      <p>저는 <b>환자에게 공감하고 신뢰를 주는 간호사</b>가 되겠습니다.<br>작은 관심과 따뜻한 말 한마디로 누군가에게 큰 힘이 되고 싶습니다.</p>
+    </div>
+
+    <h3 class="sub-title">내가 기를 <span>AI 시대 역량 TOP 3</span></h3>
+    <div class="skills">
+      <div class="card skill">
+        <div class="rank r1"><small>RANK</small><strong>1</strong></div>
+        <div>
+          <h4>질문·문제 해결 능력</h4>
+          <dl>
+            <dt>필요한 이유</dt><dd>무엇이 문제인지 질문하는 힘이 중요합니다.</dd>
+            <dt>실천 계획</dt><dd>모르는 단어나 의학용어가 있을 때마다 AI에게 질문하여 답을 얻고 활용할 것입니다.</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="card skill">
+        <div class="rank r2"><small>RANK</small><strong>2</strong></div>
+        <div>
+          <h4>AI 활용 능력</h4>
+          <dl>
+            <dt>필요한 이유</dt><dd>AI를 목적에 맞게 활용하여 이해하지 못한 내용을 해결할 수 있기 때문입니다.</dd>
+            <dt>실천 계획</dt><dd>어려운 간호 내용을 이해하지 못했을 때 AI에게 질문하여 내용을 이해하는 데 도움을 받을 것입니다.</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="card skill">
+        <div class="rank r3"><small>RANK</small><strong>3</strong></div>
+        <div>
+          <h4>비판적 사고</h4>
+          <dl>
+            <dt>필요한 이유</dt><dd>AI의 답을 무조건 믿지 않고 정확한 정보인지 판단하는 능력이 필요하기 때문입니다.</dd>
+            <dt>실천 계획</dt><dd>정답이 헷갈릴 때 AI에게 질문하고 다른 자료와 비교하여 답을 점검할 것입니다.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <svg width="44" height="44" style="margin:0 auto;color:var(--pink)"><use href="#heart"/></svg>
+  <p class="t">따뜻한 마음으로 생명을 지키는 간호사</p>
+  <p>작은 관심과 따뜻한 말 한마디가 누군가에게 큰 힘이 될 수 있습니다.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>진심으로 이루어진 간호사</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--soft:#eef4fc;--ink:#14263f;--muted:#4a5d78;--blue:#1d5fb8;--deep:#0f3d7a;--line:#d3e1f3;--card:#ffffff;--onblue:#ffffff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a2c;--soft:#13233a;--ink:#e8f0fb;--muted:#a9bad2;--blue:#6aa6f0;--deep:#2a62ad;--line:#27405f;--card:#142238;--onblue:#ffffff}}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.8;word-break:keep-all}
+h1,h2,h3{font-family:'Noto Serif KR','Batang',serif;line-height:1.4;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav a{white-space:nowrap;color:var(--muted);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:999px}
+nav a:hover,nav a:focus-visible{background:var(--soft);color:var(--blue);outline:none}
+.hero{background:var(--soft);border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:64px;padding-bottom:64px}
+.hero h1{font-size:clamp(34px,6vw,58px);color:var(--deep)}
+.msg{margin:26px 0 0;padding:18px 22px;border-left:5px solid var(--blue);background:var(--card);font-size:clamp(17px,2.4vw,21px);font-weight:700;color:var(--ink)}
+.who{margin-top:18px;color:var(--muted)}
+.art{width:100%;height:auto;border-radius:18px;border:1px solid var(--line);background:var(--card)}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+section:nth-of-type(even){background:var(--soft)}
+.tag{display:inline-block;color:var(--onblue);background:var(--blue);font-size:13px;font-weight:700;padding:2px 12px;border-radius:999px;margin-bottom:12px}
+h2{font-size:clamp(25px,4vw,34px);color:var(--deep);margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card h3{font-size:19px;color:var(--blue);margin-bottom:8px}
+.card p{margin:0;color:var(--muted)}
+dl.info{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:0;padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+dl.info dt{font-weight:700;color:var(--blue)}dl.info dd{margin:0}
+.empty{padding:30px;border:2px dashed var(--line);border-radius:12px;color:var(--muted);text-align:center;background:var(--card)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:34px}
+.split .card:first-child{border-top:4px solid var(--blue)}
+.split .card:last-child{border-top:4px solid var(--deep)}
+.rank{display:flex;gap:16px;margin-bottom:18px}
+.rank .n{flex:none;width:44px;height:44px;border-radius:50%;background:var(--blue);color:var(--onblue);font-weight:900;display:grid;place-items:center;margin-top:4px}
+.rank b{color:var(--blue)}
+.vow{background:var(--deep);color:#fff;text-align:center;border-radius:16px;padding:44px 24px}
+.vow p.big{font-family:'Noto Serif KR',serif;font-size:clamp(21px,3.6vw,30px);font-weight:700;line-height:1.6;margin:0 0 14px}
+.vow p{margin:0;color:#d9e8fb}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:14px}
+@media (max-width:780px){.hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:40px;padding-bottom:40px}.split{grid-template-columns:1fr}section{padding:52px 0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="#s1">나를 소개합니다</a><a href="#s2">내가 다녔던 병원들</a><a href="#s3">나의 역량</a><a href="#s4">나의 주요 기억들</a><a href="#s5">나의 다짐</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div>
+<h1>진심으로 이루어진 간호사</h1>
+<p class="msg">“저는 어떤 일이든 열심히 하며 가볍게 생각하고 넘기지 않습니다.”</p>
+<p class="who">미래의 간호사 허서연</p>
+</div>
+<svg class="art" viewBox="0 0 400 320" role="img" aria-label="환자를 돌보는 간호사 일러스트">
+<rect width="400" height="320" fill="#eef4fc"/>
+<rect x="0" y="250" width="400" height="70" fill="#d3e1f3"/>
+<rect x="40" y="190" width="320" height="26" rx="8" fill="#ffffff" stroke="#1d5fb8" stroke-width="2"/>
+<rect x="40" y="216" width="320" height="34" fill="#9dbfe8"/>
+<circle cx="110" cy="170" r="26" fill="#f2cfb3"/><path d="M84 168q26-34 52 0z" fill="#3b4a63"/>
+<rect x="132" y="168" width="200" height="36" rx="16" fill="#cfe0f6" stroke="#1d5fb8" stroke-width="2"/>
+<circle cx="250" cy="70" r="30" fill="#f2cfb3"/><path d="M220 66q30-40 60 0z" fill="#26344d"/>
+<path d="M222 108h56l24 92h-104z" fill="#1d5fb8"/>
+<rect x="244" y="116" width="12" height="30" rx="3" fill="#fff"/><rect x="235" y="125" width="30" height="12" rx="3" fill="#fff"/>
+<path d="M232 140q-50 20-96 36" stroke="#f2cfb3" stroke-width="14" stroke-linecap="round" fill="none"/>
+<path d="M228 56h44v12h-44z" fill="#ffffff" stroke="#1d5fb8" stroke-width="2"/>
+</svg>
+</div></header>
+
+<section id="s1"><div class="wrap">
+<span class="tag">SECTION 1</span><h2>나를 소개합니다.</h2>
+<dl class="info">
+<dt>이름</dt><dd>허서연</dd>
+<dt>나이</dt><dd>24살</dd>
+<dt>희망 직업</dt><dd>간호사</dd>
+<dt>미래의 근무 장소</dt><dd>스포츠 병원</dd>
+<dt>직업을 선택한 이유</dt><dd>사람</dd>
+</dl>
+</div></section>
+
+<section id="s2"><div class="wrap">
+<span class="tag">SECTION 2</span><h2>내가 다녔던 병원들</h2>
+<div class="empty">다녔던 병원 목록이 이곳에 들어갑니다.</div>
+</div></section>
+
+<section id="s3"><div class="wrap">
+<span class="tag">SECTION 3</span><h2>간호사로서의 나의 역량</h2>
+<div class="grid" style="margin-bottom:34px">
+<div class="card"><h3>사람을 잘 대하는 것</h3><p>환자 한 사람 한 사람을 마주하는 일에서 저의 강점입니다.</p></div>
+<div class="card"><h3>일머리가 좋은 것</h3><p>맡은 일을 열심히 해내는 저의 강점입니다.</p></div>
+</div>
+
+<h3 style="margin-bottom:14px">간호사로서 AI와 나의 역할</h3>
+<div class="split">
+<div class="card"><h3>AI가 도와줄 일</h3><p>환자의 증상과 이전 질병 등의 데이터를 한눈에 보기 쉽도록 정리하는 일</p></div>
+<div class="card"><h3>내가 직접 맡을 일</h3><p>즉각적인 상황에 대한 대처와 판단</p></div>
+</div>
+
+<h3 style="margin-bottom:18px">내가 기를 AI 시대 역량 TOP 3</h3>
+<div class="rank"><div class="n">1</div><div><h3 style="font-size:20px">윤리·책임 의식</h3>
+<p><b>필요한 이유</b><br>사람들의 건강을 관리하고 보조하는 직업으로 생명과 직면되는 직업이기에 일에 책임감을 가져야 합니다. 갑작스러운 환자의 상태 변화로 인해 직접 판단해야 하는 상황이 많이 오는데, 그때 윤리적으로 무엇을 해야 하는가를 판단하는 것이 그 사람의 건강을 좌지우지할 수 있기 때문입니다.</p>
+<p><b>앞으로의 노력</b><br>갑작스러운 상황에서 판단하는 데 어려움을 겪지 않도록 대학에서 윤리와 관련된 교양 수업을 통해 미래의 판단을 위한 지식을 기를 것입니다. 또한 회사에서 하는 프로젝트나 선배 간호사가 부탁한 일과 같은 일에서 내가 맡은 부분은 책임감을 가지고 포기하지 않는 법을 배울 것입니다.</p></div></div>
+<div class="rank"><div class="n">2</div><div><h3 style="font-size:20px">소통·협업 능력</h3>
+<p><b>필요한 이유</b><br>간호사는 환자들을 직접 대면하는 직업으로 환자들을 설득해야 하는 일, 환자들이 듣고 싶지 않아도 해야 할 말들이 많이 있습니다. 그런 상황에서 환자들이 듣는 데 불편한 감정이 들지 않도록 내용을 전달하는 것이 중요하기 때문입니다.</p>
+<p><b>앞으로의 노력</b><br>평소 사람들과 대화할 때 내 말로 인해 상대가 어떤 기분을 느낄지 깊게 생각할 것입니다. 또한 사람들과의 대화에서 중요한 화법과 단어 선택 등을 책을 통해 공부하고 실전에서 사용해 보도록 노력할 것입니다.</p></div></div>
+<div class="rank"><div class="n">3</div><div><h3 style="font-size:20px">비판적 사고</h3>
+<p><b>필요한 이유</b><br>사람에게 가장 중요한 건강에 관한 직업이기에 사람들의 말에 쉽게 수긍하고 넘어가지 않고 상황을 냉철하게 보는 것이 중요하기 때문입니다.</p>
+<p><b>앞으로의 노력</b><br>누군가가 낸 의견에 대해 “다른 사고를 가진 사람은 어떻게 생각할까?”라는 질문을 생각해 봅니다. 또한 감정에 휩쓸리지 않고 상황 판단을 하기 위해 주어진 상황을 객관적으로 바라볼 수 있도록 노력합니다.</p></div></div>
+</div></section>
+
+<section id="s4"><div class="wrap">
+<span class="tag">SECTION 4</span><h2>간호사로서의 나의 주요 기억들</h2>
+<div class="empty">기억에 남는 환자와의 이야기가 이곳에 들어갑니다.</div>
+</div></section>
+
+<section id="s5"><div class="wrap">
+<span class="tag">SECTION 5</span><h2>간호사로서의 나의 다짐</h2>
+<div class="vow">
+<p class="big">“저는 어떤 일이든 열심히 하며<br>가볍게 생각하고 넘기지 않습니다.”</p>
+<p>누구보다 책임감을 가진 간호사가 되겠습니다.</p>
+</div>
+</div></section>
+
+<footer>진심으로 이루어진 간호사 · 허서연</footer>
+</body>
+</html>

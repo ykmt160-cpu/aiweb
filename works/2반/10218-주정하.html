@@ -1,0 +1,275 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>화장품 연구원</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap">
+<style>
+/* Layout: 한 줄로 내려가는 깔끔한 소개 페이지. 맨 위에 실험 유리(플라스크) 그림과 한 문장, 아래로 5개 칸이 같은 모양으로 이어진다. */
+:root {
+  --bg: #fafcff;
+  --surface: #ffffff;
+  --tint: #e8f1fd;
+  --line: #d3e2f6;
+  --fg: #14253d;
+  --muted: #4d6382;
+  --accent: #2563c9;
+  --accent-strong: #1b4ca0;
+  --on-accent: #ffffff;
+  --font-display: "Jua", "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1626;
+    --surface: #132238;
+    --tint: #172a45;
+    --line: #26405f;
+    --fg: #e6eefb;
+    --muted: #9bb0cd;
+    --accent: #6ea8fe;
+    --accent-strong: #9cc3ff;
+    --on-accent: #0c1626;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1626;
+  --surface: #132238;
+  --tint: #172a45;
+  --line: #26405f;
+  --fg: #e6eefb;
+  --muted: #9bb0cd;
+  --accent: #6ea8fe;
+  --accent-strong: #9cc3ff;
+  --on-accent: #0c1626;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 980px; margin: 0 auto; min-width: 0; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.3; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: var(--accent-strong); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+/* top bar */
+.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; padding-block: 18px; border-bottom: 1px solid var(--line); }
+.brand { font-family: var(--font-display); font-size: 1.15rem; color: var(--accent-strong); }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 0.95rem; }
+.topbar nav a { color: var(--muted); text-decoration: none; padding: 2px 0; }
+.topbar nav a:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 4px; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px 48px; align-items: center; padding-block: 56px 64px; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); color: var(--accent-strong); }
+.hero .lead { margin-top: 18px; font-size: 1.15rem; color: var(--muted); max-width: 34em; }
+.nametag { margin-top: 28px; display: inline-flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; padding: 12px 18px; background: var(--tint); border: 1px solid var(--line); border-radius: 12px; font-size: 0.98rem; }
+.nametag b { font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; color: var(--fg); }
+.nametag span { color: var(--muted); }
+.lab { justify-self: center; width: 100%; max-width: 340px; }
+.lab svg { display: block; width: 100%; height: auto; }
+
+/* sections */
+section { padding-block: 56px; border-top: 1px solid var(--line); scroll-margin-top: 8px; }
+.sec-head { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+.sec-head .tag { font-size: 0.85rem; letter-spacing: 0.08em; color: var(--accent-strong); }
+.sec-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.1rem); }
+.intro { max-width: 40em; color: var(--fg); }
+
+/* explanation */
+.about { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 24px; }
+.about div { padding: 18px 20px; background: var(--tint); border-radius: 12px; min-width: 0; }
+.about h3 { font-size: 1.15rem; color: var(--accent-strong); margin-bottom: 6px; }
+.about p { font-size: 0.97rem; color: var(--muted); line-height: 1.65; }
+
+/* skills: ranked 1-3 */
+.skills { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.skill { display: flex; flex-direction: column; gap: 14px; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; min-width: 0; }
+.skill .rank { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.25rem; }
+.skill .rank i { font-style: normal; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-size: 1.05rem; }
+.skill dl { margin: 0; display: grid; gap: 10px; }
+.skill dt { font-size: 0.82rem; letter-spacing: 0.06em; color: var(--accent-strong); }
+.skill dd { margin: 2px 0 0; font-size: 0.98rem; line-height: 1.65; }
+
+/* AI vs me */
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.panel { padding: 24px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); min-width: 0; }
+.panel.is-ai { background: var(--tint); }
+.panel h3 { font-size: 1.35rem; margin-bottom: 4px; color: var(--accent-strong); }
+.panel .sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 14px; }
+.panel ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.panel li { display: flex; gap: 12px; align-items: baseline; }
+.panel li::before { content: ""; flex: none; width: 9px; height: 9px; margin-top: 0.55em; border-radius: 50%; background: var(--accent); }
+
+/* effort + closing */
+.effort { max-width: 40em; }
+.closing { margin-top: 36px; padding: 36px clamp(20px, 5vw, 48px); background: var(--accent); color: var(--on-accent); border-radius: 18px; display: grid; gap: 8px; }
+.closing small { font-size: 0.9rem; opacity: 0.85; letter-spacing: 0.04em; }
+.closing p { font-family: var(--font-display); font-size: clamp(1.7rem, 4.6vw, 2.5rem); line-height: 1.35; text-wrap: balance; }
+
+footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+
+/* animation: gentle bubbles, content is visible at rest */
+.bubble { animation: rise 4.2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+.bubble:nth-of-type(2) { animation-delay: 1.3s; }
+.bubble:nth-of-type(3) { animation-delay: 2.6s; }
+@keyframes rise { 0% { transform: translateY(14px); opacity: 0; } 25% { opacity: 0.9; } 100% { transform: translateY(-34px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .bubble { animation: none; opacity: 0.8; } }
+
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 36px 44px; }
+  .lab { max-width: 240px; justify-self: start; }
+  section { padding-block: 44px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="topbar">
+    <span class="brand">화장품 연구원</span>
+    <nav aria-label="페이지 목차">
+      <a href="#what">연구원이란?</a>
+      <a href="#skills">필요한 역량</a>
+      <a href="#ai">AI가 하는 일</a>
+      <a href="#me">내가 하는 일</a>
+      <a href="#effort">앞으로의 노력</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>화장품 연구원</h1>
+      <p class="lead">나는 왜 화장품 연구원이 되고 싶을까요? 1학년 2반 친구들에게 그 이유와 준비하는 방법을 소개합니다.</p>
+      <p class="nametag"><b>주정하</b><span>30세</span><span>화장품 연구소 출신</span></p>
+    </div>
+    <div class="lab" aria-hidden="true">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="flaskClip"><path d="M118 40 H162 V110 L214 214 Q224 236 204 244 H76 Q56 236 66 214 L118 110 Z"/></clipPath>
+          <clipPath id="beakerClip"><path d="M222 150 H280 V250 Q280 258 272 258 H230 Q222 258 222 250 Z"/></clipPath>
+        </defs>
+        <ellipse cx="150" cy="272" rx="124" ry="10" fill="var(--tint)"/>
+        <!-- flask -->
+        <g clip-path="url(#flaskClip)">
+          <rect x="40" y="168" width="200" height="90" fill="var(--accent)" opacity="0.35"/>
+          <circle class="bubble" cx="130" cy="210" r="6" fill="var(--accent)"/>
+          <circle class="bubble" cx="154" cy="220" r="4.5" fill="var(--accent)"/>
+          <circle class="bubble" cx="106" cy="226" r="5" fill="var(--accent)"/>
+        </g>
+        <path d="M118 40 H162 V110 L214 214 Q224 236 204 244 H76 Q56 236 66 214 L118 110 Z" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M108 40 H172" stroke="var(--accent)" stroke-width="7" stroke-linecap="round"/>
+        <path d="M118 74 H140 M118 92 H134" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+        <!-- beaker -->
+        <g clip-path="url(#beakerClip)">
+          <rect x="218" y="200" width="66" height="60" fill="var(--accent)" opacity="0.5"/>
+        </g>
+        <path d="M222 150 V250 Q222 258 230 258 H272 Q280 258 280 250 V150" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M216 150 H286" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M222 178 H238 M222 198 H232 M222 218 H238" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+        <!-- dropper -->
+        <g stroke="var(--accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M44 50 Q44 30 60 30 Q76 30 76 50 V58 H44 Z" fill="var(--tint)"/>
+          <path d="M52 58 V112 L60 126 L68 112 V58"/>
+        </g>
+        <circle cx="60" cy="146" r="5" fill="var(--accent)"/>
+      </svg>
+    </div>
+  </div>
+
+  <section id="what">
+    <div class="sec-head">
+      <span class="tag">소개</span>
+      <h2>화장품 연구원이란?</h2>
+    </div>
+    <p class="intro">화장품 연구원은 피부에 바르는 화장품을 연구하고 새로 만들어 내는 사람입니다. 어떤 성분을 넣을지 정하고, 알맞게 섞는 방법을 찾고, 실험으로 안전한지 확인한 뒤에야 제품이 세상에 나옵니다.</p>
+    <div class="about">
+      <div><h3>성분을 고르고 섞기</h3><p>피부에 좋은 성분을 찾고, 어떤 비율로 섞을지 처방을 만듭니다.</p></div>
+      <div><h3>실험으로 확인하기</h3><p>오래 두어도 변하지 않는지, 피부에 자극은 없는지 시험합니다.</p></div>
+      <div><h3>새로운 제품 만들기</h3><p>사람들이 쓰기 편하고 마음에 드는 제품이 되도록 계속 고쳐 나갑니다.</p></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <span class="tag">내가 기를 AI 시대 역량 TOP 3</span>
+      <h2>화장품 연구원에게 필요한 역량</h2>
+    </div>
+    <ol class="skills">
+      <li class="skill">
+        <span class="rank"><i>1</i>AI 활용 능력</span>
+        <dl>
+          <div><dt>필요한 이유</dt><dd>AI를 어떻게 잘 쓰느냐에 따라 사람들의 역량이 달라지기 때문입니다.</dd></div>
+          <div><dt>앞으로 기르는 방법</dt><dd>AI에게 구체적으로 설명해서 말해 봅니다.</dd></div>
+        </dl>
+      </li>
+      <li class="skill">
+        <span class="rank"><i>2</i>소통 능력</span>
+        <dl>
+          <div><dt>필요한 이유</dt><dd>사람들과 소통해야 서로의 의견을 모을 수 있습니다.</dd></div>
+          <div><dt>앞으로 기르는 방법</dt><dd>많은 사람들과 대화하고 소통합니다.</dd></div>
+        </dl>
+      </li>
+      <li class="skill">
+        <span class="rank"><i>3</i>창의력</span>
+        <dl>
+          <div><dt>필요한 이유</dt><dd>창의력이 있어야 의견을 내고 받고, 소통하고, 여러 가지 실험을 할 수 있습니다.</dd></div>
+          <div><dt>앞으로 기르는 방법</dt><dd>많은 책을 읽고 생각하는 시간을 가집니다.</dd></div>
+        </dl>
+      </li>
+    </ol>
+  </section>
+
+  <section id="ai">
+    <div class="sec-head">
+      <span class="tag">AI와 함께</span>
+      <h2>AI가 할 수 있는 일</h2>
+    </div>
+    <div class="split">
+      <div class="panel is-ai">
+        <h3>연구를 도와주는 AI</h3>
+        <p class="sub">연구원의 일을 빠르고 편하게 해 줍니다.</p>
+        <ul>
+          <li>영어 논문을 해석해 줍니다.</li>
+          <li>논문 내용을 정리해 줍니다.</li>
+          <li>새로운 아이디어와 창의적인 생각을 제시해 줍니다.</li>
+          <li>PPT를 만들어 줍니다.</li>
+          <li>질문을 하면 답을 받아 참고할 수 있습니다.</li>
+        </ul>
+      </div>
+      <div class="panel" id="me">
+        <h3>내가 직접 하는 일</h3>
+        <p class="sub">몸을 움직여서 해야 하는 일은 내가 맡습니다.</p>
+        <ul>
+          <li>연구하기</li>
+          <li>실험하기</li>
+          <li>직접 움직이며 결과를 확인하기</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="effort">
+    <div class="sec-head">
+      <span class="tag">다짐</span>
+      <h2>앞으로의 노력</h2>
+    </div>
+    <p class="effort">화장품 연구원이 되기 위해 학교생활을 열심히 하고, 성실하게 살겠습니다. 이 직업을 고른 이유는 관심이 있고, 흥미롭고, 잘할 수 있을 것 같기 때문입니다.</p>
+    <div class="closing">
+      <small>1학년 2반 친구들에게</small>
+      <p>포기하지 말고 노력하자</p>
+    </div>
+  </section>
+
+  <footer>화장품 연구원 · 미래의 나를 소개하는 웹사이트</footer>
+</div>
+
+</body></html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>수술실에서 간호사는 뭘 할까?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f8fd; --surface:#ffffff; --ink:#0c2a52; --muted:#3d5a80;
+  --blue:#1457c8; --blue-deep:#0a3a8c; --line:#b9cdeb; --tint:#e3edfb; --on-blue:#ffffff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#08162b; --surface:#0f2547; --ink:#eaf2ff; --muted:#a9c0e3;
+    --blue:#5b9bff; --blue-deep:#2f6fe0; --line:#27487d; --tint:#142f58; --on-blue:#ffffff; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#08162b; --surface:#0f2547; --ink:#eaf2ff; --muted:#a9c0e3;
+  --blue:#5b9bff; --blue-deep:#2f6fe0; --line:#27487d; --tint:#142f58; --on-blue:#ffffff; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box;border-radius:0}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans KR","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.7;font-size:16px;word-break:keep-all}
+.wrap{max-width:480px;margin:0 auto;background:var(--bg)}
+svg{display:block}
+.ic{stroke:var(--blue);fill:none;stroke-width:2;stroke-linejoin:miter;stroke-linecap:square}
+.ic .f{fill:var(--tint)}
+
+/* 상단 내비 */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;background:var(--blue-deep);overflow-x:auto}
+nav a{flex:1 0 auto;color:var(--on-blue);text-decoration:none;font-size:13px;font-weight:500;padding:11px 14px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.2);text-align:center}
+nav a:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+nav a:active{background:var(--blue)}
+
+/* 히어로 */
+header{background:var(--blue);color:var(--on-blue);padding:44px 24px 0;position:relative;overflow:hidden}
+header h1{font-family:"Black Han Sans","IBM Plex Sans KR",sans-serif;font-weight:400;font-size:44px;line-height:1.2;margin:0 0 28px;letter-spacing:-.01em}
+.tools{display:flex;gap:0;margin:0 -24px;border-top:2px solid rgba(255,255,255,.35)}
+.tools div{flex:1;padding:14px 0;display:flex;justify-content:center;border-right:1px solid rgba(255,255,255,.25)}
+.tools div:last-child{border-right:0}
+.tools svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:2;stroke-linejoin:miter;stroke-linecap:square}
+
+/* 섹션 */
+section{padding:44px 24px;border-bottom:2px solid var(--line)}
+.head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.head svg{width:44px;height:44px;flex:none}
+h2{font-family:"Black Han Sans","IBM Plex Sans KR",sans-serif;font-weight:400;font-size:26px;line-height:1.3;margin:0;color:var(--blue-deep)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:var(--blue)}}
+:root[data-theme="dark"] h2{color:var(--blue)}
+h3{font-size:15px;font-weight:700;margin:0 0 6px;color:var(--blue)}
+.card{background:var(--surface);border:2px solid var(--line);border-left:8px solid var(--blue);padding:16px 18px;margin-bottom:14px}
+.card p{margin:0}
+.card.plain{border-left-width:2px}
+
+/* 프로필 */
+.profile{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line);background:var(--surface);margin-bottom:14px}
+.profile div{padding:12px 14px;border-bottom:1px solid var(--line)}
+.profile div:nth-child(odd){border-right:1px solid var(--line)}
+.profile div:nth-last-child(-n+2){border-bottom:0}
+.profile b{display:block;font-size:12px;color:var(--muted);font-weight:500}
+.profile span{font-weight:700;font-size:16px}
+.name{font-family:"Black Han Sans",sans-serif;font-size:22px}
+
+/* TOP 3 */
+.rank{background:var(--surface);border:2px solid var(--line);margin-bottom:14px}
+.rank .t{display:flex;align-items:center;gap:12px;background:var(--blue-deep);color:var(--on-blue);padding:10px 16px}
+.rank .t i{font-style:normal;font-family:"Black Han Sans",sans-serif;font-size:22px;border-right:2px solid rgba(255,255,255,.4);padding-right:12px}
+.rank .t strong{font-size:17px}
+.rank .b{padding:14px 16px}
+.rank .b p{margin:0}
+
+/* 마무리 */
+#end{background:var(--blue);border-bottom:0;color:var(--on-blue);padding-bottom:56px}
+#end h2{color:var(--on-blue)}
+#end .ic{stroke:#fff}#end .ic .f{fill:rgba(255,255,255,.18)}
+.pledge{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.4);padding:14px 16px;margin-bottom:12px}
+.pledge h3{color:#fff;opacity:.85}
+.pledge p{margin:0}
+.final{margin-top:34px;background:#fff;color:#0a3a8c;text-align:center;padding:30px 12px;border:4px solid #0a3a8c;outline:3px solid #fff;outline-offset:4px;font-family:"Black Han Sans","IBM Plex Sans KR",sans-serif;font-size:34px;line-height:1.3}
+.final svg{margin:0 auto 10px;width:56px;height:20px}
+footer{height:14px;background:var(--blue-deep)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav aria-label="섹션 이동">
+  <a href="#s1">수술실 간호사</a>
+  <a href="#s2">장점</a>
+  <a href="#s3">노력</a>
+  <a href="#s4">하는 일</a>
+  <a href="#end">마무리</a>
+</nav>
+
+<header>
+  <h1>수술실에서<br>간호사는<br>뭘 할까?</h1>
+  <div class="tools" aria-hidden="true">
+    <!-- 메스 -->
+    <div><svg viewBox="0 0 40 40"><path d="M5 35 L27 13 L31 17 L9 39 Z" transform="translate(0,-4)"/><path d="M27 9 L35 3 L37 5 L31 13 Z" transform="translate(-1,0)"/></svg></div>
+    <!-- 가위 -->
+    <div><svg viewBox="0 0 40 40"><circle cx="10" cy="31" r="5"/><circle cx="30" cy="31" r="5"/><path d="M13 27 L30 5 M27 27 L10 5"/></svg></div>
+    <!-- 포셉 -->
+    <div><svg viewBox="0 0 40 40"><path d="M12 36 L18 8 L20 4 M28 36 L22 8 L20 4"/><path d="M14 26 H26"/></svg></div>
+    <!-- 주사기 -->
+    <div><svg viewBox="0 0 40 40"><rect x="9" y="14" width="18" height="9"/><path d="M27 18.5 H37 M9 18.5 H3 M3 12 V25 M13 14 V23 M18 14 V23 M23 14 V23"/></svg></div>
+    <!-- 수술등 -->
+    <div><svg viewBox="0 0 40 40"><path d="M20 3 V10"/><path d="M6 20 A14 10 0 0 1 34 20 Z"/><path d="M12 26 L9 36 M20 26 V36 M28 26 L31 36"/></svg></div>
+  </div>
+</header>
+
+<!-- 1 -->
+<section id="s1">
+  <div class="head">
+    <svg class="ic" viewBox="0 0 44 44"><rect class="f" x="4" y="4" width="36" height="36"/><path d="M22 11 V33 M11 22 H33"/></svg>
+    <h2>수술실 간호사</h2>
+  </div>
+  <div class="profile">
+    <div><b>이름</b><span class="name">김유빈</span></div>
+    <div><b>나이</b><span>27살</span></div>
+    <div><b>일하는 곳</b><span>대학병원 수술실</span></div>
+    <div><b>희망 직업</b><span>수술실 간호사</span></div>
+  </div>
+  <div class="card">
+    <h3>이 직업에서 AI가 도와줄 일</h3>
+    <p>환자에게 더 좋은 치료법 알려주기</p>
+  </div>
+  <div class="card">
+    <h3>이 직업에서 내가 직접 맡을 일</h3>
+    <p>환자를 치료하기</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <div class="head">
+    <svg class="ic" viewBox="0 0 44 44"><rect class="f" x="4" y="4" width="36" height="36"/><circle cx="22" cy="22" r="9"/><circle cx="22" cy="22" r="3"/></svg>
+    <h2>수술실 간호사의 장점</h2>
+  </div>
+  <div class="card">
+    <h3>내가 이 직업을 선택한 이유</h3>
+    <p>내 눈으로 환자를 치료하는 것을 보고 싶어서</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <div class="head">
+    <svg class="ic" viewBox="0 0 44 44"><rect class="f" x="4" y="4" width="36" height="36"/><path d="M10 32 L18 20 L24 26 L34 10"/><path d="M28 10 H34 V16"/></svg>
+    <h2>수술실 간호사가 되기 위한 노력</h2>
+  </div>
+  <div class="card plain">
+    <h3>이 직업이 되기 위해 내가 한 일</h3>
+    <p>내가 기를 AI 시대 역량 TOP 3</p>
+  </div>
+
+  <div class="rank">
+    <div class="t"><i>1위</i><strong>소통·협업 능력</strong></div>
+    <div class="b"><h3>필요한 이유</h3><p>수술실에서 환자를 수술하는 과정에서 의료진들과 의사소통이 매우 중요하기 때문</p></div>
+  </div>
+  <div class="rank">
+    <div class="t"><i>2위</i><strong>도전·실행력</strong></div>
+    <div class="b"><h3>필요한 이유</h3><p>과거에 안 좋은 결과가 생겼다고 해도 그 결과에 자책하지 않고 다시 수술하려는 용기가 필요할 것 같아서</p></div>
+  </div>
+  <div class="rank">
+    <div class="t"><i>3위</i><strong>창의·융합 능력</strong></div>
+    <div class="b"><h3>필요한 이유</h3><p>이 치료 방법이 안 될 것 같을 때 다른 치료 방법을 생각해내야 한다고 생각해서</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <div class="head">
+    <svg class="ic" viewBox="0 0 44 44"><rect class="f" x="4" y="4" width="36" height="36"/><path d="M6 24 H14 L18 12 L24 34 L28 24 H38"/></svg>
+    <h2>수술실 간호사가 하는 일</h2>
+  </div>
+  <div class="card plain">
+    <h3>현재 내가 하는 일</h3>
+    <p>대학병원 수술실에서 일하기</p>
+  </div>
+  <div class="card">
+    <h3>AI가 도와줄 일</h3>
+    <p>환자에게 더 좋은 치료법 알려주기</p>
+  </div>
+  <div class="card">
+    <h3>내가 직접 맡을 일</h3>
+    <p>환자를 치료하기</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="end">
+  <div class="head">
+    <svg class="ic" viewBox="0 0 44 44"><rect class="f" x="4" y="4" width="36" height="36"/><path d="M12 23 L19 30 L33 14"/></svg>
+    <h2>마무리</h2>
+  </div>
+  <h3 style="color:#fff;opacity:.9">나의 다짐</h3>
+  <div class="pledge">
+    <h3>소통·협업 능력</h3>
+    <p>많은 사람들과 대화를 나누면서 의사소통, 협력 능력을 기르려고 노력하겠다.</p>
+  </div>
+  <div class="pledge">
+    <h3>도전·실행력</h3>
+    <p>과거에 실패한 기억이 있는 활동이라 해도 주눅 들지 않고 다시 시도해서 성공해보려는 노력을 하겠다.</p>
+  </div>
+  <div class="pledge">
+    <h3>창의·융합 능력</h3>
+    <p>한 가지의 방법뿐 아니라 다른 방법들도 생각해내면서 문제를 해결하도록 노력하겠다.</p>
+  </div>
+
+  <div class="final">
+    <svg viewBox="0 0 56 20" fill="none" stroke="#0a3a8c" stroke-width="3" stroke-linejoin="miter"><path d="M2 10 H16 L21 2 L29 18 L34 10 H54"/></svg>
+    당신도<br>할 수 있어요!
+  </div>
+</section>
+
+<footer></footer>
+</div>
+</body>
+</html>

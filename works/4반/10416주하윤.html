@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>생명을 지키고 건강을 만드는 미래의 나</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap">
+<style>
+:root{
+  --blue:#1f6feb;--blue-d:#0b3d91;--green:#1f9d55;--green-d:#14683a;--heart:#e8506a;
+  --bg:#f3f9ff;--surface:#fff;--text:#1b2a3a;--muted:#4a5b6c;--line:#d6e4f5;
+  --blue-soft:#e6f0ff;--green-soft:#e5f6ec;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--blue:#6ea8ff;--blue-d:#9cc3ff;--green:#4cd08a;--green-d:#7fe2ac;
+    --bg:#0e1621;--surface:#162232;--text:#e8eef6;--muted:#a9b8c8;--line:#27384c;--blue-soft:#17304f;--green-soft:#153627}
+}
+:root[data-theme="dark"]{color-scheme:dark;--blue:#6ea8ff;--blue-d:#9cc3ff;--green:#4cd08a;--green-d:#7fe2ac;
+  --bg:#0e1621;--surface:#162232;--text:#e8eef6;--muted:#a9b8c8;--line:#27384c;--blue-soft:#17304f;--green-soft:#153627}
+*{box-sizing:border-box}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--text);
+  font-family:"Gowun Dodum","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-size:18px;line-height:1.75;word-break:keep-all}
+h1,h2,h3{font-family:"Jua","Gowun Dodum","Noto Sans KR",sans-serif;font-weight:400}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:10}
+svg.i{display:inline-block;vertical-align:middle}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--surface);border-bottom:1px solid var(--line);
+  display:flex;gap:8px;padding:10px 14px;overflow-x:auto;justify-content:center}
+nav a{flex:none;text-decoration:none;font-size:16px;color:var(--blue-d);background:var(--blue-soft);padding:8px 18px;border-radius:999px;transition:.2s}
+nav a:hover,nav a:focus-visible{background:var(--blue);color:#fff;outline:none}
+@media(max-width:760px){nav{justify-content:flex-start}}
+.hero{text-align:center;padding:64px 20px 76px;color:#fff;background:linear-gradient(135deg,#0b3d91 0%,#1f6feb 55%,#1f9d55 100%)}
+.hero .ic{display:flex;justify-content:center;align-items:center;gap:18px;margin-bottom:14px}
+.hero h1{margin:0 auto 14px;font-size:clamp(32px,6.5vw,56px);line-height:1.3;max-width:900px}
+.who{display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.who span{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);padding:5px 16px;border-radius:999px;font-size:17px}
+.key{display:block;max-width:780px;margin:0 auto;padding:22px 26px;font-size:clamp(18px,2.6vw,23px);line-height:1.6;
+  background:#fff;color:#0b3d91;border-radius:24px;box-shadow:0 8px 24px rgba(0,0,0,.18);border-bottom:6px solid #1f9d55}
+.btns{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;padding:12px 28px;border-radius:999px;font-size:17px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.w{background:#fff;color:#0b3d91}.btn.g{background:#1f9d55;color:#fff}
+section{max-width:1000px;margin:0 auto;padding:58px 20px}
+h2{font-size:clamp(26px,4.5vw,36px);margin:0 0 8px;color:var(--blue-d);display:flex;align-items:center;gap:12px}
+.lead{margin:0 0 26px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 4px 14px rgba(11,61,145,.07)}
+.profile{display:grid;grid-template-columns:210px 1fr;gap:28px;align-items:start}
+.avatar{background:linear-gradient(160deg,var(--blue-soft),var(--green-soft));border-radius:24px;text-align:center;padding:26px 10px}
+.avatar b{display:block;font-family:"Jua",sans-serif;font-weight:400;font-size:26px;margin-top:6px;color:var(--text)}
+.avatar span{color:var(--muted)}
+dl{margin:0}dt{font-family:"Jua",sans-serif;color:var(--blue-d);margin-top:16px;font-size:19px}dt:first-child{margin-top:0}dd{margin:3px 0 0}
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.chip{padding:14px 16px;border-radius:16px}
+.chip.b{background:var(--blue-soft);border-left:6px solid var(--blue)}
+.chip.g{background:var(--green-soft);border-left:6px solid var(--green)}
+.chip small{display:block;font-size:15px;color:var(--muted)}
+.role{border-radius:28px;padding:34px 28px;border:2px solid}
+.role.b{background:var(--blue-soft);border-color:var(--blue)}
+.role.g{background:var(--green-soft);border-color:var(--green)}
+.role.g h2{color:var(--green-d)}
+.art{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:6px 0 18px}
+.items{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.items li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px 14px 52px;position:relative}
+.items li::before{content:"✓";position:absolute;left:15px;top:14px;width:26px;height:26px;border-radius:50%;color:#fff;font-size:15px;text-align:center;line-height:26px}
+.role.b li::before{background:#1f6feb}.role.g li::before{background:#1f9d55}
+.aigrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ai{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;gap:16px;align-items:center;box-shadow:0 4px 14px rgba(11,61,145,.06)}
+.ai .num{flex:none;width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#6b4de6,#1f6feb);color:#fff;font-family:"Jua",sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center}
+.top3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rank{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:26px 22px;position:relative;overflow:hidden;box-shadow:0 4px 14px rgba(11,61,145,.07)}
+.rank::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:var(--c)}
+.rank .n{display:inline-flex;align-items:center;justify-content:center;min-width:58px;height:58px;padding:0 10px;border-radius:999px;background:var(--c);color:#fff;font-family:"Jua",sans-serif;font-size:24px;margin-bottom:10px}
+.rank h3{margin:0 0 12px;font-size:23px}
+.rank h4{margin:12px 0 2px;font-size:15px;color:var(--c);font-family:"Jua",sans-serif;font-weight:400}
+.rank p{margin:0;font-size:17px}
+.r1{--c:#1f6feb}.r2{--c:#17958a}.r3{--c:#1f9d55}
+.goals{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.goal{display:flex;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px}
+.goal i{flex:none;width:42px;height:42px;border-radius:50%;color:#fff;font-style:normal;font-family:"Jua",sans-serif;display:flex;align-items:center;justify-content:center;font-size:19px}
+.goal:nth-child(odd){border-left:6px solid var(--blue)}.goal:nth-child(odd) i{background:var(--blue)}
+.goal:nth-child(even){border-left:6px solid var(--green)}.goal:nth-child(even) i{background:var(--green)}
+footer{text-align:center;padding:34px 20px;color:#fff;background:linear-gradient(135deg,#0b3d91,#1f9d55)}
+footer p{margin:4px auto;max-width:720px}
+.top{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,.25);z-index:12}
+@media(max-width:820px){.top3,.aigrid,.goals{grid-template-columns:1fr}.profile{grid-template-columns:1fr}}
+@media(max-width:520px){.jobs{grid-template-columns:1fr}section{padding:42px 16px}body{font-size:17px}.role{padding:26px 18px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8.5-5.2-8.5-11.2C3.5 6.6 5.8 4.5 8.4 4.5c1.6 0 2.9.8 3.6 2 .7-1.2 2-2 3.6-2 2.600 0 4.900 2.100 4.900 5.300C20.500 15.800 12 21 12 21z" fill="currentColor"/></symbol>
+  <symbol id="cross" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6" fill="currentColor"/><path d="M10 5h4v5h5v4h-5v5h-4v-5H5v-4h5z" fill="#fff"/></symbol>
+  <symbol id="amb" viewBox="0 0 120 64"><rect x="4" y="10" width="76" height="38" rx="6" fill="#fff" stroke="#0b3d91" stroke-width="3"/><path d="M80 20h20l14 14v14H80z" fill="#fff" stroke="#0b3d91" stroke-width="3" stroke-linejoin="round"/><path d="M88 25h10l8 9H88z" fill="#bcd8ff"/><path d="M38 17h8v8h8v8h-8v8h-8v-8h-8v-8h8z" fill="#1f9d55"/><rect x="40" y="2" width="14" height="6" rx="2" fill="#1f6feb"/><rect x="4" y="40" width="76" height="6" fill="#1f6feb"/><circle cx="28" cy="52" r="9" fill="#27384c"/><circle cx="28" cy="52" r="4" fill="#fff"/><circle cx="94" cy="52" r="9" fill="#27384c"/><circle cx="94" cy="52" r="4" fill="#fff"/></symbol>
+  <symbol id="run" viewBox="0 0 64 64"><circle cx="40" cy="10" r="6" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M36 20l-8 12 10 6 2 14"/><path d="M28 32l-10 2-6 8"/><path d="M36 22l10 8 8-2"/><path d="M38 38l10 4 4 8"/></g></symbol>
+</svg>
+
+<nav aria-label="섹션 메뉴">
+  <a href="#home">처음</a><a href="#about">미래의 나</a><a href="#paramedic">응급구조사</a><a href="#teacher">체육교사</a><a href="#ai">AI가 도와줄 일</a><a href="#skills">역량 TOP 3</a><a href="#goals">나의 목표</a>
+</nav>
+
+<header class="hero" id="home">
+  <div class="ic" aria-hidden="true">
+    <svg class="i" width="52" height="52" style="color:#fff"><use href="#cross"/></svg>
+    <svg class="i" width="56" height="56" style="color:#ff9fb0"><use href="#heart"/></svg>
+    <svg class="i" width="52" height="52" style="color:#fff"><use href="#run"/></svg>
+  </div>
+  <h1>생명을 지키고 건강을 만드는 미래의 나</h1>
+  <div class="who"><span>주하윤</span><span>25세</span><span>응급구조사 및 체육교사</span></div>
+  <p class="key">“작은 관심과 빠른 행동이 한 사람의 생명을 구할 수 있고 꾸준한 운동은 건강한 미래를 만들어 준다.”</p>
+  <div class="btns"><a class="btn w" href="#about">미래의 나 만나기</a><a class="btn g" href="#skills">역량 TOP 3 보기</a></div>
+</header>
+
+<section id="about">
+  <h2><svg class="i" width="38" height="38" style="color:var(--blue)" aria-hidden="true"><use href="#cross"/></svg>미래의 나 소개</h2>
+  <p class="lead">25살이 된 미래의 나 주하윤을 소개합니다.</p>
+  <div class="card profile">
+    <div class="avatar">
+      <svg class="i" width="110" height="60" aria-hidden="true"><use href="#amb"/></svg>
+      <b>주하윤</b><span>25세</span>
+    </div>
+    <dl>
+      <dt>희망 직업</dt><dd>응급구조사 및 체육교사</dd>
+      <dt>일하는 곳</dt>
+      <dd><div class="jobs">
+        <div class="chip b"><b>응급구조사</b><small>응급의료센터, 병원 등</small></div>
+        <div class="chip g"><b>체육교사</b><small>초등학교, 중학교, 고등학교</small></div>
+      </div></dd>
+      <dt>직업을 선택한 이유</dt>
+      <dd>위급한 상황에 처한 사람들을 도와 생명을 구하고 싶으며 운동을 통해 사람들에게 건강과 자신감을 전해 주고 싶기 때문이다.</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="paramedic">
+  <div class="role b">
+    <h2><svg class="i" width="38" height="38" style="color:var(--blue)" aria-hidden="true"><use href="#cross"/></svg>응급구조사의 역할</h2>
+    <p class="lead">응급구조사는 응급환자에게 응급처치를 하고 생명을 구하는 일을 한다.</p>
+    <div class="art" aria-hidden="true">
+      <svg class="i" width="150" height="80"><use href="#amb"/></svg>
+      <svg class="i" width="60" height="60" style="color:var(--heart)"><use href="#heart"/></svg>
+      <svg class="i" width="56" height="56" style="color:var(--blue)"><use href="#cross"/></svg>
+    </div>
+    <ul class="items">
+      <li>환자에게 응급처치를 한다.</li>
+      <li>환자가 심리적으로 안정될 수 있도록 돕는다.</li>
+      <li>위급한 상황에 처한 사람들을 도와 생명을 구한다.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="teacher">
+  <div class="role g">
+    <h2><svg class="i" width="38" height="38" style="color:var(--green)" aria-hidden="true"><use href="#run"/></svg>체육교사의 역할</h2>
+    <p class="lead">체육교사는 학생들에게 운동을 가르치고 건강한 생활을 지도하는 일을 한다.</p>
+    <div class="art" aria-hidden="true">
+      <svg class="i" width="72" height="72" style="color:var(--green)"><use href="#run"/></svg>
+    </div>
+    <ul class="items">
+      <li>체육 수업을 진행한다.</li>
+      <li>학생들이 안전하고 즐겁게 운동할 수 있도록 지도한다.</li>
+      <li>운동을 통해 건강과 자신감을 전해 준다.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ai">
+  <h2>AI가 도와줄 일</h2>
+  <p class="lead">나의 희망 직업에서 AI가 도와줄 수 있는 일을 소개합니다.</p>
+  <div class="aigrid">
+    <div class="ai"><span class="num">AI</span><span>환자의 상태와 생체 정보를 빠르게 분석한다.</span></div>
+    <div class="ai"><span class="num">AI</span><span>응급상황에 필요한 정보를 제공한다.</span></div>
+    <div class="ai"><span class="num">AI</span><span>개인별 운동 계획을 추천한다.</span></div>
+    <div class="ai"><span class="num">AI</span><span>건강 관리 방법을 추천한다.</span></div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>내가 갖춰야 할 역량 TOP 3</h2>
+  <p class="lead">순위별로 필요한 이유와 실천 방법을 정리했습니다.</p>
+  <div class="top3">
+    <article class="rank r1"><span class="n">1위</span><h3>소통·협업 능력</h3>
+      <h4>필요한 이유</h4><p>환자, 의료진, 학생들과 원활하게 소통해야 하기 때문이다.</p>
+      <h4>실천 방법</h4><p>다른 사람의 의견을 잘 듣고 배려하며 협력하는 습관을 기르겠다.</p></article>
+    <article class="rank r2"><span class="n">2위</span><h3>비판적 사고</h3>
+      <h4>필요한 이유</h4><p>AI가 제공하는 정보가 항상 정확한 것은 아니기 때문이다.</p>
+      <h4>실천 방법</h4><p>다양한 정보를 비교하고 올바른 판단을 내리는 연습을 하겠다.</p></article>
+    <article class="rank r3"><span class="n">3위</span><h3>윤리·책임 의식</h3>
+      <h4>필요한 이유</h4><p>사람의 생명과 안전을 다루는 직업이기 때문이다.</p>
+      <h4>실천 방법</h4><p>맡은 일에 책임을 가지고 생명과 안전을 가장 중요하게 생각하겠다.</p></article>
+  </div>
+</section>
+
+<section id="goals">
+  <h2><svg class="i" width="38" height="38" style="color:var(--heart)" aria-hidden="true"><use href="#heart"/></svg>나의 미래 목표</h2>
+  <p class="lead">앞으로 이루고 싶은 목표입니다.</p>
+  <div class="goals">
+    <div class="goal"><i>1</i><span>응급구조사와 체육교사라는 희망 직업을 이루기 위해 노력하기.</span></div>
+    <div class="goal"><i>2</i><span>전문적인 지식과 경험을 쌓기.</span></div>
+    <div class="goal"><i>3</i><span>다른 사람에게 도움을 주는 사람이 되기.</span></div>
+    <div class="goal"><i>4</i><span>책임감, 소통 능력, 판단력을 갖추기.</span></div>
+  </div>
+</section>
+
+<footer>
+  <p style="font-family:'Jua',sans-serif;font-size:22px">생명을 지키고 건강을 만드는 미래의 나</p>
+  <p>작은 관심과 빠른 행동이 한 사람의 생명을 구할 수 있고 꾸준한 운동은 건강한 미래를 만들어 준다.</p>
+</footer>
+<a class="top" href="#home" aria-label="맨 위로">↑</a>
+</body>
+</html>

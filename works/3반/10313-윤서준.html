@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>소개글</title>
+  <style>
+    /* 1. 색깔 변수: 초록색(대표), 주황색(포인트) */
+    :root {
+      --green: #2e8b57;
+      --green-light: #e8f5ee;
+      --orange: #f28c28;
+      --orange-light: #fff3e3;
+      --text: #263238;
+      --white: #ffffff;
+      --bg: #f7faf8;
+    }
+
+    :root {
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --green: #5fcf8f;
+        --green-light: #1f3a2b;
+        --orange: #ffa94d;
+        --orange-light: #3d2d18;
+        --text: #e8eeea;
+        --white: #1c2420;
+        --bg: #121815;
+      }
+    }
+
+    /* 2. 기본 글자 설정: 돋움체, 18pt, 줄간격 1.5 */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "돋움", Dotum, "Noto Sans KR", sans-serif;
+      font-size: 18pt;
+      line-height: 1.5;
+      color: var(--text);
+      background-color: var(--bg);
+    }
+
+    /* 3. 가운데 정렬되는 전체 틀 (PC에서는 폭 제한) */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* 4. 제목 영역 */
+    header {
+      background-color: #2e8b57;
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 8px solid var(--orange);
+      border-radius: 0 0 20px 20px;
+    }
+
+    header svg {
+      width: 100px;
+      height: 100px;
+    }
+
+    header h1 {
+      margin: 10px 0 0 0;
+      font-size: 1.6em;
+    }
+
+    /* 5. 내용 칸(카드) */
+    section {
+      background-color: var(--white);
+      border-left: 8px solid var(--green);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    section.orange {
+      border-left-color: var(--orange);
+    }
+
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 1em;
+      color: var(--green);
+    }
+
+    h3 {
+      margin: 16px 0 4px 0;
+      font-size: 1em;
+      color: var(--orange);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /* AI / 나 역할 구분 칸 */
+    .role {
+      background-color: var(--green-light);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 10px;
+    }
+
+    .role.me {
+      background-color: var(--orange-light);
+    }
+
+    /* 6. 반응형: 화면이 좁은 모바일 */
+    @media (max-width: 600px) {
+      body {
+        font-size: 14pt;
+      }
+      .container {
+        padding: 12px;
+      }
+      header svg {
+        width: 72px;
+        height: 72px;
+      }
+      section {
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- CPU 아이콘 (SVG 그림) -->
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <!-- 핀(다리) -->
+      <g stroke="#f28c28" stroke-width="5" stroke-linecap="round">
+        <line x1="32" y1="8" x2="32" y2="24"/>
+        <line x1="50" y1="8" x2="50" y2="24"/>
+        <line x1="68" y1="8" x2="68" y2="24"/>
+        <line x1="32" y1="76" x2="32" y2="92"/>
+        <line x1="50" y1="76" x2="50" y2="92"/>
+        <line x1="68" y1="76" x2="68" y2="92"/>
+        <line x1="8" y1="32" x2="24" y2="32"/>
+        <line x1="8" y1="50" x2="24" y2="50"/>
+        <line x1="8" y1="68" x2="24" y2="68"/>
+        <line x1="76" y1="32" x2="92" y2="32"/>
+        <line x1="76" y1="50" x2="92" y2="50"/>
+        <line x1="76" y1="68" x2="92" y2="68"/>
+      </g>
+      <!-- 칩 몸체 -->
+      <rect x="22" y="22" width="56" height="56" rx="8" fill="#ffffff"/>
+      <!-- 안쪽 코어 -->
+      <rect x="36" y="36" width="28" height="28" rx="4" fill="#f28c28"/>
+    </svg>
+    <h1>소개글</h1>
+  </header>
+
+  <main class="container">
+
+    <section>
+      <h2>시작하기전 소개:</h2>
+      <p>
+        간호사 윤서준 27세 어느 대학병원<br>
+        지금 공부하는 과목에서 가장 근접한 직업이라서
+      </p>
+      <p class="role">AI: 한 번에 관리하기 힘든  환자들에 대한 간호 기록 작성, 활력징후 모니터링, 알림</p>
+      <p class="role me">나:  오류 검사, 처방에 따른 처치 치료 및 간호 준비, 시행</p>
+    </section>
+
+    <section class="orange">
+      <h2>1. 인사말:</h2>
+      <p>AI활용 연습을 위한 사이트입니다.</p>
+    </section>
+
+    <section>
+      <h2>2. 역량에 대해서</h2>
+
+      <h3>AI 활용 능력</h3>
+      <p>
+        일을 도와주는데 주로 사용되고 같이 있어야 해서<br>
+        다양한 AI 사용과 기능 학습으로 적응한다.
+      </p>
+
+      <h3>비판적 사고</h3>
+      <p>
+        지능인 이상 완벽할 수 없고 오류가 생길 수있기에<br>
+        맹목적으로 믿고 따르지 않고 참고하고 오류인 부분은 다시 학습시킨다.
+      </p>
+
+      <h3>윤리·책임 의식</h3>
+      <p>
+        무분별하게 사용하는 것은 사회에 문제를 풀 수 있어서<br>
+        무작정 무분별하게 쓰지 않는다. 생각하고 사용한다.
+      </p>
+    </section>
+
+    <section class="orange">
+      <h2>3. 끝내며:</h2>
+      <p>본 사이트는 학습을 위한 사이트이고 정보가 불확실함을 명시함</p>
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SUNAIL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Noto+Sans+KR:wght@200;300;400;500&display=swap">
+<style>
+/* Layout: 코랄 태양 원 + 가는 워드마크의 히어로, 이후 4개 섹션이 배경색을 번갈아 가며 구분되는 단일 컬럼 구성. 사진 프레임은 손톱 모양(아치)을 사용. */
+:root {
+  --bg: #FFFBF9;
+  --tint: #FFF0EB;
+  --surface: #FFFFFF;
+  --ink: #33201C;
+  --muted: #7D6159;
+  --line: #EBD5CE;
+  --soft: #FFE4DD;
+  --coral: #F4705F;
+  --coral-text: #C23B2D;
+  --btn-bg: #C23B2D;
+  --btn-fg: #FFFFFF;
+  --on-coral: #2B140F;
+  --font-ko: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-en: 'Jost', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1B1210;
+    --tint: #241816;
+    --surface: #2A1C19;
+    --ink: #F6EAE6;
+    --muted: #C2A7A0;
+    --line: #4B3631;
+    --soft: #34211D;
+    --coral: #FF7F6E;
+    --coral-text: #FF9A8B;
+    --btn-bg: #FF8A7A;
+    --btn-fg: #2B140F;
+    --on-coral: #2B140F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1B1210;
+  --tint: #241816;
+  --surface: #2A1C19;
+  --ink: #F6EAE6;
+  --muted: #C2A7A0;
+  --line: #4B3631;
+  --soft: #34211D;
+  --coral: #FF7F6E;
+  --coral-text: #FF9A8B;
+  --btn-bg: #FF8A7A;
+  --btn-fg: #2B140F;
+  --on-coral: #2B140F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ko);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--bg);
+}
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, figure { margin: 0; }
+:focus-visible { outline: 2px solid var(--coral-text); outline-offset: 3px; }
+
+.wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Header */
+.top { background: var(--bg); border-bottom: 1px solid var(--line); }
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 24px;
+  padding-block: 14px;
+}
+.logo {
+  font-family: var(--font-en);
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.22em;
+}
+.top nav {
+  display: flex;
+  gap: 22px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.top nav a {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  padding-block: 4px;
+  transition: color .2s;
+}
+.top nav a:hover { color: var(--coral-text); }
+@media (min-width: 760px) {
+  .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; }
+}
+
+/* Hero */
+.hero { background: var(--tint); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 36px;
+  padding-block: clamp(44px, 9vw, 112px);
+}
+.hero-copy { display: grid; gap: 28px; justify-items: start; min-width: 0; }
+.mark {
+  font-family: var(--font-en);
+  font-weight: 200;
+  font-size: clamp(56px, 13vw, 168px);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+.btn {
+  display: inline-block;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 400;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  transition: opacity .2s;
+}
+.btn:hover { opacity: .88; }
+.sun {
+  width: clamp(220px, 32vw, 360px);
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--coral);
+  color: var(--on-coral);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 12%;
+  justify-self: center;
+}
+.sun p {
+  font-size: clamp(21px, 2.6vw, 28px);
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+@media (min-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr auto; gap: 56px; }
+}
+
+/* Sections */
+.sec { padding-block: clamp(56px, 8vw, 104px); }
+.sec.alt { background: var(--tint); }
+.sec { scroll-margin-top: 56px; }
+.head { display: grid; gap: 10px; margin-bottom: clamp(28px, 4vw, 48px); }
+.head::before { content: ""; width: 36px; height: 2px; background: var(--coral); margin-bottom: 8px; }
+.head h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 200;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+}
+.head p { color: var(--muted); font-size: 15px; }
+
+/* Panels */
+.cols { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 760px) { .cols { grid-template-columns: 1fr 1fr; } }
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(20px, 3vw, 32px);
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  align-content: start;
+}
+.panel h3 { font-size: 18px; font-weight: 400; letter-spacing: 0.01em; }
+.hint {
+  min-height: 170px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 16px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.panel.deal { background: var(--soft); border-color: transparent; margin-top: 24px; }
+.panel.deal .hint { border-color: var(--coral); }
+
+/* Photo slots */
+.slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  width: 100%;
+  background: var(--soft);
+  border: 1px dashed var(--coral);
+  color: var(--coral-text);
+  cursor: pointer;
+  transition: background .2s;
+}
+.slot:hover { background: var(--tint); }
+.slot:focus-within { outline: 2px solid var(--coral-text); outline-offset: 3px; }
+.slot input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; max-width: none; }
+.slot.filled { border-color: transparent; }
+.ph { display: grid; justify-items: center; gap: 2px; font-size: 14px; font-weight: 400; pointer-events: none; }
+.ph b { font-weight: 200; font-size: 34px; line-height: 1; }
+.x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: .92;
+}
+.slot.arch { border-radius: 999px 999px 14px 14px; }
+.slot.arch .x { top: auto; bottom: 12px; right: 50%; transform: translateX(50%); }
+
+/* This month */
+.month-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.month-grid .slot { aspect-ratio: 3 / 4; max-width: 100%; }
+.month-grid .slot:first-child { grid-column: span 6; aspect-ratio: 5 / 6; }
+.month-grid .slot:not(:first-child) { grid-column: span 3; }
+@media (min-width: 760px) {
+  .month-grid .slot:first-child,
+  .month-grid .slot:not(:first-child) { grid-column: span 2; aspect-ratio: 3 / 4; }
+}
+
+/* Collection */
+.gal { column-count: 2; column-gap: 16px; }
+@media (min-width: 760px) { .gal { column-count: 3; } }
+.gal .slot { break-inside: avoid; margin-bottom: 16px; border-radius: 12px; }
+.gal .slot:nth-child(4n+1) { aspect-ratio: 4 / 5; }
+.gal .slot:nth-child(4n+2) { aspect-ratio: 1 / 1; }
+.gal .slot:nth-child(4n+3) { aspect-ratio: 5 / 6; }
+.gal .slot:nth-child(4n+4) { aspect-ratio: 3 / 4; }
+
+/* Shop */
+.shop-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 760px) { .shop-grid { grid-template-columns: 1fr 1fr; } }
+.shop-grid figure { display: grid; gap: 10px; min-width: 0; }
+.shop-grid .slot { aspect-ratio: 4 / 3; border-radius: 14px; }
+.shop-grid figcaption { font-size: 14px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
+.addr { margin-top: 24px; }
+.addr .hint { min-height: 84px; }
+
+/* Footer */
+footer { border-top: 1px solid var(--line); }
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-block: 32px;
+}
+.foot p { color: var(--muted); font-size: 14px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top">SUNAIL</a>
+    <nav aria-label="섹션 이동">
+      <a href="#reservation">예약</a>
+      <a href="#month">이번 달 디자인</a>
+      <a href="#collection">디자인 모음집</a>
+      <a href="#shop">샵 분위기</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 class="mark">SUNAIL</h1>
+        <a class="btn" href="#reservation">예약 안내 보기</a>
+      </div>
+      <div class="sun"><p>이쁜 말로<br>문의주세요</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="reservation">
+    <div class="wrap">
+      <div class="head">
+        <h2>예약</h2>
+        <p>예약 방식을 안내하고, 예약을 확인하는 공간입니다.</p>
+      </div>
+      <div class="cols">
+        <div class="panel">
+          <h3>예약 방법 안내</h3>
+          <div class="hint">예약 방식 안내가 표시되는 공간입니다.</div>
+        </div>
+        <div class="panel">
+          <h3>예약 확인</h3>
+          <div class="hint">예약 확인이 가능한 공간입니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="month">
+    <div class="wrap">
+      <div class="head">
+        <h2>이번 달 디자인</h2>
+        <p>이번 달의 유행과 계절에 어울리는 네일 디자인</p>
+      </div>
+      <div class="month-grid" id="monthGrid"></div>
+      <div class="panel deal">
+        <h3>이달의 아트 할인</h3>
+        <div class="hint">이달의 아트 할인 내용이 표시되는 공간입니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="collection">
+    <div class="wrap">
+      <div class="head">
+        <h2>디자인 모음집</h2>
+        <p>SUNAIL에서 지금까지 제작한 네일 디자인</p>
+      </div>
+      <div class="gal" id="galGrid"></div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="shop">
+    <div class="wrap">
+      <div class="head">
+        <h2>샵 분위기</h2>
+        <p>네일샵 내부와 외부의 모습</p>
+      </div>
+      <div class="shop-grid" id="shopGrid"></div>
+      <div class="panel addr">
+        <h3>주소</h3>
+        <div class="hint">상세 주소가 표시되는 공간입니다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="logo">SUNAIL</span>
+    <p>이쁜 말로 문의주세요</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var KEY = 'sunail-photos-v1';
+  var state = { month: [null, null, null], shop: [null, null], gal: [] };
+
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (saved) {
+      if (Array.isArray(saved.month)) state.month = [0, 1, 2].map(function (i) { return saved.month[i] || null; });
+      if (Array.isArray(saved.shop)) state.shop = [0, 1].map(function (i) { return saved.shop[i] || null; });
+      if (Array.isArray(saved.gal)) state.gal = saved.gal.filter(Boolean);
+    }
+  } catch (e) {}
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function shrink(file, max) {
+    return new Promise(function (resolve) {
+      var fr = new FileReader();
+      fr.onerror = function () { resolve(null); };
+      fr.onload = function () {
+        var img = new Image();
+        img.onerror = function () { resolve(null); };
+        img.onload = function () {
+          var sc = Math.min(1, max / Math.max(img.width, img.height));
+          var c = document.createElement('canvas');
+          c.width = Math.round(img.width * sc);
+          c.height = Math.round(img.height * sc);
+          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+          resolve(c.toDataURL('image/jpeg', 0.82));
+        };
+        img.src = fr.result;
+      };
+      fr.readAsDataURL(file);
+    });
+  }
+
+  function makeSlot(o) {
+    var l = document.createElement('label');
+    l.className = 'slot' + (o.cls ? ' ' + o.cls : '') + (o.src ? ' filled' : '');
+    if (o.src) {
+      var im = document.createElement('img');
+      im.src = o.src;
+      im.alt = o.label;
+      l.appendChild(im);
+    } else {
+      var ph = document.createElement('span');
+      ph.className = 'ph';
+      ph.innerHTML = '<b>+</b><span>사진 추가</span>';
+      l.appendChild(ph);
+    }
+    var inp = document.createElement('input');
+    inp.type = 'file';
+    inp.accept = 'image/*';
+    inp.multiple = !!o.multiple;
+    inp.setAttribute('aria-label', o.label + ' 사진 선택');
+    inp.addEventListener('change', function () {
+      var files = Array.prototype.slice.call(inp.files || []);
+      inp.value = '';
+      if (files.length) o.onFiles(files);
+    });
+    l.appendChild(inp);
+    if (o.src && o.onRemove) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'x';
+      b.setAttribute('aria-label', o.label + ' 사진 삭제');
+      b.textContent = '×';
+      b.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        o.onRemove();
+      });
+      l.appendChild(b);
+    }
+    return l;
+  }
+
+  function fixed(gridId, key, labels, cls, max) {
+    var grid = document.getElementById(gridId);
+    function render() {
+      grid.innerHTML = '';
+      labels.forEach(function (label, i) {
+        var slot = makeSlot({
+          src: state[key][i],
+          label: label,
+          cls: cls,
+          onFiles: function (files) {
+            shrink(files[0], max).then(function (d) {
+              if (d) { state[key][i] = d; save(); render(); }
+            });
+          },
+          onRemove: function () { state[key][i] = null; save(); render(); }
+        });
+        if (key === 'shop') {
+          var fig = document.createElement('figure');
+          var cap = document.createElement('figcaption');
+          cap.textContent = label;
+          fig.appendChild(slot);
+          fig.appendChild(cap);
+          grid.appendChild(fig);
+        } else {
+          grid.appendChild(slot);
+        }
+      });
+    }
+    render();
+  }
+
+  fixed('monthGrid', 'month', ['이번 달 디자인 1', '이번 달 디자인 2', '이번 달 디자인 3'], 'arch', 1000);
+  fixed('shopGrid', 'shop', ['내부', '외부'], '', 1400);
+
+  var gal = document.getElementById('galGrid');
+  function renderGal() {
+    gal.innerHTML = '';
+    function add(files) {
+      var chain = Promise.resolve();
+      files.forEach(function (f) {
+        chain = chain.then(function () {
+          return shrink(f, 900).then(function (d) { if (d) state.gal.push(d); });
+        });
+      });
+      chain.then(function () { save(); renderGal(); });
+    }
+    state.gal.forEach(function (src, i) {
+      gal.appendChild(makeSlot({
+        src: src,
+        label: '디자인 ' + (i + 1),
+        onFiles: function () {},
+        onRemove: function () { state.gal.splice(i, 1); save(); renderGal(); }
+      }));
+    });
+    var empties = state.gal.length >= 6 ? 1 : 6 - state.gal.length;
+    for (var k = 0; k < empties; k++) {
+      gal.appendChild(makeSlot({ src: null, label: '디자인 모음집', multiple: true, onFiles: add }));
+    }
+  }
+  renderGal();
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>L T H : 이태훈</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#fff;--fg:#111;--mute:#666;--line:#e3e3e3;--soft:#f6f6f6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hh,96px) + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.8;word-break:keep-all;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{max-width:1040px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:6px 28px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;color:var(--fg);text-decoration:none}
+nav{display:flex;flex-wrap:wrap;gap:4px 20px}
+nav a{color:var(--mute);text-decoration:none;font-size:.9rem;padding:2px 0;border-bottom:1px solid transparent}
+nav a:hover,nav a:focus-visible{color:var(--fg);border-color:var(--fg);outline:none}
+section{border-bottom:1px solid var(--line)}
+.wrap{max-width:1040px;margin:0 auto;padding:96px 24px}
+.label{font-size:.8rem;letter-spacing:.18em;color:var(--mute);margin:0 0 12px}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;margin:0 0 48px;line-height:1.3}
+h3{font-size:1.1rem;font-weight:700;margin:0 0 12px}
+p{margin:0}
+#hello .wrap{min-height:78vh;display:flex;flex-direction:column;justify-content:center}
+.name{font-size:clamp(2.2rem,8vw,4.4rem);font-weight:700;letter-spacing:.08em;line-height:1.2;margin:0 0 40px}
+.greet{font-size:clamp(1.1rem,2.6vw,1.5rem);font-weight:300;max-width:680px;line-height:1.9}
+.meta{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:48px;padding-top:24px;border-top:1px solid var(--fg);max-width:680px;font-size:.95rem}
+.meta span{color:var(--mute)}.meta b{font-weight:500;margin-left:6px}
+.tl{list-style:none;margin:0;padding:0 0 0 28px;border-left:1px solid var(--fg)}
+.tl li{position:relative;padding:0 0 36px;font-size:1.15rem}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-34px;top:.7em;width:11px;height:11px;border-radius:50%;background:var(--fg)}
+.tl small{display:block;color:var(--mute);font-size:.8rem;letter-spacing:.12em}
+.sub{margin-top:80px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{border:1px solid var(--line);padding:28px}
+.card ul{margin:0;padding-left:1.1em;color:#333}
+.card li{margin:4px 0}
+.strengths{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.strengths div{border:1px solid var(--fg);padding:44px 24px;text-align:center;font-size:1.4rem;font-weight:500}
+.strengths small{display:block;color:var(--mute);font-size:.75rem;letter-spacing:.16em;margin-bottom:8px;font-weight:400}
+.rank{display:grid;gap:0;border-top:1px solid var(--fg)}
+.rank article{display:grid;grid-template-columns:90px 1fr;gap:8px 24px;padding:32px 0;border-bottom:1px solid var(--line)}
+.rank .n{font-size:2rem;font-weight:700;line-height:1.2}
+.rank .why{color:#333;margin-bottom:12px}
+.rank .plan{background:var(--soft);padding:16px 20px;font-size:.95rem;color:#222}
+.rank .plan b{display:block;font-size:.8rem;letter-spacing:.1em;color:var(--mute);margin-bottom:4px;font-weight:500}
+.quote{font-size:clamp(1.3rem,3.6vw,2.1rem);font-weight:500;line-height:1.7;max-width:760px;margin:0 0 56px}
+.big{font-size:clamp(2.4rem,8vw,4.4rem);font-weight:700;margin:0}
+#pledge{background:var(--fg);color:#fff;border:0}
+#pledge .label{color:#aaa}
+#pledge .wrap{padding:120px 24px;text-align:center}
+#pledge p.pl{font-size:clamp(1.3rem,3.6vw,2.1rem);font-weight:500;line-height:1.8;max-width:760px;margin:0 auto}
+footer{background:var(--fg);color:#888;text-align:center;font-size:.8rem;padding:0 24px 32px;letter-spacing:.1em}
+@media(max-width:600px){.wrap{padding:64px 20px}.bar{padding:10px 20px}.rank article{grid-template-columns:1fr}.sub{margin-top:56px}h2{margin-bottom:32px}}
+</style>
+</head>
+<body>
+<header>
+<div class="bar">
+<a class="brand" href="#hello">L T H : 이태훈</a>
+<nav aria-label="섹션 이동">
+<a href="#hello">인사말</a><a href="#career">나의 커리어</a><a href="#strengths">장점과 특징</a><a href="#want">내가 원하는 나</a><a href="#pledge">나의 다짐</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section id="hello">
+<div class="wrap">
+<p class="label">HELLO</p>
+<h1 class="name">L T H : 이태훈</h1>
+<p class="greet">안녕하세요,<br>문장으로 나라는 사람을 온전히 표현하진 못하지만 최대한 저를 표현하고 이해시키도록 노력하였습니다.</p>
+</div>
+</section>
+
+<section id="career">
+<div class="wrap">
+<p class="label">CAREER</p>
+<h2>나의 커리어</h2>
+<ol class="tl">
+<li><small>EDUCATION</small>염광메디텍고등학교 졸업</li>
+<li><small>EDUCATION</small>oo대학 간호학과 졸업</li>
+<li><small>WORK</small>oo대학 병원 근무</li>
+</ol>
+
+<div class="sub">
+<p class="label">FUTURE ME</p>
+<h3 style="font-size:1.5rem;margin-bottom:28px">미래의 나</h3>
+<div class="meta" style="margin:0 0 40px;max-width:none">
+<div><span>이름</span><b>이태훈</b></div>
+<div><span>나이</span><b>28세</b></div>
+<div><span>근무 장소</span><b>대학병원</b></div>
+<div><span>희망 직업</span><b>응급의학과 간호사</b></div>
+</div>
+<div class="grid">
+<div class="card"><h3>직업을 선택한 이유</h3><ul><li>생명존중</li><li>직업의 안정성</li><li>사회적 필요성</li></ul></div>
+<div class="card"><h3>AI가 도와줄 일</h3><ul><li>서류 작업 자동화</li><li>모니터링 및 실시간 예측</li><li>물리적 보조</li><li>간호 교육 및 임상 지원</li></ul></div>
+<div class="card"><h3>내가 직접 맡을 일</h3><ul><li>환자 간호</li><li>응급 대처 및 모니터링</li><li>간호 기록 및 인수인계</li><li>환자 교육 및 정서적 교류</li></ul></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="strengths">
+<div class="wrap">
+<p class="label">STRENGTHS</p>
+<h2>나의 장점과 특징</h2>
+<div class="strengths">
+<div><small>01</small>성실함</div>
+<div><small>02</small>솔직함</div>
+<div><small>03</small>최선을 다함</div>
+</div>
+
+<div class="sub">
+<p class="label">AI ERA COMPETENCY</p>
+<h3 style="font-size:1.5rem;margin-bottom:28px">내가 기르고 싶은 AI 시대 역량 TOP 3</h3>
+<div class="rank">
+<article>
+<div class="n">1위</div>
+<div><h3>윤리·책임 의식</h3>
+<p class="why">간호사의 작은 실수나 판단 하나가 환자의 생사 및 안전과 바로 직결되기 때문입니다.</p>
+<div class="plan"><b>앞으로의 실천 계획</b>책을 많이 읽으며 마음의 학문을 쌓고, 나의 생각과 사고를 자주 하는 습관을 가집니다. 또한 사회적 문제를 주의 깊게 바라보며 이익을 보는 것이 아닌 윤리적 관점에서 판단합니다.</div></div>
+</article>
+<article>
+<div class="n">2위</div>
+<div><h3>소통·협업 능력</h3>
+<p class="why">다양한 의료진들과 협업하며 환자에게 최적의 간호 서비스를 제공하는 데 기여하고, 환자와 소통하여 환자에게 도움이 되기 위해서입니다.</p>
+<div class="plan"><b>앞으로의 실천 계획</b>학교에서의 조별과제 등 여러 사람과 협업하는 일에 적극적으로 참여하고, 동료들과 협동하여 어떠한 일을 해내는 경험을 갖습니다. 또한 친구들과 원만한 교우관계를 형성하여 정서적 교류를 증진합니다.</div></div>
+</article>
+<article>
+<div class="n">3위</div>
+<div><h3>AI 활용 능력</h3>
+<p class="why">AI를 통해 단순 서류 업무와 실수를 줄이고, 환자 상태 파악과 직접 케어에 더 집중하기 위해서입니다.</p>
+<div class="plan"><b>앞으로의 실천 계획</b>어떠한 일을 할 때 AI를 활용하여 일상에서 AI를 사용해 봅니다. 이때 AI의 의견을 그대로 사용하는 것이 아닌, AI의 말을 내가 다시 한번 판단하고 생각하는 과정을 거쳐 올바르게 사용합니다. 또한 AI를 사용할 때 목적에 맞는 AI를 선택합니다.</div></div>
+</article>
+</div>
+</div>
+</div>
+</section>
+
+<section id="want">
+<div class="wrap">
+<p class="label">WHO I WANT TO BE</p>
+<h2>내가 원하는 나</h2>
+<p class="quote">“누구에게나 최고가 아니어도<br>누구에게도 최악이 아닌 사람”</p>
+<p class="big">“좋은 사람”</p>
+</div>
+</section>
+
+<section id="pledge">
+<div class="wrap">
+<p class="label">MY PLEDGE</p>
+<h2 style="margin-bottom:56px">나의 다짐</h2>
+<p class="pl">“언제나 나의 최선을 하고<br>후회하지 않고 부끄럽지 않은 삶을 살자”</p>
+</div>
+</section>
+</main>
+<footer>L T H : 이태훈</footer>
+
+<script>
+(function(){var h=document.querySelector('header');function s(){document.documentElement.style.setProperty('--hh',h.offsetHeight+'px')}s();addEventListener('resize',s)})();
+</script>
+</body>
+</html>

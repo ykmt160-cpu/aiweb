@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>미래의 치과위생사 김연하</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<style>
+:root{--sky:#7cc8f0;--sky-d:#2b8fc7;--mint:#8fe3cf;--mint-d:#1fa88a;--ink:#23455c;--bg:#f2fbfd;--card:#ffffff;--soft:#e4f6fa;--line:#cdebf3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky:#4aa8d8;--sky-d:#8fd3f5;--mint:#2c8f7c;--mint-d:#7fe0c8;--ink:#e3f3f8;--bg:#0f2431;--card:#173446;--soft:#143040;--line:#285068}}
+:root[data-theme="dark"]{--sky:#4aa8d8;--sky-d:#8fd3f5;--mint:#2c8f7c;--mint-d:#7fe0c8;--ink:#e3f3f8;--bg:#0f2431;--card:#173446;--soft:#143040;--line:#285068}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:19px;line-height:1.7}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:2px solid var(--line);display:flex;justify-content:center;align-items:center;gap:8px;padding:12px 24px}
+nav b{margin-right:auto;font-size:20px;color:var(--sky-d)}
+nav a{color:var(--ink);text-decoration:none;padding:6px 16px;border-radius:999px;font-size:17px}
+nav a:hover{background:var(--mint);color:#17483f}
+section{padding:96px 24px}
+.wrap{max-width:1000px;margin:0 auto}
+h2{font-size:40px;margin:0 0 8px;color:var(--sky-d);text-align:center}
+.sub{text-align:center;margin:0 0 48px;color:var(--mint-d);font-size:20px}
+.hero{background:linear-gradient(135deg,var(--sky) 0%,var(--mint) 100%);text-align:center;padding:110px 24px 120px;position:relative;overflow:hidden;color:#17394d}
+.hero h1{font-size:60px;margin:16px 0;line-height:1.25}
+.hero .tag{display:inline-block;background:rgba(255,255,255,.75);padding:6px 20px;border-radius:999px;font-size:20px}
+.key{display:inline-block;margin-top:28px;background:#fff;color:#1f7fb3;font-size:34px;padding:20px 40px;border-radius:28px;box-shadow:0 8px 0 rgba(31,127,179,.2)}
+.tools{display:flex;justify-content:center;gap:28px;margin-bottom:8px}
+.tools svg{width:64px;height:64px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{background:var(--card);border:3px solid var(--line);border-radius:28px;padding:28px 32px}
+.card h3{margin:0 0 10px;font-size:26px;color:var(--mint-d)}
+.card p{margin:0}
+.profile{display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center;margin-bottom:32px}
+.avatar{background:linear-gradient(160deg,var(--sky),var(--mint));border-radius:50%;width:220px;height:220px;display:flex;align-items:center;justify-content:center;margin:auto}
+.avatar svg{width:120px;height:120px}
+.facts{background:var(--card);border:3px solid var(--line);border-radius:28px;padding:24px 32px}
+.facts div{display:flex;gap:16px;padding:6px 0;border-bottom:2px dashed var(--line)}
+.facts div:last-child{border:0}
+.facts span{width:110px;color:var(--mint-d);flex:none}
+.alt{background:var(--soft)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.vs .card{text-align:center;padding:40px 32px}
+.vs svg{width:80px;height:80px;margin-bottom:8px}
+.vs .ai{border-color:var(--sky)}
+.vs .me{border-color:var(--mint)}
+.vs h3{font-size:30px}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.skill{background:var(--card);border-radius:28px;border:3px solid var(--line);padding:28px;border-top:10px solid var(--sky)}
+.skill:nth-child(2){border-top-color:var(--mint)}
+.skill .n{display:inline-flex;width:44px;height:44px;border-radius:50%;background:var(--sky);color:#fff;align-items:center;justify-content:center;font-size:22px}
+.skill:nth-child(2) .n{background:var(--mint-d)}
+.skill h3{font-size:25px;margin:12px 0}
+.skill h4{margin:16px 0 4px;color:var(--mint-d);font-size:18px}
+.skill p{margin:0;font-size:17px}
+.pledge{background:linear-gradient(135deg,var(--sky),var(--mint));text-align:center;color:#17394d}
+.pledge h2{color:#17394d}
+.pledge .big{background:#fff;color:#1f7fb3;display:inline-block;font-size:38px;padding:24px 44px;border-radius:32px;margin:12px 0 28px;box-shadow:0 8px 0 rgba(31,127,179,.2)}
+.pledge p{max-width:700px;margin:0 auto 12px;font-size:22px}
+footer{text-align:center;padding:24px;color:var(--mint-d)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<symbol id="tooth" viewBox="0 0 64 64"><path d="M32 10c-6-5-18-4-20 8-1 8 3 12 4 20 1 8 3 16 7 16s4-10 9-10 5 10 9 10 6-8 7-16c1-8 5-12 4-20-2-12-14-13-20-8z" fill="#fff" stroke="#2b8fc7" stroke-width="3" stroke-linejoin="round"/><path d="M22 20c2-2 5-2 7 0" stroke="#8fe3cf" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="mirror" viewBox="0 0 64 64"><circle cx="22" cy="22" r="14" fill="#e4f6fa" stroke="#2b8fc7" stroke-width="3"/><path d="M14 18c2-4 6-6 10-5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M32 32l22 22" stroke="#1fa88a" stroke-width="6" stroke-linecap="round"/></symbol>
+<symbol id="probe" viewBox="0 0 64 64"><path d="M12 54L46 20" stroke="#1fa88a" stroke-width="6" stroke-linecap="round"/><path d="M46 20c4-4 8-2 10 0" stroke="#2b8fc7" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="14" cy="52" r="4" fill="#7cc8f0"/></symbol>
+<symbol id="brush" viewBox="0 0 64 64"><rect x="6" y="40" width="40" height="10" rx="5" fill="#8fe3cf" stroke="#1fa88a" stroke-width="3"/><rect x="42" y="38" width="16" height="14" rx="3" fill="#7cc8f0" stroke="#2b8fc7" stroke-width="3"/><path d="M46 38v-8M51 38v-8M56 38v-8" stroke="#2b8fc7" stroke-width="3" stroke-linecap="round"/></symbol>
+</defs>
+</svg>
+
+<nav>
+<b>🦷 김연하</b>
+<a href="#hello">인사말</a>
+<a href="#future">나의 미래 모습</a>
+<a href="#ai">AI와 치과위생사</a>
+<a href="#skills">AI 시대 역량</a>
+<a href="#pledge">나의 다짐</a>
+</nav>
+
+<section class="hero" id="hello">
+<div class="tools"><svg><use href="#tooth"/></svg><svg><use href="#mirror"/></svg><svg><use href="#probe"/></svg><svg><use href="#brush"/></svg></div>
+<span class="tag">안녕하세요!</span>
+<h1>미래의 치과위생사<br>김연하</h1>
+<div class="key">“환자들의 치아 건강을 책임지겠습니다.”</div>
+</section>
+
+<section id="future">
+<div class="wrap">
+<h2>나의 미래 모습</h2>
+<p class="sub">치위생사가 된 24살의 나</p>
+<div class="profile">
+<div class="avatar"><svg><use href="#tooth"/></svg></div>
+<div class="facts">
+<div><span>이름</span>김연하</div>
+<div><span>나이</span>24살</div>
+<div><span>직업</span>치위생사</div>
+<div><span>일하는 곳</span>동네 병원, 대학병원</div>
+</div>
+</div>
+<div class="cards">
+<div class="card"><h3>🦷 치위생사를 선택한 이유</h3><p>노인분들이나 일반 사람들의 치아 건강을 책임지고 싶어서 치위생사를 선택했습니다.</p></div>
+<div class="card"><h3>🩺 내가 맡을 역할</h3><p>동네 병원과 대학병원에서 진료 보조 역할을 직접 맡습니다.</p></div>
+</div>
+</div>
+</section>
+
+<section class="alt" id="ai">
+<div class="wrap">
+<h2>AI와 치과위생사</h2>
+<p class="sub">AI와 내가 함께 일하는 모습</p>
+<div class="vs">
+<div class="card ai"><svg><use href="#mirror"/></svg><h3>AI가 도와줄 일</h3><p>환자의 잇몸 영상을 분석하는 일을 AI가 도와줍니다.</p></div>
+<div class="card me"><svg><use href="#probe"/></svg><h3>내가 직접 맡을 일</h3><p>진료 보조 역할은 제가 직접 맡습니다.</p></div>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<div class="wrap">
+<h2>내가 기를 AI 시대 역량 TOP 3</h2>
+<p class="sub">각 역량이 필요한 이유와 실천 계획</p>
+<div class="skills">
+<div class="skill"><span class="n">1</span><h3>소통·협력 능력</h3>
+<h4>필요한 이유</h4><p>환자와의 신뢰를 쌓고 원활하게 소통하기 위해 필요합니다.</p>
+<h4>실천 계획</h4><p>상대방의 말을 끝까지 듣고, 모둠활동을 통해 나의 주장을 이야기하며 의견을 조율하겠습니다.</p></div>
+<div class="skill"><span class="n">2</span><h3>질문·문제 정의력</h3>
+<h4>필요한 이유</h4><p>적절한 구강 건강 관리 예방법을 알려주기 위해 필요합니다.</p>
+<h4>실천 계획</h4><p>모르는 것이 있으면 조금 더 적극적으로 질문하겠습니다.</p></div>
+<div class="skill"><span class="n">3</span><h3>윤리·책임 의식</h3>
+<h4>필요한 이유</h4><p>환자의 건강과 안전을 지키고 신뢰를 얻기 위해 필요합니다.</p>
+<h4>실천 계획</h4><p>다른 사람을 존중하고 배려하며, 맡은 일을 책임감 있게 행동하겠습니다.</p></div>
+</div>
+</div>
+</section>
+
+<section class="pledge" id="pledge">
+<div class="wrap">
+<div class="tools"><svg><use href="#brush"/></svg><svg><use href="#tooth"/></svg><svg><use href="#mirror"/></svg></div>
+<h2>나의 다짐</h2>
+<div class="big">“환자들의 치아 건강을 책임지겠습니다.”</div>
+<p>노인분들이나 일반 사람들의 치아 건강을 책임지는 치과위생사가 되는 것이 저의 꿈입니다.</p>
+<p>소통·협력, 질문·문제 정의, 윤리·책임 의식을 기르며 그 꿈을 이루겠습니다.</p>
+</div>
+</section>
+
+<footer>🦷 미래의 치과위생사 김연하</footer>
+</body>
+</html>

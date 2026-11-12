@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>작품 목록 만들기 (works.js 생성기)</title>
+<style>
+body{font-family:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif;max-width:680px;margin:40px auto;padding:0 20px;line-height:1.7;color:#1c2033}
+h1{font-size:24px}
+ol{padding-left:20px}
+.box{border:2px dashed #b9bde0;border-radius:14px;padding:24px;text-align:center;margin:20px 0;background:#f6f7fb}
+button,label.btn{background:#5b5bf0;color:#fff;border:0;border-radius:10px;padding:12px 22px;font:inherit;font-weight:700;cursor:pointer;display:inline-block}
+button:disabled{opacity:.4;cursor:not-allowed}
+pre{background:#12131c;color:#d6d9f5;padding:14px;border-radius:10px;overflow:auto;font-size:13px;max-height:220px}
+.warn{color:#b4451f}
+</style>
+</head>
+<body>
+<h1>작품 목록 만들기</h1>
+<p>파이썬 없이 <b>works.js</b>를 만드는 도구입니다. 이 파일은 <b>index.html과 같은 폴더</b>에서 열어 주세요.</p>
+<ol>
+  <li>아래 버튼으로 <b>works 폴더</b>를 선택합니다. (1반~5반 폴더가 들어 있는 폴더)</li>
+  <li>결과를 확인하고 <b>works.js 내려받기</b>를 누릅니다.</li>
+  <li>내려받은 works.js를 index.html이 있는 폴더에 덮어씁니다.</li>
+</ol>
+<div class="box">
+  <label class="btn">works 폴더 선택<input id="dir" type="file" webkitdirectory multiple hidden></label>
+</div>
+<div id="out"></div>
+<button id="dl" disabled>works.js 내려받기</button>
+<pre id="pre" hidden></pre>
+
+<script>
+var HTML=/\.html?$/i, IMG=['png','jpg','jpeg','webp','gif','svg'], items=[];
+var nfc=function(s){return s.normalize('NFC')};
+
+function findClass(parts){
+  for(var i=parts.length-2;i>=0;i--){
+    var c=classOf(parts[i]); if(c) return c;
+  }
+  var stem=parts[parts.length-1].replace(HTML,'');
+  var c2=classOf(stem); if(c2) return c2;
+  var m2=stem.match(/^\s*0?([1-5])\s*[_\-\s]+/);
+  return m2?+m2[1]:null;
+}
+function classOf(t){
+  var m=t.match(/(\d+)\s*반/);
+  if(m){var n=+m[1]; return n>=1&&n<=5?n:null}
+  m=t.match(/^\s*(?:class[\s_-]*)?0?([1-5])\s*$/i); if(m) return +m[1];
+  m=t.match(/^\s*\d+\s*[-_]\s*0?([1-5])\s*$/); if(m) return +m[1];
+  return null;
+}
+function dispName(fn){
+  var n=fn.replace(HTML,'').replace(/^\s*[1-5]\s*(?:반)?\s*[_\-\s]+/,'').replace(/_/g,' ').trim();
+  return n||fn;
+}
+
+document.getElementById('dir').addEventListener('change',function(e){
+  var raw={};
+  var files=Array.prototype.map.call(e.target.files,function(f){var k=nfc(f.webkitRelativePath);raw[k]=f.webkitRelativePath;return k});
+  var set={}; files.forEach(function(p){set[p]=1});
+  items=[]; var skipped=[], rootName='';
+  files.forEach(function(p){
+    if(!HTML.test(p)) return;
+    var parts=p.split('/'), rparts=raw[p].split('/'), cls=findClass(parts);
+    var wi=parts.indexOf('works'), st=wi>-1?wi+1:1, root=wi>-1?'works':rparts[0];
+    rootName=root;
+    var rel=root+'/'+rparts.slice(st).join('/');
+    if(!cls){skipped.push(rel);return}
+    var base=p.replace(HTML,''), thumb='';
+    for(var i=0;i<IMG.length;i++){ var k=base+'.'+IMG[i]; if(set[k]){thumb=root+'/'+raw[k].split('/').slice(st).join('/');break} }
+    items.push({cls:cls,name:dispName(parts[parts.length-1]),file:rel,thumb:thumb});
+  });
+  items.sort(function(a,b){return a.cls-b.cls||a.name.localeCompare(b.name,'ko')});
+  var h='<p><b>작품 '+items.length+'개</b>를 찾았어요. ';
+  for(var c=1;c<=5;c++) h+=c+'반 '+items.filter(function(w){return w.cls===c}).length+'개 · ';
+  h=h.replace(/ · $/,'')+'</p>';
+  if(skipped.length) h+='<p class="warn">반을 알 수 없어 제외된 파일: '+skipped.join(', ')+'</p>';
+  if(items.length) h+='<p>작품 경로 예시: <code>'+items[0].file+'</code><br>→ <b>index.html과 같은 폴더</b>에 <b>'+rootName+'</b> 폴더가 있어야 작품이 열려요.</p>';
+  document.getElementById('out').innerHTML=h;
+  var text='// update.html 이 만든 파일입니다.\nwindow.WORKS = '+JSON.stringify(items,null,1)+';\n';
+  var pre=document.getElementById('pre'); pre.hidden=false; pre.textContent=text;
+  document.getElementById('dl').disabled=!items.length;
+  document.getElementById('dl').onclick=function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([text],{type:'text/javascript;charset=utf-8'}));
+    a.download='works.js'; a.click();
+  };
+});
+</script>
+</body>
+</html>

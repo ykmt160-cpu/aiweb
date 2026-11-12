@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>바이블쌤의 AI 교실: 미래를 코딩하다</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--mint:#7fdcc4;--mint-d:#2fa58a;--mint-l:#e6f8f2;--choco:#5b3a29;--choco-l:#8a5d45;--cream:#fffaf2;--card:#ffffff;--text:#4a2f21;--shadow:rgba(91,58,41,.15);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--mint:#5cc9ae;--mint-d:#7fe0c8;--mint-l:#1f3a33;--choco:#e8cdb8;--choco-l:#d0a98c;--cream:#241a14;--card:#33251d;--text:#f3e4d6;--shadow:rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--mint:#5cc9ae;--mint-d:#7fe0c8;--mint-l:#1f3a33;--choco:#e8cdb8;--choco-l:#d0a98c;--cream:#241a14;--card:#33251d;--text:#f3e4d6;--shadow:rgba(0,0,0,.4)}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--text);font-family:'Gaegu','Jua',sans-serif;font-size:19px;line-height:1.6}
+h1,h2,h3{font-family:'Jua',sans-serif;font-weight:400;margin:0;color:var(--choco)}
+nav{position:sticky;top:0;z-index:10;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px;background:var(--mint);box-shadow:0 3px 0 var(--shadow)}
+nav a{font-family:'Jua';color:#3b2418;text-decoration:none;padding:6px 16px;border-radius:99px;background:rgba(255,255,255,.55)}
+nav a:hover{background:#fff}
+section{max-width:1000px;margin:0 auto;padding:64px 20px}
+.title{text-align:center;font-size:clamp(26px,5vw,38px);margin-bottom:8px}
+.sub{text-align:center;color:var(--choco-l);margin-bottom:32px}
+.hero{text-align:center;padding-top:48px}
+.hero h1{font-size:clamp(30px,7vw,54px);line-height:1.25}
+.hero h1 span{color:var(--mint-d)}
+.bubble{position:relative;display:inline-block;max-width:640px;margin:28px auto 0;background:var(--card);border:3px solid var(--choco);border-radius:28px;padding:20px 26px;box-shadow:6px 6px 0 var(--mint)}
+.chars{display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,6vw,60px);margin-top:36px}
+.chars svg{width:clamp(120px,32vw,200px);height:auto}
+.bob{animation:bob 3s ease-in-out infinite}.bob.d{animation-delay:1.4s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.bob{animation:none}}
+.card{background:var(--card);border:3px solid var(--choco);border-radius:26px;padding:24px;box-shadow:6px 6px 0 var(--mint)}
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.profile dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin:16px 0 0}
+.profile dt{font-family:'Jua';color:var(--mint-d)}
+.profile dd{margin:0}
+.tag{display:inline-block;font-family:'Jua';background:var(--mint);color:#3b2418;border-radius:99px;padding:2px 14px;margin-bottom:10px}
+ul{padding-left:22px;margin:8px 0 0}li{margin:4px 0}
+.ai h3{color:var(--mint-d)}
+.rank{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.medal{flex:none;width:52px;height:52px;border-radius:50%;background:var(--mint);border:3px solid var(--choco);display:grid;place-items:center;font-family:'Jua';font-size:22px;color:#3b2418}
+.block{background:var(--mint-l);border-radius:16px;padding:12px 16px;margin-top:12px}
+.block b{font-family:'Jua';font-weight:400;color:var(--mint-d)}
+.subj{text-align:center}
+.subj .ico{width:84px;height:84px;margin:0 auto 10px;border-radius:50%;background:var(--mint-l);border:3px dashed var(--mint-d);display:grid;place-items:center;font-size:42px}
+.subj h3{font-size:24px}
+.contact{text-align:center}
+.contact a{color:inherit;text-decoration:none}
+.cbox{display:inline-flex;align-items:center;gap:12px;margin:8px;padding:14px 26px;background:var(--card);border:3px solid var(--choco);border-radius:99px;box-shadow:4px 4px 0 var(--mint);font-family:'Jua';font-size:20px}
+footer{text-align:center;padding:28px;background:var(--choco);color:var(--cream);font-family:'Jua'}
+</style>
+</head>
+<body>
+<nav>
+<a href="#home">Home</a><a href="#about">About Me</a><a href="#skills">My Competencies</a><a href="#teach">What I Teach</a><a href="#contact">Contact</a>
+</nav>
+
+<section class="hero" id="home">
+<h1>바이블쌤의 AI 교실<br><span>미래를 코딩하다</span></h1>
+<div class="bubble">안녕하세요! 바이블쌤의 AI 교실에 오신 것을 환영합니다. 미래를 향한 우리의 여정, 함께 시작해 볼까요?</div>
+<div class="chars">
+<!-- 컴퓨터 캐릭터 -->
+<svg class="bob" viewBox="0 0 200 200" role="img" aria-label="귀여운 컴퓨터 캐릭터">
+<rect x="20" y="20" width="160" height="116" rx="22" fill="#7fdcc4" stroke="#5b3a29" stroke-width="6"/>
+<rect x="36" y="36" width="128" height="84" rx="14" fill="#fffaf2" stroke="#5b3a29" stroke-width="4"/>
+<circle cx="76" cy="72" r="9" fill="#5b3a29"/><circle cx="124" cy="72" r="9" fill="#5b3a29"/>
+<circle cx="79" cy="69" r="3" fill="#fff"/><circle cx="127" cy="69" r="3" fill="#fff"/>
+<path d="M82 92q18 16 36 0" fill="none" stroke="#5b3a29" stroke-width="5" stroke-linecap="round"/>
+<ellipse cx="56" cy="90" rx="9" ry="6" fill="#ffb3a7"/><ellipse cx="144" cy="90" rx="9" ry="6" fill="#ffb3a7"/>
+<rect x="84" y="138" width="32" height="20" fill="#8a5d45" stroke="#5b3a29" stroke-width="5"/>
+<rect x="52" y="156" width="96" height="22" rx="11" fill="#5b3a29"/>
+<path d="M100 20v-14" stroke="#5b3a29" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="6" r="6" fill="#ffb3a7" stroke="#5b3a29" stroke-width="3"/>
+</svg>
+<!-- 휴머노이드 캐릭터 -->
+<svg class="bob d" viewBox="0 0 200 200" role="img" aria-label="귀여운 휴머노이드 캐릭터">
+<path d="M100 14v-8" stroke="#5b3a29" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="8" r="6" fill="#ffb3a7" stroke="#5b3a29" stroke-width="3"/>
+<rect x="38" y="18" width="124" height="88" rx="38" fill="#8a5d45" stroke="#5b3a29" stroke-width="6"/>
+<rect x="52" y="34" width="96" height="56" rx="26" fill="#e6f8f2" stroke="#5b3a29" stroke-width="4"/>
+<circle cx="80" cy="62" r="9" fill="#2fa58a"/><circle cx="120" cy="62" r="9" fill="#2fa58a"/>
+<circle cx="83" cy="59" r="3" fill="#fff"/><circle cx="123" cy="59" r="3" fill="#fff"/>
+<path d="M88 76q12 10 24 0" fill="none" stroke="#5b3a29" stroke-width="4" stroke-linecap="round"/>
+<rect x="30" y="52" width="10" height="26" rx="5" fill="#7fdcc4" stroke="#5b3a29" stroke-width="3"/><rect x="160" y="52" width="10" height="26" rx="5" fill="#7fdcc4" stroke="#5b3a29" stroke-width="3"/>
+<rect x="56" y="112" width="88" height="70" rx="28" fill="#7fdcc4" stroke="#5b3a29" stroke-width="6"/>
+<path d="M100 130c-6-9-18-1-10 8l10 10 10-10c8-9-4-17-10-8z" fill="#fffaf2" stroke="#5b3a29" stroke-width="3"/>
+<circle cx="44" cy="140" r="12" fill="#8a5d45" stroke="#5b3a29" stroke-width="4"/><circle cx="156" cy="140" r="12" fill="#8a5d45" stroke="#5b3a29" stroke-width="4"/>
+</svg>
+</div>
+</section>
+
+<section id="about">
+<h2 class="title">👩‍🏫 About Me</h2>
+<p class="sub">나를 소개합니다</p>
+<div class="grid g2">
+<div class="card profile">
+<span class="tag">프로필</span>
+<dl>
+<dt>이름</dt><dd>김바이블</dd>
+<dt>나이</dt><dd>27살</dd>
+<dt>직업 및 근무지</dt><dd>염메고등학교 교사</dd>
+<dt>소개</dt><dd>학생의 개성과 가능성을 발견하고 AI와 디지털 도구를 활용해 배움을 돕는 교사</dd>
+</dl>
+</div>
+<div class="card">
+<span class="tag">💡 교사를 선택한 이유</span>
+<p>학생들이 새로운 것을 배우고 성장하는 모습을 돕고 보는 것이 보람있기 때문</p>
+</div>
+</div>
+<h3 style="text-align:center;font-size:28px;margin:44px 0 20px">AI 시대의 교사로서의 역할</h3>
+<div class="grid g2">
+<div class="card ai">
+<span class="tag">🖥️ AI가 도와주는 일</span>
+<ul>
+<li>학생 수준을 분석하여 개별 학습자료 및 퀴즈 제공</li>
+<li>학생 데이터 분석</li>
+<li>수업 아이디어 제안</li>
+<li>반복적인 행정업무 보조</li>
+</ul>
+</div>
+<div class="card">
+<span class="tag">🤖 내가 직접 맡을 일</span>
+<ul>
+<li>학생의 감정을 이해하고 공감하기</li>
+<li>올바른 가치관과 태도 지도하기</li>
+<li>AI 데이터 분석 결과를 바탕으로 학생별 도움 제공하기</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<h2 class="title">⭐ My Competencies</h2>
+<p class="sub">내가 중요하게 생각하는 AI 시대의 핵심 역량 TOP 3</p>
+<div class="grid g3">
+<div class="card">
+<div class="rank"><div class="medal">1위</div><h3>AI 활용 능력</h3></div>
+<div class="block"><b>필요한 이유</b><br>수업 자료와 학습 활동을 더 효과적으로 만들고 학생별 학습을 지원하기 위해 필요하다.</div>
+<div class="block"><b>실천 계획</b><br>다양한 생성형 AI 도구를 직접 사용하고, 목적에 맞는 결과를 얻도록 프롬프트를 연습하겠다.</div>
+</div>
+<div class="card">
+<div class="rank"><div class="medal">2위</div><h3>소통·협업 능력</h3></div>
+<div class="block"><b>필요한 이유</b><br>학생·학부모·동료 교사와 신뢰를 쌓고 함께 문제를 해결해야 하기 때문이다.</div>
+<div class="block"><b>실천 계획</b><br>상대방의 말을 끝까지 듣고, 모둠 활동과 공동 프로젝트에서 의견을 조율하겠다.</div>
+</div>
+<div class="card">
+<div class="rank"><div class="medal">3위</div><h3>비판적 사고</h3></div>
+<div class="block"><b>필요한 이유</b><br>AI가 만든 정보가 항상 정확하거나 공정한 것은 아니므로 내용을 확인하고 판단해야 한다.</div>
+<div class="block"><b>실천 계획</b><br>자료의 출처와 근거를 확인하고, 여러 관점에서 생각한 뒤 판단하는 습관을 기르겠다.</div>
+</div>
+</div>
+</section>
+
+<section id="teach">
+<h2 class="title">📚 What I Teach</h2>
+<p class="sub">가르치는 과목</p>
+<div class="grid g4">
+<div class="card subj"><div class="ico">🤖</div><h3>인공지능 기초</h3></div>
+<div class="card subj"><div class="ico">📊</div><h3>데이터 분석</h3></div>
+<div class="card subj"><div class="ico">💻</div><h3>정보</h3></div>
+<div class="card subj"><div class="ico">⌨️</div><h3>프로그래밍</h3></div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2 class="title">💌 Contact</h2>
+<p class="sub">연락처</p>
+<a class="cbox" href="mailto:abc@abc.com">✉️ abc@abc.com</a>
+<a class="cbox" href="tel:010-0000-0000">📞 010-0000-0000</a>
+</section>
+
+<footer>바이블쌤의 AI 교실: 미래를 코딩하다</footer>
+</body>
+</html>

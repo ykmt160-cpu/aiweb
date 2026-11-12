@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 시대의 응급구조사, 생명을 지키는 사람들</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{--navy:#102A43;--red:#E63946;--white:#fff;--sky:#EAF3F8;--ink:#243B53;--muted:#52667a;color-scheme:light;
+--font:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--font);color:var(--ink);background:var(--white);line-height:1.75;word-break:keep-all;overflow-x:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 0;position:relative}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.18em;color:var(--red);margin-bottom:12px}
+h2{font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.35;color:var(--navy);font-weight:900;margin-bottom:24px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+/* nav */
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:rgba(16,42,67,.96);backdrop-filter:blur(8px);box-shadow:0 2px 14px rgba(0,0,0,.18)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:60}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:900;letter-spacing:.12em}
+.logo svg{width:26px;height:26px}
+.menu{display:flex;gap:36px;list-style:none}
+.menu a{color:#d9e2ec;font-weight:500;font-size:.98rem;position:relative;padding:6px 0;transition:color .3s}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--red);transition:width .3s}
+.menu a:hover,.menu a.active{color:var(--red)}
+.menu a:hover::after,.menu a.active::after{width:100%}
+.burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer}
+.burger span{display:block;width:24px;height:2px;background:#fff;margin:5px auto;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* hero */
+#hero{min-height:100vh;background:linear-gradient(135deg,#0b2036 0%,var(--navy) 55%,#1b4468 100%);color:#fff;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
+.ecgbg{position:absolute;left:0;right:0;top:50%;width:100%;height:220px;transform:translateY(-50%);opacity:.22;pointer-events:none}
+.ecgbg path{fill:none;stroke:var(--red);stroke-width:2.5;stroke-dasharray:1400;stroke-dashoffset:1400;animation:ecg 5s linear infinite}
+@keyframes ecg{to{stroke-dashoffset:-1400}}
+.hgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative}
+.eyebrow{font-size:.82rem;letter-spacing:.22em;font-weight:700;color:#ff8d96;margin-bottom:18px}
+#hero h1{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.25;font-weight:900;margin-bottom:22px}
+#hero h1 em{font-style:normal;color:var(--red)}
+.lead{color:#d9e2ec;font-size:1.08rem;max-width:560px;margin-bottom:22px}
+.hl{border-left:4px solid var(--red);padding:6px 0 6px 16px;font-weight:500;margin-bottom:32px;color:#fff}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 28px;border-radius:999px;font-weight:700;border:2px solid var(--red);transition:.3s;cursor:pointer;font-family:inherit;font-size:1rem}
+.btn.p{background:var(--red);color:#fff}
+.btn.p:hover{background:#c92d3a;border-color:#c92d3a;transform:translateY(-2px)}
+.btn.g{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn.g:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.hart{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:20px;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.hart svg{width:100%;height:auto;display:block}
+/* about */
+#start{background:var(--white)}
+.two{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:start}
+.intro p{margin-bottom:14px;color:var(--ink)}
+.profile{background:var(--sky);border-radius:22px;padding:28px;border-top:5px solid var(--red);box-shadow:0 10px 30px rgba(16,42,67,.08)}
+.profile h3{color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.profile dl{display:grid;grid-template-columns:70px 1fr;gap:10px 12px}
+.profile dt{font-weight:700;color:var(--red);font-size:.92rem}
+.profile dd{color:var(--navy);font-weight:500}
+blockquote{margin-top:36px;background:var(--navy);color:#fff;border-radius:20px;padding:34px 36px;position:relative;font-size:1.15rem;font-weight:500}
+blockquote::before{content:"“";position:absolute;top:-6px;left:20px;font-size:5rem;color:var(--red);line-height:1;font-family:Georgia,serif}
+blockquote small{display:block;margin-top:10px;font-size:.82rem;color:#9fb3c8;letter-spacing:.1em}
+/* hands */
+#hands,#skills{background:var(--sky)}
+.def{font-size:1.08rem;max-width:820px;margin-bottom:40px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:#fff;border-radius:20px;padding:26px;box-shadow:0 6px 20px rgba(16,42,67,.08);transition:transform .35s,box-shadow .35s;border-bottom:4px solid transparent}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 38px rgba(16,42,67,.16);border-bottom-color:var(--red)}
+.ico{width:48px;height:48px;border-radius:14px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:1.4rem;margin-bottom:14px}
+.card h4{color:var(--navy);font-size:1.1rem;margin-bottom:8px}
+.card ul{list-style:none}
+.card li{position:relative;padding-left:16px;font-size:.93rem;color:var(--muted);margin-bottom:4px}
+.card li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--red)}
+h3.sub{color:var(--navy);font-size:1.3rem;margin:56px 0 20px}
+h3.sub:first-of-type{margin-top:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scene{padding:0;overflow:hidden}
+.scene .pic{height:170px;background:linear-gradient(135deg,var(--navy),#27567f);display:grid;place-items:center}
+.scene .pic svg{width:100%;height:100%}
+.scene .txt{padding:22px}
+.scene h4{margin-bottom:4px}
+.scene p{font-size:.92rem;color:var(--muted)}
+.callout{margin-top:44px;text-align:center;font-size:1.2rem;font-weight:700;color:var(--navy);padding:26px;border-radius:18px;background:#fff;border:2px solid var(--red)}
+.callout b{color:var(--red)}
+/* AI */
+#ai{background:#fff}
+.vs{display:grid;grid-template-columns:1fr 120px 1fr;gap:20px;align-items:stretch;margin-top:12px}
+.side{border-radius:22px;padding:30px}
+.side.a{background:var(--navy);color:#fff}
+.side.h{background:var(--sky);color:var(--navy);border:2px solid var(--red)}
+.side h4{font-size:1.25rem;margin-bottom:14px}
+.side ul{list-style:none}
+.side li{padding:9px 0;border-bottom:1px solid rgba(128,150,170,.3);font-weight:500}
+.side li:last-child{border:0}
+.mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--red);font-weight:700;font-size:.85rem}
+.mid svg{width:90px;height:90px}
+.mid .pulse{animation:pulse 2.2s ease-in-out infinite;transform-origin:center}
+@keyframes pulse{50%{transform:scale(1.12)}}
+/* skills */
+.top{position:relative;padding:34px}
+.top .n{font-size:.85rem;font-weight:900;letter-spacing:.2em;color:var(--red)}
+.top h4{font-size:1.4rem;margin:6px 0 14px}
+.top h5{color:var(--navy);font-size:.95rem;margin:16px 0 6px}
+.top p{font-size:.95rem;color:var(--muted)}
+/* pledge */
+#pledge{background:linear-gradient(160deg,#0b2036,var(--navy));color:#fff;text-align:center;overflow:hidden}
+#pledge h2{color:#fff}
+#pledge .cross{width:64px;height:64px;margin:0 auto 18px;animation:pulse 2.4s ease-in-out infinite}
+.pl{max-width:760px;margin:0 auto;text-align:left}
+.pl p{margin-bottom:16px;color:#d9e2ec;font-size:1.05rem}
+.fin{max-width:780px;margin:40px auto 0;font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:700;line-height:1.7}
+.fin b{color:var(--red)}
+.ecgl{width:100%;max-width:700px;height:80px;margin:34px auto 0;display:block}
+.ecgl path{fill:none;stroke:var(--red);stroke-width:3;stroke-dasharray:1000;stroke-dashoffset:1000;animation:ecg 4s linear infinite}
+footer{background:#08182a;color:#9fb3c8;text-align:center;padding:44px 24px}
+footer strong{color:#fff;letter-spacing:.14em;display:block;margin-bottom:6px}
+footer p{font-size:.92rem}
+footer .s{margin-top:12px;color:var(--red);font-style:italic}
+@media (max-width:960px){.grid4{grid-template-columns:repeat(2,1fr)}.hgrid,.two{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.vs{grid-template-columns:1fr}.mid{flex-direction:row;padding:6px}.mid svg{width:56px;height:56px}}
+@media (max-width:820px){.burger{display:block}
+.menu{position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--navy);max-height:0;overflow:hidden;transition:max-height .4s}
+.menu.open{max-height:360px}.menu li{border-top:1px solid rgba(255,255,255,.08)}.menu a{display:block;padding:16px 24px}.menu a::after{display:none}
+section{padding:72px 0}}
+@media (max-width:560px){.grid4{grid-template-columns:1fr}.btn{width:100%;text-align:center}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="cross" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#E63946"/><path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6z" fill="#fff"/></symbol></defs></svg>
+
+<nav><div class="wrap nav">
+<a class="logo" href="#hero"><svg><use href="#cross"/></svg>LIFE SAVER</a>
+<button class="burger" id="bg" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+<ul class="menu" id="mn">
+<li><a href="#start">나의 시작</a></li><li><a href="#hands">생명의 손길</a></li><li><a href="#ai">AI의 시선</a></li><li><a href="#skills">핵심의 역량</a></li><li><a href="#pledge">나의 다짐</a></li>
+</ul></div></nav>
+
+<header id="hero">
+<svg class="ecgbg" viewBox="0 0 1200 220" preserveAspectRatio="none"><path d="M0 110H220l25-20 20 20h60l25-90 35 170 30-80h60l25-20 20 20h700"/></svg>
+<div class="wrap hgrid">
+<div>
+<p class="eyebrow">FUTURE EMERGENCY MEDICAL SERVICES</p>
+<h1>AI 시대의 응급구조사,<br><em>생명을 지키는</em> 사람들</h1>
+<p class="lead">첨단 AI 기술과 사람의 따뜻한 손길이 만나 생명을 구하는 미래. 위기의 순간, 가장 먼저 달려가는 응급구조사의 이야기를 소개합니다.</p>
+<p class="hl">“AI는 더 빠르게 분석하고, 응급구조사는 더 정확하게 판단합니다.”</p>
+<div class="btns"><a class="btn p" href="#start">나의 이야기 보기</a><a class="btn g" href="#hands">생명의 손길 알아보기</a></div>
+</div>
+<div class="hart rv"><svg viewBox="0 0 440 300" role="img" aria-label="구급차 일러스트">
+<rect width="440" height="300" rx="14" fill="#16405f"/>
+<circle cx="350" cy="60" r="70" fill="#E63946" opacity=".12"/>
+<path d="M0 240h440v60H0z" fill="#0b2036"/><path d="M0 252h440" stroke="#fff" stroke-dasharray="26 18" opacity=".35"/>
+<g><rect x="70" y="120" width="210" height="106" rx="10" fill="#fff"/><path d="M280 146h56l36 40v40H280z" fill="#fff"/><path d="M294 156h38l26 28h-64z" fill="#9fd0ea"/>
+<rect x="70" y="170" width="302" height="14" fill="#E63946"/>
+<circle cx="130" cy="228" r="22" fill="#102A43"/><circle cx="130" cy="228" r="9" fill="#9fb3c8"/><circle cx="320" cy="228" r="22" fill="#102A43"/><circle cx="320" cy="228" r="9" fill="#9fb3c8"/>
+<rect x="150" y="96" width="46" height="18" rx="6" fill="#E63946"><animate attributeName="opacity" values="1;.25;1" dur="1s" repeatCount="indefinite"/></rect>
+<rect x="104" y="136" width="82" height="28" rx="4" fill="none"/>
+<path d="M165 132h14v10h10v14h-10v10h-14v-10h-10v-14h10z" fill="#E63946"/></g>
+<path d="M30 70h80l12-22 14 44 14-30h60" fill="none" stroke="#fff" stroke-width="3" opacity=".7"/>
+</svg></div>
+</div></header>
+
+<section id="start"><div class="wrap">
+<span class="tag rv">01 · 나의 시작</span>
+<h2 class="rv">생명을 지키는 사람이 되고 싶은 나</h2>
+<div class="two">
+<div class="intro rv">
+<p>안녕하세요. 저는 미래에 응급구조사가 되어 소중한 생명을 지키고 싶은 김지수입니다.</p>
+<p>응급 상황에서 가장 먼저 환자를 만나 상태를 파악하고 필요한 응급처치를 제공하는 응급구조사의 역할에 매력을 느꼈습니다.</p>
+<p>언젠가 전문성과 따뜻한 마음을 갖춘 응급구조사가 되어 사람들에게 도움을 주고 싶습니다.</p>
+</div>
+<div class="profile rv"><h3><svg width="22" height="22"><use href="#cross"/></svg>미래의 나</h3>
+<dl><dt>이름</dt><dd>김지수</dd><dt>나이</dt><dd>27살</dd><dt>직업</dt><dd>응급구조사</dd><dt>근무지</dt><dd>노원소방서</dd><dt>꿈</dt><dd>위기의 순간에 가장 먼저 달려가 생명을 지키는 사람</dd></dl></div>
+</div>
+<blockquote class="rv">“환자를 구조하고 환자의 상태를 가장 먼저 파악할 수 있는 보람찬 직업이라고 생각했기 때문입니다.”<small>직업을 선택한 이유</small></blockquote>
+</div></section>
+
+<section id="hands"><div class="wrap">
+<span class="tag rv">02 · 생명의 손길</span>
+<h2 class="rv">위기의 순간, 가장 먼저 달려가는 사람</h2>
+<p class="def rv">응급구조사는 사고나 질병 등으로 응급 상황에 놓인 환자에게 현장에서 응급처치를 제공하고 의료기관으로 안전하게 이송하는 전문 인력입니다.</p>
+<h3 class="sub rv">응급구조사의 주요 업무</h3>
+<div class="grid4">
+<div class="card rv"><div class="ico">🩺</div><h4>환자 상태 확인</h4><ul><li>의식, 호흡, 맥박, 혈압 등 생체 정보 확인</li><li>환자의 위험 증상 파악</li></ul></div>
+<div class="card rv"><div class="ico">❤</div><h4>응급처치</h4><ul><li>심폐소생술(CPR)</li><li>자동심장충격기(AED) 활용</li><li>상황에 맞는 응급처치 제공</li></ul></div>
+<div class="card rv"><div class="ico">🚑</div><h4>환자 구조 및 이송</h4><ul><li>교통사고와 낙상 현장에서 환자 구조</li><li>구급차를 이용한 안전한 병원 이송</li></ul></div>
+<div class="card rv"><div class="ico">💬</div><h4>의료진과 소통</h4><ul><li>환자 상태를 병원 의료진에게 정확히 전달</li><li>환자와 보호자에게 필요한 정보 설명</li></ul></div>
+</div>
+<h3 class="sub rv">응급구조사가 필요한 순간</h3>
+<div class="grid3">
+<div class="card scene rv"><div class="pic"><svg viewBox="0 0 300 170" role="img" aria-label="교통사고"><path d="M0 130h300" stroke="#fff" opacity=".4" stroke-dasharray="20 14"/><rect x="50" y="88" width="90" height="34" rx="8" fill="#fff"/><rect x="66" y="72" width="54" height="22" rx="6" fill="#9fd0ea"/><circle cx="72" cy="124" r="10" fill="#0b2036"/><circle cx="120" cy="124" r="10" fill="#0b2036"/><g transform="rotate(-14 210 100)"><rect x="170" y="88" width="90" height="34" rx="8" fill="#E63946"/><rect x="186" y="72" width="54" height="22" rx="6" fill="#ffd0d4"/><circle cx="192" cy="124" r="10" fill="#0b2036"/><circle cx="240" cy="124" r="10" fill="#0b2036"/></g><path d="M150 56l6 14 14-6-8 13 14 6-16 3 3 15-13-10-9 12-2-15-15 2 10-12-13-8 15-3z" fill="#ffd166"/></svg></div><div class="txt"><h4>교통사고</h4><p>신속한 구조와 부상 정도 확인이 필요한 순간</p></div></div>
+<div class="card scene rv"><div class="pic"><svg viewBox="0 0 300 170" role="img" aria-label="심정지"><path d="M150 140C60 82 76 30 120 38c18 4 28 16 30 26 2-10 12-22 30-26 44-8 60 44-30 102z" fill="#E63946"/><path d="M20 90h70l14-30 22 62 18-44h20l12-18 12 18h112" fill="none" stroke="#fff" stroke-width="4"/></svg></div><div class="txt"><h4>심정지</h4><p>CPR과 AED가 생명을 좌우하는 골든타임</p></div></div>
+<div class="card scene rv"><div class="pic"><svg viewBox="0 0 300 170" role="img" aria-label="호흡곤란"><path d="M110 40c-30 0-52 40-52 84 0 14 8 20 22 16 12-4 22-14 26-30V40zM190 40c30 0 52 40 52 84 0 14-8 20-22 16-12-4-22-14-26-30V40z" fill="#9fd0ea"/><path d="M150 20v70M150 90l-26 24M150 90l26 24" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div><div class="txt"><h4>호흡곤란</h4><p>기도 확보와 호흡 상태 확인이 필요한 상황</p></div></div>
+</div>
+<p class="callout rv">“응급구조사는 병원에 도착하기 전, 소중한 생명을 지키는 <b>골든타임</b>의 중요한 주인공입니다.”</p>
+</div></section>
+
+<section id="ai"><div class="wrap">
+<span class="tag rv">03 · AI의 시선</span>
+<h2 class="rv">AI가 발전해도 생명을 구하는 사람은 응급구조사입니다.</h2>
+<p class="def rv">AI는 응급의료 현장에서 응급구조사의 업무를 보조하는 중요한 기술이 될 수 있습니다.</p>
+<h3 class="sub rv">AI가 도와주는 일</h3>
+<div class="grid3">
+<div class="card rv"><div class="ico">📈</div><h4>생체 정보 분석</h4><ul><li>맥박, 혈압, 산소포화도 등 환자의 생체 정보 분석</li><li>환자의 상태 변화 파악 지원</li></ul></div>
+<div class="card rv"><div class="ico">⚠</div><h4>응급 위험도 분석</h4><ul><li>환자의 위험 신호를 빠르게 파악하도록 지원</li><li>응급구조사의 판단을 위한 참고 정보 제공</li></ul></div>
+<div class="card rv"><div class="ico">🗂</div><h4>의료 정보 지원</h4><ul><li>환자 관련 의료 정보 정리</li><li>의료진에게 정보를 전달하는 과정 지원</li></ul></div>
+</div>
+<h3 class="sub rv">AI와 인간 응급구조사의 역할 비교</h3>
+<div class="vs rv">
+<div class="side a"><h4>🤖 AI의 역할</h4><ul><li>생체 정보 분석</li><li>데이터 처리</li><li>위험 신호 탐지 지원</li><li>의료 정보 정리</li></ul></div>
+<div class="mid"><svg viewBox="0 0 90 90" class="pulse"><circle cx="30" cy="45" r="24" fill="#102A43"/><circle cx="60" cy="45" r="24" fill="#E63946" opacity=".9"/><path d="M10 45h18l6-12 10 24 6-12h30" fill="none" stroke="#fff" stroke-width="3"/></svg>협력</div>
+<div class="side h"><h4>🧑‍⚕️ 응급구조사의 역할</h4><ul><li>응급 상황에서 최종 판단과 책임</li><li>환자에게 필요한 응급처치 수행</li><li>환자와 보호자를 안심시키고 소통</li><li>현장 상황에 맞는 유연한 대처</li></ul></div>
+</div>
+<p class="callout rv">“AI는 응급구조사를 대신하는 존재가 아니라, 더 나은 응급처치를 돕는 <b>든든한 파트너</b>입니다.”</p>
+</div></section>
+
+<section id="skills"><div class="wrap">
+<span class="tag rv">04 · 핵심의 역량</span>
+<h2 class="rv">생명을 지키기 위해 내가 키워야 할 3가지 능력</h2>
+<div class="grid3">
+<div class="card top rv"><span class="n">TOP 1</span><h4>위기대처 능력</h4><h5>필요한 이유</h5><p>응급구조사는 교통사고, 심정지, 호흡곤란 등 갑작스럽고 위험한 상황에서 환자를 구조해야 한다. 당황하지 않고 환자의 의식, 호흡, 맥박 등을 빠르게 확인하고 상황에 맞는 응급처치를 해야 하므로 위기대처 능력이 중요하다.</p><h5>앞으로의 실천 계획</h5><ul><li>CPR과 AED 사용법을 익히고 반복적으로 실습하기</li><li>응급 상황 시뮬레이션에 참여하기</li><li>다양한 상황에서도 침착하게 대처하는 연습하기</li></ul></div>
+<div class="card top rv"><span class="n">TOP 2</span><h4>의사소통 및 공감 능력</h4><h5>필요한 이유</h5><p>응급 상황에 놓인 환자는 두려움과 불안감을 느낄 수 있다. 환자의 증상과 통증을 정확하게 파악하고 보호자를 안심시키며 병원 의료진에게 상태를 전달해야 하기 때문에 의사소통과 공감 능력이 중요하다.</p><h5>앞으로의 실천 계획</h5><ul><li>다른 사람의 말을 끝까지 듣는 습관 기르기</li><li>모둠 활동과 발표에 적극적으로 참여하기</li><li>다양한 사람의 입장에서 생각하기</li><li>긴급한 상황에서도 짧고 정확하게 전달하는 연습하기</li></ul></div>
+<div class="card top rv"><span class="n">TOP 3</span><h4>책임감과 신속한 판단력</h4><h5>필요한 이유</h5><p>응급구조사의 작은 실수나 잘못된 판단은 환자의 생명에 영향을 줄 수 있다. 환자의 상태를 파악하고 우선순위를 정해 응급처치를 시행하며 자신의 행동에 책임지는 자세가 중요하다.</p><h5>앞으로의 실천 계획</h5><ul><li>응급의료와 인체에 관한 기초 지식 공부하기</li><li>응급 상황별 대처 방법 정리하기</li><li>다양한 응급 사례를 찾아보고 판단 연습하기</li><li>정해진 절차와 안전 수칙 지키기</li></ul></div>
+</div>
+<p class="callout rv">“AI가 아무리 발전해도 위기의 순간에 침착하게 판단하고, 환자의 마음을 이해하며, 자신의 행동에 책임지는 능력은 응급구조사에게 반드시 필요합니다.”</p>
+</div></section>
+
+<section id="pledge"><div class="wrap">
+<svg class="cross"><use href="#cross"/></svg>
+<span class="tag">05 · 나의 다짐</span>
+<h2 class="rv">언젠가 누군가에게 생명의 희망이 되겠습니다.</h2>
+<div class="pl rv">
+<p>저는 미래에 노원소방서에서 근무하는 응급구조사가 되고 싶습니다.</p>
+<p>응급 상황에서 환자의 상태를 빠르게 파악하고 정확한 응급처치를 제공할 수 있도록 꾸준히 공부하고 노력하겠습니다.</p>
+<p>AI 기술을 적극적으로 이해하고 활용하되, 기술에만 의존하지 않고 환자의 생명을 최우선으로 생각하는 응급구조사가 되겠습니다.</p>
+<p>또한 위기대처 능력, 의사소통 및 공감 능력, 책임감과 신속한 판단력을 갖추어 환자와 보호자에게 믿음을 주는 사람이 되겠습니다.</p>
+</div>
+<svg class="ecgl" viewBox="0 0 700 80" preserveAspectRatio="none"><path d="M0 40h250l14-12 12 12h40l16-38 24 76 18-38h50l14-12 12 12h250"/></svg>
+<p class="fin rv">“AI의 도움으로 위기의 순간을 밝히고, 따뜻한 손길과 빠른 판단으로 꺼져가는 생명의 희망을 지키는 사람.<br><b>바로 응급구조사입니다.</b>”</p>
+</div></section>
+
+<footer>
+<strong>LIFE SAVER | AI EMS</strong>
+<p>AI 시대의 응급구조사, 생명을 지키는 사람들</p>
+<p>미래의 응급구조사 김지수</p>
+<p class="s">“Saving Lives, Protecting Hope.”</p>
+</footer>
+
+<script>
+const bg=document.getElementById('bg'),mn=document.getElementById('mn');
+bg.onclick=()=>{bg.classList.toggle('open');mn.classList.toggle('open')};
+mn.querySelectorAll('a').forEach(a=>a.onclick=()=>{bg.classList.remove('open');mn.classList.remove('open')});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const links=[...mn.querySelectorAll('a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+function spy(){const y=scrollY+120;let c=-1;secs.forEach((s,i)=>{if(s.offsetTop<=y)c=i});links.forEach((a,i)=>a.classList.toggle('active',i===c))}
+addEventListener('scroll',spy,{passive:true});spy();
+</script>
+</body>
+</html>

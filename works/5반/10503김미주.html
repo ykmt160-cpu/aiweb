@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>병동 간호사를 꿈꾼다면</title>
+<style>
+:root{
+  --yellow:#F6C945; --yellow-d:#D9A81E; --yellow-l:#FFF1BF;
+  --beige:#F5ECDC; --beige-d:#E8D9BC; --bg:#FBF7EE; --card:#FFFFFF;
+  --text:#4A3F2A; --muted:#7A6D52; --line:#E8D9BC;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top: env(safe-area-inset-top,0px);
+  padding-bottom: env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --yellow:#E8B92F; --yellow-d:#F6C945; --yellow-l:#4A3F1A;
+    --beige:#2E2A22; --beige-d:#4A4231; --bg:#1F1C16; --card:#2A261D;
+    --text:#F3EAD6; --muted:#C9BC9C; --line:#4A4231; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --yellow:#E8B92F; --yellow-d:#F6C945; --yellow-l:#4A3F1A;
+  --beige:#2E2A22; --beige-d:#4A4231; --bg:#1F1C16; --card:#2A261D;
+  --text:#F3EAD6; --muted:#C9BC9C; --line:#4A4231; color-scheme: dark;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.8;font-size:17px}
+nav{position:sticky;top:0;z-index:20;background:var(--beige);border-bottom:2px solid var(--yellow);
+  display:flex;justify-content:center;gap:8px;padding:12px 16px;flex-wrap:wrap}
+nav a{color:var(--text);text-decoration:none;padding:6px 18px;border-radius:999px;font-weight:600;font-size:15px}
+nav a:hover,nav a.active{background:var(--yellow);color:#3b2f10}
+.hero{background:linear-gradient(135deg,var(--yellow-l),var(--beige));text-align:center;padding:80px 24px 70px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(34px,5vw,56px);margin:10px 0 24px;letter-spacing:-1px}
+.hero .quote{display:inline-block;max-width:760px;background:var(--card);border-left:8px solid var(--yellow);
+  padding:20px 28px;border-radius:14px;font-size:20px;font-weight:600;box-shadow:0 6px 18px rgba(120,90,20,.12)}
+.hero svg{width:90px;height:90px}
+.deco{position:absolute;opacity:.9}
+.deco.l{left:6%;top:50%;transform:translateY(-50%) rotate(-12deg)}
+.deco.r{right:6%;top:50%;transform:translateY(-50%) rotate(10deg)}
+@media(max-width:900px){.deco{display:none}}
+section{max-width:1000px;margin:0 auto;padding:70px 24px 20px}
+.tag{display:inline-block;background:var(--yellow);color:#3b2f10;font-weight:700;padding:3px 16px;border-radius:999px;font-size:14px}
+h2{font-size:32px;margin:10px 0 28px;display:flex;align-items:center;gap:12px}
+h2 svg{width:38px;height:38px;flex:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 4px 14px rgba(120,90,20,.07)}
+.profile{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center}
+.avatar{background:var(--yellow-l);border-radius:50%;width:180px;height:180px;display:flex;align-items:center;justify-content:center;margin:auto;border:6px solid var(--yellow)}
+.avatar svg{width:100px;height:100px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 16px}
+.chip{background:var(--beige);border:1px solid var(--beige-d);padding:4px 14px;border-radius:999px;font-weight:600;font-size:15px}
+.reason{background:var(--yellow-l);border-radius:12px;padding:16px 20px;margin-top:6px}
+.reason b{display:block;margin-bottom:4px}
+.ranks{display:grid;gap:22px}
+.rank{display:grid;grid-template-columns:90px 1fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 4px 14px rgba(120,90,20,.07);transition:transform .2s}
+.rank:hover{transform:translateY(-3px)}
+.num{background:var(--yellow);color:#3b2f10;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800}
+.num span{font-size:44px;line-height:1}
+.num small{font-size:14px}
+.rank:nth-child(2) .num{background:#EBC77A}
+.rank:nth-child(3) .num{background:var(--beige-d)}
+.rank .body{padding:22px 28px}
+.rank h3{margin:0 0 10px;font-size:24px}
+.lbl{display:inline-block;font-size:13px;font-weight:700;color:var(--yellow-d);margin-top:8px}
+.rank p{margin:0 0 4px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.box{border-radius:18px;padding:30px;text-align:center}
+.box.ai{background:var(--beige);border:2px dashed var(--beige-d)}
+.box.me{background:var(--yellow-l);border:2px solid var(--yellow)}
+.box svg{width:64px;height:64px}
+.box h3{margin:8px 0 12px;font-size:22px}
+.box ul{list-style:none;padding:0;margin:0}
+.box li{background:var(--card);border-radius:10px;padding:10px 14px;margin:8px 0;font-weight:600}
+@media(max-width:760px){.split,.profile{grid-template-columns:1fr}.rank{grid-template-columns:64px 1fr}.num span{font-size:32px}}
+footer{margin-top:70px;background:var(--beige);text-align:center;padding:28px;color:var(--muted);border-top:2px solid var(--yellow);font-size:15px}
+.fade{opacity:0;transform:translateY(24px);transition:.7s}
+.fade.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#intro">소개</a><a href="#skills">내가 기를 역량은?</a><a href="#roles">AI와 나의 역할</a>
+</nav>
+
+<header class="hero">
+  <svg class="deco l" viewBox="0 0 64 64" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round"><path d="M10 20c0-6 6-10 10-10 5 0 6 3 6 6v14c0 8 6 12 12 12s12-5 12-12V24"/><circle cx="50" cy="20" r="5" fill="#F6C945"/><circle cx="10" cy="20" r="3" fill="#F6C945"/></svg>
+  <svg class="deco r" viewBox="0 0 64 64" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M44 8l12 12-8 8-12-12z" fill="#FFF1BF"/><path d="M36 16L10 42c-3 3-3 8 0 11s8 3 11 0l26-26"/><path d="M18 34l12 12"/></svg>
+  <h1>병동 간호사를 꿈꾼다면</h1>
+  <div class="quote">“병동 간호사는 환자 곁에서 가장 오래, 가장 가까이 회복을 돕는 사람이다.”</div>
+</header>
+
+<section id="intro" class="fade">
+  <span class="tag">섹션 1</span>
+  <h2><svg viewBox="0 0 40 40" fill="none" stroke="#D9A81E" stroke-width="3" stroke-linecap="round"><rect x="6" y="6" width="28" height="28" rx="8" fill="#FFF1BF"/><path d="M20 12v16M12 20h16"/></svg>소개</h2>
+  <div class="card profile">
+    <div class="avatar">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round"><path d="M10 22c0-6 6-10 10-10 5 0 6 3 6 6v12c0 8 6 12 12 12s12-5 12-12V24"/><circle cx="50" cy="22" r="5" fill="#F6C945"/><circle cx="10" cy="22" r="3" fill="#F6C945"/></svg>
+    </div>
+    <div>
+      <h3 style="margin:0;font-size:28px">미래의 나, 김미주</h3>
+      <div class="chips"><span class="chip">27살</span><span class="chip">대학병원 중환자실 병동</span><span class="chip">간호사</span></div>
+      <div class="reason"><b>간호사를 선택한 이유</b>평소에 사람들을 돕는 것을 좋아하고 안정적이며 AI 시대에도 이 직업 자체가 대체되기 어렵다고 생각해서 이 직업을 선정했다.</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="fade">
+  <span class="tag">섹션 2</span>
+  <h2><svg viewBox="0 0 40 40" fill="none" stroke="#D9A81E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5l4.5 10 10.5 1-8 7 2.5 10.5L20 28l-9.5 5.5L13 23l-8-7 10.5-1z" fill="#FFF1BF"/></svg>내가 기를 역량은?</h2>
+  <div class="ranks">
+    <div class="rank"><div class="num"><small>TOP</small><span>1</span></div><div class="body">
+      <h3>윤리·책임 의식</h3>
+      <span class="lbl">필요한 이유</span>
+      <p>간호사는 생명과 직결된 결정을 하고, 그 결과에 대한 책임은 AI가 아니라 사람이 집니다. 또 환자 정보는 매우 민감해서, AI를 쓸 때도 개인정보와 환자의 권리를 지켜야 하기 때문이다.</p>
+      <span class="lbl">앞으로의 실천 계획</span>
+      <p>AI를 쓸 때는 환자 이름 등 식별 정보를 빼고 입력하는 것을 원칙으로 삼겠습니다. 윤리적 딜레마 사례를 친구들과 토론하며 내 기준을 세워 가겠습니다.</p>
+    </div></div>
+    <div class="rank"><div class="num"><small>TOP</small><span>2</span></div><div class="body">
+      <h3>AI 활용 능력</h3>
+      <span class="lbl">필요한 이유</span>
+      <p>간호 현장은 기록, 투약 확인, 정보 검색, 환자 교육 자료 준비 등 반복적이고 시간이 많이 드는 업무가 많습니다. AI를 잘 쓰면 이 시간을 줄여 환자 곁에 머무는 시간을 늘릴 수 있기 때문이다.</p>
+      <span class="lbl">앞으로의 실천 계획</span>
+      <p>환자 교육 안내문을 쉬운 말로 바꿔 보는 연습을 해서, 실제 현장에서 쓰는 방법을 미리 익히겠습니다.</p>
+    </div></div>
+    <div class="rank"><div class="num"><small>TOP</small><span>3</span></div><div class="body">
+      <h3>비판적 사고</h3>
+      <span class="lbl">필요한 이유</span>
+      <p>AI가 낸 경고나 제안이 지금 이 환자에게 맞는지 가려내지 못하면, 작은 오류가 곧 환자 안전 사고로 이어질 수 있기 때문이다.</p>
+      <span class="lbl">앞으로의 실천 계획</span>
+      <p>실습이나 사례 학습에서 AI의 판단과 내 판단을 나란히 적어 보며 차이를 분석하겠습니다.</p>
+    </div></div>
+  </div>
+</section>
+
+<section id="roles" class="fade">
+  <span class="tag">섹션 3</span>
+  <h2><svg viewBox="0 0 40 40" fill="none" stroke="#D9A81E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 34S6 26 6 15a7 7 0 0114-2 7 7 0 0114 2c0 11-14 19-14 19z" fill="#FFF1BF"/></svg>AI가 도와줄 일과 내가 직접 맡을 일</h2>
+  <div class="split">
+    <div class="box ai">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="12" width="44" height="32" rx="5" fill="#FFF1BF"/><path d="M16 30h9l4-8 6 14 4-6h9"/><path d="M24 52h16M32 44v8"/></svg>
+      <h3>AI가 도와줄 일</h3>
+      <ul><li>기록·문서 업무</li><li>모니터링 보조</li></ul>
+    </div>
+    <div class="box me">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 54S8 40 8 24a12 12 0 0124-4 12 12 0 0124 4c0 16-24 30-24 30z" fill="#F6C945"/></svg>
+      <h3>내가 직접 맡을 일</h3>
+      <ul><li>정서적 돌봄과 소통</li></ul>
+    </div>
+  </div>
+</section>
+
+<footer>병동 간호사를 꿈꾼다면 · 김미주</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll('nav a')];
+addEventListener('scroll',()=>{
+  let cur=links[0];
+  links.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));if(s&&s.getBoundingClientRect().top<160)cur=a});
+  links.forEach(a=>a.classList.toggle('active',a===cur));
+});
+</script>
+</body>
+</html>

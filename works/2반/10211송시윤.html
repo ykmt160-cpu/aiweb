@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>미래의 축구선수인 나</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --grass:#1f7a3d; --grass-d:#14562b; --line:#ffffff; --bg:#f3f8f1; --card:#ffffff;
+  --ink:#1b2a1f; --sub:#4a5d4f; --yellow:#ffd23f; --border:#d5e5d3;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --grass:#2c9b53; --grass-d:#0f3d20; --bg:#0f1b13; --card:#172a1d; --ink:#eef6ee; --sub:#b4c8b8; --border:#2b4632; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --grass:#2c9b53; --grass-d:#0f3d20; --bg:#0f1b13; --card:#172a1d; --ink:#eef6ee; --sub:#b4c8b8; --border:#2b4632; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;font-size:18px;line-height:1.7}
+h1,h2,h3{font-family:"Jua","Noto Sans KR",sans-serif;font-weight:400;margin:0}
+.hero{background:repeating-linear-gradient(90deg,var(--grass) 0 60px,var(--grass-d) 60px 120px);color:#fff;text-align:center;padding:72px 20px 80px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:50%;width:260px;height:260px;border:4px solid rgba(255,255,255,.55);border-radius:50%;transform:translate(-50%,-50%)}
+.hero::after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:4px solid rgba(255,255,255,.55)}
+.hero>div{position:relative;z-index:1;background:rgba(14,60,30,.78);display:inline-block;padding:28px 36px;border-radius:24px}
+.ball{font-size:64px;line-height:1}
+.hero h1{font-size:clamp(34px,8vw,60px);margin-top:10px;line-height:1.2}
+.hero p{margin:10px 0 0;font-size:22px;color:var(--yellow)}
+main{max-width:880px;margin:0 auto;padding:36px 18px 56px}
+section{margin-bottom:28px;background:var(--card);border:2px solid var(--border);border-radius:22px;padding:26px 24px}
+section h2{font-size:28px;color:var(--grass);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.ico{font-size:30px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.pill{flex:1 1 240px;background:var(--bg);border-left:8px solid var(--grass);border-radius:14px;padding:14px 18px}
+.pill small{display:block;color:var(--sub);font-size:15px}
+.pill b{font-size:22px}
+.big{font-size:22px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.skill{background:var(--bg);border:2px solid var(--border);border-top:8px solid var(--grass);border-radius:16px;padding:18px}
+.skill .rank{display:inline-block;background:var(--yellow);color:#1b2a1f;font-family:"Jua",sans-serif;border-radius:999px;padding:2px 14px;font-size:18px}
+.skill h3{font-size:26px;margin:8px 0 6px}
+.skill dt{font-weight:700;color:var(--grass);font-size:15px;margin-top:8px}
+.skill dd{margin:0}
+.train{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.train li{display:flex;gap:14px;align-items:center;background:var(--bg);border-radius:14px;padding:14px 18px}
+.train .e{font-size:34px}
+.train b{font-size:20px}
+.train span{display:block;color:var(--sub)}
+@media (max-width:520px){body{font-size:17px}section{padding:20px 16px}.hero>div{padding:22px 20px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div>
+    <div class="ball" aria-hidden="true">⚽</div>
+    <h1>미래의 축구선수인 나</h1>
+  </div>
+</header>
+<main>
+  <section id="intro">
+    <h2><span class="ico" aria-hidden="true">🏆</span>미래의 나 소개</h2>
+    <div class="row">
+      <div class="pill"><small>희망 직업</small><b>축구선수</b></div>
+      <div class="pill"><small>미래의 나</small><b>프로 축구선수</b></div>
+    </div>
+  </section>
+
+  <section id="why">
+    <h2><span class="ico" aria-hidden="true">⭐</span>축구선수를 선택한 이유</h2>
+    <p class="big">재능이 있고 능력이 있어서입니다.</p>
+  </section>
+
+  <section id="roles">
+    <h2><span class="ico" aria-hidden="true">🤝</span>AI가 도와줄 일과 내가 직접 맡을 일</h2>
+    <div class="row">
+      <div class="pill"><small>AI가 도와줄 일</small><b>동기부여</b></div>
+      <div class="pill"><small>내가 직접 맡을 일</small><b>공격수와 미들 담당</b></div>
+    </div>
+  </section>
+
+  <section id="top3">
+    <h2><span class="ico" aria-hidden="true">🥇</span>내가 기를 역량 TOP 3</h2>
+    <div class="grid">
+      <article class="skill">
+        <span class="rank">1위</span>
+        <h3>💪 피지컬</h3>
+        <dl><dt>필요한 이유</dt><dd>몸싸움에서 지면 안 되기 때문입니다.</dd>
+        <dt>기르는 방법</dt><dd>밥을 잘 먹고 잠도 잘 잡니다.</dd></dl>
+      </article>
+      <article class="skill">
+        <span class="rank">2위</span>
+        <h3>🥅 슈팅</h3>
+        <dl><dt>필요한 이유</dt><dd>슈팅으로 골을 넣을 수 있기 때문입니다.</dd>
+        <dt>기르는 방법</dt><dd>슈팅을 하루에 100번씩 찹니다.</dd></dl>
+      </article>
+      <article class="skill">
+        <span class="rank">3위</span>
+        <h3>⚽ 패스</h3>
+        <dl><dt>필요한 이유</dt><dd>우리에게 좋은 패스를 해야 공격이 되기 때문입니다.</dd>
+        <dt>기르는 방법</dt><dd>벽에다가 패스를 50번씩 합니다.</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section id="training">
+    <h2><span class="ico" aria-hidden="true">🏃</span>앞으로의 훈련 방법</h2>
+    <ul class="train">
+      <li><span class="e" aria-hidden="true">💪</span><div><b>피지컬</b><span>밥을 잘 먹고 잠도 잘 잡니다.</span></div></li>
+      <li><span class="e" aria-hidden="true">🥅</span><div><b>슈팅</b><span>슈팅을 하루에 100번씩 찹니다.</span></div></li>
+      <li><span class="e" aria-hidden="true">⚽</span><div><b>패스</b><span>벽에다가 패스를 50번씩 합니다.</span></div></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
